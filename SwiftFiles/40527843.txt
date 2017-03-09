@@ -1,0 +1,2 @@
+Why Swift crash report doesn't show the exception name?
+I'm checking the crash report on Crashlytics. For some crashes there is a clear message like: *** -[__NSArrayI objectAtIndex:]: index 13 beyond bounds [0 .. 12] But for some other crashes I only have the function name and this message: Crashed: com.apple.main-thread EXC_BREAKPOINT 0x00000001001f3938 Is there anything I can do to increase the verbosity of the crash log?

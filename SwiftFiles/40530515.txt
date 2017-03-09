@@ -1,0 +1,2 @@
+Send camera picking images as sms using MFMessageviewController
+How we send images as a MMS if it's taken from the camera not the gallery, below code is working fine for the gallery but I am not able to add image if I take from the camera. for i in 0..<self.imagesUrlArray.count { let fileUrl = self.imagesUrlArray[i] controller.addAttachmentURL(fileUrl as! URL, withAlternateFilename: nil) }

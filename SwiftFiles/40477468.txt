@@ -1,0 +1,3 @@
+Slide menu controller like Facebook not working on Xcode 8
+I followed a YouTube video to make a SlideMenuController but it shows errors on my Xcode8, I think maybe there're something changes to Swift?
+Remove the spacing between storyboard and ? to look like storyboard? in each of those problem lines and your issues should be solved.

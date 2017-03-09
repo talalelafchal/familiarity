@@ -1,0 +1,3 @@
+Is there a framework or function for turning emoji into words?
+I'm making an app which reads text aloud. I want to be able to convert the emoji into speech as well by using their names. So -> Grinning Face -> Smiling Face With Open Mouth and Smiling Eyes -> Speak-No-Evil Monkey And so on. Is there a framework or function to achieve this? Cheers.
+This links to a repository containing the mapping from emoji unicode to description. Also check this answer. To read it out, get familiar with AvSpeechSynthesizer

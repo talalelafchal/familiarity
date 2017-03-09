@@ -1,0 +1,2 @@
+Get the Certificate Authority from a SecCertificate in Swift (iOS)
+I have a SecCertificate from which I need to get the Certificate Authority and other information like whether the certificate is an EV-certificate or not. I can print the certificate and get e.g. "cert(0x14cd46000) s: www.apple.com i: Symantec Class 3 EV SSL CA - G3" but I do not know how I can get additional information about the content of the certificate without using openSSL or another third-party library. Thanks for any help

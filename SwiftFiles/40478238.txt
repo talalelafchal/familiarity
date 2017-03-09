@@ -1,0 +1,2 @@
+Xcode 8 Adding Layout Margins Crash
+When I try to add layout margins to a label on a TableViewCell, using the right panel on Xcode, I try to add Explicit Margins (top, Left, Bottom, Right). But, as soon as I input a number value, or tap the arrow to change the value, Xcode crashes. I've attached a photo to show the panel I am trying to add the layout margins in, and where it crashes. Any ideas why it wont let me adjust the margins?

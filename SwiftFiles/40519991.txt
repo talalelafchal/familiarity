@@ -1,0 +1,3 @@
+Firebase Access permission make public (iOS Swift)
+When I want to write data in Firebase so me error Like permission_denied Please see Snap for Exject Idea. I am Trying below Code - private var _test_Kush = Firebase(url: "https://xxxxx-xxxxx.firebaseio.com/") var test_Kush: Firebase { return _test_Kush } func testKushAdd(uid: String, user: Dictionary<String, AnyObject>) { test_Kush.childByAppendingPath(uid).setValue(user) }
+To make data public change firebase database rules : Select Database then change the rules : Note: This is not the best way to approach you must use firebase authentication to access database. Here is a good documentation for auth and database.

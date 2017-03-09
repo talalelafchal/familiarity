@@ -1,0 +1,3 @@
+How to print text from texfield in label on Viewcontroller.swift
+I am actually trying to print whatever text in textfield to be displayed in label which is textDisplay and textf being the textfield. @IBOutlet weak var textf: UITextField! @IBAction func enter(_ sender: Any) { textDisplay.isHidden = false textf.text = textDisplay.text }
+I understand that you want to display textField's text in the label after pressing on the button, right? Make sure that you connect all @IBOutlet and @IBAction and then, let change to textDisplay.text = textf.text

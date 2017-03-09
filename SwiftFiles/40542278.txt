@@ -1,0 +1,4 @@
+Add elements of two array with each other
+I have 2 Array of type Int like this let arrayFirst = [1,2,7,9] let arraySecond = [4,5,17,20] I want to add the elements of each array, like arrayFirst[0] + arraySecond[0], arrayFirst[1] + arraySecond[1] an so on and assign it to another array, so the result of the array would be like [5, 7, 24, 29] What would be the best practice to achieve this using swift3
+You can add both the arrays like this let arrayFirst = [1,2,7,9] let arraySecond = [4,5,17,20] let result = zip(arrayFirst, arraySecond).map(+) print(result)
+let arrayFirst = [1,2,7,9] let arraySecond = [4,5,17,20] First zip(_:_:) them, to produce a sequence that acts like array of pairs let zipped = zip(arrayFirst, arraySecond) // zipped acts like [(1, 4), (2, 5), (7, 17), (9, 20)] Then map(_:) over the tuples, and apply the + operator: let result = zipped.map(+) // result is [5, 7, 24, 29] All together: let result = zip(arrayFirst, arraySecond).map(+)

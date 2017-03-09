@@ -1,0 +1,2 @@
+TCP socket communication in iOS (Swift)
+I'm trying to communicate with a device on my intranet using sockets. The app will be running on iPad. I have established socket connection with the device port. I'm able to send data to it. Once the connection is established, the device will ask for password. I send it in the following way. [UInt8](data.Utf8) But, the device is not able to recognize it. But, if I try to communicate from Windows, it is able to recognize the password. Am I missing something or do I need to convert the string in mac to some other format?

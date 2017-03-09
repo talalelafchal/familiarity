@@ -1,0 +1,2 @@
+value of string mistake swift
+which must check string at value and add array member if not. Problem is that swift reports a mistake "Value if type array string has no member range" Is it means than .range(of: can't be used here?  var coUnter = 1 var colorString = [[0,0,0], [1,1,1]] while coUnter < 50 { var randomNum = Int (arc4random_uniform(UInt32(Int(coords.count)))) if (colorString.range(of: rgbs[randomNum]) != nil){ colorString = colorString +[rgbs[randomNum]] coUnter = 1} else { coUnter ++} // = coUnter + 1 print (colorString) } }

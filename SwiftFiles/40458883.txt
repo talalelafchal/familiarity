@@ -1,0 +1,3 @@
+How to access data index in CoreData using Swift3
+I saved datas in entity of CoreData. Also I can access data in CoreData through object.value(forKey:"attribute"). But, I don't know how to access data using index. follow code is my access way  let context = getContext() let fetchRequest : NSFetchRequest<Entity> = Entity.fetchRequest() let result = try? context.fetch(fetchRequest){ for object in result object.value(forKey:"attribute")... ... } } How to access data in CoreData using index of data?
+Your result is type of Array so you can access the object from result like result[0] and so on. if index < result.count { let obj = result[index] } If you want index from object, you can use index(of:) for that. if let index = result.index(of: obj) { print(index) }

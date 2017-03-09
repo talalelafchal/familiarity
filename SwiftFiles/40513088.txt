@@ -1,0 +1,2 @@
+Unit testing on Xcode
+Unit test is used on my project. There are some red blocks on the right side of testing method. What does this mean? I have checked Apple documents about unit testing but cannot find any information. Cheers!

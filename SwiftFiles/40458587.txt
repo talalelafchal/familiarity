@@ -1,0 +1,3 @@
+CocoaPods error on building project
+I have a running project which is working fine with pods. I had to copy this project to develop version-2. Now when I try to build project, I encounter following issue in pod's code. I tried removing this specific pod but same type of errors were shown in different pod. tried all of this: https://guides.cocoapods.org/using/troubleshooting.html ,but it didn't help at all. Being new to iOS development, I can't figure out, what I am doing wrong.
+It seems like you are using the newer version of pod in older Xcode. So either you need to update your Xcode or downgrade your pod to the relevant version supporting Xcode. From image i can guess you might be using Xcode 7.2 or down and pod is in swift 2.3 or 3

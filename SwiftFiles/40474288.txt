@@ -1,0 +1,2 @@
+Facebook iOS Swift Log In
+NO users who aren't Facebook Admins for the app can sign in via Facebook. I have confirmed my bundle ID is correct (the same) on Facebook Dev. and my app. I have also make the app public on Facebook. Any suggestions?

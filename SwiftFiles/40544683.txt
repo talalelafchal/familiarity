@@ -1,0 +1,3 @@
+Accept self-signed certificate with Swift 3
+I tried different ways but without success. With some example from websites I get the following errors. Argument label [forTrust:] do not match any available overloads: How can I fix this or use another method? I'm with Swift 3 and XCode 8.1
+In Swift 3, this parameter has been renamed trust instead of forTrust.

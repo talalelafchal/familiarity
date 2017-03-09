@@ -1,0 +1,3 @@
+Swift 3 Array Declaration Benefits
+When I learned Swift I always declared my arrays like so var myArrayDeclaration: [String] However in many tutorials and even in books released by Apple arrays are declared like so var appleArrayDeclaration = [String]() On the surface both appear to work exactly the same when I use them. Is there a reason why tutorials and Apple almost exclusively show the second method? Or is it developers preference?
+The Second method use type inference, and its usually preferred by Apple and Developers since express the simplicity and expressiveness of swift 3 language optimization. Btw, both methods work and do the job!

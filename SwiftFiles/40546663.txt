@@ -1,0 +1,4 @@
+UITableViewController selectionStyle none not working
+In my UITableViewController custom class, I am using this in cellRowRowAtIndexPath : cell?.selectionStyle = .none The selection color however remains gray
+It should be like this,  let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")! as UITableViewCell cell.selectionStyle = .none
+cell.selectionStyle = .none OR From StoryBoard u can set cell selection style None,

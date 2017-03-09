@@ -1,0 +1,4 @@
+can we pass parameter in computed property in swift?
+class a{ var i:Int{ return 10 } } in this code, I want to pass parameter in "i" variable and they return this parameter. is this possible in swift?
+No, you can't. To pass one or multiple parameters you have to use a function / method. However you can assign a closure to a variable.
+As @vadian already said, you can't. But if you want to do some calculation when setting i you could adjust the setter: class a { private var _i: Int = 0 var i: Int { set { _i = newValue + 5 // or whatever you want } get { return _i } } }

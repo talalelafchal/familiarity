@@ -1,0 +1,2 @@
+Read arguments from text file while running UI test in Xcode7
+I am using Xcode7 and recorded an UI test. Test is running smoothly. Now I need to pass parameters (which are stored in a file on mac) to this test so that this test will read string in the file and search it in the labels in app. For Example: Text file contains [Apple, Banana] App contains labels [Apple, Banana, Orange] Now I want to click on Apple and Banana only. Also I can't hardcode this data as it may change. Please Help.. Thank You!

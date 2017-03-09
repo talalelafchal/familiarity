@@ -1,0 +1,3 @@
+Swift: return type when using map on optionals depends on closure
+func times3(number : Int) -> Int { return 3 * number } let opt1 : Int? = 5 let mapped = opt1.map(times3) // mapped is 15 let m = opt1.map({times3(number: $0)}) print(m) // m is Optional(15) Why is mapped an Int, but m an an Int? both are using the same function!?
+What makes you believe that mapped has type Int? I just tried in the REPL and mapped has type Int?, as expected. Welcome to Apple Swift version 3.0.1 (swiftlang-800.0.58.6 clang-800.0.42.1). Type :help for assistance. 1> func times3(number: Int) -> Int { 2. return 3 * n 3. } 4> let opt1: Int? = 5 opt1: Int? = 5 5> let mapped = opt1.map(times3) mapped: Int? = 15 6> let m = opt1.map({times3(number: $0)}) m: Int? = 15

@@ -1,0 +1,3 @@
+Ambiguous reference to LoginManager Facebook sdk swift
+I've integrated facebook-sdk-swift manually in my ios project in xcode8 following documents [https://developers.facebook.com/docs/swift/getting-started]. I'm getting error "Ambiguous reference to member logIn(_:viewController:completion:)" my code is  loginManager.logIn(["public_profile","email"], viewController: self) { loginResult in switch loginResult { case .Failed(let error): print(error) case .Cancelled: print("User cancelled login.") case .Success(let grantedPermissions, let declinedPermissions, let accessToken): print("Logged in!") } Any help please?
+solved my problem ,permissions i'm passing in string format which swift compiler not allowing look here

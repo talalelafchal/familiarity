@@ -1,0 +1,2 @@
+How to find childAdded in Firebase with where clause condition?
+In Firebase, How to get details of the database with a dynamic where Clouse string? Here is code self.ref.child(Rule/PathStringToGetDetilsFromFireBaseServer).observe(.childAdded, with: { [weak self] (snapshot) -> Void in guard let strongSelf = self else { return } print(snapshot) }) Please update me if you have any idea. Thank you.

@@ -1,0 +1,3 @@
+UIImageView sizes for x1, x2 and x3
+In Xcode 8, If I am using the iPhone 7's storyboard size of 414x736 and I have a UIImageView of 100x100. Because the iPhone 7 is x2, do I need to provide an image of 50x50 for x1 and 150x150 for x3? Thanks in advance.
+If your imageView is 100*100 in storyboard (points), the recommended resolution for resource image would be 300*300 for @3x and 200*200 for @2x. If you provide only one of resolution, it will be upscaled/downscaled to fit the size. So if you have only @3x you'll end up using more memory (2.25 times more) on devices with 2x scale. If you have @2x only, you'll see upscale artefacts on iPhone 6/7 plus (image will be not that crisp)

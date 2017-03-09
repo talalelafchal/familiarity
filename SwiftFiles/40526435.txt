@@ -1,0 +1,2 @@
+App crash on upgrade because of core data, no persistent stores
+I have done light weight migration on core data. After the app is live I can see a lot of crashes in Crashlytics all at the core data save() function. How do I fix this crash? Error message: This NSPersistentStoreCoordinator has no persistent stores (schema mismatch or migration failure). It cannot perform a save operation.`

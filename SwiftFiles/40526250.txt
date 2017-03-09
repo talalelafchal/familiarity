@@ -1,0 +1,3 @@
+IOS KeyChainWrapper value is nil after stored
+Im a beginner in Swift 3.0. Recently i just convert existing swift project to 3.0 swift. After converrted, i have issues storing user& password using key chain wrapper. i have checked the result of Bool, it just show false and the value is nil. Can i know the possible causes? thanks for guiding. //This is how i store var saveSuccessful:Bool = KeychainWrapper.defaultKeychainWrapper().setString(txt_userId.text!, forKey: "userId") let savePass:Bool = KeychainWrapper.setString(txt_password.text!, forKey: "password") //this is how i get/retrieve var password:String? = KeychainWrapper.stringForKey("password")
+Take a look at my answer here. The problem is that the "Keychain Sharing" capability has to be enabled.

@@ -1,0 +1,2 @@
+How to create aPDF document from the current screen with all tableview data present?
+I have one UIViewController then in this viewcontroller are two UIView or One UITableview. One view are on top & second are on bottom. UITableview are on centre With many cells & table view data are not fix. So I don't know how to generate a pdf with whole view or also show all tableview data with in one pdf & these pdf are also access by user in his phone also. Please help me guys..

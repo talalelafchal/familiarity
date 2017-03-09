@@ -1,0 +1,2 @@
+Writing into JSON file iOS Swift
+I have JSON file locally in my app. I want to add new element in this file programmatically. Below is my JSON format - { "MENU":{ "SUBMENU":[ { "name":"name1", "link":"link2" } ] } } I want to add another element in SUBMENU like below - { "MENU":{ "SUBMENU":[ { "name":"name1", "link":"link1" }, { "name":"name2", "link":"link2" } ] } } Would it be possible to do it programatically? Thank!

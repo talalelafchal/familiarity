@@ -1,0 +1,3 @@
+How do I turn a string into a maths equation?
+A user will give me a string as their input, which will be a maths equation. E.g. (21 + 3) / 4. I want to turn that string into a double that is equal to the answer (6.0) Is there any way to do this in swift 3, XCode 8?
+You can see if NSExpression will suit your task. It’s a bit more limited than a full math expression parser but it’ll still cover even slightly complicated tasks: Apple reference for NSExpression Evaluating Expressions in iOS with Objective-C and Swift

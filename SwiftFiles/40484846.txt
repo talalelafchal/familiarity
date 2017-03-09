@@ -1,0 +1,4 @@
+How to bring IOS app from background to foreground without using local notification?
+Is there any way to bring the app to foreground which is running in background without sending any local notification?
+There is no way for you to programatically foreground the app. If you think about it, allowing developers to do that could have significant consequences to user experience.
+There must be a way to simulate it. Uber Driver's App launch when the user gets a new ride with app in background. WhatsApp in background opens a phone view when somebody calls the user.

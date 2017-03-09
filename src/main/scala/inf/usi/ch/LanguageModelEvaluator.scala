@@ -42,7 +42,7 @@ object LanguageModelEvaluator {
   }
 
 
-  private def nGramList(token: String, nGram: Int): List[String] = {
+  def nGramList(token: String, nGram: Int): List[String] = {
     var tokenBuffer = new ListBuffer[String]()
     val stringTokenized = new StringTokenizer(token)
     while (stringTokenized.hasMoreElements()) {
@@ -51,14 +51,14 @@ object LanguageModelEvaluator {
     tokenBuffer.toList.sliding(nGram).toList.map(x => x.mkString(" "))
   }
 
-  private def getAverageProb(nGramList: List[String], languageModel: CompiledTokenizedLM): Double = {
+   def getAverageProb(nGramList: List[String], languageModel: CompiledTokenizedLM): Double = {
     val probList = nGramList.map(x => languageModel.log2Estimate(x))
     probList.sum / probList.size
   }
 
-  def getAverageProbList1000Files(compiledTokenizedLM: CompiledTokenizedLM, nGram: Int, testListFileName: String, stormedDataPath: String): List[Double] = {
+  def getAverageProbListFiles(compiledTokenizedLM: CompiledTokenizedLM, nGram: Int, numberOfFiles : Int,testListFileName: String, stormedDataPath: String): List[Double] = {
     val testingListOfAllFilesName = new File(testListFileName)
-    val testingSet: List[String] = Source.fromFile(testingListOfAllFilesName).getLines().toList.take(1000)
+    val testingSet: List[String] = Source.fromFile(testingListOfAllFilesName).getLines().toList.take(numberOfFiles)
     testingSet.map(file => getAverageProb(nGramList(jsonFileToText(file, stormedDataPath), nGram), compiledTokenizedLM))
   }
 

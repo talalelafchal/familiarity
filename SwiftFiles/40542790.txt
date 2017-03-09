@@ -1,0 +1,2 @@
+Abort Thread joining process in XMPP for ios?
+Because of threading issue I am joining all thread on main thread. If thread joining process is in progress and app transit from background to foreground I want to abort the thread joining process to free the main thread,so that iOS does not kill my app. How to do that?

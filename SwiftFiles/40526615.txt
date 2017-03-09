@@ -1,0 +1,2 @@
+Weird right margin for a section in UITableView
+I have a UITableView where there is a weird margin to the right for some prototype cells. I have in a View 2 different prototype cells one of them scale fine for all devices the other one has a weird right margin. It is like the second prototype cell's width is constant. iPhone 6/7 plus (On an iPad the margin is much larger...) Storyboard

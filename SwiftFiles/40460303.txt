@@ -1,0 +1,3 @@
+How to change language programmatically in swift 2?
+I have app that has 2 languages and I want to choose between languages programmatically in swift .. how can I do it in code ?
+If you are setting them manually then you just have to set that label value in button click action. It just needs reload of data.

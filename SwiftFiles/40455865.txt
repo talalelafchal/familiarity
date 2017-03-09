@@ -1,0 +1,2 @@
+Preventing JS injection in HTML files in app
+I'm writing an app that allows users to make little websites that are shared and displayed in the app in webviews. However, I'm scared that users can locate the where the files are being written to in the documents directory and potentially modify them to contain malicious code. Is there a way I can avoid this? Hide files or make the files exist virtually in memory?

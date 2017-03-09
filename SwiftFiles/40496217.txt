@@ -1,0 +1,3 @@
+Swift ios 10 digit unix timestamp
+I wonder how I can create a 10 digit unix timestamp NSDate().timeIntervalSince1970 will print: 1478638179.2932 I would like to only print: 1478638179
+You mean you just want the integral part of the value? let seconds = Int(NSDate().timeIntervalSince1970)

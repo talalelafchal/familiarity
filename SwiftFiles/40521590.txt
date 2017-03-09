@@ -1,0 +1,4 @@
+Is it possible to block execution of my code until UIAlertController is dismissed?
+is there anyway to wait the user to press the button that dismiss the alertController in swift 3, by using DispatchQueue or something else?
+You mean something like this? alertController.displayAndWaitUntilDismissed() // This line is only reached after the alert controller is dismissed print("Alert controller dismissed.") Theoretically, yes, you could use a dispatch semaphore to block until the alert is dismissed. But it’s a bad idea – I can’t even think of a scenario where it would be acceptable. Simply accept that you have to deal with it asynchronously, by executing the desired code in the alert controller action.
+Just move all the code you want to execute after the alert is dismissed into a separate method. When you're adding UIAlertActions, make all the actions' handler parameter call that method. This way, whichever button the user presses, your code will always be executed!

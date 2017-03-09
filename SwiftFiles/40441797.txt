@@ -1,0 +1,2 @@
+Video Asset in Xcode 8
+I'm working on my first iOS app in Xcode 8 using Swift but I'm having trouble getting a video to work on a button press. I also need it to be an asset so that it's downloaded as part of the app itself and I need to call it from the asset folder but I cannot figure out how to do it. The documentation I've looked at talks about pictures and sound clips but I have not been able to find anything regarding videos. Any help would be much appreciated.

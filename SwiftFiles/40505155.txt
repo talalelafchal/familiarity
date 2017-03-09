@@ -1,0 +1,2 @@
+OSX - Remove empty cells from NSTableView
+I have an NSTableView which I fill correctly with some content. The problem is that when I run the app the empty cells stays visible and squeezed to the default size. I'd like to get rid of them, but I cannot find a solution for OSX (a Swift solution would be appreciated) The red colored area shows the empty cells in the UI, while the first 2 rows are filled with content. Thanks EDIT: func numberOfRows(in tableView: NSTableView) -> Int { return array.count }

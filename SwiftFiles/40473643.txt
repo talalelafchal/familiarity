@@ -1,0 +1,2 @@
+Show a pdf from http get call in a UIImageView
+I am using swift 3, xcode 8 and Alamofire for a ios10 app. I'm working against a API and one service gives you the posibilty to get files. The file could be a image or pdf. It works fine to make the call and get a image and show it in a UIImageView (and in a CollectionView) but I cant show the pdf. If I copy a pdf inside to the Assets (folder in the app) it's visible in the UIImageView. Is it possible to get a pdf throw http and show it in a UIImageView and if so, any suggestions?

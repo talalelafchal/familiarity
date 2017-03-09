@@ -1,0 +1,3 @@
+Is it possible to use libVLC in Swift project?
+I am developing an iOS app related to multimedia in Swift. I want to use libVLC library in my project. Is it possible to use libVLC in Swift project? If yes, how?
+LibVLC has an Objective-C binding called VLCKit. You can use it like any other Objective-C library. There are tons of resources on using Objective-C in Swift

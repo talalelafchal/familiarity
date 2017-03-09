@@ -1,0 +1,3 @@
+Multiplayer on Apple TV
+I have a game for Apple TV that I want to make multiplayer so that people can use iPhones as a remote to play too. I am looking specifically on how to connect iOS devices to the tv so the tv can receive input from the iOS device. I cannot find anything on this. I'm not even sure what framework it would be or what it's called. Can someone point me in the right direction please, thank you!
+I have tried to do this before using Core Bluetooth, I found the documentation hard to read so I eventually shelved the project for another time, but here is the apple guide. I would start be making the apple TV a CBCentral, and using the Iphones as CBPeripherals. Good luck!

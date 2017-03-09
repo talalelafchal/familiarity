@@ -1,0 +1,3 @@
+MFMailcomposeviewcontroller send button is disabled
+Has anyone faced an issue where the MFMailcomposeviewcontroller send button is disabled/grayed out? The cancel button works perfectly fine. It seems like a new bug?
+This could happen in case native Mail application is removed from iPhone (allowed starting from iOS 10). In this case system Setting missing "Mail" setting item and system probably cannot get configuration of default email account. At the same moment MFMailComposeViewController.canSendMail() return true, so I did not find any solution to solve this case.

@@ -1,0 +1,2 @@
+Tab Bar Controller Fully Grey with Xcode 8
+I recently made a Single View app. I have a login and sign up screen working w/ Firebase. However, everything was working until I decided to create a Tab Bar Controller into the user interface. It doesn't work due to this allover grey color! I absolutely can't remove it... Does anyone of you know how to fix this issue?

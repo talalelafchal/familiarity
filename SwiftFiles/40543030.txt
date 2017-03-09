@@ -1,0 +1,2 @@
+text file is having &quot;VIEWÊ&amp;ÊAPPLY&quot; in content, so I am unable to read data to variable using swift. How to ignore that and read?
+var text = try String(contentsOf: path, encoding: String.Encoding.utf8)

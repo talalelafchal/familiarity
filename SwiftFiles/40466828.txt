@@ -1,0 +1,3 @@
+how to receive message in SignalR iOS background?
+I have implement the SignalR in iOS app it receive the events in Foreground but app enters into background the receive events not working.. How can I receive signalR message in App Background
+SignalR in a mobile app will only work when your app is in foreground. Once the app is moved to background, SignalR connections are closed, and therefore your user can't receive any messages. A way to go around this would be to use Push Notifications, so that as soon as your user get's disconnected from your SignalR endpoint, you can send him notifications to let him know that new messages arrives for him. Don't forget to save messages that a given user didn't receive, as SignalR only buffers messages for temporary disconnects.

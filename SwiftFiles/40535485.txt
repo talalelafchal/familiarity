@@ -1,0 +1,3 @@
+Ambigous use of section
+I have a strange issue, in all methods that use tableView have the error. I can't use indexPath. Any ideas. ??  import UIKit import GoogleMaps import GooglePlaces class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
+If you want to use indexPath follow the next code:  let index = indexPath as NSIndexPath let row = índex.row I dont know why the compiler get confused .

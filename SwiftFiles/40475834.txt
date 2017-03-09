@@ -1,0 +1,3 @@
+How to access variables of UITabBarController from it's item ViewControllers
+I have a UITabBarController which has 3 Item subviews: I have linked it with a controller swift class and declared certain variables: Now I have it's subview which is linked to it with a navigation controller: I want to access the above mentioned variables within the subview controller. Please share a Swift 3.0 implementation.
+It seems that your variables are practically globals that have nothing to do with the functionality of a tab bar controller. Following the principle of separation of concerns, you should not store these values in such a controller. Instead of managing them in the tab bar controller, you could to it in a special class for globals or the app delegate.

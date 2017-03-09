@@ -1,0 +1,2 @@
+NSCoding to CKRecord
+I have a custom class with which i made an (swift-y) struct NSCodable. Now I want to convert that into a CKRecord in order to use CloudKit. Even though I set 'key value'-pairs when encoding my struct, it is in my understanding that the struct is converted into NSData and that you can't convert it to a Dictionary (or another key-value object). So I get the feeling that this is not the way to go. Is there a way to make this conversion directly? Or with a step in-between (for instance converting the Data into a [String: String]- dictionary)?

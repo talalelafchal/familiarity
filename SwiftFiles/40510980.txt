@@ -1,0 +1,2 @@
+Extract certificate chain from NSURLSession
+There is any way to extract the certificate from a request to a https url using NSURLSession/Connection/Request and store it locally for later validation?

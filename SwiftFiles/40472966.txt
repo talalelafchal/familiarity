@@ -1,0 +1,4 @@
+labels on images in ios like instagram
+In iOS 10 ( Swift 2) how would I go about getting a tag on an image like Instagram does in the pic below ? I want to get the 'topgearporsche" label and get it on the right object in this case - the porsche for an app I am building. Thanks in advance.
+This is pretty basic. image.addSubview(label)
+It is a lil complicated if u exactly want how instagram does it... U will have to make a custom view using uibezierpath... Place these views exactly where you want them to point out, like literally spoon feeding the cgrect (cgpoint and cgsize). Assign an uitapgesturerecogniser to show the views which were hidden in the beginning.... And then after a certain amount of time they should vanish which can be achieved using uiview.animatewithduration function... And hide those views again in its completionblock...

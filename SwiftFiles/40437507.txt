@@ -1,0 +1,3 @@
+Reachibility supporting IPV6 connection
+I am currently working on an app. My app was rejected due to reachability does not support IPV6 connection, Can any one suggest some custom class for reachability(ipv6) which is simple to use.
+Update the reachability class from apple website . No need to change any code. Just replace those files. Thats it. Just change the file Reachability.h & Reachability .m from the below link. Link to the file

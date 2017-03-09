@@ -1,0 +1,2 @@
+Keeping video playing within the webView instead of presenting fullscreen?
+I know in iOS 10 you can pinch the video player to keep the video playing within the webview. Is there any way to set the webview so that the video player doesn't open in full screen on default?

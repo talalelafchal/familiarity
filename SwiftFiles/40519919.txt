@@ -1,0 +1,2 @@
+UICollectionViewController Moving cells around in the storyboard
+just wondering if its possible to move cells around the storyboard and how to do so? Preferably using storyboards, and if not then using swift, and if not using swift I can try to do it in objective-c. I need to move my ui navbar image on top of the cell.

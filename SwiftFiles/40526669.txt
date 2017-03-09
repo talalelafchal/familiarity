@@ -1,0 +1,3 @@
+Alamofire Custom Header request swift 3?
+How can I make an custom header request in swift 3? I have an API key an an value. The API key is X-Access-Token and the value is SecretAPIKey. How can I print the responses?
+let headers = [ "X-Access-Token" : "SecretAPIKey" ] Alamofire.request("url", headers: headers)

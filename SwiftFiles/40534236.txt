@@ -1,0 +1,3 @@
+How to show callout for pin on map without tapping on it?
+I have an app with map and in it there are some pins with their annotations. I don't understand how to show a particular pin's annotation without tapping on it.
+Callouts are generally shown when the annotation is "selected". While this is generally achieved by a user tapping on the annotation view (i.e. the pin), you can also programmatically "select" the annotation: mapView.selectAnnotation(annotation, animated: true)

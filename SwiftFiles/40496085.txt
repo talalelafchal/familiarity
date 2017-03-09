@@ -1,0 +1,2 @@
+Return future date on label
+I am using this to return the date in 7 days after today: let currentDate = NSDate() let nextDate = NSCalendar.currentCalendar().dateByAddingUnit(.Day, value: 7, toDate: currentDate, options: []) When I run println(nextDate) it returns: Optional(2016-11-15 20:44:04 +0000), but I want it to only return the date. How do I do that?

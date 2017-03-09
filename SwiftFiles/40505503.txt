@@ -1,0 +1,4 @@
+Splitting String using CharacterSet
+In Swift 2.x I was able to do: let str = "Line 1\nLine 2\r\nLine 3\n" let newlineChars = NSCharacterSet.newlineCharacterSet() let lines = str.utf16.split { newlineChars.characterIsMember($0) }.flatMap(String.init) But in Swift 3.x it has changed. Can someone tell me how to use this in Swift 3?
+This is a bit simpler in Swift 3 now. let str = "Line 1\nLine 2\r\nLine 3\n" let newlineChars = NSCharacterSet.newlines let lines = str.components(separatedBy: newlineChars).filter{ !$0.isEmpty } or simply let str = "Line 1\nLine 2\r\nLine 3\n" let lines = str.components(separatedBy: .newlines).filter{ !$0.isEmpty }
+Answer given by @jjatie is correct but it will also include empty String elements in an Array, you can simply remove empty String elements using filter. let str = "Line 1\nLine 2\r\nLine 3\n" let lines = str.components(separatedBy: .newlines).filter { !$0.isEmpty } print(lines)

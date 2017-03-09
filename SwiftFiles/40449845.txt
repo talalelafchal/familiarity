@@ -1,0 +1,2 @@
+Swift / iOS 10 : How to download a VIDEO and store within the app
+I'm new to SWIFT/Programming & I couldn't find an answer on my question, that's why I'm gonna give it a try here: HOW Do I download a video (mp4) from an URL and store it within the app** HOW Do I display the video then in a container** I've already found this topic: Swift - Downloading video with downloadTaskWithURL But in my case, I wouldn't want the video to be safed in the camera-roll. Just within the app. Thanks for any kind of help/hint !

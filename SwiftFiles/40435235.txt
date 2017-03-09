@@ -1,0 +1,2 @@
+How to view all the overlapped images on map using swift?
+I have placed a marker on my map which is in a form of image. Now when the photo is clicked in my application using the latitude and longitude, it gets displayed on map. My question is when more than two pictures are clicked on same place then they get overlapped on each other, how can I view both the images? Below is the image provided which I want as a final result.

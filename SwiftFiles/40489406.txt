@@ -1,0 +1,3 @@
+How do I implement a 'Today' button in CVCalendar?
+I have CVCalendar working, it displays dots on relevant dates and updates the month and year when I swipe left and right. How do I implement a button to jump to today's date? It's included in the screenshot demo so I know it can be done but it's not implemented in the demo project and I can't find the corresponding function.
+The function is: public func toggleViewWithDate(_ date: Foundation.Date) { in CVCalendarView So for example adding this to the ViewController @IBAction func todayButtonTapped(){ let today = Date() calendarView.toggleViewWithDate(today) } would work (remembering to add the button in storyboard and connect 'touch Up Inside')

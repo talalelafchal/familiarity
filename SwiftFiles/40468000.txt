@@ -1,0 +1,2 @@
+Is there a way to use AVSpeechSynthesizer as a Notification sound?
+I'd like to have a Notification trigger and speak a line of text. UILocalNotification accepts an external file. Is there a way to use AVSpeechSynth instead?

@@ -1,0 +1,2 @@
+Detect numeric keyboard back button long press
+i''m implementing an OTP screen to enter a 6-digit passcode into 6 consecutive UITextFields, if the user enters (for ex.) 4 digits i would let them to clear their input but holding down the backspace key to clear text fields from the 4th one all the way to the first one, exactly like What's app does with their OTP screen, the problem is that how can I detect the long press gesture of the backspace button in the numeric keyboard ?

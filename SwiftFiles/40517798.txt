@@ -1,0 +1,2 @@
+How do I add auto-complete comment in XCode (Swift)?
+How can I add text to autocomplete like below, the "Tells the element to activate itself..." part, This is what I have, But the "This is a test" part doesn't show up in autocomplete, Please do not link to other posts that cover how to write comments so that they would show up in the window that pops up with Option+Click, I'm well-aware of how to do that. My question is specifically around comments showing up in the auto-complete window. Thanks!

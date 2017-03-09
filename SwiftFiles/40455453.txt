@@ -1,0 +1,3 @@
+iOS Swift: Set video preview
+I'm using avplayer to display videos in my swift application. It works perfectly but I want to set the preview of each video (display a specific image). How can I do that?
+If you've already got the AVAsset, you can use AVAssetImageGenerator to get an image at a specified time.Check out this thread. If you're using the Photos framework to get videos from the users camera roll, Apple provides a PHCacheImageManager.requestImage to get a thumbnail image for videos.

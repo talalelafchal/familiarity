@@ -1,0 +1,3 @@
+How would you round up or down a Float to nearest even numbered integer in Swift 3?
+I need a little help rounding up or down a float to the nearest even number in Swift. Eg: 32.86 would be closest to 32 33.86 would be closest to 34
+If you want to round to the nearest even number, divide by 2, round and then multiply by 2: let rounded = Int(round(value / 2.0)) * 2

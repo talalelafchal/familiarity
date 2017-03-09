@@ -1,0 +1,2 @@
+AVPlayer plays sound even if silent button was already off before playing
+When I move the silent button on or off, it behaves correctly. My issue is at the start, if the switch is off (silent mode on) the video play sounds, but I don't want this. I already tried with Ambient and AmbientSolo categories, maybe this is the intended behavior, I don't know.

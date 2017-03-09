@@ -1,0 +1,2 @@
+Get number of base of an integer
+I´m making a multiple base converter in Xcode with Swift 8. When you enter your number you can pick the base of your number and the base you want to convert to. I want to know if there is any way to grab the base of your current number.

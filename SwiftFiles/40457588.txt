@@ -1,0 +1,3 @@
+Midpoint justification of lines in Xcode 8; Extension?
+I'm not sure anyone else would have this bizarre desire, which is to say I realise this is probably an unusual request. I'd like to take what's in the top example, and have it automagically become "centre justified" on the divisor, the ":" character. Is this something an Xcode extension could be programmed to do? Here's a simple example of a context in which this would be desirable (to me), but consider that many use cases involve much more diverse use of many more actions, and complex use of sequences and groupings of actions, too.
+I think it's possible. Take a look at this extension on Github called Alignment, which is aligning assignments. With some little modifications that should get you there.

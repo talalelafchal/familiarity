@@ -1,0 +1,2 @@
+Swift: 'request for rect at invalid index path
+*** Terminating app due to uncaught exception 'NSInternalInconsistencyException', reason: 'request for rect at invalid index path (<NSIndexPath: 0xc000000000800016> {length = 2, path = 0 - 4})' What can be the issue. Im using table.estimatedRowHeight and automatically adjust row height functions for dynamic height of cells to adjust with my label. Any issue here?

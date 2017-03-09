@@ -1,0 +1,3 @@
+I have problems with xcworkspace?
+I passed my xcode file from my computer to a usb and open it on another computer my xcworkspace file, it does not show anything, only the files that are created at the time of implementing CocoaPods. 1 Something else that I notice, is that my podfile and podfile.lock files now appear this way 2 I'm using xcode 8 where I try to open my file, while the other computer has Xcode 7 I hope some one can help me.
+This problem usually occurs when your project is trying to reference the wrong project folder. #1 Click this in you Xcode Inspector: #2 Make sure the file path points to the correct project folder: (Look on the right-hand side of the inspector and make sure the Page icon is selected)
