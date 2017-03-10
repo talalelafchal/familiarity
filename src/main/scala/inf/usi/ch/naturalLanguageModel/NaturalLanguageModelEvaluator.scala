@@ -1,31 +1,30 @@
-package inf.usi.ch
+package inf.usi.ch.naturalLanguageModel
 
 import java.io.{BufferedWriter, File, FileWriter}
 import java.util.StringTokenizer
 
 import ch.usi.inf.reveal.parsing.artifact.ArtifactSerializer
+import ch.usi.inf.reveal.parsing.units. NaturalLanguageTaggedUnit
 import com.aliasi.lm.CompiledTokenizedLM
 
 import scala.collection.mutable.ListBuffer
 import scala.io.Source
 
 /**
-  * Created by Talal on 03.03.17.
+  * Created by Talal on 10.03.17.
   */
-object LanguageModelEvaluator {
-
-  def listLog2Probability(compiledTokenizedLM: CompiledTokenizedLM, testListFileName: String, stormedDataPath: String): List[Double] = {
-    val testingListOfAllFilesName = new File(testListFileName)
-    val testingSet: List[String] = Source.fromFile(testingListOfAllFilesName).getLines().toList
-    testingSet.map(x => getLogProbability(compiledTokenizedLM, jsonFileToText(x, stormedDataPath)))
-  }
-
+object NaturalLanguageModelEvaluator {
 
   private def jsonFileToText(fileName: String, stormedDataPath: String): String = {
     val testingFile = new File(stormedDataPath, fileName)
-    val fileArtifact = ArtifactSerializer.deserializeFromFile(testingFile)
-    val artifactText = fileArtifact.toText
-    artifactText
+    val artifact = ArtifactSerializer.deserializeFromFile(testingFile)
+    var nlString = ""
+    val nlUnits = artifact.units.filter(_.isInstanceOf[NaturalLanguageTaggedUnit])
+    nlUnits.foreach(x => {
+      nlString = nlString + "\n" + x.rawText
+    })
+    println(nlString)
+    nlString
   }
 
   def writeListToCSVFile(list: List[Double], filePath: String) = {
@@ -34,11 +33,6 @@ object LanguageModelEvaluator {
     listbf.write("probability\n")
     list.foreach(x => listbf.write(x.toString + '\n'))
     listbf.close()
-  }
-
-
-  private def getLogProbability(compiledTokenizedLM: CompiledTokenizedLM, text: String): Double = {
-    compiledTokenizedLM.log2Estimate(text)
   }
 
 
@@ -51,15 +45,16 @@ object LanguageModelEvaluator {
     tokenBuffer.toList.sliding(nGram).toList.map(x => x.mkString(" "))
   }
 
-   def getAverageProb(nGramList: List[String], languageModel: CompiledTokenizedLM): Double = {
+  def getAverageProb(nGramList: List[String], languageModel: CompiledTokenizedLM): Double = {
     val probList = nGramList.map(x => languageModel.log2Estimate(x))
     probList.sum / probList.size
   }
 
-  def getAverageProbListFiles(compiledTokenizedLM: CompiledTokenizedLM, nGram: Int, numberOfFiles : Int,testListFileName: String, stormedDataPath: String): List[Double] = {
+  def getAverageProbListFiles(compiledTokenizedLM: CompiledTokenizedLM, nGram: Int, numberOfFiles: Int, testListFileName: String, stormedDataPath: String): List[Double] = {
     val testingListOfAllFilesName = new File(testListFileName)
     val testingSet: List[String] = Source.fromFile(testingListOfAllFilesName).getLines().toList.take(numberOfFiles)
     testingSet.map(file => getAverageProb(nGramList(jsonFileToText(file, stormedDataPath), nGram), compiledTokenizedLM))
   }
+
 
 }

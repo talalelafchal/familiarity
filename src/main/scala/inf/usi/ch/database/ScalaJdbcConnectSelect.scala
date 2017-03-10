@@ -63,14 +63,14 @@ object ScalaJdbcConnectSelect extends App {
 
         try {
           val rs = statement.executeQuery("SELECT body FROM posts\nWHERE parent_id = " + questionId)
-          var stringAnsewers = ""
+          var stringAnswers = ""
           while (rs.next) {
             val bodyToSkip = Jsoup.parse(rs.getString("body")).text()
             val body = Jsoup.parse(bodyToSkip).text()
-            stringAnsewers = stringAnsewers + "\n" + body
+            stringAnswers = stringAnswers + "\n" + body
 
           }
-          writeAnswerToFile(questionId, stringAnsewers)
+          writeAnswerToFile(questionId, stringAnswers)
         } catch {
           case e: Exception => e.printStackTrace
         }
@@ -93,7 +93,6 @@ object ScalaJdbcConnectSelect extends App {
   def writeAnswerToFile(questionId: String, body: String) = {
     val file = new File("SwiftFiles", questionId + ".txt")
     val bw = new BufferedWriter(new FileWriter(file, true))
-    println(questionId + "  ---->    " + body)
     bw.write(body)
     bw.close()
   }

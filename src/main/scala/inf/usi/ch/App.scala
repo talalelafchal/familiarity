@@ -1,6 +1,11 @@
 package inf.usi.ch
 
+import java.io.File
+
+import ch.usi.inf.reveal.parsing.artifact.ArtifactSerializer
 import com.aliasi.lm.CompiledTokenizedLM
+import inf.usi.ch.codeLanguageModel.{CodeLanguageModel, CodeLanguageModelEvaluator}
+import inf.usi.ch.naturalLanguageModel.{NaturalLanguageModel, NaturalLanguageModelEvaluator}
 
 import scala.io.Source
 
@@ -10,11 +15,22 @@ import scala.io.Source
 object App extends App {
   val stormedDataPath = "/Users/Talal/Tesi/stormed-dataset"
 
-  ////  createLM(6, "lm6Gram.dat")
+
+
+//  createNaturalLM(3, "naturalLm3Gram.dat")
   //  createAvProbCSVFile("lm6Gram.dat",6,10000,"R/androidPbAV6Gram10000FIles.csv","R/swingPbAV6Gram10000Files.csv")
   //  createAvProbCSVFile("lm3Gram.dat",3,10000,"R/androidPbAV3Gram10000FIles.csv","R/swingPbAV3Gram10000Files.csv")
 
-  createAvProbSwift("lm6Gram.dat", 6)
+
+
+//  createNLAvProbCSVFile("naturalLm3Gram.dat",3,1000,"R/androidNLPbAV3Gram1000Files.csv","R/swingNLPbAV3Gram1000Files.csv")
+//  createCodeAvProbCSVFile("codeLm3Gram.dat",3,1000,"R/androidCodePbAV3Gram1000Files.csv","R/swingCodePbAV3Gram1000Files.csv")
+ // createAvProbSwift("lm6Gram.dat", 6)
+
+  def createCrossProbCSVFile(s: String) = ???
+
+  createCrossProbCSVFile("R/androidCrossValidation.csv")
+  createCrossProbCSVFile("R/swingNLPbAV3Gram1000Files.csv")
 
 
   def generateAndroidSwingFileList() = {
@@ -28,6 +44,16 @@ object App extends App {
   }
 
 
+  def createCodeLM(nGram: Int, lmFileName: String) ={
+    val lm = CodeLanguageModel.train(nGram,"/Users/Talal/Tesi/familiarity/AndroidSets/androidTrainingList.txt",stormedDataPath)
+    CodeLanguageModel.serializeTLM(lm,lmFileName)
+  }
+
+  def createNaturalLM(nGram: Int, lmFileName: String) ={
+    val lm = NaturalLanguageModel.train(nGram,"/Users/Talal/Tesi/familiarity/AndroidSets/androidTrainingList.txt",stormedDataPath)
+    NaturalLanguageModel.serializeTLM(lm,lmFileName)
+  }
+
   def createLM(nGram: Int, lmFileName: String) = {
     val lm = LanguageModel.train(nGram, "/Users/Talal/Tesi/familiarity/AndroidSets/androidTrainingList.txt", stormedDataPath)
     LanguageModel.serializeTLM(lm, lmFileName)
@@ -35,9 +61,9 @@ object App extends App {
 
   def createProbCSVFile(lMFileName: String, androidCSVFileName: String, swingCSVFileName: String) = {
     val lm: CompiledTokenizedLM = LanguageModel.deserializeTLM(lMFileName)
-    val androidProb: List[Double] = LanguageModelEvaluator.setLog2Probability(lm, "/Users/Talal/Tesi/familiarity/AndroidSets/androidTestingList.txt", stormedDataPath)
+    val androidProb: List[Double] = LanguageModelEvaluator.listLog2Probability(lm, "/Users/Talal/Tesi/familiarity/AndroidSets/androidTestingList.txt", stormedDataPath)
     LanguageModelEvaluator.writeListToCSVFile(androidProb, androidCSVFileName)
-    val swingProb: List[Double] = LanguageModelEvaluator.setLog2Probability(lm, "/Users/Talal/Tesi/familiarity/SwingSets/swingList.txt", stormedDataPath)
+    val swingProb: List[Double] = LanguageModelEvaluator.listLog2Probability(lm, "/Users/Talal/Tesi/familiarity/SwingSets/swingList.txt", stormedDataPath)
     LanguageModelEvaluator.writeListToCSVFile(swingProb, swingCSVFileName)
   }
 
@@ -50,6 +76,28 @@ object App extends App {
     val swingProb: List[Double] = LanguageModelEvaluator.getAverageProbListFiles(lm, nGram, numberOfFiles, "/Users/Talal/Tesi/familiarity/SwingSets/swingList.txt", stormedDataPath)
     LanguageModelEvaluator.writeListToCSVFile(swingProb, swingCSVFileName)
   }
+
+
+  def createCodeAvProbCSVFile(lmPath: String, nGram: Int, numberOfFiles: Int, androidCSVFileName: String, swingCSVFileName: String) = {
+    val lm: CompiledTokenizedLM = LanguageModel.deserializeTLM(lmPath)
+    //android
+    val androidProb: List[Double] = CodeLanguageModelEvaluator.getAverageProbListFiles(lm, nGram, numberOfFiles, "/Users/Talal/Tesi/familiarity/AndroidSets/androidTestingList.txt", stormedDataPath)
+    CodeLanguageModelEvaluator.writeListToCSVFile(androidProb, androidCSVFileName)
+    //swing
+    val swingProb: List[Double] = CodeLanguageModelEvaluator.getAverageProbListFiles(lm, nGram, numberOfFiles, "/Users/Talal/Tesi/familiarity/SwingSets/swingList.txt", stormedDataPath)
+    CodeLanguageModelEvaluator.writeListToCSVFile(swingProb, swingCSVFileName)
+  }
+
+  def createNLAvProbCSVFile(lmPath: String, nGram: Int, numberOfFiles: Int, androidCSVFileName: String, swingCSVFileName: String) = {
+    val lm: CompiledTokenizedLM = NaturalLanguageModel.deserializeTLM(lmPath)
+    //android
+    val androidProb: List[Double] = NaturalLanguageModelEvaluator.getAverageProbListFiles(lm, nGram, numberOfFiles, "/Users/Talal/Tesi/familiarity/AndroidSets/androidTestingList.txt", stormedDataPath)
+    NaturalLanguageModelEvaluator.writeListToCSVFile(androidProb, androidCSVFileName)
+    //swing
+    val swingProb: List[Double] = NaturalLanguageModelEvaluator.getAverageProbListFiles(lm, nGram, numberOfFiles, "/Users/Talal/Tesi/familiarity/SwingSets/swingList.txt", stormedDataPath)
+    NaturalLanguageModelEvaluator.writeListToCSVFile(swingProb, swingCSVFileName)
+  }
+
 
   def createAvProbSwift(lmPath: String, nGram: Int) = {
     val list = IdTagList.getListOfFiles("SwiftFiles")
