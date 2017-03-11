@@ -1,10 +1,8 @@
 package inf.usi.ch
 
-import java.io.File
-
-import ch.usi.inf.reveal.parsing.artifact.ArtifactSerializer
 import com.aliasi.lm.CompiledTokenizedLM
 import inf.usi.ch.codeLanguageModel.{CodeLanguageModel, CodeLanguageModelEvaluator}
+import inf.usi.ch.crossValidation.CrossValidation
 import inf.usi.ch.naturalLanguageModel.{NaturalLanguageModel, NaturalLanguageModelEvaluator}
 
 import scala.io.Source
@@ -14,6 +12,9 @@ import scala.io.Source
   */
 object App extends App {
   val stormedDataPath = "/Users/Talal/Tesi/stormed-dataset"
+
+
+  createCrossProbCSVFile("R/CrossValidation/androidCrossValidation.csv","R/CrossValidation/swingCrossValidation.csv")
 
 
 
@@ -27,10 +28,21 @@ object App extends App {
 //  createCodeAvProbCSVFile("codeLm3Gram.dat",3,1000,"R/androidCodePbAV3Gram1000Files.csv","R/swingCodePbAV3Gram1000Files.csv")
  // createAvProbSwift("lm6Gram.dat", 6)
 
-  def createCrossProbCSVFile(s: String) = ???
+  def createCrossProbCSVFile(androidCsvFileName: String, swingCsvFilename : String) ={
+    val codeLm3Gram = CodeLanguageModel.deserializeTLM("codeLm3Gram.dat")
+    val naturalLm3Gram = NaturalLanguageModel.deserializeTLM("naturalLm3Gram.dat")
 
-  createCrossProbCSVFile("R/androidCrossValidation.csv")
-  createCrossProbCSVFile("R/swingNLPbAV3Gram1000Files.csv")
+    //android
+    val androidAvgList = CrossValidation.evalTesting("AndroidSets/androidTestingList.txt", stormedDataPath, codeLm3Gram, naturalLm3Gram, 1000)
+    CrossValidation.writeListToCSVFile(androidAvgList,androidCsvFileName)
+
+    //swing
+    val swingAvgList = CrossValidation.evalTesting("SwingSets/swingList.txt", stormedDataPath, codeLm3Gram, naturalLm3Gram, 1000)
+    CrossValidation.writeListToCSVFile(swingAvgList,swingCsvFilename)
+
+  }
+
+
 
 
   def generateAndroidSwingFileList() = {

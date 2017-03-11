@@ -2,8 +2,8 @@ library(plotly)
 setwd("/Users/Talal/Tesi/familiarity/R")
 
 #Natural Language
-androidNL <- read.csv("NaturalLanguage/androidNLPbAV3Gram1000Files.csv")
-swingNL <- read.csv("NaturalLanguage/swingNLPbAV3Gram1000Files.csv")
+androidCrossValidation <- read.csv("CrossValidation/androidCrossValidation.csv")
+swingCrossValidation <- read.csv("CrossValidation/swingCrossValidation.csv")
 
 # Code
 androidCode <- read.csv("Code/androidCodePbAV3Gram1000Files.csv")
