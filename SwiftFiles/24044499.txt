@@ -1,0 +1,3 @@
+Create functions at runtime with swift
+<p>How can I create a function or method at runtime using Swift? Is there an equivalent command like eval? I would like to be able to do something like:</p> <pre><code>eval("func x(){ println();}") </code></pre> <p>Thanks in advance!</p>
+<p>Given that it's not an interpreted language, I don't think you can. <code>C</code> for instance, has no <code>eval</code> since the C compiler is not part of the compiled binary.</p> <p>But I'm sure there are lots of other (read: better) ways to accomplish that goal that you think you need <code>eval</code> for. Whatever that is...</p>

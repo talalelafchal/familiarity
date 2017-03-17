@@ -1,0 +1,3 @@
+UIWebview Doubletap to select text
+<p>I have created an app that displays some text on a UIWebview. I am looking to provide a functionality to the user to double tap on a particular word to select it (Selection Range should appear- which only appears when a long touch is done currently).</p>
+<p>I don't think <code>UIWebView</code> is flexible enough for what you want.</p> <p>If all you display is rich text you should probably use <code>NSAttributedString</code> and display it using <code>UITextView</code> subclasses or one of the many <a href="http://cocoapods.org/?q=rich%20text" rel="nofollow">dedicated libraries</a>.</p>

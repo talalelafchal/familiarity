@@ -1,0 +1,3 @@
+Xcode 6, Swift - read standard input (console) to string
+<p>I am new to Objective-C and XCode and I'm trying to learn something new. Is there any way to read string from stdin using swift ? Something like cin in C++ ?</p>
+<p>Just as with Objective-C, you can use <code>NSFileHandle</code>:</p> <pre><code>let standardInput = NSFileHandle.fileHandleWithStandardInput() let input = standardInput.availableData </code></pre>

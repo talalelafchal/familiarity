@@ -1,0 +1,3 @@
+How to export an image from Matlab without using toolbox?
+<p>I can import an image using importdata function, but how can i save the image after processing it? Toolbox usage is prohibited.</p>
+<p>You would use <code>imwrite(imageData,filename)</code>. Documentation can be found <a href="http://uk.mathworks.com/help/matlab/ref/imwrite.html" rel="nofollow">here</a>.</p>

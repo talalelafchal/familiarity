@@ -1,0 +1,3 @@
+What is the automatic memory management mechanism in Swift?
+<p>Apple's Swift programming language performs memory management automatically. Do they use a garbage collector for this or is it more like Automatic Reference Counting (ARC)? I can't find any mention of it in their docs.</p>
+<p>It uses ARC. From the programming guide (on iBooks):</p> <blockquote> <p>We simplified memory management with Automatic Reference Counting (ARC).</p> </blockquote>

@@ -1,0 +1,2 @@
+How would I terminate a program in MatLab from the Command Window without using Ctrl-C?
+<p>I am trying to find a way to setup my program to terminate when I enter a specific command into the Command Window. I'm running an indefinite loop on purpose in order to make a basic autopilot style program for an arduino train set. I just need a way to end the program.</p>

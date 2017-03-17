@@ -1,0 +1,2 @@
+How to use singleton in swift?
+<p>I already know the creation of <code>singleton</code> in objective-C, but how to make it in swift programming? Dose it need some extra effort?</p>

@@ -1,0 +1,2 @@
+How to call Matlab Function in WPF C#?
+<p>I want to call Matlab function in WPF. When i call that function in console application it works but when i call that in Windows form or WPF C# then it hangs my .net app and doesn't work. Please Share your experience with me: Code:</p> <pre><code>private void StartrexeButton_Click(object sender, RoutedEventArgs e) { try { Class1 obj = new Class1(); obj.myfunction(); MessageBox.Show("Done","Checks"); } catch { MessageBOx.Show("Error"); } } </code></pre>

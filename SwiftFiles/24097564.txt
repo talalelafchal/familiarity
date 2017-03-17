@@ -1,0 +1,5 @@
+Array as a dictionary value in swift language
+<p>I have the following swift dictionary</p> <pre><code>var List = [ 2543 : [ "book", "pen" ], 2876 : [ "school", "house"] ] </code></pre> <p>How can i access the array values ?</p> <pre><code>println(List[2543][0]) </code></pre> <p>The above code gives error "could not find member subscript" </p> <p>and it should print "book"</p>
+<p>Just try with following code:</p> <pre><code>var dic = List[0]; println("values \(dic)") </code></pre> <p><strong>OR</strong></p> <pre><code>println(list[2543]![0]) </code></pre>
+<p>Note that <code>subscript</code> returns an optional. We have to force unwrapping:</p> <pre><code>println(list[2543]![0]) </code></pre> <p>Or use optional chaining</p> <pre><code>println(list[2543]?[0]) </code></pre>
+<pre><code>println(list[2543]![0]) </code></pre> <p>Remember, dictionary subscript returns an Optional, not an array or whatever is inside the dictionary value.</p>

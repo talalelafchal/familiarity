@@ -1,0 +1,3 @@
+No such module AVFoundation when testing on iPhone7.1.1
+<p>I try to convert some code from Objective-C to Swift. In my controller I import AVFoundation framework. When testing in simulator everything works but when I try to compile it for my physical device with iOS 7.1.1 it says "No such module AVFoundation".</p> <p>Any suggestions? <img src="https://i.stack.imgur.com/OZoTM.png" alt="enter image description here"></p>
+<p>You're not gonna like the answer, but I believe it's because Swift is only support on builds targeting iOS 8.0 /OSX 10.10 or later</p>

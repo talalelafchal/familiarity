@@ -1,0 +1,3 @@
+How to run or check output of many matlab scripts?
+<p>is there any efficient method or website to check the output of many m-files (matlab scripts) e.g. 300 m-file without running each one individual and check the final result as it will be very annoying ???</p>
+<p>Check out the <a href="http://www.mathworks.com/help/matlab/ref/run.html" rel="nofollow">run command</a>. Write another script that runs each of the scripts in question and does whatever checking/processing you want. Just iterate over your list of scripts. If they're all named similarly, you might just construct each filename. If they're all in the same location, just <a href="http://www.mathworks.com/help/matlab/ref/dir.html" rel="nofollow">get the list of files in that location</a>.</p>

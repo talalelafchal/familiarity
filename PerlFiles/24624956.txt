@@ -1,0 +1,4 @@
+Given two files, I want to compare the data and print those lines that match by using hashing in Perl
+<p>suppose i have two file: file 1:</p> <pre><code>a aa a bb b vv c nn c nn </code></pre> <p>file 2:</p> <pre><code>a + b - c + </code></pre> <p>ouput should be :</p> <pre><code> a aa : + a bb : + b vv : - c nn : + c nn : + </code></pre>
+<p>Reading <code>file2</code> first and feeding key/value pairs into <code>%h</code> hash. After that reading <code>file1</code> and adding sign at the end of line from <code>%h</code> hash,</p> <pre><code>perl -lane' BEGIN { $x=shift; %h = map +split, &lt;&gt;; @ARGV=$x } print $_, " : ", $h{$F[0]} ' file1 file2 </code></pre> <p>output</p> <pre><code>a aa : + a bb : + b vv : - c nn : + c nn : + </code></pre>
+<p>No need for Perl, just use <code>join(1)</code>:</p> <pre><code>$ join file1 file2 a aa + a bb + a cc + b vv - c nn + c nn + </code></pre> <p>If you really need the colon, add it using awk or so.</p>

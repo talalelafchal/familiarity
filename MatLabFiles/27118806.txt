@@ -1,0 +1,2 @@
+Multiplication of Sparse matrix on Matlab
+<p>I am using Matlab R2011a. I have a matrix A which is of size 27*3355432. This matrix has a lot of zeros. I need to compute the comand <code>eig(A'*A)</code> but I can't even do the A'*A. I have tried using the sparse matrix <code>B = sparse(A)</code>and then computing B'*B but I get the error:</p> <pre><code> ??? Error using ==&gt; mtimes Both logical inputs must be scalar. To compute elementwise TIMES, use TIMES (.*) instead </code></pre> <p>Truth is I am not a Matlab expert. Is there a way to produce such a database?</p>

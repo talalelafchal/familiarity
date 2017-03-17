@@ -1,0 +1,4 @@
+Is Apple's Swift a case sensitive language?
+<p>How does Swift deal with case sensitivity? If you define var "someNum" and later reference "somenum" without defining it does it correct it to "someNum" or give you an error?</p>
+<p>Yes, it is a case sensitive language. If you try to reference a variable with the wrong case, you'll get a <code>use of unresolved identifier</code> error. XCode will suggest spellings as you're typing, but doesn't offer a solution after the fact.</p>
+<p>OP: if you have <code>dict["key"] = "value"</code>, you can write something so that <code>dict.str("key") == "value"</code>, <code>dict.Str("key") == "Value"</code>, and <code>dict.STR("key") == "VALUE"</code>. Case senstivie is not completely useless.</p>

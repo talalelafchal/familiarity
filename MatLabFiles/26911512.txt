@@ -1,0 +1,3 @@
+Adding two submatrices in Matlab?
+<p>I have a <code>5x5</code> matrix M = magic(5)<code>and I must add two sub-matrices of it (using the</code>sum<code>command) and store it in</code>G`, they are:</p> <p><code>M(1:3,1:3)</code> and <code>M(3:5,3:5)</code></p> <p>And I wrote this, but I', not sure if it's correct,</p> <pre><code>G=sum(M([1:3,1:3],[3:5,3:5])); </code></pre>
+<p>As mentioned in comments, you could easily accomplish your goal with <code>+</code>.</p> <pre><code> M = magic(5); A = M(1:3,1:3); B = M(3:5,3:5); G = A + B; </code></pre> <p>It could get a little complicated if you want to use <code>sum</code>,</p> <pre><code>C(:,:,1) = A; C(:,:,2) = B; G = sum(C,3); </code></pre>

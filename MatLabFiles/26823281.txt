@@ -1,0 +1,3 @@
+About text function in matlab
+<p>Why is this wrong？ x=1:10; y=1:10; plot(x,y); text(1,1,'a'); How to use text function in MATLAB? I always get a exceed dimension error. Anyone could help me?</p>
+<p>Is't wrong.</p> <p>You write the 'a' in the point x = 1 and y = 1.</p> <p>Try whit</p> <pre><code>x=1:10; y=1:10; plot(x,y); text(5,7,'hello'); </code></pre>

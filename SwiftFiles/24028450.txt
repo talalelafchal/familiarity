@@ -1,0 +1,6 @@
+INFINITY in Swift Lang
+<p>According to Apple's documentation, Swift doesn't support preprocessor directives. In C/Objective-c the "INFINITY" definition is very useful for some checks. So, How do I get a number that never is less that another?</p>
+<p>Perhaps you can try <code>finite</code>, for example,</p> <pre><code>let x:CDouble = 0.1 finite(x) // which return a CInt </code></pre>
+<p>There is already buildin infinity and also a check function. And you could also directly compare them with &lt;.</p> <pre><code>var infinity = Double.infinity var isInfinite = infinity.isInfinite var someDouble = 234432.0 if someDouble &lt; infinity { println("Less than") } else { println("Small than") } // And the answer is Less than. </code></pre>
+<p>For integer values, you should use <code>NSIntegerMax</code>. </p> <pre><code>var highestNumber = NSIntegerMax //if you need negative infinity var lowestNumber = -1 * NSIntegerMax </code></pre>
+<p>For Float values,</p> <pre><code>import UIKit typealias Space = Float var MaxSpaceSize = Space.infinity var space:Space = 1100 space = space * 2 </code></pre>

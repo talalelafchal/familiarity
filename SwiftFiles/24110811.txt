@@ -1,0 +1,4 @@
+UICollectionView's cell registerClass in Swift
+<p>Right now I'm using NSClassFromString, but is there a better way to get an AnyClass! from a class in Swift? I am trying to pass the reference to my collection view's -registerClass:forCellWithReuseIdentifier: method.</p> <pre><code>collectionView.registerClass(NSClassFromString("MyCoolViewCell"), forCellWithReuseIdentifier: "MyCoolViewCell") </code></pre>
+<p>This is currently just a blind but educated guess, but using <code>Class.self</code> might be what you want. </p> <pre><code>collectionView.registerClass(MyCoolViewCell.self, forCellWithReuseIdentifier: "MyCoolViewCell") </code></pre>
+<p>In Swift 3:</p> <pre><code> self.fontsCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "MyCoolViewCell") </code></pre>

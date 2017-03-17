@@ -1,0 +1,2 @@
+How do you generate all n by n matrices mod p in matlab?
+<p>I am currently trying to figure out what fraction of n by n matrices with elements in F_p are diagonalizable. I am using Matlab for the first time, and I am not quite sure how to generate all matrices with elements in F_p for an n by n matrix of given size, where F_p is the field with p elements. Is there an easy way to do this?</p> <p>Thanks!</p>

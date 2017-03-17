@@ -1,0 +1,4 @@
+Does Swift provides the ability to eval Swift code like Javascript does?
+<p>Does Swift provides the ability to eval Swift code like Javascript does? I would like to create an app that can run Swift code.</p>
+<p>No, it doesn't. There is a Swift JIT exposed via the REPL, but it's not (currently at least) intended for use in applications.</p>
+<p>I think eval() is not implemented at moment. For REPL Shell look here <a href="https://developer.apple.com/swift/blog/?id=18" rel="nofollow">Swift Blog</a></p>

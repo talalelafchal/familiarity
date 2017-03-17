@@ -1,0 +1,2 @@
+What is the syntax for selector parameters in Swift?
+<p>I'm adding a <code>UIRefreshControl</code> to my <code>UITableViewController</code>, but I can't figure out the <code>addTarget:action:</code> syntax.</p> <pre><code> let refreshControl = UIRefreshControl() refreshControl.addTarget(self, action:[what goes here?], forControlEvents: UIControlEvents.ValueChanged) self.refreshControl = refreshControl </code></pre> <p>I tried searching the docs but didn't come up with a working example.</p>

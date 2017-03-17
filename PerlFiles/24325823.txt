@@ -1,0 +1,3 @@
+PERL: How to redirect STDOUT of a script inside a wrapper
+<p>I want to make a perl script which gonna be a wrapper to another script. Inside my wrapper, I run the "other script" with some parameters. This "other script" should print quite a lot of runtime data to the STDOUT. So, how do I let the "some script" print the data to STDOUT immediately when I run it inside my perl wrapper? (I don't want any files/variables only the STDOUT)</p> <p>Thank you for your answers in advance!</p>
+<p>If you call your command with system() then the stdout will go to stdout.</p> <p>eg:</p> <pre><code>perl -e "system('ls');" </code></pre>

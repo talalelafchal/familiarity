@@ -1,0 +1,2 @@
+Scaning specified area for random curve and get coordinates
+<p>I want to scan the curve in matlab for a specified area suppose 0-10 in X axis and 50-150 in y-axis and get the co-ordinates of the points of the line.</p> <p>I am very new in this. I am starting from scratch. so any help is appreciated.</p> <p>regards Borad</p> <p><img src="https://i.stack.imgur.com/Qxo27.jpg" alt="enter image description here"></p>

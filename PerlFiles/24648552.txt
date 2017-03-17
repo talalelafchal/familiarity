@@ -1,0 +1,3 @@
+PDF::API2 How to return raw PDF
+<p>I have created a PDF using PDF::API2. How can I return the raw PDF? </p> <p>Example:</p> <pre><code>my $pdf = PDF::API2-&gt;new(); $pdf = PDF::API2-&gt;open('./useful_scripts/invoice.pdf'); my $page = $pdf-&gt;openpage(1); my $content = $page-&gt;text(); my $font = $pdf-&gt;corefont('Helvetica-Bold'); $content-&gt;fillcolor('black'); $content-&gt;font($font, 11); $content-&gt;translate(170, 785); $content-&gt;text($invoice-&gt;ott_invoice_number); #Finally return raw $pdf </code></pre> <p>I am aware of the <code>$pdf-&gt;saveas()</code> method, but I don't actually want to save my PDF to a file.</p>
+<p><code>IRC #perl-help</code> answer:</p> <pre><code>my $raw_pdf = $pdf-&gt;stringify(); </code></pre> <p>does the job.</p>

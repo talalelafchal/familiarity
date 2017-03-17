@@ -1,0 +1,4 @@
+Swift: sum of two max integers
+<p>I'm playing with swift's integers. Got a strange one:</p> <pre><code>let uIntMax8 = UInt8.max let uIntMax16 = UInt16.max let sumInt32: Int32 = Int32(uIntMax16 + UInt16(uIntMax8)) sumInt32 </code></pre> <p>swift can't calculate the <code>sum</code> for me. Why is that?</p>
+<p>It's because <code>uIntMax16 + UInt16(uIntMax8)</code> can't fit into 16 bits. Adding <strong>anything</strong> to <code>UInt16.max</code> will exceed 16 bits, pretty much by definition. You need to convert both summands to <code>UInt32</code> prior to doing the addition.</p>
+<pre><code>let uIntMax8 = Int32(UInt8.max) let uIntMax16 = Int32(UInt16.max) let sumInt32: Int32 = uIntMax16 + uIntMax8 sumInt32 </code></pre>

@@ -1,0 +1,3 @@
+How to plot ROC curve for the following set?
+<p>I have a two sets </p> <pre><code>set1=[0.333; 0.509; 0.607; 1.172; 0.275; 0.762; 0.850; 0.920; 0.556; -0.046]; set2=[ 0.295; -0.203; -0.097; 0.633; 0.147; 0.356; 0.235; -0.054; -0.024; 0.377; -0.180; 0.512; 0.428; -0.129; 0.094]; </code></pre> <p>How to plot ROC curve for it using any random threshold?</p>
+<p>Short answer: you can't. </p> <p>Long answer: </p> <ol> <li>ROC curve shows how a binary classifier performs as the decision threshold changes. This requires a "ground truth" that you don't have.</li> <li>If you define a random threshold, you don't have a curve, only a point in the ROC space. The point of a ROC curve is to go over all possible points.</li> </ol>

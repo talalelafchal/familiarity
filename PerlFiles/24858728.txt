@@ -1,0 +1,4 @@
+Match a digit between 2 lines
+<p>Can anyone help me match a digit in Perl that has a new line before it and a new line after (and is only that digit on the raw) I have tried this <code>/^[\d\n]+$/</code> but it matches all the new lines...</p>
+<p>How about just:</p> <pre><code>/\n\d\n/ </code></pre> <p>If you want to use <code>^</code> and <code>$</code> you would need to specify the /m flag and get rid of the <code>\n</code> in the character class (leaving just \d, so it wouldn't even need to be in a character class):</p> <pre><code>/^\d$/m </code></pre> <p>(But that would match a digit alone on a line even at the beginning or end of the string (without a newline before or after it).</p>
+<p>How about this regular expression</p> <pre><code>/^(\d)$/ </code></pre> <p>If I understand you correctly, you want to return true when a row contains a digit and only a digit.</p>

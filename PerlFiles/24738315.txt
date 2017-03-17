@@ -1,0 +1,4 @@
+Remove &quot; from a file using Perl script
+<p>I have a sample file like this</p> <pre><code>001|"Arab"|hjgjk 002|"HGJ"|dkflj </code></pre> <p>i need the output like</p> <pre><code>001|Arab|hjgjk 002|HGJ|dkflj </code></pre> <p>i have tried below code</p> <pre><code>perl -pi -e 's/\"//g' file1 &gt; file2 </code></pre> <p>Please help</p>
+<p>We need to give something like</p> <pre><code>perl -p -e 's/"^""//g' file1 &gt; file2 </code></pre> <p>if we are working on Windows, because "^" is the escape sequence for " in Windows.</p>
+<p>If you are using the <code>-i</code> that means "in place", and so you don't need to redirect the output. Either do this:</p> <pre><code>perl -pi -e 's/\"//g' file1 </code></pre> <p>or this:</p> <pre><code>perl -p -e 's/\"//g' file1 &gt; file2 </code></pre> <p>But don't combine -i and redirection.</p>

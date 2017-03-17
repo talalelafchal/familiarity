@@ -1,0 +1,3 @@
+Why can we not submit apps written in Swift before iOS 8 is released?
+<p>Swift can be used for writing applications that run on iOS 7 and prior or Mac OS X 10.9 and prior. Why do we have to wait with submitting applications to App Store until fall when iOS 8 and Mac OS X 10.10 is released?</p> <p>Learning Swift today and using it in 4-5 months is inefficient. Also writing new code in Objective-C instead of Swift is counterproductive when Swift will be probably the future of Apple platforms.</p>
+<p>Probably due to the fact that you need Xcode 6, which is still in beta and won't be ready before iOS 8 / Yosemite ships.</p>

@@ -1,0 +1,3 @@
+Matlab filtfilt() function implementation in Java
+<p>Has anyone tried implementing matlab filtfilt() function in java? or at least in C++. If you guys have a algorithm that would be of great help. </p>
+<p><a href="http://stackoverflow.com/questions/17675053/matlabs-filtfilt-algorithm/27270420#27270420">Here</a> is my implementation in C++ of the <code>filtfilt</code> algorithm as implemented in MATLAB. Hope this helps you.</p>

@@ -9,11 +9,7 @@ import java.io._
 object Classifier {
 
 
-  def frequencyList(tagList: List[Seq[String]]): List[(String, Int)] = {
-    val mapTagFrequency = tagList.flatten.groupBy(identity).mapValues(_.size)
-    val sortedList = mapTagFrequency.toList.sortWith(_._2 > _._2)
-    sortedList
-  }
+
 
   def tagIntersection(questionPerTagList: List[QuestionPerTag]) = {
     val tagList = questionPerTagList.map(x => x.tag)

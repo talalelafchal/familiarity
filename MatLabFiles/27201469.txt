@@ -1,0 +1,2 @@
+MATLAB - convert from normalised figure units to axis data units
+<p>I am manually drawing an annotation onto a figure in MATLAB (via insert --> line) and I would like to know how to convert from its position in normalised figure units to axis data units. This is the reverse of an operation that is commonly solved by functions around the internet. However, I am unclear as to how MATLAB converts from axis data units to normalised figure units.</p>

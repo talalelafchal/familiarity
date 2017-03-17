@@ -1,0 +1,3 @@
+Can't Plot Anonymous Function In Matlab
+<p>I'm trying to plot anonymous function but it gives me error:</p> <pre><code>&gt;&gt; f=@(t) (3*t)/(exp(1)-(8.*t))-2/t.^2; &gt;&gt; x=linspace(-3,1,50); &gt;&gt; plot(x, f(x)) Error using / Matrix dimensions must agree. Error in @(t)(3*t)/(exp(1)-(8.*t))-2/t.^2 </code></pre>
+<p>As the error message says the dimensions are mixed up. To fully vectorize your function:</p> <pre><code>f=@(t) (3*t)./(exp(1)-(8.*t))-2./t.^2; x=linspace(-3,1,50); plot(x, f(x)) </code></pre> <p>And here is the results, is this what you are looking for?: <img src="https://i.stack.imgur.com/oM8Qh.png" alt="enter image description here"></p>

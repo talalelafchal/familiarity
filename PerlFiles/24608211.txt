@@ -1,0 +1,3 @@
+Whole regexp string as variable
+<pre><code>my $re = 's/foo/bar/g'; my $x = 'one two foo'; $x =~ $re; </code></pre> <p>How to do this?</p> <pre><code>my $re1 = 'foo'; my $re2 = 'bar'; my $x = 'one two foo'; $x =~ s/$re1/$re2/g; </code></pre> <p>...is not a solution for me! Many thanks in advance.</p>
+<p>You can use substitution inside anonymous function,</p> <pre><code>my $re = sub { s/foo/bar/g for @_ }; my $x = 'one two foo'; $re-&gt;($x); </code></pre>

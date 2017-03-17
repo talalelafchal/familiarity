@@ -1,0 +1,2 @@
+Finding Extrema in an Image without dividing into Regions in Matlab
+<p>I want to find the 8-point extrema of an binary Image. I know about 'Extrema' Property of Regionprops function in Matlab. However, this function is dividing the image into Region first and then it is trying to find out the extrema. Is there anyway to find the extrema in Image without dividing it into region? Please help.</p> <p>Thanks in Advance.</p>

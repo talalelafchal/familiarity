@@ -1,0 +1,2 @@
+How to use MATLAB functions in turbo C++?
+<p>I'm want to use a Matlab function that I've written in Turbo C++.</p> <p>I know that I'll have to use .dll, .lib, and .h files that I've extracted from Matlab function.</p> <blockquote> <p><strong>Question:</strong> How can I use the extracted .dll, .lib, and, .h files to call this function in Turbo C++?</p> </blockquote> <p>Here is my function:</p> <pre><code>function [ Integ ] = integral( x , a,b ) Integ = int(x,a,b); end </code></pre>

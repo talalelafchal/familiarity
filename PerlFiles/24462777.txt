@@ -1,0 +1,4 @@
+Why do yout not need to chmod 755 php scripts before execution?
+<p>Normally you need to do a chmod 755 for a Perl script, Python script or whatever if you like to run it as a CGI in Apache. But why isn't that necessary for PHP scripts?</p>
+<p>The webserver configuration file tells it that when a file has a <code>.php</code> extension, it should be processed with PHP.</p>
+<p>You don't need to grant execution rights, because the file is read by apache with php, not executed directly.</p>

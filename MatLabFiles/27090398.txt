@@ -1,0 +1,3 @@
+Sort complex vectors in specific order
+<p>I have vector with eigenvalues:</p> <pre><code>e = -0.4094 + 3.9387i -0.4094 - 3.9387i -0.0156 + 0.5645i -0.0156 - 0.5645i </code></pre> <p>And I would like to sort this vector like that:</p> <p>e_sort = </p> <pre><code>-0.0156 + 0.5645i -0.4094 + 3.9387i -0.0156 - 0.5645i -0.4094 - 3.9387i </code></pre> <p>The rule is: First must be:</p> <pre><code> -a+b*i </code></pre> <p>and then:</p> <pre><code> -a-b*i </code></pre> <p>We can say, that:</p> <pre><code> 0 &lt; b_1 &lt; b_2 &lt; ... &lt; b_n </code></pre> <p>Thanks,</p>
+<pre><code>e1 = e(imag(e) &gt;= 0); e2 = e(imag(e) &lt; 0); newe = cat(1,sort(e1),sort(e2)) newe = -0.0156 + 0.5645i -0.4094 + 3.9387i -0.0156 - 0.5645i -0.4094 - 3.9387i </code></pre>

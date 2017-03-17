@@ -1,0 +1,3 @@
+svd of a VERY LARGE sparse matrix
+<p>I have a <code>75000</code> x <code>75000</code> sparse matrix, and I'm interested in computing the full <code>SVD</code>. Whenever I use:</p> <pre><code>[U,D,V] = svds(A,k) </code></pre> <p>I get an out of memory error for <code>k</code> larger than <code>200</code>. Is there a tracable way for computing the matrices <code>U</code>, <code>V</code> and <code>D</code> in this case?</p>
+<p>The approximate matrix decomposition into a product of three matrices is called <a href="http://en.wikipedia.org/wiki/CUR_matrix_approximation" rel="nofollow">CUR</a>. However I'm not sure the matlab contains its implementation.</p>

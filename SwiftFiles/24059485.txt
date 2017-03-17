@@ -1,0 +1,3 @@
+How to create bitmask in Swift
+<p>In Objective C I was making </p> <pre><code>uint32_t myFirstMask = 0x1 &lt;&lt; 0; uint32_t mySecondMask = 0x1 &lt;&lt; 1; </code></pre> <p>the question is - how to implement that in Swift. </p>
+<p>From the documentation: Apple Inc. 'The Swift Programming Language'. iBooks. <a href="https://itun.es/nl/jEUH0.l">https://itun.es/nl/jEUH0.l</a></p> <pre><code>let shiftBits: UInt8 = 4 // 00000100 in binary shiftBits &lt;&lt; 1 // 00001000 shiftBits &lt;&lt; 2 // 00010000 shiftBits &lt;&lt; 5 // 10000000' </code></pre>

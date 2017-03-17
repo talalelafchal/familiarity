@@ -1,0 +1,2 @@
+How to surround data with an ellipse
+<p>Suppose that I am plotting different vectors of data with different dimensions in the same plot <code>(x1,y1)</code>, <code>(x2,y2)</code> and I would like to surround this data with an ellipse, one ellipse for the <code>(x1,y1)</code> and another for <code>(x2,y2)</code>. Can Matlab do it, or is it impossible?</p> <p>And if this can be done with Matlab, can I also for some reasons, let one of the point of this data <code>(x1,y1)</code> lie outside the ellipse?</p>

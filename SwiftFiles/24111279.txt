@@ -1,0 +1,3 @@
+Swift and taking in more than 2 shorthand parameters
+<p>Swift Language Guide shows the use of $0 and $1 as Shorthand Argument Names with this example:</p> <pre><code>sort([1, 5, 3, 12, 2, 5, 5]) { return $0 &gt; $1 } </code></pre> <p>What determines that there are 2 arguments for the above and not 3? </p>
+<p>The definition of sort:</p> <pre><code>func sort&lt;T&gt;(inout array: [T], predicate: (T, T) -&gt; Bool) </code></pre> <p>Notice that the predicate has two parameters of type T as indicated by <code>(T, T)</code></p>

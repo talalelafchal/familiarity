@@ -1,0 +1,3 @@
+How to control the time of displaying of a figure?
+<p>Now, I am trying to use Matlab for simulating a motion. Here is a part of the program:</p> <pre><code>L=line(x, y, 'color','k','erasemode','xor'); rotate(L,[0 0 1],90,[0 0 0]); </code></pre> <p>Here is my problem: I want the line to show after the rotate command, not the line function, what functions I should use to obtain the desired results?</p>
+<p>Try this:</p> <pre><code>L = line([1 2],[3 4], 'color','k', 'visible', 'off'); rotate(L,[0 0 1],90,[0 0 0]); set(L, 'visible', 'on'); </code></pre> <p>(I replaced <code>x</code> and <code>y</code> by some random numbers to make the code work)</p>

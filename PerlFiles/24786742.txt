@@ -1,0 +1,2 @@
+perl REST API authentiation
+<p>I am writing a REST api, which accepts requests based on POST, GET and DELETE requests. I am using CGI::Simple and use request_method() to identify the type of request to do the required action. The problem I am facing is, since the api is exposed, anyone can do a DELETE request, which I do not want to. I would like to create a basic authentication. What are the options open to me? Is it possible to use key based authentication(public key)? And is it possible to identify, which user has done the requests?</p>

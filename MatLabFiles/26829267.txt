@@ -1,0 +1,2 @@
+Removing noise from an image but I could not store words in the image, MATLAB
+<p>I need to clear noises from my image, The input image is :</p> <p><img src="https://i.imgur.com/jzlQIzb.png" alt=""></p> <p>To do that, I've applied some filter operations and after all, I've got the following image :</p> <p><img src="https://i.imgur.com/vtwxNut.png" alt=""></p> <p>However, as you see, the words (LIBERTE,EGALITE,FRATERNITE)were gone after the operations that I`ve applied, is there anyone who can tell me what should I do at this point ?</p>

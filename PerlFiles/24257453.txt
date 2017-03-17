@@ -1,0 +1,6 @@
+Find Line containing and replace with
+<p>What would be the easiest way to:</p> <p>Find the line in a text file containing</p> <pre><code>listen = /var/run/php5-fpm.sock </code></pre> <p>and replace that line with </p> <pre><code>listen = 127.0.0.1:9000 </code></pre>
+<p>Try this GNU sed commands,</p> <pre><code>sed -ri 's/.*(listen = ).*/\1127.0.0.1:9000/g' file </code></pre> <p>More accurate,</p> <pre><code>sed -ri 's/^(listen = )\/var\/run\/php5-fpm\.soc$/\1127.0.0.1:9000/g' file </code></pre>
+<pre><code> sed -i 's|listen = /var/run/php5-fpm.sock|listen = 127.0.0.1:9000|' file </code></pre>
+<pre><code>perl -i.bak -p -e 's|/var/run/php5-fpm.sock|127.0.0.1:9000|g;' myfile </code></pre>
+<pre><code>perl -i~ -pe 's|^\s*listen\s*=\s*\K /var/run/php5-fpm\.sock|127.0.0.1:9000|x' file </code></pre> <p>Match <code>listen = /var/run/php5-fpm.sock</code> line with liberal amount of spaces, but replace only <code>/var/run/php5-fpm.sock</code> part due <code>\K</code> positive look behind (same as <code>(?&lt;=..)</code>)</p>

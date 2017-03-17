@@ -1,0 +1,3 @@
+Reading line delimited text file of strings into a vector of strings in MATLAB
+<p>Suppose I have a text file test.txt like so:</p> <pre><code>a b c </code></pre> <p>I want to read them into a matlab 3x1 vector X for example, so that when I type X, it will print:</p> <pre><code>'a' 'b' 'c' </code></pre> <p>How can I achieve this? I tried importdata and it didn't work..</p>
+<pre><code>fid = fopen('test.txt','r'); C = textscan(fid, '%s'); fclose(fid); X = C{1}; </code></pre> <p>When you type X:</p> <pre><code>X = 'a' 'b' 'c' </code></pre>

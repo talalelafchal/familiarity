@@ -1,0 +1,3 @@
+Cannot set UIButton buttonType in initializer in Swift
+<p>I want to subclass a UIButton in Swift. I get an error when setting <code>buttonType</code></p> <pre><code>class MyButton: UIButton { init(label: KeyLabelType) { super.init(frame: CGRectZero) self.buttonType = UIButtonType.Custom } } </code></pre> <p>Any suggestions on why this is incorrect?</p>
+<p>The apple docs say that <code>buttonType</code> is a readonly property. You will have to find a workaround for this. <a href="http://stackoverflow.com/questions/13202161/why-shouldnt-i-subclass-a-uibutton">This answer</a> might give you what you are looking for.</p>

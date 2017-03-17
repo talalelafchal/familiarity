@@ -1,0 +1,4 @@
+Unable to retain second attribute after sorting
+<p>I have set4 variable(4 x 2 double). When I'm sorting it, the second attribute of each element also gets sorted. I just need to sort first attribute only. For example,</p> <pre><code>set4=[ 10 1; 20 1; 5 2; 15 2]; sort(set4) </code></pre> <p>Output:</p> <pre><code>ans = 5 1 10 1 15 2 20 2 </code></pre> <p>But my expected output is, ans =</p> <pre><code> 5 2 10 1 15 2 20 1 </code></pre> <p>How do I do it? </p>
+<pre><code>set4=[ 10 1; 20 1; 5 2; 15 2]; %example data [set,in] = sort(set4(:,1)); %sort just the first column and get the indices set(:,2)= set4(in,2) %use the indices to re-order the second column set = 5 2 10 1 15 2 20 1 </code></pre>
+<pre><code>set4=[ 10 1; 20 1; 5 2; 15 2]; sortrows(set4) ans= 5 2 10 1 15 2 20 1 </code></pre>

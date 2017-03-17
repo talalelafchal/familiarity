@@ -1,0 +1,5 @@
+UILabel and fonts
+<p>How can I can use the font: <code>HelveticaNeue Regular</code> in my labels? I can do it with IB, but programmatically that seems that it's not possible.</p> <p>Is HelveticaNeue-Medium the regular one or HelveticaNeue?</p>
+<p>You can find all fonts here:</p> <p><a href="http://iosfonts.com/" rel="nofollow">list of iPhone fonts</a></p> <p>For Helvetica you would do:</p> <pre><code>UIFont *helvFont = [UIFont fontWithName:@"HelveticaNeue" size:14.0]; </code></pre> <p>So the regular one would indeed by <code>HelveticaNeue</code></p>
+<p>Here's a list of the fonts available on iOS:</p> <p><a href="http://iosfonts.com/" rel="nofollow">http://iosfonts.com/</a></p> <p>If you want to use the system font, just use <code>[UIFont systemFontOfSize:]</code> or <code>[UIFont boldSystemFontOfSize:]</code></p>
+<p>Swift 2.1:</p> <pre><code>var yourFont = UIFont(name: "", size: 30) </code></pre> <p>and to get a list of available fonts in your specific scenario:</p> <pre><code>print(UIFont.familyNames()) </code></pre>

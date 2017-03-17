@@ -1,0 +1,3 @@
+fast way of multiplication of rows of matrix with columns of another one
+<p>I have two matrices and I want to multiply each column of the first one with a row of the second one to obtain a matrix, something as follows:</p> <pre><code>for j=1:size(A,2) c(:,:,j) = A(:,j)*B(:,j)' ; end </code></pre> <p><code>A</code>and <code>B</code> have the same size. </p> <p>Is there a fast way to do this?</p>
+<p>Easy with <a href="http://es.mathworks.com/help/matlab/ref/bsxfun.html" rel="nofollow"><code>bsxfun</code></a>:</p> <pre><code>C = bsxfun(@times, permute(A, [1 3 2]), permute(B, [3 1 2])); </code></pre>

@@ -1,0 +1,5 @@
+how to Reaload viewDidLoad in a method , Not call again such as [self viewDidLoad ];
+<p>i want to reload ViewdidLoad in a method But now want to call again like [self viewDidLoad ];</p> <p>is this possible?</p>
+<p>Copy all code in - (void)viewDidLoad then paste in viewWillAppear</p> <pre><code>- (void)viewWillAppear:(BOOL)animated { [super viewWillAppear:animated]; //paste your viewDidLoad codes } </code></pre>
+<p>Yes you can call from any method but if you post your scenario then it is better to reply</p> <pre><code>[self viewDidLoad]; </code></pre>
+<p>Instead of calling <code>viewDidLoad:</code> make another method (<code>newMethod</code>) and move all the code in it that needs to be called then from </p> <pre><code>- (void)viewDidLoad{ [super viewDidLoad]; [self newMethod]; } </code></pre> <p>Then from your code where you want to call <code>viewDidLoad:</code> call</p> <pre><code>[self newMethod]; </code></pre> <hr> <h3>Swift version</h3> <pre><code>func viewDidLoad() { super.viewDidLoad() self.newMethod() } </code></pre> <p>Then from your code where you want to call <code>viewDidLoad:</code> call</p> <pre><code>self.newMethod() </code></pre>

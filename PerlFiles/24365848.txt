@@ -1,0 +1,4 @@
+Strip unwanted characters from a string
+<p>I have a string as input.<br> What is the best way to strip from the string the following unwanted characters? </p> <pre><code>!@#$%^&amp;*()_+-={}[]:";'&lt;&gt;?,./`~\|) </code></pre> <p>Is there another way besides iterating over the string and matching character by character? </p>
+<p>&ldquo;<em>It far safer to specify which characters you want to keep.</em>&rdquo; </p> <p>In this case, it appears that you've listed every punctuation character on a standard keyboard to be stripped. The only thing that you didn't specify were letters, numbers and spaces.</p> <p>Therefore use a negated character class that will filter out anything that doesn't match your desired characters to accomplish the same goal in a clearer and safer way:</p> <pre><code>s/[^a-zA-Z0-9\s]+//g; </code></pre>
+<pre><code>$string =~ tr|!@#$%^&amp;*()_+-={}[]:”;’&lt;&gt;?,./`~\\\|)||d; </code></pre>

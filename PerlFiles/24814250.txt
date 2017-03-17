@@ -1,0 +1,3 @@
+Extract all exceptions of particular type with stack traces in Java log
+<p>I want to extract all the exceptions of a particular type, say AbandonedObjectException from my java web app log files. I found a perl script which can extract all exceptions, but not sure how to filter for exception I want. I know this can be done using a script but trying to find if there is any that is already existing.</p> <pre><code>perl -n -e 'm/(Exception)|(\tat )/ &amp;&amp; print' catalina.out &gt; catLog </code></pre>
+<p>Could you not just use <code>grep</code>?</p> <pre><code>grep AbandonedObjectException catalina.out &gt; catLog </code></pre>

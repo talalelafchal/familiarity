@@ -1,8 +1,10 @@
 library(plotly)
 setwd("/Users/Talal/Tesi/familiarity/R")
+
 androidProb6Gram <- read.csv("androidPbAV6Gram10000Files.csv")
 swingProb6Gram <- read.csv("swingPbAV6Gram10000Files.csv")
 swiftProb6Gram <- read.csv("swiftPbAV6Gram1000Files.csv")
+
 androidProb3Gram <- read.csv("androidPbAV3Gram10000Files.csv")
 swingProb3Gram <- read.csv("swingPbAV3Gram10000Files.csv")
 swiftProb3Gram <- read.csv("swiftPbAV3Gram1000Files.csv")

@@ -1,0 +1,3 @@
+Is perl removing white spaces when printing the matched capture group?
+<p>There is a large file with this kind of string, among all:</p> <pre><code>Date: Sun, 30 Mar 2014 19:19:47 +0000 </code></pre> <p>I am trying to parse out the date like this:</p> <pre><code>if ($msg =~ /(Date:)(.+)(\+0000)/){$date = $2} </code></pre> <p>When I print the string with simple print $date, I get the string output without spaces, like this:</p> <p><code>Sun,30Mar201419:19:47</code></p> <p>What is wrong?</p>
+<p><code>.</code> should always match spaces, and your case is no exception,</p> <pre><code>my $msg = "Date: Sun, 30 Mar 2014 19:19:47 +0000"; if ($msg =~ /(Date:)(.+)(\+0000)/) { print "~$2~" } </code></pre> <p>output</p> <pre><code>~ Sun, 30 Mar 2014 19:19:47 ~ </code></pre>

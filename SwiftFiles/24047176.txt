@@ -1,0 +1,4 @@
+Remainder operator with arc4random() and an array's count causes &quot;could not find an overload&quot; error
+<p>This code</p> <pre><code> var randomNumber: Int = arc4random() % nameArray.count </code></pre> <p>gives me the error <strong>"Could not find an overload for '%' that accepts the supplied arguments"</strong></p> <p>I'm still trying to get used to the syntax and read the docs but can't seem to figure this one out. Can anyone help?</p>
+<p>have you tried casting the return value of <code>arc4random()</code> to an <code>Int</code>?</p> <pre><code>var randomNumber: Int = Int(arc4random()) % nameArray.count </code></pre>
+<p>You have to cast <code>arc4random()</code>'s return value (a <code>CInt</code>) to an <code>Int</code>:</p> <pre><code>var randomNumber: Int = Int(arc4random()) % nameArray.count </code></pre>

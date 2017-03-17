@@ -1,0 +1,3 @@
+Possible MATLAB syntax error?
+<p>I'm trying to make a very simple program in MATLAB and it's telling me I may have syntax errors but I'm not sure....does this look right to you?</p> <p>function largerThanN (rowVector, n) </p> <p>for n in rowVector</p> <pre><code>for n &gt; rowVector(i) display (rowVector(i)) end </code></pre> <p>end</p> <p>end</p>
+<p>First of all, you have two different <code>n</code> in your code!</p> <p>I renamed one to m. I also changed it to display all elements of the rowVector that are larger than n. Is that what your code is intended to do?</p> <pre><code>function largerThanN (rowVector, n) for i = 1:length(rowVector) if rowVector(i) &gt; n display (rowVector(i)) end end end </code></pre>

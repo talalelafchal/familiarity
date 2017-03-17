@@ -1,0 +1,3 @@
+How to create a surface plot on a multiple line 3d plot?
+<p>Using <code>plot3</code> I have created a multiple discrete line 3d plot. How can I fill the 3d surface these lines create (basically join the lines with a surface)? </p>
+<p>Using <code>fill3</code> can help.</p> <pre><code>x = [0 0 5 5 0]; y = [5 5 0 0 5]; z = [0 5 5 0 0]; subplot(1,2,1) plot3(x,y,z,'LineWidth',5); grid on subplot(1,2,2) fill3(x,y,z,'y') grid on </code></pre> <p><img src="https://i.stack.imgur.com/ci4YG.png" alt="enter image description here"></p>

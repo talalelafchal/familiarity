@@ -1,0 +1,3 @@
+MATLAB - read comma separated text file
+<p>I am trying to read a file that is created from a software(HyperView). The file doesn't have a file extension. When I open it with WordPad, the following appears:</p> <pre><code> Node ID, 19, 18, 17, 16, 15, 14, </code></pre> <p>I want to to add the numbers to a vector.</p> <p>I tried load, csvread, textread, textscan and etc. Any ideas what (and how) to use or give me an idea how to determine the file type, so I can share it with you?</p> <p>Windows XP, MATLAB R2012a</p>
+<p>Assuming they are in a <code>text</code> file, you can use</p> <pre><code>fid = fopen('1.txt','r'); C = textscan(fid, '%f %*s', ... 'HeaderLines',1); fclose(fid); C{1} 19 18 17 16 15 14 </code></pre>

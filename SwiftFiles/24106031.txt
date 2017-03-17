@@ -1,0 +1,3 @@
+How to get the user input and pass it to nsurl(swift)
+<p>I am trying to get the user input(which will be url) and pass it to NSURL.</p> <p>At the moment, I defined the url and initialised the nsurl.</p> <p>What I need is to get the url from textfield and initialise with the nsurl.</p> <p>Thank you.</p>
+<p><code>NSURL(string: self.myTextField.text)</code></p>

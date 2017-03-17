@@ -1,0 +1,5 @@
+What is the equivalent of @autoreleasepool in Swift?
+<p>In Swift, I notice there is no <code>@autoreleasepool{}</code> construct, although Swift does use ARC. What is the proper way to manage an autoreleasepool in Swift, or has it been removed for some reason?</p>
+<p>There is! It's just not really mentioned anywhere.</p> <pre><code>autoreleasepool { Do things.... } </code></pre>
+<p>This is explained in detail in <a href="https://developer.apple.com/videos/wwdc/2014/">WWDC 2014 session video</a> number 418 "Improving Your App with Instruments", which you can also download as a PDF.</p> <p>But in short, the syntax is:</p> <pre><code>autoreleasepool { /* code */ } </code></pre>
+<p>Just FYI, Xcode constructed the full code as follows:</p> <pre><code>autoreleasepool({ () -&gt; () in // code }) </code></pre> <p>Guess the parentheses identifies the functions closure. </p>

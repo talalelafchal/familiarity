@@ -1,0 +1,3 @@
+How to make an alias for an existing type in Apple Swift?
+<p>In C++, I do <code>using A = B;</code> to make an alias. How would I do this in Swift?</p>
+<p>From the <a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-XID_424">Apple's manual</a>:</p> <pre><code>typealias AudioSample = UInt16 </code></pre> <p>Exactly same with C++ stuff.</p>

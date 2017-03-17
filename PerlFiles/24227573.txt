@@ -1,0 +1,3 @@
+Redirecting stdout and stderr output to a file using system command doesn't work in perl
+<p>When I try to redirect stdout and stderr output of a command onto a file. There is nothing which gets written into a file. This is in a Perl script. I want the stdout and stderr output of a command to be redirected to a file. The code I wrote is this:</p> <pre><code>system("sudo rm a.txt &amp;&gt;&gt; output.txt"); </code></pre> <p>The file <code>output.txt</code> doesn't contain anything at all. Can someone help me with this?</p>
+<pre><code>system("sudo rm a.txt &gt;&gt; output.txt 2&gt;&amp;1") </code></pre>

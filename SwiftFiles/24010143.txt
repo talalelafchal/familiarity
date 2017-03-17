@@ -1,0 +1,4 @@
+Is Xcode a requirement or can I use AppCode for development?
+<p>Can I only use Swift with Xcode and not AppCode?</p>
+<p>Only Apple supports Swift for now. It was only announced yesterday and probably third parties did not have much access to it.</p>
+<p>Swift was announced yesterday. Give guys at Jetbrains some time to catch up to come with an official announcement. </p> <p>I think they will definitely support Swift because they invested a lot of resources to support development for iOS and Mac OS X. Like UI Designer, support for Xcode projects and so on. A language is only a small portion of it.</p> <p>But it will be harder for them to integrate Swift to AppCode because it is not open-source. At least for now.</p> <p><strong>Update</strong>: AppCode now has <a href="http://blog.jetbrains.com/objc/2014/06/appcode-3-0-1-update-xcode-6-and-basic-swift-support/">basic Swift support</a></p>

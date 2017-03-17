@@ -27,6 +27,7 @@
       <version>${scala.version}</version>
     </dependency>
 
+
     <dependency>
       <groupId>org.scalaj</groupId>
       <artifactId>scalaj-http${scala.version.short}</artifactId>

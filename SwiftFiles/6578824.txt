@@ -1,0 +1,8 @@
+Obscure a UITextField password
+<p>I am doing a login page. I have UITextField for password.</p> <p>Obviously, I do not want the password to be seen; instead, I want circles to show when typing. How do you set the field for this to happen?</p>
+<p>Please set your UItextField property secure..</p> <p>Try this..</p> <pre><code>textFieldSecure.secureTextEntry = YES; </code></pre> <p>textFieldSecure is your UITextField...</p>
+<p>Set the <code>secureTextEntry</code> property to <code>YES</code>.</p>
+<p>In Interface Builder set the Secure CheckBox Property</p> <p>or</p> <p>In Code set </p> <p><strong>Objective-C:</strong></p> <pre><code>yourTextField.secureTextEntry = YES; </code></pre> <p><strong>Swift:</strong></p> <pre><code>yourTextField.secureTextEntry = true </code></pre>
+<p>Open the Xib file and open the inspector of the password text field and tick the secure property.</p>
+<p>One can do this for Obscure a UITextField password:</p> <p><img src="https://i.stack.imgur.com/degAl.png" alt="enter image description here"></p>
+<pre><code> txt_Password = new UITextField { Frame = new RectangleF (20,40,180,31), BorderStyle = UITextBorderStyle.Bezel, TextColor = UIColor.Black, SecureTextEntry = true, Font = UIFont.SystemFontOfSize (17f), Placeholder = "Enter Password", BackgroundColor = UIColor.White, AutocorrectionType = UITextAutocorrectionType.No, KeyboardType = UIKeyboardType.Default, ReturnKeyType = UIReturnKeyType.Done, ClearButtonMode = UITextFieldViewMode.WhileEditing, }; </code></pre> <p>secureTextEntry set true. </p>

@@ -1,0 +1,2 @@
+Perl Algorithm::Diff - treat predefined changes as unchanged
+<p>I'm comparing a template to the output based on that template, so I need to produce sdiff output that is tolerant of specified changes; essentially I want the template line:</p> <pre><code>Foo bar blarg [TAG] lorem ipsum </code></pre> <p>to match any of</p> <pre><code>Foo bar blarg .+ lorem ipsum </code></pre> <p>rather than being reported as changed.</p> <p>What's the easiest way to go about this?</p>

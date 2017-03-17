@@ -1,0 +1,3 @@
+Finding the area of a non-uniform shape
+<p>I was wondering if anyone here has experience with finding the area of a non-uniform shape in MATLAB. I would like to know which method will give me the best approximation. </p>
+<p>The built-in method <a href="http://au.mathworks.com/help/matlab/ref/polyarea.html" rel="nofollow">polyarea</a> is reasonably popular. It takes a list of X and Y points for a polygon and calculates the area.</p> <p>e.g.</p> <pre><code>points = [ 0 0; 0 10; 10 10; 0 10; 0 0 ]; area = polyarea(points(:,1), points(:,2)) </code></pre> <p>Note that I've close the polygon before passing it to polyarea</p>

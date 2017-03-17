@@ -1,0 +1,4 @@
+How to initialize an array in Swift?
+<p>I have a large array in Swift. I want to initialize all members to the same value (i.e. it could be zero or some other value). What would be the best approach?</p>
+<p>Actually, it's quite simple with Swift. As mentioned in the <a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/CollectionTypes.html#//apple_ref/doc/uid/TP40014097-CH8-ID112">Apple's doc</a>, you can initialize an array with the same repeated value like this:</p> <pre><code>var threeDoubles = [Double](count: 3, repeatedValue: 0.0) </code></pre> <p>which would give:</p> <pre><code>[0.0, 0.0, 0.0] </code></pre>
+<p>This would be an answer in Swift 3:</p> <pre><code>var threeDoubles = [Double]( repeating: 0.0, count: 3 ) </code></pre>

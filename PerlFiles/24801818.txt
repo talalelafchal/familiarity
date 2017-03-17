@@ -1,0 +1,3 @@
+Application written in perl script and c language , which executes quick and why?
+<p>I am converting code written in <code>perl</code> to <code>C</code> language but before proceeding I would like to know the performance difference between <code>perl</code> execution and <code>c</code> language execution.</p>
+<p>It depends entirely on what you are doing. Raw performance of an interpreted language like Perl isn't as good as C, but if you are accessing files, pulling information out of a database, or other things which aren't purely part of the language itself you'll find the performance difference is negligible and the benefit of an interpreted language is much easier maintainability.</p>

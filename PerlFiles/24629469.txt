@@ -1,0 +1,4 @@
+Matching for case-sensitive using Perl
+<p>This is the Perl script:</p> <pre><code>my $keyword = qr/(abc|efg|xyz)/; $subject = "ABC"; $messageBody = "ZYZ"; if ( grep{ /${keyword}/i } ( $messageBody, $subject ) ) { print "subject: $subject, messageBody:$messageBody \n"; } </code></pre> <p>How do I match for case-sensitive? It doesnt work for "ABC" but it works for "abc".</p> <p>Please help. Thanks in advance.</p>
+<p>Add a case-insensitive modifier,</p> <pre><code>my $keyword = qr/(?i)(abc|efg|xyz)/; </code></pre>
+<p>Just omit <code>/i</code> regex switch,</p> <pre><code>if ( grep{ /$keyword/ } $messageBody, $subject ) { </code></pre>

@@ -1,0 +1,3 @@
+Subsetting rows from Matlab for which specific column has value greater than zero
+<p>I want to subset rows from matrix for which the value in third column is greater than zero. For example, I have a matrix :</p> <pre><code>test = 1 2 3 4 5 0 4 4 1 4 4 0 </code></pre> <p>Now I want to subset it so that I have </p> <pre><code>subset = 1 2 3 4 4 1 </code></pre> <p>Any quick suggestion on how I can do this in matlab?</p>
+<p>Simply make a logical array that is true for every row you want to keep, and pass it as the index to the rows:</p> <pre><code>subset = test(test(:,3)&gt;0, :) </code></pre>

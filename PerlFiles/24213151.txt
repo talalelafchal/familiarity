@@ -1,0 +1,4 @@
+Strip all non numbers but decimal in a delimited data set in PERL
+<p>I have a data set that has a delimiter and I like to remove all non numerical data but keep the decimal point if it has one.</p> <p>I can't figure out how to include the decimal itself since right now it strips it with this:</p> <pre><code>$output =~ s/[^0-9|\|]*//gi; </code></pre> <p>A sample of the output is: 38.1mm|1013.88s|81%|22°</p> <p>So I want to see: <code>38.1|1013.88|81|22</code></p> <p>Thanks</p>
+<p>Try this:</p> <pre><code>$output =~ s/[^\d.|]+//g; </code></pre> <p>This will remove any characters other than digits, <code>.</code>, or <code>|</code>. </p>
+<p>The transliterate operator <a href="http://perldoc.perl.org/perlop.html" rel="nofollow">tr///</a> can delete characters:</p> <pre><code>$output =~ tr/0-9.|//cd; </code></pre>

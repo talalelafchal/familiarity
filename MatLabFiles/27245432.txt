@@ -1,0 +1,4 @@
+regular expression in matlab to match decimal in filename
+<p>I'm trying to match a int or a decimal in matlab using regular expressions</p> <p>I have: <code>kabel_2.5cm_proef2.xls</code> and I want to match <code>2.5</code></p> <p>Another example: <code>kabel_5cm_proef1.xls</code> where I want to match 5</p> <p>Any ideas?</p>
+<pre><code>\d+(?:\.\d+)?(?!\.|\d) </code></pre> <p>Try this.See demo.</p> <p><a href="http://regex101.com/r/yR3mM3/10" rel="nofollow">http://regex101.com/r/yR3mM3/10</a></p>
+<p>To match int or floating point numbers present before the string <code>cm</code></p> <pre><code>\d+(?:\.\d+)?(?=cm) </code></pre> <p><a href="http://regex101.com/r/uB6uH4/1" rel="nofollow">DEMO</a></p> <p><code>(?=cm)</code> positive lookahead asserts that the match must be followed by <code>cm</code></p>

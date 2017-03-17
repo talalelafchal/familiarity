@@ -1,0 +1,4 @@
+Open SecureCRT using perl
+<p>I am using secureCRT. I want to automate secureCRT using perl. I intend to open the secureCRT, enter hostname,username and password and then execute a command in secureCRT. Is there any perl object to work with secureCRT.</p> <p>Is there any command like </p> <p>Win32::OLE (SecureCRT.Application)</p> <p>for perl</p> <p>I am unable to find any perl documentation for using secureCRT</p>
+<p>Assuming you want to interact with a server that has a ssh daemon running, I suggest you to have a look at <a href="https://metacpan.org/pod/Net::SSH::Perl" rel="nofollow"><code>Net::SSH::Perl</code></a> and skip trying to use <code>SecureCRT</code> from Perl. </p> <p>Hope this helps</p>
+<p>Besides using some Perl module for SSH (i.e. Net::SSH2 or Net::SSH::Any), there is also <a href="https://sites.google.com/site/davidtv/" rel="nofollow">PAC Manager</a>, a connection manager similar to SecureCRT but written and scriptable in Perl.</p>

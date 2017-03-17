@@ -1,0 +1,5 @@
+Can we use swift along with objective - c in Xcode 6 beta?
+<p>Can we use both swift (.swft) and objective c (.h .m) in same xcode project ? </p>
+<p>Yes, you can. You might want to take a look at <a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html" rel="nofollow">this.</a></p>
+<p>Page 1 of <a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/index.html#//apple_ref/doc/uid/TP40014097-CH3-XID_0">Apple's Introduction</a>:</p> <blockquote> <p>Swift feels familiar to Objective-C developers. It adopts the readability of Objective-C’s named parameters and the power of Objective-C’s dynamic object model. <b>It provides seamless access to existing Cocoa frameworks and mix-and-match interoperability with Objective-C code</b></p> </blockquote>
+<p>Yes, except there are few limitations. For example Swift specific features are not accessible from Objective-C. For example Generics, Tuples , Nested Types etc. </p>

@@ -1,0 +1,4 @@
+How to detect if AVAudioRecorder is paused?
+<p>By looking at reference, there is no explicit solution - some property or a delegate callback... But maybe there could be some trick, how to reliably ask the recorder to tell me whether it is paused. Sometimes the required information can be derived from the state of other properties..etc..</p> <p>Of course I can store that "paused" information myself throughout the management of the whole recording session. But it's less reliable and I want to be sure, that its not possible as described above.</p>
+<p>You could simply check for <code>isRecording</code> to be false, that would either mean that it is stopped or paused.</p>
+<p>In SWIFT 2 you just check Booll property called <code>recording</code>:</p> <pre><code>if audioRecorder.recording{ print("recording") }else{ print("not recording") } </code></pre>

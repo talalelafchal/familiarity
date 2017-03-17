@@ -1,0 +1,3 @@
+performSegueWithIdentifier in swift
+<p>If I have this Objective C code: <br/></p> <pre><code>[self performSegueWithIdentifier:@"push" sender:self]; </code></pre> <p><br/> and <br/></p> <pre><code>- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender { if([segue.identifier isEqualToString:@"push"]) { } </code></pre> <p>What is the Swift equivalent?</p>
+<pre><code>self.performSegueWithIdentifier("push", sender: self) override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) { if segue.identifier == "push" { } </code></pre> <p>You have a typo in your <code>self.preformSegueWithIdentifier</code></p>

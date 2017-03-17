@@ -1,0 +1,3 @@
+Perl IPConfig class
+<p>I've got a Perl script with the following in it:</p> <pre><code>use IPConfig; my $ipconf = new IPConfig("eth1"); </code></pre> <p>My problem is that I can't find ANY information about the IPConfig class. </p> <p>I <em>can</em> find reference to <a href="http://search.cpan.org/dist/Win32-IPConfig/lib/Win32/IPConfig.pm" rel="nofollow">Win32::IPConfig</a>, but I can't imagine it being relevant as the class I'm interested in has a method called <code>listIP</code>, and this one doesn't</p> <p>Is this likely to be some custom class?</p>
+<p>Yes, it could be custom class, and you can check it's file location,</p> <pre><code>print grep /IPConfig/i, values %INC; </code></pre>

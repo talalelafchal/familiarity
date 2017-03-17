@@ -1,0 +1,3 @@
+logical and between an image and a const value
+<p>i want write a code for bit plane slicing without using <code>bitget()</code> i want calculate logical and between an image and a const value such as 5 for get bit plane 5 What do I do?</p>
+<p>have you tried <code>bitand</code>?</p> <pre><code>fifthBit = bitand( I, 32 ) &gt; 0; % assuming I is an integer type </code></pre>

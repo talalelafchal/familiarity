@@ -1,0 +1,3 @@
+Can I compile Swift code on Xcode 5?
+<p>Xcode 6 beta is still pretty unstable. I was wondering if there is a way to compile Swift from xCode 5.</p>
+<p>There are command-line tools available for Swift if the GUI is giving you trouble in Xcode 6. You could call these command-line tools from Xcode 5, I suppose, but Xcode 5 will not be able to do anything smart with Swift, like highlighting, autocompleting or the playground.</p>

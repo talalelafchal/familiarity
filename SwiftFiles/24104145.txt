@@ -1,0 +1,3 @@
+Could not find an overload for &quot;init&quot; that accepts the supplied arguments (swift)
+<p>I have defined the webservice URL:</p> <pre><code> let getLoginURL = "http://example-web-service.com" </code></pre> <p>then passed this url via NSURL and assigned to the variable called "url".</p> <pre><code> let url = NSURL(getLoginURL) </code></pre> <p>I am getting the "Could not fin an overload for "init" that accepts the supplied arguments" error. </p> <p>What would be the reason? Thank you.</p>
+<p>You have to provide the string parameter name when you initialize NSURL</p> <pre><code>let url:NSURL = NSURL(string:"http://example-web-service.com") </code></pre>

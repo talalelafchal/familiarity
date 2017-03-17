@@ -1,0 +1,3 @@
+How to perform vectorization in Matlab
+<p>Is it possible to vectorize these calculations in order to avoid using loop 'for'?</p> <pre><code>a=5; b=10; vect=log([10:-1:1]+b); for i=1:length(vect) new1=exp(-a*abs(vect(i)-vect)); new_vect(i)=1/sum(new1); end </code></pre>
+<p>See if this works for you -</p> <pre><code>new_vect = 1./sum(exp(-a*abs(bsxfun(@minus,vect,vect.')))) </code></pre>

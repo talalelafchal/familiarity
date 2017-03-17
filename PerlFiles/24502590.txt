@@ -1,0 +1,2 @@
+How do you set the language Locale in Perl
+<p>I was expecting a 2min search. 20 mins later still no progress.</p> <p>On windows, how do you set the Perl language Locale. I have a Japanese OS but want "ALL" the messages in English. At the moment they are in Japanese.</p> <p>Related - perl Locale warning. <a href="http://stackoverflow.com/questions/2499794/how-can-i-fix-a-locale-warning-from-perl">How can I fix a locale warning from perl?</a> Looks like I need to set an environment variable, but which?</p>

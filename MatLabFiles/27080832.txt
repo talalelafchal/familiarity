@@ -1,0 +1,2 @@
+MATLAB : how to change .txt data
+<p>i have a problem in matlab. hello all. i need help.here is my code. how do i change the data in my .txt file ? when <strong>a-b</strong> meet my condition i want to change it in both .txt file. i keep getting error. im using matlab and really new in matlab. please help me. thank you</p> <pre><code>a = dlmread('test4.txt'); b = dlmread('test5.txt'); if (a-b)&gt;125 c = (a-b)&gt;125; c = 0; c = dlmmwrite('test4.txt', f, 'delimiter', ','); c = dlmwrite('test5.txt', f, 'delimiter', ','); end </code></pre>

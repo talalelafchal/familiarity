@@ -1,0 +1,2 @@
+The same labels on both Y-Axis in GD::Graph
+<p>Is there a way to instruct <a href="https://metacpan.org/pod/GD%3a%3aGraph" rel="nofollow"><code>GD::Graph</code></a> to print the same labels on both Y-Axis? </p> <p>I've got three lines on a graph that's quite wide, and I'd like to see the labels on the right edge the same as on the left. I'm hoping I don't need to reformat my graph to use two_axis mode and hard-code in the limits so they hopefully match.</p>

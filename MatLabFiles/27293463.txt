@@ -1,0 +1,3 @@
+Matlab outputs numeraical numbers in multiple terms rather than in float
+<p>I am using Matlab to calculate a definite integration which involves the natural constant <code>e</code> as the based.</p> <p>Here is my input and output:</p> <pre><code> &gt;&gt; syms t &gt;&gt; f=t/10^5*0.001*exp(-0.001*t); &gt;&gt; int(f,t,0,5000) ans = 1/100 - (3*exp(-5))/50 </code></pre> <p>I am wondering why I get a result with multiple terms rather than a numerical result? Is there any way I can fix this?</p>
+<p>Can you not just do?</p> <pre><code>I = int(f,t,0,5000); double(I) </code></pre>

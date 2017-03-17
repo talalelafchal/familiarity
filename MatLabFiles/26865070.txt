@@ -1,0 +1,3 @@
+Mex compilation MATLAB
+<p>I have matlab 2012b and I am trying to run mex -setup but it is complaining about not finding compilers. My question is does matlab 2012b only support up to the compilers of 2010 visual studio? I own visual studio 2013 but do I need to install windows sdk 7.1 (I have a windows 7 64-bit machine)? Any help would be greatly appreciated!</p>
+<p>Supported compilers for R2012b on Windows 64-bit are listed at <a href="http://www.mathworks.co.uk/support/compilers/R2012b/win64.html" rel="nofollow">http://www.mathworks.co.uk/support/compilers/R2012b/win64.html</a>.</p> <p>To answer your question, you need either Visual Studio 2010 (professional), Visual Studio 2008 (Pro, SP1) + Windows SDK 6.1, or Windows SDK 7.1.</p>

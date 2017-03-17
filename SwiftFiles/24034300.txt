@@ -1,0 +1,5 @@
+Swift. UILabel text alignment
+<p>I create my UILabel in swift:</p> <pre><code>let label = UILabel(frame: CGRect( x: 50, y: 50, width: 100, height: 50)) </code></pre> <p>setting properties seems to be easy:</p> <pre><code>label.textColor = UIColor.redColor() </code></pre> <p>How to implement enum types like textAlignment? In Objective C it was</p> <pre><code>label.textAlignment = NSTextAlignmentCenter; </code></pre> <p>but in swift it doesn't seem to work.</p>
+<p>These are now <code>enum</code>s. </p> <p>You can do:</p> <pre><code>label.textAlignment = NSTextAlignment.Center; </code></pre> <p>Or, for shorthand:</p> <pre><code>label.textAlignment = .Center; </code></pre>
+<p>Enums in Swift are different than they are in Objective-C.</p> <p>What in Objective-C would be <code>NSTextAlignmentCenter</code> is in Swift <code>NSTextAlignment.Center</code>. </p>
+<p>For Centre use, <code>myLabel.textAlignment = NSTextAlignment.Center</code></p>

@@ -1,0 +1,2 @@
+Hight pass filter composed of the discrete cosine transform (DCT) function
+<p>I want to realize a high pass filter composed of the discrete cosine transform (DCT) function with the cut-off period 72s is applied to remove the low frequency noises. Can anyone help me?</p>

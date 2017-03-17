@@ -1,0 +1,3 @@
+Substitute estimateGeometrictransformation
+<p>I go through the help of matlab and I found out that the function "estimateGeometrictransformation" doesn't support "Briskpoints". How can substute it. I have to implement a code to detect matching points. (like I saw in this example <a href="http://it.mathworks.com/help/vision/examples/object-detection-in-a-cluttered-scene-using-point-feature-matching.html" rel="nofollow">http://it.mathworks.com/help/vision/examples/object-detection-in-a-cluttered-scene-using-point-feature-matching.html</a>)</p> <p>Thank you. </p>
+<p>If <code>points</code> is a <code>briskPoints</code> object, you should be able to use <code>points.Location</code> to get the x-y coordinates, and pass them to <code>estimateGeometricTransformation</code>.</p>

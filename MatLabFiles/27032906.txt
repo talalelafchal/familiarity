@@ -1,0 +1,4 @@
+Get the nth field of a structure
+<p>I need to have access to the n element of a structure in Matlab.</p> <p>Let say, I have a structure define by </p> <pre><code>struc.a = 1; struc.b = 3; struc.c = 2; </code></pre> <p>I would like to be able to access the second element of the structure and get the number 3 as answer.</p>
+<p>I actually found a slightly more elegant method than @Dan using the <a href="http://blogs.mathworks.com/pick/2008/08/20/advanced-matlab-dynamic-field-names/" rel="nofollow">dynamic field names</a>.</p> <pre><code>n = 2; fields = fieldnames(struc); struc.(fields{n}) </code></pre>
+<pre><code>n = 2; fields = fieldnames(struc); getfield(struc, fields{n}) </code></pre>

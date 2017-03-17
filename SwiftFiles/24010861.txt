@@ -1,0 +1,4 @@
+Initialize a subclass of UIViewController with Swift?
+<p>I'm trying to understand how initialization works in Swift with a subclass of a UIViewController. I thought the basic format was this, but it is throwing errors...</p> <pre><code>init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) { //other code super.init(nibName: String?, bundle: NSBundle?) } </code></pre>
+<p>You're passing the types, not the variables. You have to pass the variables instead.</p> <pre><code>init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) { // Initialize variables. super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil) } </code></pre>
+<p>Variables should now be initialized before the call to super.init</p> <pre><code>init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) { // Initialize variables. super.init() // as required } </code></pre>

@@ -1,0 +1,3 @@
+Swift &amp; xcode 6 beta?
+<p>I'm very interested in getting my hands on the new xcode 6 beta as I've been programming in Obj-C for quite a while, but xcode 5 doesn't support Swift, so is there any way I can get my hands on xcode 6 beta? I'm not a developer on Apple since I've just been coding back and forth by myself.</p> <p>Thanks</p>
+<p>No, unfortunately it's not possible. You need to have a paid membership:</p> <p><img src="https://i.stack.imgur.com/SR4qi.png" alt="enter image description here"></p> <p>Xcode 6 is currently in beta, it will be available for free when the stable version is released.</p>

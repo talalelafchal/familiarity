@@ -1,0 +1,3 @@
+Prepare for segue error in lldb
+<p>I'm calling it like this</p> <pre><code> override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) { if (segue.identifier == "hat") { let itemVC: ItemViewController = sender.destinationViewController as ItemViewController itemVC.myDelegate = self itemVC.nameArray = self.nameArray } } </code></pre> <p>but the lldb freezes up once I call to go to the next view controller. Any idea whats going on?</p>
+<p>I believe you want:</p> <pre><code>segue.destinationViewController </code></pre> <p>instead of:</p> <pre><code>sender.destinationViewController </code></pre>

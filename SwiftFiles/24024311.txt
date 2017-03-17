@@ -1,0 +1,3 @@
+Is Swift code turned into optmized Objective-C code under the hood?
+<p>I couldn't manage to find an answear to this question. Is Swift just an Objective-C wrapper, where Swift code is turned into objective-c when the code compiles? </p>
+<p>no, it is made into <strong>llvm bytecode</strong> or -as pointed out by delnan- as it called today <strong>llvm bitcode</strong> </p> <p>"[The new term is used] partly to break association with bytecode as employed by traditional virtual machines (because LLVM IR is very much different from that)"</p>

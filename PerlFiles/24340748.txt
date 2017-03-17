@@ -1,0 +1,3 @@
+Press button in application using perl
+<p>How do I control an application using perl script. Once the application is opened, how can I press a button on the GUI of the application. for eg:- after opening IDM, I want to add a new download. For doing that how do I press the "Add url button"</p> <p>Please help</p>
+<p>I have no idea what IDM is, you don't tell us this or what platform you're on. To automate applications on Windows use <a href="https://metacpan.org/pod/Win32%3a%3aGuiTest" rel="nofollow">Win32::GuiTest</a>, X11 -> <a href="https://metacpan.org/pod/X11%3a%3aGUITest" rel="nofollow">X11::GUITest</a>. The documentatoin for each links to pages explaing the theory, code samples and tutorials.</p>

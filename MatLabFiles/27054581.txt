@@ -1,0 +1,3 @@
+How to implement negative infinity to positive infinity limit in MATLAB?
+<p>I need to find the limit of </p> <p>symsum(expression,variable,-Inf,Inf)</p> <p>It gives error. How I can solve.</p>
+<p>Split the summation range in two. For example, to sum <code>1/(k+1/2)^2</code> for <code>k</code> ranging from <code>-inf</code> to <code>inf</code>:</p> <pre><code>&gt;&gt; syms k &gt;&gt; S = symsum(1/(k+1/2)^2,1,inf) + symsum(1/(-k+1/2)^2,0,inf) S = pi^2 </code></pre>

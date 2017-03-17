@@ -1,0 +1,3 @@
+How to do Image Processing in Android?
+<p>I am new to Android and before I have a knowledge of Image Processing. I used MATLAB for IP but when now I have switched to Android I came to know that Android doesn't support MATLAB Functions or API. <strong>So how can I carry out Image Processing in Android ?</strong> Thanks in Advance.</p>
+<p>If you're looking for ready-to-use implementations of common computer-vision algorithms, then <a href="http://docs.opencv.org/doc/tutorials/introduction/android_binary_package/O4A_SDK.html" rel="nofollow">OpenCV4Android</a> or <a href="https://developer.qualcomm.com/mobile-development/add-advanced-features/computer-vision-fastcv" rel="nofollow">FastCV</a> libraries might be a good start.</p>

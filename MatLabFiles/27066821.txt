@@ -1,0 +1,2 @@
+Save an array inside a variable store inside another variable
+<pre><code>a=1:500; name='b' </code></pre> <p>How can I store my array <strong>'a'</strong> into variable <strong>'b'</strong>?</p>

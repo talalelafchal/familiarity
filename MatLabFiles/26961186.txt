@@ -1,0 +1,3 @@
+Data Analysis in Matlab over Emoji usage on iMessage
+<p>I found a service that will read my messages into a CSV, however I am not sure which encoding to use. I want to be able to perform regular expressions over emojis, but can't figure out how to read in a UTF-8 encoding in such a way that I can search for corresponding UTF-8 values for emojis given online.</p>
+<p>You can fread the file, convert it using Matlab's native2unicode() function (<a href="http://nl.mathworks.com/help/matlab/ref/native2unicode.html" rel="nofollow">http://nl.mathworks.com/help/matlab/ref/native2unicode.html</a>) and search it using unicode.</p>

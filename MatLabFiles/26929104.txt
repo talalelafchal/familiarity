@@ -1,0 +1,2 @@
+convert a matlab array to DICOM image
+<p>I want to convert a matlab array (double) to a DICOM image. </p> <p>I can do this with "dicomwrite(X, filename)" but the conversion changes the values of the array. </p> <p>Do you know how can i convert the array to DICOM image but keep the original values of the array? Thanks!</p>

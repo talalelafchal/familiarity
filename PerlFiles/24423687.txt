@@ -1,0 +1,2 @@
+how to print the progress of the files being copied in bash
+<p>I have a perl script in which I am copying a file from a network mounted path to a local path using the basic bash "cp" command. But the file copying is taking a lot of time. </p> <p>Can you please help me how to notify the user using the script - the progress while copying like say so much of kbytes of file have been copied or a percentage of file copied... </p> <p>Can you help me in the perl code for the above task. </p>

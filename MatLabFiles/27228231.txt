@@ -1,0 +1,5 @@
+Combine odd and even indexes of two array columns in matlab / octave
+<p>I have an array <strong>(b)</strong> with two columns I would like to combine the data with even indexes of the second column with the data of the odd indexes of the first.<br> <strong>PS: the numbers won't be this linear so I can't use linspace command it's just an example.</strong></p> <pre><code>a1=[1;2;3;4;5] a2=[1.5;2.5;3.5;4.5;5.5] b=[a1,a2] b array: 1.0000 1.5000 2.0000 2.5000 3.0000 3.5000 4.0000 4.5000 5.0000 5.5000 Final output below I'm trying to get: 1 2.5 3 4.5 5 </code></pre>
+<p>You can combine both vectors (odd and even), then sort them:</p> <pre><code>c = sort([a1(1:2:end); a2(2:2:end)]) </code></pre>
+<p>How about:</p> <pre><code>[nb_rows,nb_cols] = size(b); c = zeros(nb_rows,1); c(1:2:end) = b(1:2:end,1); c(2:2:end) = b(2:2:end,2); </code></pre>
+<p>This handles the cases that the number of elements in <code>a1</code> (and <code>a2</code>) is odd or even:</p> <pre><code>c = b.'; %'// n = numel(a1); ind = bsxfun(@plus, [1;4], 0:4:2*n-1); result = c(ind(1:n)).'; </code></pre>

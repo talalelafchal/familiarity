@@ -1,0 +1,5 @@
+Random number generator between two numbers - MatLab
+<p>I am trying to create a random number generator between two numbers in MatLab but I am unable to figure out the correct equation.</p> <p>I know that you can use the <code>rand()</code> function to create random numbers but what if I wanted to have numbers only generated between -.5 and .5? Is this possible to accomplish in MatLab?</p>
+<p>The answer for adjusting the interval is listed in the help section on <code>rand()</code> :</p> <p>Example 1</p> <p>Generate values from the uniform distribution on the interval [a, b]: <code>r = a + (b-a).*rand(100,1);</code></p>
+<p>it is easy if you want get a random value between -.5~.5 here as an example</p> <pre><code>rand(1)-.5 </code></pre> <p>more generally, to generate random value between [a b] you can use a generator like this</p> <pre><code>rand(1）×（b-a)+a </code></pre>
+<p>The simple way to do that is use</p> <pre><code>randi([min, max]) </code></pre>

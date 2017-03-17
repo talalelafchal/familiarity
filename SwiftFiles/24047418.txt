@@ -1,0 +1,3 @@
+Will code written in Swift work on iOS 7 and earlier?
+<p>As stated, after the release of iOS 8, will I be able to write code in Swift and have it working on iOS 7? Or will it work on iOS 8 only?</p> <p>If your answer is "yes, it will work on iOS 7 and earlier", I have another question:</p> <p>How will iOS 7 and earlier know the syntax of Swift and have those faster capabilities? (Or am I missing some basic knowledge about how apps are compiled?)</p>
+<p>They will work on iOS 7, but not earlier versions.</p>

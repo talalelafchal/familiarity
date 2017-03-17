@@ -1,0 +1,2 @@
+How to use ODE as a objective function in MATLAB for optimization
+<p>I have an ODE equation d[ras]/dt = x1*[0.4]<em>[0.7]+(x2 + x3)</em>[0.013]. now i need to optimize this equation . So how should i represent this equation in .m file so as to use it as objective function for optimization in matlab. DO i need to first solve the ODE or can just use its as objective function.</p>

@@ -1,0 +1,3 @@
+Core Data database storage properly
+<p>I've been playing around with Apple's new swift language, and in my application I'm looking to store a thousand small files in the Core Data database.</p> <p>What is the proper way to do this? For small binary files, is it safe to put them all in Core Data, or should they be stored elsewhere and use the database to keep track of their meta data?</p> <p>Thanks for the help.</p>
+<p>How much storage does the thousand small files come out to be? Honestly I would store the files in the NSBundle and have links to their relative filepath (+ meta data) in CoreData. That way you're not bloating CoreData with all the irrelevant file data.</p>

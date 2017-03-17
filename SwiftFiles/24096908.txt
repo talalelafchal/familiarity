@@ -1,0 +1,5 @@
+UIView viewwithtag method in swift
+<p>I'm trying to learn some swift. I programmatically add labels. I want to change their properties later.</p> <p>the viewwithtag method returns a UIView, how to I access my UILabel from this?</p> <p>cheers</p>
+<p>You need to use a typecast. This code will do it:</p> <pre><code> if let theLabel = self.view.viewWithTag(123) as? UILabel { theLabel.text = "some text" } </code></pre>
+<p>You need to write as</p> <pre><code>var getMyLabel : UILabel = self.view.viewWithTag(tagValue) as UILabel; </code></pre>
+<p><a href="https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIView_Class/#//apple_ref/occ/instm/UIView/viewWithTag%3a" rel="nofollow">viewWithTag:</a> returns a UIView, you need to typecast it to <code>UILabel</code>.</p> <pre><code>var yourLabel : UILabel = yourView.viewWithTag(yourTag) as UILabel; </code></pre>

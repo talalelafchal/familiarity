@@ -1,0 +1,2 @@
+Save matrices of a loop to reuse them
+<p>I have a loop which creates me 11 special <code>oxo</code> matrices.</p> <pre><code>for i=1:1:11 %create the special matrices called D_i D_i end </code></pre> <p>And now I am trying to save this matrices to reuse them in another program</p> <pre><code>A = cat(1,NaN(o),D_1,D_2,D_3,D_4,D_5,D_6,D_7,D_8,D_9,D_10,NaN(o),D_11,NaN(o),NaN(o)) </code></pre> <p>How can I do that?</p> <p>Thank you for your help.</p>

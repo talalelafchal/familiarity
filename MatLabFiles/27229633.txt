@@ -1,0 +1,4 @@
+how can i turn off the check model before generating code programatically
+<p>I want to turn on/off the parameter check model before generating code (shown below) through Matlab script. how can I achieve this? I am not finding the parameter name for that property.Any kind of help is appreciated.</p> <p><img src="https://i.stack.imgur.com/svX6j.jpg" alt="enter image description here"></p> <p>Usually when I want to change a model parameter name I use this code. Ex: want to set the Signal Range Checking parameter to warning.</p> <pre><code>set_param(test.mdl, 'SignalRangeChecking','warning'); </code></pre> <p>So is there a property for check model before generating the code?</p>
+<p>I think this is what you're looking for :</p> <pre><code>set_param(yourModelName, 'CheckMdlBeforeBuild', 'OFF'); </code></pre>
+<p>right-click on it and use the Context Menu to get the parameter name - @am304</p>

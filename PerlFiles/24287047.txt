@@ -1,0 +1,3 @@
+Print array multiple variables
+<p>Kindly advice I am unable to print value of a ,b &amp;c </p> <pre><code>my @array = qw($a,$b,$c); push(@new_array ,@array); for my $x (@new_array) { DEBUG(" DEBUG : $x); } </code></pre> <p>It showing me $a,$b,$c instead of there values. </p> <p>Thanks,</p>
+<p>The <code>qw</code> operator creates a list of strings. It quotes words, so it's "qw".</p> <pre><code>my @array = qw( x y z ); </code></pre> <p>is exactly the same as</p> <pre><code>my @array = ( 'x', 'y', 'z' ); </code></pre> <p>Your line:</p> <pre><code>my @array = qw($a,$b,$c); </code></pre> <p>is saying</p> <pre><code>my @array = ( '$a,$b,$c' ); </code></pre> <p>What you want is to drop the <code>qw</code>.</p> <pre><code>my @array = ( $a, $b, $c ); </code></pre>

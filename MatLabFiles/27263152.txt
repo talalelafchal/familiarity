@@ -1,0 +1,3 @@
+octave errors for columns that don't exist
+<p>I am trying to run the following script in octave: </p> <p>I write this script in notepad and save it as rectsin.m</p> <pre><code>t = linspace(0, 10, 100); y = abs(sin(t)); plot(t,y); title('Rectified Sine Wave'); xlabel('t'); </code></pre> <p>I then try to call it in octave using the command</p> <pre><code>rectsin </code></pre> <p>but I get the following error:</p> <pre><code>'rectsin' undefined near line 9 column 1 </code></pre> <p>now sure what to do here, any ideas as to what causes this ?</p>
+<p>Do you really have a function called <code>labelx('t');</code>. I think it should be <code>xlabel('t');</code></p>

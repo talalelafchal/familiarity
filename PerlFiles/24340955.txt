@@ -1,0 +1,3 @@
+Determine whether $ARGV[X] is passed a string or a file in perl.
+<p>Is there a way, other than checking for suffixes? Or should I stick with checking for .txt? </p>
+<p><code>@ARGV</code> is just a list of command-line arguments provided to the script, see <a href="http://perldoc.perl.org/perlvar.html">perlvar</a></p> <p>If you want to know whether one of those arguments is a file, you probably want <code>-e</code>, see <a href="http://perldoc.perl.org/functions/-X.html">file tests</a></p> <p>If you expect the first argument to be a filename, something like:</p> <pre><code>my $filename = shift @ARGV; die "script.pl FILENAME expected" unless -e $filename; </code></pre>

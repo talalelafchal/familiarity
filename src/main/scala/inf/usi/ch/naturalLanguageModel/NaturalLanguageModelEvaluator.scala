@@ -45,15 +45,20 @@ object NaturalLanguageModelEvaluator {
     tokenBuffer.toList.sliding(nGram).toList.map(x => x.mkString(" "))
   }
 
-  def getAverageProb(nGramList: List[String], languageModel: CompiledTokenizedLM): Double = {
+  def getProb(nGramList: List[String], languageModel: CompiledTokenizedLM): Double = {
     val probList = nGramList.map(x => languageModel.log2Estimate(x))
-    probList.sum / probList.size
+    probList.sum
   }
 
-  def getAverageProbListFiles(compiledTokenizedLM: CompiledTokenizedLM, nGram: Int, numberOfFiles: Int, testListFileName: String, stormedDataPath: String): List[Double] = {
+  def getAllNgramProb(nGramList: List[String], languageModel: CompiledTokenizedLM): List[Double] = {
+    val probList = nGramList.map(x => languageModel.log2Estimate(x))
+    probList
+  }
+
+  def getProbListFiles(compiledTokenizedLM: CompiledTokenizedLM, nGram: Int, numberOfFiles: Int, testListFileName: String, stormedDataPath: String): List[Double] = {
     val testingListOfAllFilesName = new File(testListFileName)
     val testingSet: List[String] = Source.fromFile(testingListOfAllFilesName).getLines().toList.take(numberOfFiles)
-    testingSet.map(file => getAverageProb(nGramList(jsonFileToText(file, stormedDataPath), nGram), compiledTokenizedLM))
+    testingSet.map(file => getProb(nGramList(jsonFileToText(file, stormedDataPath), nGram), compiledTokenizedLM))
   }
 
 

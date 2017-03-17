@@ -1,0 +1,4 @@
+What is the best way to insert a character into a string in Perl?
+<p>What is the best way to insert a character into a string at multiple positions in Perl? I have a string in which I have removed any non-numeric characters. After that, I want to insert a dash at the 4th position and 8th position starting from the end. You guessed it, I'm modifying all inputted phone numbers so that they all have the same format: XXX-XXX-XXXX</p> <pre><code>$number =~ s/[^0-9]//g; substr($number, -4, 0, '-'); substr($number, -8, 0, '-'); </code></pre> <p>Is there a regex that can do the above code but in a single line? Is there something more efficient out there that I don't know about?</p> <p>Thanks in advance!</p>
+<p>Not sure about performance, but <code>unpack</code>-and-<code>join</code> also works: </p> <pre><code>join( '-', unpack 'A3 A3 A4', $number ) </code></pre>
+<p>This also works:</p> <pre><code>$number =~ s/(...)(...)(....)$/$1-$2-$3/ </code></pre>

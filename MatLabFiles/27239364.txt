@@ -1,0 +1,2 @@
+Matlab: Number of lines in a different kind of file
+<p>This is my code so far:</p> <pre><code>text = uigetfile ('.txt'); newName = input ('Please name your new file: ', 's'); delimiter = ' '; someText= importdata (text, delimiter); [text] = strtok (text, '.'); save (strcat(text,'.format'), 'someText' ) </code></pre> <p>For example: <code>newName = something</code> I wish to go through the file <code>something.format</code> and determine the number of lines. Keep in mind that that file is only text, one word per line.</p>

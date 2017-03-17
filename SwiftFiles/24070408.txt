@@ -1,0 +1,7 @@
+CGPointMake in Swift
+<p>How to use <code>CGPointMake</code> in <code>Swift</code>? Is there an equivalent for it? I am getting an error:</p> <blockquote> <p>Use of unresolved identifier 'CGPointMake'</p> </blockquote> <p>Basically, I am trying to assign a position to a Sprite Kit node and cannot figure out how to do it in Swift.</p> <pre><code>class PlayerSpaceship: Spaceship { func launchMissile() { var missile = Missile.playerMissile() // This line gives above mentioned error. missile.position = CGPointMake(0.0, 0.0) } } </code></pre>
+<p>Use <code>CGPoint(x: Float, y: Float)</code></p>
+<p>You call it a little differently, without the make. </p> <pre><code>CGPoint(x: 10, y: 20) </code></pre>
+<p>Or also, you can use <strong>CGFloat</strong> type for CGPoint</p> <pre><code> CGPoint(x: CGFloat, y: CGFloat) </code></pre>
+<p>In the code it should looks like this (XCode 6.1):</p> <pre><code>let point: CGPoint = CGPoint(x:10,y:10) </code></pre>
+<p>Xcode 6.3.1 shows 4 different Swift initializers for CGPoint. They are:</p> <pre><code>CGPoint() CGPoint(x: CGFloat, y: CGFloat) CGPoint(x: Double, y: Double) CGPoint(x: Int, y: Int) </code></pre>

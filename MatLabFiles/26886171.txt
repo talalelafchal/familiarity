@@ -1,0 +1,3 @@
+Is it possible that adding noise to a signal can increase detection possibility?
+<p>I am simulating a feature detector in noisy environment which consist of AWGN Noise and Impulsive Noise. But I am getting a strange result as Signal with Impulsive+AWGN noise has better detection probability then with Signal with only AWGN. I know its wrong at some point. How Is it possible that signal with more noise like Impulsive noise has better detection possibility. Please share your experience.</p>
+<p>Yes, this is possible in case of stochastic resonance (<a href="http://en.wikipedia.org/wiki/Stochastic_resonance" rel="nofollow">http://en.wikipedia.org/wiki/Stochastic_resonance</a>)</p>

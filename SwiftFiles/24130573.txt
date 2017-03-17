@@ -1,0 +1,2 @@
+How to determine if a variable is instance of a class in Swift programming language?
+<p>Let's say I have a variable that I want to check if it's an instance of a class. How can I do that in Swift?</p> <pre><code>class Car { var name:String = "" } var c = Car() if /* c is an instance of Car */ { // code } </code></pre>

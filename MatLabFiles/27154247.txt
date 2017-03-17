@@ -1,0 +1,5 @@
+Matlab: passing number to title
+<p>I want to do anotation in matlab plot in a loop. In particular, I have </p> <p><code>num=[2 20 50 60 70]</code></p> <p>and I want to do </p> <pre><code>figure; hold on; plot(1:20,x^2); for i=1:length(num) text(i,2,'num is {num(i)}','FontSize',10) </code></pre> <p>However, when I do <code>num is {num(i)}</code> it doesn't give me this in the matlab plot. How do I pass the argument onto the plot?</p>
+<p>Or as an alternative using <a href="http://www.mathworks.com/help/matlab/ref/sprintf.html?refresh=true" rel="nofollow">sprintf</a>. You can play with the format of the output as well.</p> <pre><code>text(i,2,sprintf('num is %d',num(i)),'FontSize',10) </code></pre>
+<p>The problem is with the curly braces "{}". MATLAB does not interpret text inside curly braces as a variable name, as PHP do!</p> <p>Try this: </p> <pre><code>x = 1:5; y = x.^2; figure plot(x, y); for i=1:length(x) pointLabel = ['P(' num2str(x(i)) ', ' num2str(y(i)) ')']; text(x(i), y(i), pointLabel, 'FontSize', 10); end </code></pre>
+<p>This is what you need:</p> <pre><code>text(i,2,['num is ' num2str(num(i))],'FontSize',10) </code></pre>

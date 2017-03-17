@@ -1,0 +1,3 @@
+How can I create a vector from data?
+<p>I used matlab to solve linear programming with the common [x, fval] = linprog(f,a,b) and I got the solution. My problem is I want to find the binary vector for the variables(x), for example, the values of (x) after I solve the linear problem were 13,0, 8,0,5,8,0,4,0,0 and I would like to obtain the vector(h) 1,0,1,0,1,1,0,1,0,0 which is represents the binary vector for x. I mean when the value of x greater than 0 we put in h 1 and when the value of x less than or equal 0 put 0 in the vector h?</p> <p>Thanks.</p>
+<p>What about </p> <pre><code>binvect=x&gt;0; </code></pre> <p>In Matlab it is as easy as doing that, he will do give you a vector of all the x that fill the condition (>0)</p>

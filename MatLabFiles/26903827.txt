@@ -1,0 +1,4 @@
+Matlab convert form hex to float
+<p>I'm working with a device that send to me hex values, and I need convert those values to his real float value. Someone know how to convert from hex values to float in matlab?</p> <p>Thx</p>
+<p>Take a look at <a href="http://www.mathworks.com/help/matlab/ref/hex2dec.html" rel="nofollow">hex2dec</a>, to convert your hex to decimal.</p> <p>Hex format is inherently integer (the floating point position is not defined), so you will have to give more info: Does the hex represent a mantissa-exponent floating point number? Does it represent a fixed-point number?</p>
+<p>the hex represent a mantissa-exponent floating point number. for exemple 0x44ADE000 equal to 1391.0</p>

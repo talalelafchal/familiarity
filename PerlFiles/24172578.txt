@@ -1,0 +1,2 @@
+How to use command make in Windows7?
+<p>I am trying to encode and decode JSON objects using Perl. According to one of the tutorials I found online I need a command make to install JSON module. I have downloaded make and installed it. I added make.exe to my path, but still command windows does not recognized it. Can anyone help me please? . </p>

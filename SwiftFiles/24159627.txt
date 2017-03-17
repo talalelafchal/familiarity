@@ -1,0 +1,3 @@
+Swift - Convert to absolute value
+<p>is there any way to get absolute value from an integer?<br> for example </p> <pre><code>-8 to 8 </code></pre> <p>I already tried to use UInt() assuming it will convert the Int to unsigned value but it didn't work.</p>
+<p>Standard <code>abs</code> method works great here</p> <pre><code>var c = -8 println(abs(c)) // 8 </code></pre>

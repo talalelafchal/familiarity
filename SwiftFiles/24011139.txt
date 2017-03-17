@@ -1,0 +1,4 @@
+Cross Plattform build target for OS X and iOS with Swift?
+<p>Is it possible to generate OS X and iOS binaries from one same swift source code file in Xcode 6? And if yes, how?</p>
+<p>Yes. The way you share Swift code between multiple targets in a project is no different from how you share ObjC code.</p> <p>For an example, see the new <a href="https://developer.apple.com/library/prerelease/ios/samplecode/Lister-Swift/Introduction/Intro.html#//apple_ref/doc/uid/TP40014512" rel="nofollow">Lister app sample code in the developer library</a>. That project builds an OS X app and an iOS app, and for each platform it builds the app, a Notification Center Today View extension, and a bundled framework supporting both.</p>
+<p>Yes, definitely. See WWDC 2014 Session 233 (Friday 9 am) or check out the <a href="https://developer.apple.com/library/ios/featuredarticles/XcodeConcepts/Concept-Targets.html" rel="nofollow">documentation on Xcode targets</a>. (h/t uchuugaka)</p>

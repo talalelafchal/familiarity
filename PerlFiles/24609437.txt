@@ -1,0 +1,3 @@
+How to Convert â€™ to apostrophe(') in Perl
+<p>I am getting weird characters like ** â€™** and I need to convert it into apostrophe(') and other characters also . Please help on this. How can I decode or encode these charaters </p>
+<p><code>â€™</code> is what the UTF-8 encoding of U+2019 RIGHT SINGLE QUOTATION MARK (’)<sup>[1]</sup> appears when viewed as Windows-1252.</p> <p>Sounds like you should be encoding your output using Windows-1252 instead of UTF-8.</p> <hr> <ol> <li>Not U+0027 APOSTROPHE (').</li> </ol>

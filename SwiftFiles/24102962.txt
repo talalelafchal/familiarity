@@ -1,0 +1,3 @@
+Why does fromRaw() return nil when I use a variable as an argument?
+<p>When I use fromRaw on an enumerator with a variable that is assigned at compile time, like so:</p> <pre><code>int i = 3; let tmpRank = Rank.fromRaw(i); </code></pre> <p>It works as expected. However, if I try the same thing in a for loop, like so:</p> <pre><code>for i in 0..3 { let tmpRank = Rank.fromRaw(i); } </code></pre> <p>It doesn't work, and my playground returns nil for this line. What am I doing wrong?</p>
+<p>If you are using the Rank enum that was used in the swift book, there is no case that has a raw value of 0. </p> <pre><code>for i in 1..3 { let tmpRank = Rank.fromRaw(i); println(tmpRank) } </code></pre> <p>That returns all enum values.</p>

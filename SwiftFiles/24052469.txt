@@ -1,0 +1,6 @@
+Swift Placeholder issue
+<p>I have this code</p> <pre><code>var i = 1 println(i) //result is 1 println(%02i) //is wrong </code></pre> <p>I want it to output 01 instead of 1</p>
+<p>Unfortunately, you can't format swift strings like that (as far as I know.) You can try to use an NSString though. </p> <pre><code>println(NSString(format:"%02i", i)) </code></pre>
+<p>This is it </p> <pre><code>var i = 1 NSLog("%02d", i) </code></pre> <p>O/P - 01</p>
+<pre><code>var i = 1 println("0\(i)") //01 </code></pre>
+<p>Your best bet is still going to be NSString formatting:</p> <pre><code>var i = 3 println("someInt is now \(i)") // prints "someInt is now 1" println(NSString(format:"%.2f",i)) // prints "someInt is now 01" </code></pre> <p>May be this help you.</p>

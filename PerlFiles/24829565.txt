@@ -1,0 +1,3 @@
+Win32::Job spawn error with use strict
+<p>The following:</p> <pre><code> $job-&gt;spawn($Config{$console_path}, $command, new_group); </code></pre> <p>Spawns the new process. The following:</p> <pre><code> $job-&gt;spawn($command, new_group); </code></pre> <p>Does not, even though %config does not exist.</p>
+<p>You should probably use it like this instead:</p> <pre><code>$job = Win32::Job-&gt;new; $job-&gt;spawn($CAD_command, new_group); </code></pre> <p>Using <code>use strict</code> in your code is generally good practice.</p>

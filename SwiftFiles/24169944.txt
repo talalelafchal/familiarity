@@ -1,0 +1,3 @@
+const unsigned char ptr (UnsafePointer&lt;CUnsignedChar&gt;) to String
+<p>I'm trying to work with libxml directly in Swift. Now I want to get a <code>const unsigned char *</code> to a String, but I don't know how. Any ideas?</p> <p>In Objective-C it works with</p> <pre><code>[NSString stringWithUTF8String:(const char*)nodePointer-&gt;name]; </code></pre>
+<p>Have you tried:</p> <pre><code>let cString = CString(nodePointer.name) let string = String.fromCString(cString) </code></pre> <p>That worked for me when dealing with a string value which was returned as an <code>UnsafePointer&lt;CUnsignedChar&gt;</code> when nothing else would work.</p>

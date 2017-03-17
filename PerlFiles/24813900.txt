@@ -1,0 +1,5 @@
+How do i get the rest of the digits?
+<pre><code>Campus: Fairlane North Building: testtesttest 5850 Mercury Dr Floor: Floor 01 Common Area </code></pre> <p>Given the above test I want to extract "5850 Mercury"</p> <p>I have tried <code>/Building:.*(\d+\s\w+)/</code></p> <p>Which gets me <code>0 Mercury</code></p> <p>How do i get the rest of the digits? The number of digits can range from 1 to 6. </p> <p>Thanks for the help.</p>
+<p>How about this regex:</p> <pre><code>\b\d+\s\w+ </code></pre> <p><a href="http://regex101.com/r/nW9kX2/2" rel="nofollow"><strong>Online Demo</strong></a></p>
+<p>You can do the following.</p> <pre><code>\b(\d{4} \w+) </code></pre>
+<p>Three methods.</p> <ol> <li><p>Use non-greedy matching <code>.*?</code> instead of greedy matching <code>.*</code></p> <pre><code>/Building:.*?(\d+\s\w+)/ </code></pre></li> <li><p>Impose a word boundary <code>\b</code> to ensure you match the full number:</p> <pre><code>/Building:.*(\b\d+\s\w+)/ </code></pre></li> <li><p>Change from the any character <code>.</code> to non-digits <code>\D</code>:</p> <pre><code>/Building:\D*(\d+\s\w+)/ </code></pre></li> </ol>

@@ -1,0 +1,3 @@
+MATLAB plotting syntax error?
+<p>I watched a video titled "Writing a matlab program" and tried to use the syntax exactly, yet I still can't see how I've made an error...can you please help?</p> <p>My code is simply </p> <pre><code>x= [-10:0.1:10]; y=2x^2-x + 1; plot (x,y) </code></pre> <p>I'm getting a parse error at x and I have no idea what that means..</p>
+<p>Matlab cannot parse <code>2x</code>. Multiplication requires the <code>*</code> symbol. Either <code>*</code> or <code>.*</code> will work in this case. </p> <p>Your <em>next</em> problem will be the use of <code>^</code> instead of <code>.^</code> —this time you're going to have to include the dot. Google for "elementwise" operators in matlab to understand what difference the dot makes. </p>

@@ -1,30 +1,30 @@
 library(plotly)
 setwd("/Users/Talal/Tesi/familiarity/R")
 
-#Natural Language
-androidCrossValidation <- read.csv("CrossValidation/androidCrossValidation.csv")
-swingCrossValidation <- read.csv("CrossValidation/swingCrossValidation.csv")
+#CrossValidation
+androidBiLMValidation <- read.csv("BiLMValidationSum/androidBiLMValidationSum.csv")
+swingBiLMValidation <- read.csv("BiLMValidationSum/swingBiLMValidationSum.csv")
 
-# Code
-androidCode <- read.csv("Code/androidCodePbAV3Gram1000Files.csv")
-swingCode <- read.csv("Code/swingCodePbAV3Gram1000Files.csv")
+#
+android <- read.csv("androidPbAV3Gram10000FIles.csv")
+swing <- read.csv("swingPbAV3Gram10000Files.csv")
 
 p <- plot_ly(type = 'box') %>%
-  add_boxplot(y = androidNL$probability[1:1000],
+  add_boxplot(y = android$probability[1:1000],
               line = list(color = 'rgb(7,40,89)'),
-              name = "Android NL") %>%
-  add_boxplot(y = swingNL$probability[1:1000], 
-              name = "Swing NL",
+              name = "Android UniLM ") %>%
+  add_boxplot(y = swing$probability[1:1000], 
+              name = "Swing UniLM",
               marker = list(color = 'rgb(107,174,214)'),
               line = list(color = 'rgb(107,174,214)')) %>%
-  add_boxplot(y = androidCode$probability[1:1000],
+  add_boxplot(y = androidBiLMValidation$probability[1:1000],
               line = list(color = 'rgb(7,40,89)'),
-              name = "Android Code") %>%
-  add_boxplot(y = swingCode$probability[1:1000], 
-              name = "Swing Code",
+              name = "Android BiLM") %>%
+  add_boxplot(y = swingBiLMValidation$probability[1:1000], 
+              name = "Swing BiLM",
               marker = list(color = 'rgb(107,174,214)'),
               line = list(color = 'rgb(107,174,214)')) %>%
-  layout(title = "NL vs Code")
+  layout(title = "UniLM vs BiLM")
 p
 
-chart_link = plotly_POST(p, filename="code-NL-Android-Swing")
+chart_link = plotly_POST(p, filename="crossEvaluation")

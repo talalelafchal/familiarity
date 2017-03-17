@@ -1,0 +1,4 @@
+How to turn on the network indicator in the iOS status bar?
+<p>I am aware there is more than one of these indicators. Thanks.</p>
+<pre><code>[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES]; </code></pre>
+<p><strong>Swift</strong></p> <pre><code>UIApplication.sharedApplication().networkActivityIndicatorVisible = true </code></pre> <p><strong>Swift 3, XCode 8</strong> (Thanks @sasho)</p> <p><code>UIApplication.shared.isNetworkActivityIndicatorVisible = true</code></p>

@@ -1,0 +1,3 @@
+What is the equivalent of &quot;#pragma mark -&quot; in swift?
+<p>I want to organize my code by sections. usually I used <code>#pragma mark - Section Name</code> but when I try to do so in a .swift file it doesn't work.</p> <p>So my question is if I can somehow enable it and if not what is the way to organize my code in sections in a .swift file?</p>
+<p>Use something like that: </p> <pre><code>// MARK: - UITableViewDataSource </code></pre> <p>Or use <code>extensions</code>: I love the way how <code>UITableViewDataSource</code> delegate is implemented <a href="http://stackoverflow.com/questions/24017316/pragma-mark-in-swift">in this answer</a></p>

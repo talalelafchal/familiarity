@@ -1,0 +1,4 @@
+Check Odd &amp; Even numbers in Swift (iOS)
+<p>I have an array of numbers typed Int. I want to loop through the numbers list to get Odd &amp; Even numbers in Swift programming language (iOS8). Modulus (%) operator is not working here neither the dividend (/) operator. I don't know how will calculate it?</p> <p>Thanks in advance.</p>
+<pre><code>if your_number % 2 == 0 { //even Number } else { // Odd number } </code></pre> <p>taken from <a href="https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/BasicOperators.html#//apple_ref/doc/uid/TP40014097-CH6-XID_70" rel="nofollow">here</a></p>
+<pre><code>var myArray = [23, 54, 51, 98, 54, 23, 32]; for myInt: Int in myArray{ if myInt % 2 == 0 { println("\(myInt) is even number") } else { println("\(myInt) is odd number") } } </code></pre>

@@ -1,0 +1,2 @@
+creating a matrix,whose size is similar to a given matrix but all elements are identical
+<p>I have a n/n matrix A.</p> <p>Now I want to create a new matrix B which has same size as A but with all 2.</p> <p>Example : </p> <p>If <code>A = [ 1 2 3; 4 5 6; 7 8 9 ]</code>, B becomes <code>B = [ 2 2 2; 2 2 2; 2 2 2 ]</code> .</p>

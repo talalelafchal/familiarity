@@ -1,0 +1,4 @@
+resignFirstResponder in Swift
+<p>How can I implement it in the new language of Apple:</p> <h3>Objective-C code:</h3> <pre><code>- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event { for (UIView *view in self.view.subviews) [view resignFirstResponder]; } </code></pre> <p>I have tried to do so. But the keyboard does not disappear:</p> <h3>Swift code:</h3> <pre><code>override func touchesBegan(touches: NSSet, withEvent event: UIEvent) { super.touchesBegan(touches, withEvent: event) self.view.resignFirstResponder() } </code></pre>
+<p>You could probably go with:</p> <pre><code>self.view.endEditing(true) </code></pre>
+<p>Try this </p> <pre><code>self.view.endEditing(true) </code></pre>

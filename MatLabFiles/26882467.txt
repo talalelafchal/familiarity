@@ -1,0 +1,3 @@
+Change filename in Matlab based on parameter
+<p>I want to run my codes for different people. I dedicated a number to each person to save the results.</p> <p>How can I change the filenames by changing one parameter, to avoid changing the filename in several places. The code is here:</p> <pre><code>patient_num = 2; ImagesOutputPath = fullfile([MyFilesPath,'\ImagesOutput_P_2']); save segmented_img_P_2.mat Segmented_img save volume_P_2.mat volume save time_P_2.mat tEnd </code></pre>
+<p>Do you need something like this?:</p> <pre><code>patient_num = 2; ImagesOutputPath = fullfile([MyFilesPath,'\ImagesOutput_P_', num2str(patient_num)]); save(['segmented_img_P_', num2str(patient_num), '.mat'], 'Segmented_img') </code></pre>

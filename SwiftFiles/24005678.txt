@@ -1,0 +1,4 @@
+What is the equivalent of an Objective-C id in Swift?
+<p>I'm trying to use an @IBAction to tie up a button click event to a Swift method. In Objective-C the parameter type of the IBAction is id. What is the equivalent of id in Swift?</p>
+<p>AnyObject, if you know the sender is never nil.</p> <pre><code>@IBAction func buttonClicked(sender : AnyObject) { println("Button was clicked", sender) } </code></pre> <p>AnyObject?, if the sender could be nil.</p> <pre><code>@IBAction func buttonClicked(sender : AnyObject?) { println("Button was clicked", sender) } </code></pre>
+<p>AnyObject</p> <p>Other mapping type, </p> <blockquote> <p>Remap certain Objective-C core types to their alternatives in Swift, like NSString to String</p> <p>Remap certain Objective-C concepts to matching concepts in Swift, like pointers to optionals</p> </blockquote>

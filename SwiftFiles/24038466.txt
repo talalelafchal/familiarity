@@ -1,0 +1,4 @@
+Loading c dylib
+<p>How can I import a c dynamic library (.dylib) into Swift? I want to use libxml2.dylib. I added it as a framework to my project, but I can't use it.</p> <p><code>import libxml</code> says: <code>No such module</code></p>
+<p>In order to use C functionality functions in Swift, they must be exposed via an Objective-C wrapper and a bridging header. See also <a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/BuildingCocoaApps/InteractingWithObjective-CAPIs.html#//apple_ref/doc/uid/TP40014216-CH4-XID_26" rel="nofollow">the Apple interop documentation</a>.</p>
+<p>You need to </p> <pre><code> #import &lt;libxml/tree.h&gt; #import &lt;libxml/parser.h&gt; </code></pre> <p>into [YOUR-APP]-Bridging-Header.h</p>

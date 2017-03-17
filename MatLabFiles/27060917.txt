@@ -1,0 +1,2 @@
+Why should I use SFUNPRINTF?
+<p>I was going through a .cpp file which is the source for a MATLAB S-Function and I noticed that to print on the "console" the programmer wrote:</p> <pre><code>SFUNPRINTF("Text I want to print on the console"); </code></pre> <p>While I would have done:</p> <pre><code>printf("Text I want to print on the console"); </code></pre> <p>Could you explain me the difference ? Is it just something particular of this code or is it some kind of instruction that I am not able to find online?</p> <p>thanks for your help.</p>

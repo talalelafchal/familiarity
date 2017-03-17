@@ -1,0 +1,5 @@
+Do I need to install Yosemite in order to build a Swift iOS app?
+<p>I would like to try building a swift app, but I am afraid to upgrade my Mac to Yosemite Developer Preview. I am not clear if this is a prerequisite.</p>
+<p>It's not a prerequisite. You can install the XCode 6 beta which includes swift support as long as you have the newest version of Mavericks (10.9.3)</p>
+<p>No. I am using Mavericks (10.9.3), and Xcode6 beta is working well, and built program is also working well.</p>
+<p>Just to get the official source in here, the <a href="http://adcdownload.apple.com//wwdc_2014/xcode_6_beta_ie8g3n/xcode_6_beta_release_notes.pdf">Xcode 6 Beta 1 Release Notes</a> state:</p> <blockquote> <p>Xcode 6 Beta requires a Mac running OS X version 10.9.3 (or later) or 10.10.</p> </blockquote> <p>And Xcode 6 comes bundled with Swift.</p>

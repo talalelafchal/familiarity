@@ -1,0 +1,3 @@
+Reading pList in swift
+<p>Has anyone figured out how to read a plist into an array or dictionary in Swift? I cannot seem to figure it out. I am used to dictionaryWithContentsOfFile however that doesn't seem to be available in swift.</p>
+<p>See the answer to this question: <a href="http://stackoverflow.com/questions/24045570/swift-read-plist">Swift - Read plist</a></p> <pre><code>let path = NSBundle.mainBundle().pathForResource("Config", ofType: "plist") let dict = NSDictionary(contentsOfFile: path!) </code></pre>

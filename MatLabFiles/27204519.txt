@@ -1,0 +1,3 @@
+MATLAB: Is it possible to use a file as an input on a function?
+<p>I used uigetfile to let the user choose a file. And I saved said file on the matlab path. The thing is, I do not know the name of the file, only the extension. Imagine the file extension is '.something'. How will I use it as a input argument in a function? Thanks!</p>
+<p>If a specific directory is known, one can get the list of files with a proper extension by using:</p> <pre><code>a=dir('*.something') </code></pre> <p>This function returns an array of structures, each structure describes a single file (name, date etc.). From the structures it is easy to extract the file name by <code>a(num_of_file).name</code></p>

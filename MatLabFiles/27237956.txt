@@ -1,0 +1,3 @@
+Range of numbers repeating in an array matlab
+<p>How can I have range of numbers repeating in an array in MATLAB for certain number of times?</p> <p>For instance, if I want the range of numbers from 1:5 repeated 100 times all stored in one array; what is the code for it?</p> <p>A = [1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,........]</p> <p>Thanks</p>
+<p>Use <a href="http://au.mathworks.com/help/matlab/ref/repmat.html" rel="nofollow"><code>repmat</code></a> to repeat vectors or matrices.</p> <pre><code>N=5 M=100 A=repmat(1:N,1,M) </code></pre>

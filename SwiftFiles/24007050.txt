@@ -1,0 +1,4 @@
+Swift with iOS 5 deployment target
+<p>What is the minimum deployment target for Xcode 6 and the new Swift language? Specifically, can I still support iOS 5.0?</p>
+<p>Swift is supported on devices running iOS 7 or later.</p>
+<p><a href="https://twitter.com/jckarter/status/473539096065736705" rel="nofollow noreferrer">From one of the engineers working on Swift</a>, iOS 7, Mavericks and later:</p> <p><a href="https://i.stack.imgur.com/HQv9A.png" rel="nofollow noreferrer"><img src="https://i.stack.imgur.com/HQv9A.png" alt="enter image description here"></a></p>

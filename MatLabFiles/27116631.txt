@@ -1,0 +1,2 @@
+MATLAB: Not enough input arguments
+<pre><code>function newv = fun(colv) sm = size(colv); if(sm(2) ~= 1) error('This function works only for column vectors'); end newv = [colv;colv]; end </code></pre> <p>Hi guys I'm a noob in matlab world. I'm trying to try out an example about vector practice. The code above gives a following error:</p> <blockquote> <p>> Error using Lab1Problem9 (line 3) Not enough input arguments.</p> </blockquote> <p>Is there any syntactical error I'm overlooking?</p> <p>I'd appreciate your input ,</p> <p>Thanks</p>

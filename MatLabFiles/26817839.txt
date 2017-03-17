@@ -1,0 +1,3 @@
+How to copy Cells from one excel file to another in MATLAB
+<p>I am a beginner in MATLAB .I have one excel sheet like this</p> <pre><code>excelsheet1.xlsx = Name Age Tom 20 Dick 15 Harry 25 </code></pre> <p>Now i want to copy the column A from excelsheet1.xlsx and make another excel file like this</p> <pre><code>excelsheet2.xlsx = Name Age_after_5_years Tom 25 dick 20 Harry 30 </code></pre> <p>Please help me . Thanks in advance</p>
+<p>Assuming that <code>Name</code> and <code>Age</code> were on two different columns - <code>A</code> and <code>B</code>, see if this works for you -</p> <pre><code>[~,~,raw] = xlsread('excelsheet1.xlsx') raw{1,2} = 'Age_after_5_years' raw(2:end,2) = num2cell(cell2mat(raw(2:end,2))+5) xlswrite('excelsheet2.xlsx',raw(:,1:2)) </code></pre>

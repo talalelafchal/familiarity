@@ -1,0 +1,3 @@
+Dynamic variable value?
+<p>perl code:</p> <pre><code>my %config = ( randValue =&gt; int(rand(10)), ); print $config{ randValue }."\n"; print $config{ randValue }."\n"; </code></pre> <p>will produce:</p> <pre><code>8 8 </code></pre> <p>Is it possible to get different value each time? (execute <code>int(rand(10))</code> each time the <code>$config{ randValue }</code> is called)</p>
+<p>You can either use <a href="http://perldoc.perl.org/perltie.html#Tying-Hashes">tied hash</a>, or function:</p> <pre><code>my %config = ( randValue =&gt; sub { int(rand(10)) }, ); print $config{randValue}-&gt;(); print $config{randValue}-&gt;(); </code></pre>

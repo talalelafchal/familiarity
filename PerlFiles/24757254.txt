@@ -1,0 +1,3 @@
+Use of uninitialized value in sprintf
+<p>I have a code like:</p> <pre><code>my ($line_1, $line2); </code></pre> <p>variables <code>$line_1</code> and <code>$line_2</code> are getting values from other function, that may be a <strong>defined or undefined</strong> value.</p> <p>Now I am getting an error like <code>" Use of uninitialized value"</code> evenafter i have initialised like</p> <blockquote> <p>$line_1 = " " if(!$line_1);</p> </blockquote> <p>PLease help me in this</p>
+<p>To check for the definedness (whether it is <code>undef</code> or not) of a variable, use the <a href="http://perldoc.perl.org/functions/defined.html" rel="nofollow"><code>defined</code></a> operator.</p> <p>If you still get the warning, perl is right and your code is wrong. No magic here.</p>

@@ -1,0 +1,5 @@
+Iteratively delete elements from array
+<p>I have an array, <code>@cuts</code>, of indices of the elements that I would like to remove from <code>@Data</code>. Is this an appropriate way to do so? </p> <pre><code>foreach (@cuts){ $Data[$_] = "NULL"; } for my $i (0 .. $#Data){ if ($Data[$i] eq "NULL"){ splice(@Data,$i,1); } } </code></pre>
+<p>Combining @toolic and @user2752322:</p> <pre><code>delete @Data[@cuts]; my @newData = grep { defined } @Data; </code></pre>
+<p>You don't need to use a sentinel value (<code>"NULL"</code>).</p> <pre><code>my %cuts = map { $_ =&gt; 1 } @cuts; my @keeps = grep !$cuts{$_}, 0..$#Data; @Data = @Data[@keeps]; </code></pre> <p>This can surely be simplified by merging it with the preceding code.</p>
+<pre><code>my @newData = grep { !/^NULL\z/ } @Data; </code></pre>

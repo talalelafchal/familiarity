@@ -1,0 +1,3 @@
+Perl Biomart timeout error
+<p>I'm using Biomart Perl API to download data from web serwer. Sometimes I get error message: Problems with the web server: 500 read timeout. Is it possible to somehow catch this error and try to download file again?</p>
+<p>Are you reading this via a Perl command or module command? Or shelling to an external program? Because there are different Perl error variables for all those. </p> <pre><code># $@ = error from Perl # $! = error from C library # $^E = error from OS # $? = error from external program eval { read command; more stuff; }; # Notice semicolon here! if ($@) {print "ERROR: $@\n"; } </code></pre>

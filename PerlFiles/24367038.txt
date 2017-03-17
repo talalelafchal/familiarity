@@ -1,0 +1,4 @@
+How to find out the HTTP method of the current request?
+<p>I have no idea how to get the HTTP headers with Mason. I only know that $m is the Mason Request Class.</p>
+<p>You could try:</p> <pre><code>$ENV{'REQUEST_METHOD'} </code></pre>
+<p>Mason itself doesn't deal with HTTP as it is essentially just a templating system. The HTTP transport would be handled by <code>Plack</code> through say <code>Poet</code> or <code>Catalyst</code>, and that's where you should obtain the headers from. But as you haven't mentioned what you're using alongside of Mason, I can't tell you where to look.</p>

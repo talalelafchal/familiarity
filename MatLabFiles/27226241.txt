@@ -1,0 +1,2 @@
+MATLAB GUI Table User Input as a letter (or string)
+<p>I have a MATLAB GUI uitable (table) where I want the first row to be names and the rest as x y z coordinates.</p> <p>I have set all zeros initially which is fine. I made it enable for user inputs and its fine when I write a number. However, I want it to 'read' letters as well. (For the first row). Also I will get that matrix data and process it forward.</p> <p>Do you know how to do this?</p>

@@ -1,0 +1,3 @@
+Can I tell perl to emit an alarm/signal when runtime exceeds a certain time limit without exiting?
+<p>I'm trying to set an alarm type call that lets me know if my program runs for longer than 10 minutes I want the program to keep running after it sends the alarm or signal. I thought I could do the following code but the program stops when the run time hits ten minutes.</p> <pre><code>eval{ local $SIG{ALRM} = sub { die "alarm\n"; }; alarm (600); --code--- alarm 0; }; if($@){ print "\Its been ten minutes\n"; } </code></pre> <p>I want the application to notify me but to continue running.</p>
+<p>Don't die on alarm and you'll be fine,</p> <pre><code>local $SIG{ALRM} = sub { print "Its been ten minutes\n"; }; </code></pre>

@@ -1,0 +1,3 @@
+How can I access the photo library in iOS?
+<p>Is there any way to jump into photo library ? I'm not asking about <code>UIImagePicker</code>. In original camera app of iPhone, when I touch a thumbnail of one of the last photos (at the bottom left corner), it goes into photo library (actually, camera roll). Is that private API or can i use it somehow? Well, I think I can implement that using ALAsset but I'm just wondering if there is any API</p>
+<p>I believe you can launch the photo app, in order to view it as you would normally. However you cannot return to your app after launching the photo library.</p> <p>You'll need to launch <code>com.apple.camera</code></p>

@@ -1,0 +1,4 @@
+Concatenate of string in perl
+<p>i am trying to concatenate string in perl.</p> <p>eg:</p> <pre><code>my $file = $table_name.".sql"; print $file; </code></pre> <p>I get output like:</p> <pre><code>Employee .sql </code></pre> <p>(considering $table_name =Employee )</p> <p>please suggest how to make sure the output comes in single lie without blanks.</p>
+<p>Your $table_name variable contains a word 'Employee' as well as a new line character. You can use chomp to remove the newline.</p> <p>Add this before you concatenate your variables:</p> <pre><code>chomp $table_name; </code></pre>
+<p>The chomp() function will remove newline character from the end of a string. check <a href="http://perlmeme.org/howtos/perlfunc/chomp_function.html" rel="nofollow">http://perlmeme.org/howtos/perlfunc/chomp_function.html</a></p>

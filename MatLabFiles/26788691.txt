@@ -1,0 +1,2 @@
+Neural Network Matlab Parallel GUI
+<p>When training a Neural Network with Matlab, if I use one CPU or a GPU then the GUI that shows how the training is progressing appears to let me know how its doing. </p> <p>When I run <code>train(net,inputs,targets,'useParallel','yes');</code> however i.e. train using multiple CPUs, the GUI no longer appears.</p> <p>How can I have the GUI open when training with multiple CPUs?</p>

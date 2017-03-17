@@ -1,0 +1,4 @@
+import classes with Swift iOS
+<p>I'm trying Swift and I'm having some troubles.. I have a TableViewController.swift and also a DataModel.swift but I don't know how to import DataModel class into TableViewController to use in it. I'm trying with</p> <pre><code>import DPBDataModel.swift </code></pre> <p>but it doesn't works (No such module)</p> <p>Thanks for your replies!</p>
+<p>Try just using your <code>DataModel</code> class into <code>TableViewController</code> without importing anything ;-)</p>
+<p>We need not to import any class in swift like objective c Simply instantiate your class &amp; you can use it.</p> <p>Thanks, Priyanka</p>

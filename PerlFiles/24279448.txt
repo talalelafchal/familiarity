@@ -1,0 +1,2 @@
+Capture filter of an excel cell/column and header and footer of excel sheet using win32::OLE in perl
+<ol> <li>How to capture a filter defined for a particular cell of a column in a Microsoft excel sheet using Win32::OLE. Is there any inbuilt function for checking if a filter is defined for that cell and then for capturing?</li> <li>How to capture the header and footer of the excel sheet using Win32:OLE?</li> </ol> <p>Have been searching a lot but could not find anything.</p>

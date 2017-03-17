@@ -1,0 +1,7 @@
+exponentiation operator in SWIFT
+<p>I don't see an exponentiation operator defined in the base arithmetic operators in the SWIFT language reference. </p> <p>Is there really no predefined integer or float exponentiation operator in the language?</p>
+<p>Like most of the C-family of languages, there isn't one.</p>
+<p>There isn't one but you have the <code>pow</code> function.</p>
+<p>There isn't an operator but you can use the pow function like this:</p> <pre><code>return pow(num, power) </code></pre> <p>If you want to, you could also make an operator call the pow function like this:</p> <pre><code>infix operator ** { associativity left precedence 170 } func ** (num: Double, power: Double) -&gt; Double{ return pow(num, power) } 2.0**2.0 //4.0 </code></pre>
+<p>I did it like so:</p> <pre><code>operator infix ** { associativity left precedence 200 } func ** (base: Double, power: Double) -&gt; Double { return exp(log(base) * power) } </code></pre>
+<p>If you happen to be raising 2 to some power, you can use the bitwise left shift operator:</p> <pre><code>let x = 2 &lt;&lt; 0 // 2 let y = 2 &lt;&lt; 1 // 4 let z = 2 &lt;&lt; 7 // 256 </code></pre> <p>Notice that the 'power' value is 1 less than you might think.</p> <p>This is faster than <code>pow(2.0, 8.0)</code> and let's you avoid having to use doubles.</p>

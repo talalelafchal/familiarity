@@ -1,0 +1,5 @@
+Swift code in playground vs. an actual class
+<p>Odd thing happening here. The following code:</p> <pre><code>String(Int(date.timeIntervalSince1970*1000)) </code></pre> <p>works in a playground but doesn't in a class. It crashes with EXC_BAD_INSTRUCTION.</p> <p>Any ideas why? Alternatively, how do I get a string of the above <code>NSTimeInterval</code>?</p> <p>Thanks in advance!</p> <p>Edit: I need the result as Int, so 1402324472549 and not 1402324472549.64, for example.</p>
+<p>Not sure of the root cause, but it is something to do with the type conversion. This works:</p> <pre><code>var date = NSDate() var asString = "\(Int(date.timeIntervalSince1970*1000))" println(asString) </code></pre>
+<p>The crash is because you're overflowing a 32-bit signed int and swift by default does boundary checking on all operations. Try:</p> <pre><code>"\(floor(date.timeIntervalSince1970)" </code></pre>
+<p>Inside a class definition:</p> <pre><code>var date = NSDate() let myDateString = String(Int64(date.timeIntervalSince1970()*1000)) println("Seconds = \(myDateString)") </code></pre>

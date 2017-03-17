@@ -1,0 +1,2 @@
+FFT - radio between harmonic
+<p>I'm trying to calculate ratio between harmonic (5/1 and 7/1) on this signal: <img src="https://i.stack.imgur.com/xDUDk.png" alt="enter image description here"></p> <p>My FFT code is:</p> <pre><code>figure() fs=1000; L=length(UI_przebiegi.signals.values(:,7)); NFFT1 = 2^nextpow2(L); f=fs/2*linspace(0,1,NFFT1/2); y=fft(UI_przebiegi.signals.values(:,7),NFFT1); plot(f,abs(y(1:NFFT1/2))) </code></pre> <p><code>UI_przebiegi.signals.values(:,7)</code> is vector. So how to calculate this ratio?</p>

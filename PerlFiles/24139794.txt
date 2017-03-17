@@ -1,0 +1,3 @@
+Perl oneliner to extract regexp line by line
+<p>I have a log file with entries like:</p> <pre><code>2014-06-10 10:31:53 [Thread-9] TRACE Class - logging message: Object [field1=field1 value, field2=field2 value, field3=field3, field4=[name, value], field5=field5, field6=field6] </code></pre> <p>I would like to format it to such output:</p> <pre><code>field2 value, [name value], field5 </code></pre>
+<p>I assumed the field values and name can't contain commas.</p> <pre><code>perl -ne '/field2=([^,]*).*field4=\[([^,]*).*field5=([^,]*)/ and print "$1, [$2], $3\n"' </code></pre>

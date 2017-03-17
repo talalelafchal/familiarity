@@ -1,0 +1,3 @@
+Invoking a Perl method
+<p>This works:</p> <pre><code>A::B-&gt;new(); </code></pre> <p>This doesn't:</p> <pre><code>my $m = 'A::B-&gt;new'; &amp;{\&amp;{$m}}; </code></pre> <p>How can I make it work? The strange syntax does work for regular functions not containing "->".</p>
+<p>Sounds like you want</p> <pre><code>my $pkg = 'A::B'; my $method = 'new'; $pkg-&gt;$method; </code></pre>

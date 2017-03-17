@@ -1,0 +1,3 @@
+Can't &quot;addSubView&quot;
+<p>Error -> 'UIVIew' does not have a member named 'addSubView'</p> <pre><code>override func viewDidLoad() { super.viewDidLoad() // Do any additional setup after loading the view, typically from a nib. var testView = UIView(frame: CGRectMake(0, 0, 320, 568)) testView.backgroundColor = UIColor.redColor() self.view.addSubView(testView) } </code></pre>
+<p>I guess, it is due to the capital letter 'V'. Try </p> <pre><code> self.view.addSubview(testView) </code></pre>

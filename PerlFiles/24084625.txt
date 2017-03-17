@@ -1,0 +1,3 @@
+Restrict the output using the perl debugger
+<p>I'm using the perl debugger to analyze a large hash. However, when I display it (with <code>x</code>) it fills up the display and I can't see the start of the hash. Is there a way to pipe the output through something similar to <code>less</code>?</p>
+<p>You might look at Devel::Trace that you can run via the command line and capture output. Run with <code>perl -d:Trace program</code>. <a href="http://metacpan.org/pod/Devel%3a%3aTrace" rel="nofollow">http://metacpan.org/pod/Devel::Trace</a></p> <p>Data::Dumper is also very useful.</p>

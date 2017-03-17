@@ -1,0 +1,3 @@
+Can I find out what Perl IO Layer(s) a given filehandle has?
+<p>Is it possible to find out what IO Layer a Perl filehandle has on it?</p> <p>For example:</p> <pre><code>open(my $fh, '&lt;:encoding(UTF-8)', $filename) or die "Unable to open '$filename': $!"; say io_layer($fh); # prints "encoding(UTF-8)" </code></pre>
+<p>The following returns the names of the PerlIO layers on a filehandle.</p> <pre><code>my @layers = PerlIO::get_layers($fh); # Or FH, *FH, "FH". </code></pre> <p>more details in <a href="http://perldoc.perl.org/PerlIO.html">PerlIO doc</a>. </p>

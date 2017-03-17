@@ -1,0 +1,2 @@
+Perl Net Telnet to print output to a file
+<p>Given the ip address and port number, I need to login and save the output to a log file, I could telnet manually using SecureCRT with the same ip and port# and see the console messages, but below code is not printing anything to the file, it just creates a 0 kb inflie.log. Any help? thanks.</p> <pre><code>my $host = "&lt;ip address&gt;"; my $port = "&lt;port number&gt;"; my $telnet = new Net::Telnet(); $telnet-&gt;open(Host =&gt; "$host" , Port =&gt; "$port"); $telnet-&gt;input_log( "c:\\temp\\infile.log" ); </code></pre>

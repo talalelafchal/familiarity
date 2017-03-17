@@ -1,0 +1,3 @@
+Image Processing YCbCr images
+<p>I am working on image processing using YCbCr color space. I am new at image processing field.I want to clear my concept about YCbCr. The question is How many bits-per-pixel are required to store the YCbCr images for S = 2, 4, 8 and 16? Help is needed. Kindly explain. Thanks in advance.</p>
+<p>It's the same as for RGB. Multiply by 3: Y - Cb - Cr.</p> <p>YCbCr is simply a different way of representing color. It is similar to the method used in olde TV sets where you had a base grayscale signal with Tint and Hue added. YCbCR is the same with redness and blueness added to grayscale.</p>

@@ -1,0 +1,2 @@
+How to plot a bifurcation diagram of a multi dimensional system in Matlab?
+<p>I have a question regarding the following Maxwell-Bloch equations:</p> <blockquote> <p>dE/dt =-0.1*E + 0.25*P</p> <p>dP/dt = -P+0.8*E*D</p> <p>dD/dt = -4*(D-Lambda)+E*P</p> </blockquote> <p>How can I plot the bifurcation diagram of this multi dimensional system in MATLAB. Is is possible plot this for multiple values of lambda?</p> <p>Thanks a lot!</p>

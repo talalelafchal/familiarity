@@ -1,0 +1,3 @@
+How I get bounds UIImageView Swift
+<p>I have some trouble here with this...</p> <p>How I convert this piece of code to Swift:</p> <pre><code>imageView.layer.shadowPath = [UIBezierPath bezierPathWithRect:yourImageView.bounds].CGPath; </code></pre>
+<p>Here you go:</p> <pre><code>imageView.layer.shadowPath = UIBezierPath(rect:yourImageView.bounds).CGPath </code></pre>

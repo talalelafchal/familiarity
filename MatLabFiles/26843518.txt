@@ -1,0 +1,3 @@
+Center the image in Matlab
+<p>I have an image (intensity plot) a nxn square matrix. On the image, I want to choose a point and center the image to that point (to make that point as the center of the image). How can I do that in Matlab?</p> <p>Also, how can I choose a region (an elliptical) and exclude all the data (intensity points) outside that region?</p>
+<p>Assuming periodic boundary conditions, you can center the image a like this</p> <pre><code>clear all; N = 11; a = randi(N^2,N,N); c = floor([median(1:N) median(1:N)]); %old center nc = [3 9]; %new center na = circshift(a, c - newc); </code></pre>

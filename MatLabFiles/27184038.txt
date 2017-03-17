@@ -1,0 +1,3 @@
+Chroma subsampling in jpeg compression
+<p>Is the chroma sub-sampling the first step to compress an image file to jpeg image file? Is this the step that we implement in Color Space Conversion?</p>
+<p>Color space conversion takes place before sampling. Sub-sampling is the first step that compresses the image.</p>

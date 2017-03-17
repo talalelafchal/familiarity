@@ -1,0 +1,3 @@
+How to make something global in Swift?
+<p>I have a <code>UILabel</code> that I created in my <code>viewDidLoad</code> function. Then, I have a function that is outside of the <code>viewDidLoad</code> function. I need to be able to access the <code>UILabel</code>.</p> <p>I know I could do that with <code>extern</code> in ObjC, but how is it done in Swift?</p>
+<p>For your need you can do it with property declaration something like this:</p> <pre><code>yourViewController : UIViewController { var label :UILabel? // your property override func viewDidLoad { super.viewDidLoad() label = UILabel() // an example initialization } yourMethod { label // here you can access your label as } } </code></pre> <p>that's it.</p>

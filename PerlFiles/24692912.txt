@@ -1,0 +1,3 @@
+installing perl module error
+<p>I am trying to install perl modules. When I type in the command</p> <p><code>cpan ABC::XYZ</code> (some module)</p> <p>I am getting the error</p> <p><code>"'cpan' is not recognised as an internal or external command o,operable program or batch file"</code>.</p> <p>How can I correct this?</p> <p>I am using windows 7 system.</p>
+<p><code>cpan</code> is just not in your environment, see that answer: <a href="http://stackoverflow.com/a/4493004/1102638">http://stackoverflow.com/a/4493004/1102638</a></p>

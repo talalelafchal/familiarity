@@ -1,0 +1,2 @@
+Data Analysis and Forecasting In MATLAB
+<p>I have a house price data with two rows, 1st: Date (monthly) and 2nd: Price of house, my data has the price record of houses from 1990-2012, I would like to predict the price of house in 2013 by calculating the moving average of the prices i have to forecast and predict the 2013 house price.Please any idea on how to carry out simple time series analysis (step-by-step)in MATLAB? I would appreciate sample codes.</p>

@@ -1,0 +1,3 @@
+MATLAB Radio Buttons: How to choose only one at a time
+<p>I'm trying to get MATLAB buttons to work. I have multiple radio buttons now. But when I tried to choose multiple buttons to test out the GUI. Weirdly, the radio buttons acts like a checkbox. How do I change the codes so that I only can choose 1 radio button at one time?</p> <p>Any help is greatly appreciated.</p>
+<p>I don't know exactly how you build it, but you can include the buttons inside a <code>buttongroup</code>, as described here: <a href="http://www.mathworks.com/help/matlab/ref/uibuttongroup.html" rel="nofollow">http://www.mathworks.com/help/matlab/ref/uibuttongroup.html</a></p> <p>There is also a code example for that.</p>

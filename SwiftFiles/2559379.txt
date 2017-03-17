@@ -1,0 +1,7 @@
+how to remove arrow in tableview
+<p>I am beginner in iPhone development. I am working on a tableview. Please tell me how to remove the arrow button displayed in the each and every row.</p>
+<p>In your <code>-tableView:cellForRowAtIndexPath:</code>, set the <code>accessoryType</code> property of your UITableViewCell to UITableViewCellAccessoryNone, <em>which is the default FYI</em>.</p>
+<p>For c# user :</p> <pre><code>UITableViewCell cell = new UITableViewCell(); cell.Accessory = UITableViewCellAccessory.None; </code></pre>
+<pre><code>//Write following code into your program -(UITableViewCellAccessoryType)tableView:(UITableView *)tv accessoryTypeForRowWithIndexPath (NSIndexPath *)indexPath { return UITableViewCellAccessoryNone; } //Create a table for different section of app -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath { cell.accessoryType = UITableViewCellAccessoryNone; } </code></pre> <p>// VKJ</p>
+<p>If you are using the interface builder just select your cell and set the <code>accessory</code> to <code>none</code>. </p> <p><img src="https://i.stack.imgur.com/x6Dv2.png" alt="enter image description here"></p>
+<p><strong>For Swift</strong></p> <p>Add following to end of your <code>cellForRowAtIndexPath</code> method just before <code>return</code>.</p> <pre><code> cell.accessoryType = UITableViewCellAccessoryType.None </code></pre> <p>it just works perfect!! </p>

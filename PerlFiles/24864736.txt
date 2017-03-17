@@ -1,0 +1,2 @@
+Executing perl script in linux gives :Exec format error. Wrong Architecture
+<p>i have perl script that used to be working great , once i edit it in windows and convert it to UTF-8 and then via FTP return it . also did:</p> <pre><code>chmod +x foo.pl </code></pre> <p>and then when i try to run it :</p> <pre><code> ./foo.pl im getting this error: ./foo.pl: Exec format error. Wrong Architecture. </code></pre> <p>what ? what wrong Architecture ? whats going on here ?</p>

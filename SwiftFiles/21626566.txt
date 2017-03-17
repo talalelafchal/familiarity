@@ -1,0 +1,2 @@
+Access External application(top window) as NSPanel
+<p>I am accessing an adobe flex keyboard application as:</p> <pre><code>NSWindow *myMainWindow = [[[NSApplication sharedApplication] windows] objectAtIndex:0]; </code></pre> <p>But I want to apply <code>NSNonactivatingPanelMask</code> (can only be applied to <code>NSPanel</code>).</p> <p>So is there any way to apply/ access the top Window as <code>NSPanel</code> Object.</p> <p>(If possible accessing the flex keyboard app through its name as <code>NSPanel</code> ?)</p>

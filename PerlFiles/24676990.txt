@@ -1,0 +1,3 @@
+Perl Regular expression look ahead
+<p>What is the use of<br> ?= <br/> in perl regex<br/> please tell the exact meaning and give some regex example.<br/></p>
+<pre><code>(?=...) </code></pre> <p>is a positive lookahead, a type of zero-width assertion. What it's saying is that the match must be followed by whatever is within the parentheses but that part isn't captured.</p> <p>Example:</p> <pre><code>.*(?=bar) </code></pre> <p>This pattern matches all the characters upto the string <code>bar</code>. When <code>bar</code> is detected then it stops matching. If a line contains more than one <code>bar</code> means it matches upto the last <code>bar</code> because <code>.*</code> does a greedy match.</p> <p><a href="http://regex101.com/r/gY7rO4/16" rel="nofollow">DEMO</a></p>

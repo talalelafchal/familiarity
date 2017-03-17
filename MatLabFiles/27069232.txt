@@ -1,0 +1,4 @@
+How to copy one array's values to another, where the indices of the second array equal the values of the first?
+<p>How can I write the following in one matlab line, without using <code>for</code>?</p> <pre><code>for i=1:5 a(a==i) = b(i); end </code></pre>
+<p>Does <code>a</code> consist exclusively of values in [1:5]? Your question title says you want to use the values of <code>a</code> as indices of <code>b</code>. You can just do that directly:</p> <pre><code>a = b(a); </code></pre>
+<p>It is kinda messy, but it works,</p> <pre><code>a = randi(9,[5 5]); i = 1 : 5; b = [5 7 8 9 2]; [c,loc] = ismember(a,i); loc = reshape(loc,1,[]); loc(loc&gt;0) = b(loc(loc&gt;0)); loc = reshape(loc,size(c)); a.* ~c + loc .* c </code></pre> <p>for example,</p> <pre><code>aold = 7 2 8 1 8 9 1 9 3 3 4 9 1 1 2 2 8 8 5 1 1 7 7 5 4 anew = 7 7 8 5 8 9 5 9 8 8 9 9 5 5 7 7 8 8 2 5 5 7 7 2 9 </code></pre> <p>and <code>b = [5 7 8 9 2];</code>.</p>

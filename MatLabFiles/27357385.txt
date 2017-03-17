@@ -1,0 +1,3 @@
+Ploting images in different windows in MATLAB
+<p>I want to plot 2 images. When I plot first image, I can see that in figure1. But as I plot another image it is again displayed in the same window figure1.</p> <p>What I want is to plot 2 different images in two different window. Please don't suggest me to use subplot or hold on, becuase my requirement are different than those.</p>
+<p>It is very simple. </p> <p>Everytime you plot a figure, type this:</p> <pre><code>figure; plot(something); </code></pre>

@@ -1,0 +1,5 @@
+Storing a token resulting from a split directly to a scalar variable
+<p>Help greatly appreciated:</p> <p>I would like to know the most efficient way to store a particular token from a split directly to a scalar variable.</p> <p>Take the following code for example:</p> <pre><code>my @temp = split( '_', $someString ); my $scalar = $temp[$index]; </code></pre> <p>Is there a way to consolidate this into one line? I've tried the following unsuccessfully:</p> <pre><code>my $scalar = @{split( '_', $someString )}[$index] </code></pre> <p>Again, help greatly appreciated.</p>
+<p>You can use the following to pull an element from a list:</p> <pre><code>my $scalar = (split '_', $someString)[$index]; </code></pre>
+<p>You can use the solution of <code>split</code> directly:</p> <pre><code>my $someString = 'asdf_asdf_asdfasd_f'; my $index = 0; print ((split '_', $someString)[$index]); # or for your $scalar $scalar = (split '_', $someString)[$index]; </code></pre> <p>Output:</p> <pre><code>asdf </code></pre>
+<p>If you know the index ahead of time you can assign to a list, e.g for index=2:</p> <pre><code>my (undef, undef, $scalar) = split '_', $someString; </code></pre>

@@ -1,0 +1,3 @@
+How to divide an integer returned from a function by a double value?
+<p>Given this function:</p> <pre><code>func anInt() -&gt; Int { return 5 } </code></pre> <p>This doesn't work:</p> <pre><code>anInt() / Double(2) &gt;&gt; ERROR: Could not find an overload for '/' that accepts the supplied arguments </code></pre> <p>However this works:</p> <pre><code>5 / Double(2) &gt;&gt; 2.5 </code></pre>
+<p>When you call <code>anInt() / Double(2)</code> the compiler knows you are trying divide an Int by a Double and doesn't allow that, but when you call <code>5 / Double(2)</code>, it can infer the type of 5 as a Double since you are dividing it by a Double.</p>

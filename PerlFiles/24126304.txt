@@ -1,0 +1,3 @@
+How to install CPAN modules on mageia 4
+<p>How to install CPAN modules on mageia 4? I am struggling to find out to achieve this.</p> <p>any help is appreciated..</p>
+<p>First you probably don't need to, just install the package.</p> <p>For example perl-WWW-Mechanize is the one for WWW::Mechanize. You should use rpmdrake or urpmi to find the package providing the module you want.</p> <pre><code>$ urpmf --provides --literal 'perl(WWW::Mechanize)' perl-WWW-Mechanize:perl(WWW::Mechanize)[== 1.730.0] </code></pre> <p>If you want to be able to use the cpan command, you need to install <strong>perl-devel</strong> package.</p>

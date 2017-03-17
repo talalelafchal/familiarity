@@ -1,0 +1,4 @@
+Can't open file error in Perl
+<p><strong>Why program can't open the file? i.e dies.</strong> I searched for this problem, but it seems all fine to me. Funny thing is this code worked before, and i don't think i changed something from that moment in open function.</p> <pre><code>my $i; my $regex = $ARGV[0]; for (@ARGV[1 .. $#ARGV]){ open (my $fh, "&lt;", "$_") or die ("Can't open, $!"); $i++; foreach (&lt;$fh&gt;){ print "Given regexp: $regex\nfile$i:\n line $.: $1\n" if $_ =~ /(\b$regex\b)/; } } </code></pre> <p><strong>OUTPUT:</strong> Can't open <strong>Not a directory</strong></p>
+<p>Check your argument. it should be a proper directory name</p>
+<p><strong>Not a directory</strong> means you're supplying an argument that assumes a non-directory is a directory.</p> <p>For instance, if your argument is</p> <pre><code>a/b </code></pre> <p>and</p> <pre><code>a </code></pre> <p>exists but is not a directory, you will get this error.</p>

@@ -1,0 +1,5 @@
+Error when opening simulator with iOS 8 beta
+<p>I have recently installed Xcode 6 beta in OS X Mavericks, with which comes the iOS simulator for iOS 8. </p> <p>using this new Xcode I have create one new project and run it on simulator with iOS 8, but when opening the simulator, it always get the error</p> <blockquote> <p>Unable to boot the iOS Simulator</p> </blockquote> <p>So, pls tell me how to solve this error?</p>
+<p>Quit both the simulator and Xcode. If that doesn't fix it, reboot your Mac.</p> <p>Welcome to the world of beta builds!</p>
+<p>Be sure you "select" your new Xcode version before launching / downloading updates.</p> <pre><code>sudo xcode-select -switch /Applications/Xcode6-Beta6.app/Contents/Developer/ </code></pre> <p>If you're already seeing Simulator troubles, try rebooting too.</p>
+<ol> <li>Make sure that you load X-Code 6 and not 5. </li> <li>Run your project. </li> <li>If fails to load, try clicking on the menu at the top on the iOS Simulator button and reset the device. Resetting the device seems to do the trick for me. </li> </ol> <p>Also, make sure you are on the laatst x-code version</p>

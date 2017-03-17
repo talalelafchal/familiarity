@@ -1,0 +1,2 @@
+Is it currently possible to cross compile SWIFT for another platform
+<p>Because of LLVM will it be possible to actually compile SWIFT code for use on another platform.</p> <p>Of course you couldn't use the Apple only libraries, but just for generic code, does LLVM enable this, even if Apple wouldn't support it?</p>

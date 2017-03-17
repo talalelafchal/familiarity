@@ -1,0 +1,3 @@
+Using Swift, I seem to get this error ONLY SOMETIMES when using arc4random. Why, and how do I fix it?
+<p>I'm getting this error:</p> <pre><code>Thread 1: EXC_BAD_INSTRUCTION (code=EXC_I386_INVOP, subcode=0x0) </code></pre> <p>Most of the time (not all) when I'm using <code>arc4random()</code> in Xcode 6 with Swift. I didn't ever get this error in Xcode 5 in Objective C. Curiously, if I use <code>arc4random_uniform()</code>, I don't run into this problem. </p> <p>How do I use <code>arc4random()</code> without getting this error?</p>
+<p>You have to use it:</p> <pre><code>var _shiom = Int(arc4random_uniform(UInt32(arrayshiftingTile.count))) </code></pre>

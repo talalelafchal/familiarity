@@ -1,0 +1,3 @@
+How do I make every TR tag in a table a link with Perl and Javascript
+<p>If I have a tag called "post" and has href="something from perl" what should i use for javascript in order to make it clickable and redirects me to the link?</p>
+<p>If you implement jQuery you can do something like this:</p> <pre><code>jQuery(document).ready(function($) { $(".click").click(function() { window.document.location = $(this).attr("href"); }); }); </code></pre> <p><em>edit</em></p> <p>assuming your tag looks like this</p> <pre><code>&lt;tr class = "click" href = "&lt;%= something from Perl %&gt;"&gt; </code></pre>

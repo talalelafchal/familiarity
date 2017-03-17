@@ -1,0 +1,3 @@
+Matlab: Accessing hidden parameters in function handles
+<p>When an anonymous function is defined in Matlab, it internally stores the variables which is using from the workspace. for example</p> <p>A=2</p> <p>f=@(x) x^A</p> <p>clear A</p> <p>Now if you call f(2) you get the result 4. If you just print f or convert it to string you will get</p> <p>@(x)x^A</p> <p>My question is how to access the internal variable <em>A</em> in the function? </p>
+<p>One way is using the <code>functions</code> command.</p> <pre><code>fa = functions(f); </code></pre> <p>The output is a structure which includes <code>workspace</code>, a cell array containing a structure containing your variables, in this case:</p> <pre><code>ws = fa.workspace{1}; ws.A % returns "2" </code></pre>

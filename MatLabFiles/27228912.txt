@@ -1,0 +1,3 @@
+How to make comparison of two textfile and insert into GUI in Matlab
+<p>I use below coding for my comparison between two text file (.txt). but the result show in image not in number or any percentage. What should i do to get the result in number ? Please help me guys. Im stuck here and im using MATLAB.</p> <pre><code>a2 = csvread('test1.txt'); a3 = csvread('test2.txt'); a4 = find(a2~=a3); a5 = (numel(a4)/numel(a2))*100; axes(handles.axes10) imshow(a5); </code></pre> <p><a href="https://drive.google.com/file/d/0B1lOHJhYhV3BU042bmt4VmNhb0k/view" rel="nofollow">TEST FILE1 </a></p> <p><a href="https://drive.google.com/file/d/0B1lOHJhYhV3Bak9IakFJMjhxQ00/view" rel="nofollow">TEST FILE2</a></p>
+<p>I think you want to use bar(a5) instead of imshow(a5)</p>

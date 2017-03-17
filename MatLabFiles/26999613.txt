@@ -1,0 +1,2 @@
+dsp.AudioFileReader function usage in Matlab
+<p>How can I read full mp3 file using dsp.AudioFileReader?</p> <p>I can read it by chunks,but I need to read full file at once.</p> <pre><code>hfr = dsp.AudioFileReader('tailtoddle_lo.mp3'); hplay = dsp.AudioPlayer('SampleRate',hfr.SampleRate); while ~isDone(hfr) audio = step(hfr); step(hplay, audio); end </code></pre>

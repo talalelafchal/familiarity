@@ -1,0 +1,5 @@
+Error when I try playground for Swift in Xcode 6 beta
+<p>I encountered the following error when I create and open a playground for Swift, any solution for it?</p> <pre><code>Error running playground. Failed to prepare for communication with playground. </code></pre>
+<p>I'm experiencing the same problem, but restarting xCode6-beta seems to solve it. </p>
+<p>For me the restarting XCode 6 did not solve the problem. So I restarted the Mac. It worked afterwards. </p> <p>This tutorial was helpful: <a href="http://www.raywenderlich.com/74438/swift-tutorial-a-quick-start" rel="nofollow">http://www.raywenderlich.com/74438/swift-tutorial-a-quick-start</a></p>
+<p>On Xcode 6.1.1</p> <p>Creating playground using the path Xcode->Start and selecting "Get Started With a Playground" is giving "Error running playground. Unable to find suitable target device"</p> <p>Creating playground using the path Xcode->File->New and then choosing playground => No errors</p>

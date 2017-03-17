@@ -1,0 +1,4 @@
+Words with doubled letters. Perl
+<p>How can i find words with doubled letters(<strong>e.g. progress, tool and so on</strong>) in text using regex?</p>
+<p>use a backreference to a single wildcard capture group, see below:</p> <pre><code>a = "hello" a =~ /(.)\1/ </code></pre>
+<pre><code>my $str = "katttaarww"; my @arr = $str =~ /(.)\1+/g; print join "~", @arr; </code></pre> <p>output</p> <pre><code>t~a~w </code></pre>

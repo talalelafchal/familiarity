@@ -1,0 +1,2 @@
+Input Data Structure for Matlab Neural Network Toolbox
+<p>My neural network has for example 2 inputs. First input has dimension 3, second input has dimension 2.</p> <p>I want to simulate the network with a time series composed of 3 timesteps with the structure described above, is the following the correct (and standard) form of the data?</p> <pre><code>X = {[x;x;x] [x;x;x] [x;x;x]; [x;x] [x;x] [x;x]} </code></pre> <p>And if I want to simulate with 3 concurrent inputs is the correct form </p> <pre><code>X = {[x x x; x x x; x x x];[x x x; x x x]} </code></pre> <p>?</p>

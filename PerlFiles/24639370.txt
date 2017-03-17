@@ -1,0 +1,6 @@
+What does 'foreach(1..4)' mean in Perl?
+<p>In Perl, what does <code>foreach(1..4)</code> mean? Specifically the two periods. I've been having trouble finding an answer.</p>
+<p>It is known as the range operator.</p> <p>It creates a range between the two operands...</p>
+<p>In Perl, <code>1..4</code> produces <code>1 2 3 4</code> so you're looping through all the numbers from 1 to 4, assigning each value in turn to <code>$_</code>.</p>
+<p><code>..</code> is one of the <a href="http://perldoc.perl.org/perlop.html#Range-Operators" rel="nofollow">Range Operators</a></p>
+<pre><code>foreach(1..4) </code></pre> <p>It means your loop runs from 1 to 4<br> or<br> creates a range between the two operands<br> <br>Example equals to</p> <pre><code>my $min = 999; foreach $item (1, 2, 3, 4) { $min = $item if $min &gt; $item; } print "Min = $min\n"; # expects Min = 1 </code></pre>

@@ -1,0 +1,2 @@
+Integrating vim into matlab
+<p>Is it possible to integrate the <code>vim</code> text editor into <code>matlab</code> editor in order to take advantage of vim text editing and vim plugins? </p>

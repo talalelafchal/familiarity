@@ -1,0 +1,4 @@
+average 3d matrix matlab using reshape
+<p>I have a 27x38x8760 matrix where the 27x38 represents a grid and the 8760 hours of the year. I would like to make daily avarages for the grid so that my resulting matrix is 27x38x365. I was using reshape for 2 dimensional matrix but is there a posibily to use it also for 3d? kind regards Matthias</p>
+<p>Assuming <code>A</code> to be the input matrix, see if this works for you -</p> <pre><code>[m,n,r] = size(A) daily_avg = squeeze(mean(reshape(A,m,n,24,[]),3)) </code></pre> <p>Or avoid <code>squeeze</code> with <code>permute</code> -</p> <pre><code>daily_avg = mean(permute(reshape(A,m,n,24,[]),[1 2 4 3]),4) </code></pre>
+<p>You can also use a loop,</p> <pre><code>A = rand([27 38 8760]); for i = 1 : 24 :8760 A_avg(:,:,ceil(i / 24)) = mean(A(:,:,i : i + 23),3); end </code></pre>

@@ -1,0 +1,2 @@
+How to determine if a figure is contained within another figure in Matlab?
+<p>I have 2 figures. Both are irregular figures that are plotted using information about their vertices. How can I determine if no point of figure 1 lies outside figure 2?</p>

@@ -1,0 +1,3 @@
+converting an object to line
+<p>I have an object and want to convert this object to line in matlab. I don't want to find the edges, because for this object the edges will have two sides which I just want the central line. Is there any way or function in matlab to do this?</p>
+<p>You are looking for the <a href="http://en.wikipedia.org/wiki/Topological_skeleton" rel="nofollow">morphological skeleton</a> of the image.</p> <p>You can find that with the function <code>bwmorph</code>by:</p> <pre><code>bwmorph(BW,'skel',Inf); </code></pre> <p>See <a href="http://uk.mathworks.com/help/images/ref/bwmorph.html" rel="nofollow">Docs</a></p>

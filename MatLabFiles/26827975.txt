@@ -1,0 +1,5 @@
+How to find the indices of nonzero rows in a matrix?
+<p>How to find the indices of nonzero rows in a matrix?</p> <p>Example:</p> <pre><code>A = [ 14 0 6 9 8 17 85 14 1 3 0 99 0 0 0 0 0 0 29 4 5 8 7 46 0 0 0 0 0 0 17 0 5 0 0 49 ] </code></pre> <p>the desired result : </p> <pre><code> V =[1 2 4 6] </code></pre>
+<p>Use</p> <pre><code>[i,~] = ind2sub(size(A),find(A)); v = unique(i); </code></pre> <p>Result for the matrix given above:</p> <pre><code>v = unique(i') v = 1 2 4 6 </code></pre>
+<p>You can use </p> <pre><code> ix = any(x,2); </code></pre> <p><code>any</code> check whether there is any element that is not a zero. The second argument stands for "per-row" computation.</p> <p>If you want to get the numeric index, you can use <code>find</code> function:</p> <pre><code> numIx = find(ix); </code></pre> <hr> <p>Another method:</p> <pre><code> ix = sum(abs(x),2)~=0; </code></pre>
+<p>Here's one that ab(uses) the <a href="http://stackoverflow.com/questions/6058139/why-is-matlab-so-fast-in-matrix-multiplication"><strong><code>fast matrix multiplication in MATLAB</code></strong></a> -</p> <pre><code>idx = find(abs(A)*ones(size(A,2),1)) </code></pre>

@@ -1,0 +1,2 @@
+Swift Members / Methods Accessibility Modifiers
+<p>I have a very simple Swift question for which there is probably an obvious answer, but I can't seem to find it. </p> <p>How are methods and variables within a class declared as:</p> <ul> <li>Private?</li> <li>Protected (i.e. accessible to children)?</li> <li>Internal (i.e. accessible to classes within the same package / namespace)?</li> </ul> <p>Thanks in advance.</p>

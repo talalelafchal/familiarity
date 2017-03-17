@@ -1,0 +1,5 @@
+How to put the first occurence of a line in a file into a %hash with Perl?
+<p>For example, given this data:</p> <pre><code>ID1 2 3 4 ID1 2 4 5 ID2 2 6 8 ID2 4 6 7 ID3 3 5 6 </code></pre> <p>I would like to read a file handle and loop through it taking the first line until the ID does not match the previous ID and then continue till end of file so my output file looks like:</p> <pre><code>ID1 2 3 4 ID2 2 6 8 ID3 3 5 6 </code></pre> <p>Any help is greatly appreciated. Thank you. </p>
+<p>Or, like @mpapec's solution but as an anonymous hash (<code>%_</code>):</p> <pre><code>perl -ane '${$F[0]}++ or print' file.txt </code></pre> <p>At that point I'm really just doing silly code golf though ....</p>
+<pre><code>perl -ane '$s{$F[0]}++ or print' file </code></pre>
+<pre><code>use warnings; use strict; use Data::Dumper; open my $in, '&lt;', 'in.txt'; my %data; while (&lt;$in&gt;){ chomp; my @split = split(/\s+/); next if exists $data{$split[0]}; $data{$split[0]} = [$split[1], $split[2], $split[3] ]; } print Dumper \%data; </code></pre>

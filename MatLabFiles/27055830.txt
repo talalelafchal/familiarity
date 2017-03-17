@@ -1,0 +1,3 @@
+How to get the row index with min value and specific value with one statement
+<p>I want to get the minimum row index with specific value in a specific column.</p> <p>For example,</p> <pre><code>ma = [8 1 4; 3 1 5; 1 2 4; 1 2 5] ma = 8 1 4 3 1 5 1 2 4 1 2 5 </code></pre> <p>choosing second column (<code>col = 2</code>) and <code>val = 2</code>, as you can see second column has two elements with value of <code>2</code> and I want the one with minimum index (<code>index = 3</code>).</p> <p>So far I've come up with,</p> <pre><code>[value1,index1]=min(ma(ma(:,col) == val,1)) value1 = 1 index1 = 1 </code></pre>
+<p>You should use,</p> <pre><code>col = 2; val = 2; ind = min(find(ma(:,col)==val)); </code></pre> <p>which will give <code>ind = 3</code>.</p>

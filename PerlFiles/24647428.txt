@@ -1,0 +1,3 @@
+Unable to check write permission on windows directory in perl
+<pre><code>if( -w $filename) </code></pre> <p>always returning TRUE if we change write permission of directory through windows</p>
+<p>If you look at the properties dialog of a windows folder, you will see:</p> <p><img src="https://i.stack.imgur.com/S0jjm.png" alt="enter image description here"></p>

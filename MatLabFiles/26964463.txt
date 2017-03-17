@@ -1,0 +1,3 @@
+How to eliminate this loop from my Matlab code?
+<p>My goal is to change an order three matrix, to an order two matrix simply (perhaps with one line of code) Any idea?</p> <pre><code>A = rand(256, 256, 3); B = zeros(256, 256); for i = 1: size(A, 1) for j = 1 : size(A, 2) B(i,j) = max(A(i,j, :)); end end </code></pre>
+<p>I think this is what you are after:</p> <pre><code>B = max(A, [], 3); </code></pre>

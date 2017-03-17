@@ -1,0 +1,3 @@
+Perl get all command line arguments
+<p>I would like to make a small script that color the output in green. I wrote this: </p> <pre><code>#! /usr/bin/perl -w use Term::ANSIColor; my $prg = join(" ",@ARGV); print(color('green'). `$prg` . color('reset')); </code></pre> <p>Unfortunateyl it is not working because <code>join('',@argv);</code> doesn't act as expected. For instance if I pass the arguments : <code>"foo" "bar"</code>, I will get <code>foo bar</code> without quotes. </p> <p>How to just get all the command line arguments without removing escape quotes ? </p>
+<p>You're fighting with shell, not perl; try</p> <pre><code>perl script.pl '"foo"' '"bar"' </code></pre>

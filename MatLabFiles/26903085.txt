@@ -1,0 +1,3 @@
+Taking specific order of differences of elements in a vector, MATLAB
+<p>I have the following vector:</p> <pre><code>A = [1 2 3 4 5 6] </code></pre> <p>I want to take the the difference between the <code>third</code> element and the <code>first</code> (<code>A(3)-A(1)</code>) </p> <p>and then <code>fourth</code> and <code>second</code> element (<code>A(4)-A(2)</code>) and so on. </p> <p>How do I do this?</p> <p>Thank you!</p>
+<p>Just use this:</p> <pre><code>A(3:end)-A(1:end-2) </code></pre>

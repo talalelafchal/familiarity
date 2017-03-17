@@ -1,0 +1,3 @@
+Assigning value to constant empty dictionary for first time in swift language
+<p>If I declare an empty Constant dictionary and want to initialize later, How can I do it?</p> <pre><code>let emptyDictionary = Dictionary&lt;String, Float&gt;() </code></pre> <p>How can i assign value to <code>emptyDictionary</code>?</p>
+<p>You can't. You have to create a <strong>variable Dictionary</strong>:</p> <pre><code>var emptyDictionary = Dictionary&lt;String, Float&gt;() emptyDictionary["key"] = 3.0 </code></pre> <p>Or create a filled constant Dictionary:</p> <pre><code>let emptyDictionary = ["Key": 3.0] </code></pre>

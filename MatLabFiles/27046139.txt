@@ -1,0 +1,3 @@
+What is void** in a S-Function .cpp
+<p>I am reading some code written in a .cpp file on which is based a MATLAB S-Function.</p> <p>I just want to know what does it mean :</p> <pre><code>void** vecPWork </code></pre> <p>Is it a variable of which type? And the two stars stand for what?</p> <p>thanks for your time.</p>
+<p><code>void **</code> is simply a <em>pointer to a pointer</em> to memory with an unspecified type. </p> <p>Note: <code>void *</code> is a generic pointer type, but <code>void **</code> is not a generic <em>pointer-to-pointer</em> type - as it <em>should</em> always point to a true <code>void * object</code>.</p> <p>Also you can only dereference it once !</p>

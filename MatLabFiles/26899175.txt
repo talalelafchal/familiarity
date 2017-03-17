@@ -1,0 +1,2 @@
+Writing 1xN char array to excel using matlab
+<p>I have a [1x117 char] (AKA 1x117 character array) that I need to write into a single cell in excel. Before doing so I did the follow:</p> <pre><code>x = [1x117 char]; x = cellstr(x); xlswrite('test.xls',x ) </code></pre> <p>However the excel spreadsheet is empty. I'm not quite sure how to fix this. </p>

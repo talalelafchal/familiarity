@@ -1,0 +1,4 @@
+Initialize class-instance and access variables in Swift
+<p>I just created a class and gave it some vars. Unfortunately I can't access these variables in my <code>iOS-Projects</code>. However, the same syntax works in playground...</p> <pre><code>class ViewController: UIViewController { class Dog { var age = 0 var hungry = TRUE } var rex = Dog() rex.age = 2 //ERROR: EXPECTED DECLARATION } </code></pre>
+<p>The last two lines need to be inside a function. You can have only declarations in class scope, not expressions to be executed.</p>
+<p>The syntax for a <em>class declaration</em> is:</p> <pre><code>class &lt;class name&gt;: &lt;superclass&gt;, &lt;adopted protocols&gt; { &lt;declarations&gt; } </code></pre> <p>Your declaration of <code>ViewController</code> includes <code>rex.age = 2</code> which itself is not a <em>declaration</em>, it is a <em>statement</em> - specifically a <em>binary expression</em> with an infix operator.</p>

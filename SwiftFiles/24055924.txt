@@ -1,0 +1,3 @@
+How to set exit code value for a command line utility in Swift?
+<p>I can't find it in the language reference. The standard template doesn't give a clue:</p> <pre><code>import Foundation println("Calculating") // How to set and exit code when I done? </code></pre>
+<p>Found it! You should just call:</p> <pre><code>exit(yourExitCode) </code></pre>

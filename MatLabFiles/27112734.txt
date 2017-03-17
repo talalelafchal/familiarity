@@ -1,0 +1,5 @@
+convert matrix to cell string with elements separated by delimiter
+<p>How can I convert a matrix </p> <pre><code>A=[1,2,3;4,5,6] </code></pre> <p>to a cell of string</p> <pre><code>A_str = {'1_2_3';'4_5_6'}; </code></pre>
+<p>Another approach, without loops:</p> <pre><code>A_str = num2str(A,'%i_'); A_str = mat2cell(A_str(:,1:end-1), ones(1,size(A_str,1))); </code></pre>
+<p>One approach could be this -</p> <pre><code>%// Input A=[1,2,3;4,5,6] %// Make a cell array with each element a string off each element of A cells = cellfun(@(x) num2str(x),num2cell(A),'Uni',0) %// Join the cells with strjoin using `_` as the delimiter A_str = arrayfun(@(n) strjoin(cells(n,:),'_'),1:size(cells,1),'Uni',0).' </code></pre> <p>Output -</p> <pre><code>A_str = '1_2_3' '4_5_6' </code></pre>
+<p>found this solution that seems faster</p> <pre><code>A=[1,2,3;4,5,6] A_str = cell(size(A,1),1); for index_row = 1 : size(A,1) clear allOneString_temp allOneString_temp = sprintf('%.0f_' , A(index_row,:)); A_str{index_row,:} = allOneString_temp(1:end-1); end </code></pre>
