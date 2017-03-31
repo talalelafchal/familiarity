@@ -20,7 +20,7 @@ object CodeLanguageModelEvaluator {
     val testingFile = new File(stormedDataPath, fileName)
     val artifact = ArtifactSerializer.deserializeFromFile(testingFile)
     var codeString = ""
-    val codeUnits = artifact.units.filter(_.isInstanceOf[CodeTaggedUnit])
+    val codeUnits = (artifact.question.informationUnits ++ artifact.answers.flatMap { _.informationUnits }).filter(_.isInstanceOf[CodeTaggedUnit])
     codeUnits.foreach(x => {
       codeString = codeString + "\n" + x.rawText
     })

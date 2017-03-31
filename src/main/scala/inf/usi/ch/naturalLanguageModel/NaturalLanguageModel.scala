@@ -18,18 +18,21 @@ object NaturalLanguageModel {
   private val tokenizerFactory = IndoEuropeanTokenizerFactory.INSTANCE
 
 
-  def train(nGram: Int, trainingSetFilePath: String, stormedDataFolderPath: String): TokenizedLM = {
+  def train(nGram: Int, trainingSetFilePath: String, stormedDataFolderPath: String, fileNumber: Int): TokenizedLM = {
     val tokenizedLM = new TokenizedLM(tokenizerFactory, nGram)
     val file = new File(trainingSetFilePath)
-    val trainingSet = Source.fromFile(file).getLines().toList
+    val trainingSet = Source.fromFile(file).getLines().toList.take(fileNumber)
     trainingSet.foreach { fileName =>
       val file = new File(stormedDataFolderPath, fileName)
       println(fileName)
       val artifact = ArtifactSerializer.deserializeFromFile(file)
-      val nlUnits = artifact.units.filter(_.isInstanceOf[NaturalLanguageTaggedUnit])
+      val nlUnits = (artifact.question.informationUnits ++ artifact.answers.flatMap {
+        _.informationUnits
+      }).filter(_.isInstanceOf[NaturalLanguageTaggedUnit])
       nlUnits.foreach(x => tokenizedLM.handle(x.rawText))
 
     }
+    println(trainingSet.size)
     tokenizedLM
   }
 

@@ -1,6 +1,6 @@
 package inf.usi.ch.parser
 
-import java.io.File
+import java.io.{BufferedWriter, File, FileWriter}
 
 import com.aliasi.lm.CompiledTokenizedLM
 import inf.usi.ch.codeLanguageModel.CodeLanguageModelEvaluator
@@ -110,6 +110,7 @@ object DiscussionParser {
 
     listBuffer.toList
   }
+
   def getDocumentsAllNGramProbabilityList(filesDir: String, codeLm3Gram: CompiledTokenizedLM, naturalLm3Gram: CompiledTokenizedLM): List[Double] = {
     val filesList = getListOfFiles(filesDir)
     val probList = filesList.map(x => {
@@ -118,8 +119,6 @@ object DiscussionParser {
     })
     probList.flatten
   }
-
-
 
 
   //Code NGram
@@ -148,6 +147,7 @@ object DiscussionParser {
 
     listBuffer.toList
   }
+
   def getDocumentsAllCodeNGramProbabilityList(filesDir: String, codeLm3Gram: CompiledTokenizedLM): List[Double] = {
     val filesList = getListOfFiles(filesDir)
     val probList = filesList.map(x => {
@@ -159,7 +159,7 @@ object DiscussionParser {
 
 
   //NL NGram
-  private def getAllNLNGramDocumentProbability(file: File,naturalLm3Gram: CompiledTokenizedLM): List[Double] = {
+  private def getAllNLNGramDocumentProbability(file: File, naturalLm3Gram: CompiledTokenizedLM): List[Double] = {
     val postString = Source.fromFile(file).getLines().mkString
     val doc = Jsoup.parse(postString, "", Parser.xmlParser())
     val listBuffer = new ListBuffer[Double]()
@@ -175,7 +175,8 @@ object DiscussionParser {
 
     listBuffer.toList
   }
-  def getDocumentsAllNLNGramProbabilityList(filesDir: String,naturalLm3Gram: CompiledTokenizedLM): List[Double] = {
+
+  def getDocumentsAllNLNGramProbabilityList(filesDir: String, naturalLm3Gram: CompiledTokenizedLM): List[Double] = {
     val filesList = getListOfFiles(filesDir)
     val probList = filesList.map(x => {
       val file = new File(filesDir, x.getName)
@@ -184,6 +185,71 @@ object DiscussionParser {
     probList.flatten
   }
 
+
+  //Code NGram
+  private def getAllCodeNGramTopLeastDocumentProbability(file: File, codeLm3Gram: CompiledTokenizedLM): List[(Double, String)] = {
+    val postString = Source.fromFile(file).getLines().mkString
+    val doc = Jsoup.parse(postString, "", Parser.xmlParser())
+    val listBuffer = new ListBuffer[(Double, String)]()
+
+    //Code
+    val code: Elements = doc.select(">code")
+    val codeIterator = code.iterator()
+    while (codeIterator.hasNext) {
+      val code = codeIterator.next().text()
+      val nGram = CodeLanguageModelEvaluator.nGramList(code, 3)
+      listBuffer ++= getAllNGramTupleProb(nGram, codeLm3Gram)
+    }
+
+    //PreCode
+    val preCode: Elements = doc.select(">pre")
+    val preCodeIterator = preCode.iterator()
+    while (preCodeIterator.hasNext) {
+      val code = preCodeIterator.next().text()
+      val nGram = CodeLanguageModelEvaluator.nGramList(code, 3)
+      listBuffer ++= getAllNGramTupleProb(nGram, codeLm3Gram)
+    }
+
+    listBuffer.toList
+
+  }
+
+
+  def getAllNGramTupleProb(nGram: List[String], codeLm3Gram: CompiledTokenizedLM): List[(Double, String)] = {
+    val probList = nGram.map(x => ((codeLm3Gram.log2Estimate(x)), x))
+    probList
+  }
+
+  def getTopLeastNGramProbabilityTupleList(filesDir: String, codeLm3Gram: CompiledTokenizedLM): List[(Double, String)] = {
+    val filesList = getListOfFiles(filesDir)
+    val probList = filesList.map(x => {
+      val file = new File(filesDir, x.getName)
+      getAllCodeNGramTopLeastDocumentProbability(file, codeLm3Gram)
+    })
+    val ordered = scala.util.Sorting.stableSort(probList.flatten, (e1: (Double, String), e2: (Double, String)) => e1._1 > e2._1).toList
+    println(" ordered head : " + ordered.head)
+    println(" ordered last : " +ordered.last)
+    ordered
+  }
+
+  def topLeastToFile(topFilePath: String,leastFilePath: String ,probabilityTupleList: List[(Double, String)]) = {
+    val top = probabilityTupleList.take(100)
+    val least = probabilityTupleList.drop(probabilityTupleList.size - 100)
+
+    val topFile = new File(topFilePath)
+    val topbf = new BufferedWriter(new FileWriter(topFile))
+    topbf.write("top" + '\n')
+    top.foreach(x=> topbf.write(x._1 + " , " + x._2  + '\n' ))
+    topbf.close()
+
+    val leastFile = new File(leastFilePath)
+    val leastbf = new BufferedWriter(new FileWriter(leastFile))
+    leastbf.write("least" + '\n')
+    least.foreach(x=> leastbf.write(x._1 + " , " + x._2  + '\n'))
+    leastbf.close()
+    println(probabilityTupleList.head)
+    println(probabilityTupleList.last)
+  }
 
 
 

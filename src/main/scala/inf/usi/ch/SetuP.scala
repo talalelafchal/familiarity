@@ -15,35 +15,42 @@ object SetuP extends App {
 
   val stormedDataPath = "/Users/Talal/Tesi/stormed-dataset"
 
-//  createBiMLProbCSVFile("R/BiLMValidationSum/android.csv","R/BiLMValidationSum/swing.csv")
+  //  createBiMLProbCSVFile("R/BiLMValidationSum/android.csv","R/BiLMValidationSum/swing.csv")
+
+
+  createNaturalLM(3, "modelLanguage/naturalLm10Files.dat",10)
+  createNaturalLM(3, "modelLanguage/naturalLm100Files.dat",100)
+  createNaturalLM(3, "modelLanguage/naturalLm1000Files.dat",1000)
+  createNaturalLM(3, "modelLanguage/naturalLm10000Files.dat",10000)
+
+  createCodeLM(3, "modelLanguage/codeLm10Files.dat",10)
+  createCodeLM(3, "modelLanguage/codeLm100Files.dat",100)
+  createCodeLM(3, "modelLanguage/codeLm1000Files.dat",1000)
+  createCodeLM(3, "modelLanguage/codeLm10000Files.dat",10000)
 
 
 
-//  createNaturalLM(3, "naturalLm3Gram.dat")
   //  createAvProbCSVFile("lm6Gram.dat",6,10000,"R/androidPbAV6Gram10000FIles.csv","R/swingPbAV6Gram10000Files.csv")
   //  createAvProbCSVFile("lm3Gram.dat",3,10000,"R/androidPbAV3Gram10000FIles.csv","R/swingPbAV3Gram10000Files.csv")
 
 
+  //  createNLAvProbCSVFile("naturalLm3Gram.dat",3,1000,"R/androidNLPbAV3Gram1000Files.csv","R/swingNLPbAV3Gram1000Files.csv")
+  //  createCodeAvProbCSVFile("codeLm3Gram.dat",3,1000,"R/androidCodePbAV3Gram1000Files.csv","R/swingCodePbAV3Gram1000Files.csv")
+  // createAvProbSwift("lm6Gram.dat", 6)
 
-//  createNLAvProbCSVFile("naturalLm3Gram.dat",3,1000,"R/androidNLPbAV3Gram1000Files.csv","R/swingNLPbAV3Gram1000Files.csv")
-//  createCodeAvProbCSVFile("codeLm3Gram.dat",3,1000,"R/androidCodePbAV3Gram1000Files.csv","R/swingCodePbAV3Gram1000Files.csv")
- // createAvProbSwift("lm6Gram.dat", 6)
-
-  def createBiMLProbCSVFile(androidCsvFileName: String, swingCsvFilename : String) ={
+  def createBiMLProbCSVFile(androidCsvFileName: String, swingCsvFilename: String) = {
     val codeLm3Gram = CodeLanguageModel.deserializeTLM("codeLm3Gram.dat")
     val naturalLm3Gram = NaturalLanguageModel.deserializeTLM("naturalLm3Gram.dat")
 
     //android
     val androidAvgList = BiLMValidation.evalTesting("AndroidSets/androidTestingList.txt", stormedDataPath, codeLm3Gram, naturalLm3Gram, 1000)
-    BiLMValidation.writeListToCSVFile(androidAvgList,androidCsvFileName)
+    BiLMValidation.writeListToCSVFile(androidAvgList, androidCsvFileName)
 
     //swing
     val swingAvgList = BiLMValidation.evalTesting("SwingSets/swingList.txt", stormedDataPath, codeLm3Gram, naturalLm3Gram, 1000)
-    BiLMValidation.writeListToCSVFile(swingAvgList,swingCsvFilename)
+    BiLMValidation.writeListToCSVFile(swingAvgList, swingCsvFilename)
 
   }
-
-
 
 
   def generateAndroidSwingFileList() = {
@@ -57,14 +64,14 @@ object SetuP extends App {
   }
 
 
-  def createCodeLM(nGram: Int, lmFileName: String) ={
-    val lm = CodeLanguageModel.train(nGram,"/Users/Talal/Tesi/familiarity/AndroidSets/androidTrainingList.txt",stormedDataPath)
-    CodeLanguageModel.serializeTLM(lm,lmFileName)
+  def createCodeLM(nGram: Int, lmFileName: String, fileNumber :Int) = {
+    val lm = CodeLanguageModel.train(nGram, "/Users/Talal/Tesi/familiarity/AndroidSets/androidTrainingList.txt", stormedDataPath,fileNumber)
+    CodeLanguageModel.serializeTLM(lm, lmFileName)
   }
 
-  def createNaturalLM(nGram: Int, lmFileName: String) ={
-    val lm = NaturalLanguageModel.train(nGram,"/Users/Talal/Tesi/familiarity/AndroidSets/androidTrainingList.txt",stormedDataPath)
-    NaturalLanguageModel.serializeTLM(lm,lmFileName)
+  def createNaturalLM(nGram: Int, lmFileName: String, fileNumber :Int ) = {
+    val lm = NaturalLanguageModel.train(nGram, "/Users/Talal/Tesi/familiarity/AndroidSets/androidTrainingList.txt", stormedDataPath,fileNumber)
+    NaturalLanguageModel.serializeTLM(lm, lmFileName)
   }
 
   def createLM(nGram: Int, lmFileName: String) = {
@@ -117,13 +124,13 @@ object SetuP extends App {
     val lm = LanguageModel.deserializeTLM(lmPath)
     val averageList = list.map(x => {
       val postString = Source.fromFile(x).getLines().mkString
-      val listTokens : List[String] = LanguageModelEvaluator.nGramList(postString,nGram)
-      val average : Double = LanguageModelEvaluator.getProb(listTokens, lm)
+      val listTokens: List[String] = LanguageModelEvaluator.nGramList(postString, nGram)
+      val average: Double = LanguageModelEvaluator.getProb(listTokens, lm)
       println(average)
       average
     }
     )
-    LanguageModelEvaluator.writeListToCSVFile(averageList,"R/swiftPbAV6Gram1000Files.csv")
+    LanguageModelEvaluator.writeListToCSVFile(averageList, "R/swiftPbAV6Gram1000Files.csv")
   }
 
 }

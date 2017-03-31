@@ -1,8 +1,8 @@
 library(plotly)
 setwd("/Users/Talal/Tesi/familiarity/R/AllNLNGram")
 
-codeData <- read.csv("allNLNgram.csv")
-p <- plot_ly(codeData ,y= ~android, name = 'Android',type = 'box') %>%
+nlData <- read.csv("allNLNgram.csv")
+p <- plot_ly(nlData ,y= ~android, name = 'Android',type = 'box') %>%
   add_trace(y = ~swing, name = 'Swing Code') %>%
   add_trace(y = ~swift, name = 'Swift Code') %>%
   add_trace(y = ~perl, name = 'Perl Code') %>%

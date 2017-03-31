@@ -1,8 +1,7 @@
 library(plotly)
 setwd("/Users/Talal/Tesi/familiarity/R/AllCodeNGram")
 
-dataCode <- read.csv("allCodeNgram.csv")
-dataCode <- na.omit(dataCode)
+Codedata <- read.csv("allCodeNgram.csv")
 p <- plot_ly(codeData ,y= ~android, name = 'Android',type = 'box') %>%
   add_trace(y = ~swing, name = 'Swing Code') %>%
   add_trace(y = ~swift, name = 'Swift Code') %>%

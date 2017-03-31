@@ -19,7 +19,7 @@ object NaturalLanguageModelEvaluator {
     val testingFile = new File(stormedDataPath, fileName)
     val artifact = ArtifactSerializer.deserializeFromFile(testingFile)
     var nlString = ""
-    val nlUnits = artifact.units.filter(_.isInstanceOf[NaturalLanguageTaggedUnit])
+    val nlUnits = (artifact.question.informationUnits ++ artifact.answers.flatMap { _.informationUnits }).filter(_.isInstanceOf[NaturalLanguageTaggedUnit])
     nlUnits.foreach(x => {
       nlString = nlString + "\n" + x.rawText
     })
