@@ -3,8 +3,8 @@ package inf.usi.ch
 import com.aliasi.lm.CompiledTokenizedLM
 import inf.usi.ch.codeLanguageModel.{CodeLanguageModel, CodeLanguageModelEvaluator}
 import inf.usi.ch.biLMValidation.BiLMValidation
+import inf.usi.ch.javaAntlerLMTokenizer.JavaLM
 import inf.usi.ch.naturalLanguageModel.{NaturalLanguageModel, NaturalLanguageModelEvaluator}
-
 
 import scala.io.Source
 
@@ -18,15 +18,27 @@ object SetuP extends App {
   //  createBiMLProbCSVFile("R/BiLMValidationSum/android.csv","R/BiLMValidationSum/swing.csv")
 
 
-  createNaturalLM(3, "modelLanguage/naturalLm10Files.dat",10)
-  createNaturalLM(3, "modelLanguage/naturalLm100Files.dat",100)
-  createNaturalLM(3, "modelLanguage/naturalLm1000Files.dat",1000)
-  createNaturalLM(3, "modelLanguage/naturalLm10000Files.dat",10000)
+//  createNaturalLM(3, "modelLanguage/naturalLm10Files.dat",10)
+//  createNaturalLM(3, "modelLanguage/naturalLm100Files.dat",100)
+//  createNaturalLM(3, "modelLanguage/naturalLm1000Files.dat",1000)
+//  createNaturalLM(3, "modelLanguage/naturalLm10000Files.dat",10000)
 
-  createCodeLM(3, "modelLanguage/codeLm10Files.dat",10)
-  createCodeLM(3, "modelLanguage/codeLm100Files.dat",100)
-  createCodeLM(3, "modelLanguage/codeLm1000Files.dat",1000)
-  createCodeLM(3, "modelLanguage/codeLm10000Files.dat",10000)
+
+  createJavaLM(3, "modelLanguage/javaLm10Files.dat",10)
+  createJavaLM(3, "modelLanguage/javaLm100Files.dat",100)
+  createJavaLM(3, "modelLanguage/javaLm1000Files.dat",1000)
+  createJavaLM(3, "modelLanguage/javaLm10000Files.dat",10000)
+
+//  createCodeLM(3, "modelLanguage/codeLm10Files.dat",10)
+//  createCodeLM(3, "modelLanguage/codeLm100Files.dat",100)
+//  createCodeLM(3, "modelLanguage/codeLm1000Files.dat",1000)
+//  createCodeLM(3, "modelLanguage/codeLm10000Files.dat",10000)
+
+
+  def createJavaLM(nGram: Int, lmFileName: String, fileNumber :Int) = {
+    val lm = JavaLM.train(nGram, "/Users/Talal/Tesi/familiarity/AndroidSets/androidTrainingList.txt", stormedDataPath,fileNumber)
+    JavaLM.serializeTLM(lm, lmFileName)
+  }
 
 
 
