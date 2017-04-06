@@ -8,9 +8,6 @@ import java.io._
   */
 object Classifier {
 
-
-
-
   def tagIntersection(questionPerTagList: List[QuestionPerTag]) = {
     val tagList = questionPerTagList.map(x => x.tag)
     var counter = 0;

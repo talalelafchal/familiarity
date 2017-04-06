@@ -8,7 +8,7 @@ import ch.usi.inf.reveal.parsing.artifact.ArtifactSerializer
 import ch.usi.inf.reveal.parsing.model.java.JavaASTNode
 import ch.usi.inf.reveal.parsing.model.{HASTNode, HASTNodeSequence, TextFragmentNode}
 import ch.usi.inf.reveal.parsing.units.CodeTaggedUnit
-import com.aliasi.lm.CompiledTokenizedLM
+import com.aliasi.lm.TokenizedLM
 import ch.usi.inf.reveal.parsing.model.Implicits._
 import org.antlr.v4.runtime.{ANTLRInputStream, CommonTokenStream}
 
@@ -70,9 +70,9 @@ object JavaLMEvaluator {
   }
 
 
-  private def addHASTNodeProbToTupleList(hastNode: HASTNode, nGram: Int, compiledTokenizedLM: CompiledTokenizedLM): Unit = hastNode match {
+  private def addHASTNodeProbToTupleList(hastNode: HASTNode, nGram: Int, lm: TokenizedLM): Unit = hastNode match {
     case nodeSequence: HASTNodeSequence => nodeSequence.fragments.
-      foreach(node => addHASTNodeProbToTupleList(node, nGram, compiledTokenizedLM))
+      foreach(node => addHASTNodeProbToTupleList(node, nGram, lm))
 
 
     case textFragmentNode: TextFragmentNode => val splitedText = textFragmentNode.text.split("\\s+").toList
@@ -82,7 +82,7 @@ object JavaLMEvaluator {
         val listOfNGramStrings = splitedText.sliding(nGram).toList.map(x => x.mkString(" "))
         //add probability to prob ListBuffer
         listOfNGramStrings.foreach(string => {
-          val result = compiledTokenizedLM.log2Estimate(string)
+          val result = lm.log2Estimate(string)
           val tuple = (result, string + "   => textFragmentNode ")
           probBufferListTuple += tuple
         })
@@ -91,7 +91,7 @@ object JavaLMEvaluator {
       code match {
         case Success(codeString) => val nGramList = getNGramListFromANTLR(codeString, nGram)
           nGramList.foreach(x => {
-            val result = compiledTokenizedLM.log2Estimate(x)
+            val result = lm.log2Estimate(x)
             val tuple = (result, x + "   => javaNode ")
             probBufferListTuple += tuple
           })
@@ -106,7 +106,7 @@ object JavaLMEvaluator {
             val listOfNGramStrings = splitedCode.sliding(nGram).toList.map(x => x.mkString(" "))
             //add probability to prob ListBuffer
             listOfNGramStrings.foreach(string => {
-              val result = compiledTokenizedLM.log2Estimate(string)
+              val result = lm.log2Estimate(string)
               val tuple = (result, string + "   => otherNode ")
               probBufferListTuple += tuple
             })
@@ -117,26 +117,24 @@ object JavaLMEvaluator {
   }
 
 
-  private def addHASTNodeProbToList(hastNode: HASTNode, nGram: Int, compiledTokenizedLM: CompiledTokenizedLM): Unit = hastNode match {
+  private def addHASTNodeProbToList(hastNode: HASTNode, nGram: Int, lm: TokenizedLM): Unit = hastNode match {
 
     case nodeSequence: HASTNodeSequence => nodeSequence.fragments.
-      foreach(node => addHASTNodeProbToList(node, nGram, compiledTokenizedLM))
+      foreach(node => addHASTNodeProbToList(node, nGram, lm))
 
     case textFragmentNode: TextFragmentNode => val splitedText = textFragmentNode.text.split("\\s+").toList
       if (splitedText.size >= nGram) {
         ANTLRTokenizerFactory.INSTANCE.setStateIsNonJavaCode();
-
-        println("TFN: " + textFragmentNode.text)
         // create NGrams
         val listOfNGramStrings = splitedText.sliding(nGram).toList.map(x => x.mkString(" "))
         //add probability to prob ListBuffer
-        listOfNGramStrings.foreach(string => probBufferList += compiledTokenizedLM.log2Estimate(string))
+        listOfNGramStrings.foreach(string => probBufferList += lm.log2Estimate(string))
       }
     case javaNode: JavaASTNode => val code = Try(javaNode.toCode)
       code match {
         case Success(codeString) => val nGramList = getNGramListFromANTLR(codeString, nGram)
 //          ANTLRTokenizerFactory.INSTANCE.setStateIsJavaCode();
-          nGramList.foreach(x => probBufferList += compiledTokenizedLM.log2Estimate(x))
+          nGramList.foreach(x => probBufferList += lm.log2Estimate(x))
         case Failure(f) => println("failure : " + f)
       }
     case otherNode: Any => val code = Try(otherNode.toCode)
@@ -148,7 +146,7 @@ object JavaLMEvaluator {
             val listOfNGramStrings = splitedCode.sliding(nGram).toList.map(x => x.mkString(" "))
             //add probability to prob ListBuffer
             ANTLRTokenizerFactory.INSTANCE.setStateIsNonJavaCode();
-            listOfNGramStrings.foreach(string => probBufferList += compiledTokenizedLM.log2Estimate(string))
+            listOfNGramStrings.foreach(string => probBufferList += lm.log2Estimate(string))
           }
         case Failure(f) => println("failure : " + f)
       }
@@ -156,13 +154,13 @@ object JavaLMEvaluator {
   }
 
 
-  def getProbListFiles(compiledTokenizedLM: CompiledTokenizedLM, nGram: Int, numberOfFiles: Int, testListFileName: String, stormedDataPath: String): List[Double] = {
+  def getProbListFiles(lm: TokenizedLM, nGram: Int, numberOfFiles: Int, testListFileName: String, stormedDataPath: String): List[Double] = {
     val testingListOfAllFilesName = new File(testListFileName)
     val testingSet: List[String] = Source.fromFile(testingListOfAllFilesName).getLines().toList.take(numberOfFiles)
     // populate problist
     testingSet.foreach(file => {
       jsonFileToHASTNode(file, stormedDataPath).
-        foreach(hastNode => addHASTNodeProbToList(hastNode, nGram, compiledTokenizedLM))
+        foreach(hastNode => addHASTNodeProbToList(hastNode, nGram, lm))
     })
     val list = probBufferList.toList
     probBufferList = new ListBuffer[Double]()
@@ -170,7 +168,7 @@ object JavaLMEvaluator {
   }
 
 
-  def getTopLeast100(compiledTokenizedLM: CompiledTokenizedLM, nGram: Int, numberOfFiles: Int, testListFileName: String,
+  def getTopLeast100(lm: TokenizedLM, nGram: Int, numberOfFiles: Int, testListFileName: String,
                      stormedDataPath: String, fileNameTop: String, fileNameLeast: String) = {
 
     val testingListOfAllFilesName = new File(testListFileName)
@@ -178,7 +176,7 @@ object JavaLMEvaluator {
     // populate problist
     testingSet.foreach(file => {
       jsonFileToHASTNode(file, stormedDataPath).
-        foreach(hastNode => addHASTNodeProbToTupleList(hastNode, nGram, compiledTokenizedLM))
+        foreach(hastNode => addHASTNodeProbToTupleList(hastNode, nGram, lm))
     })
 
     //get top and least
