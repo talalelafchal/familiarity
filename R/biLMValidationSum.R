@@ -2,8 +2,8 @@ library(plotly)
 setwd("/Users/Talal/Tesi/familiarity/R/BiLMValidationSum")
 
 #CrossValidation
-android <- read.csv("android.csv")
-swing <- read.csv("swing.csv")
+android <- read.csv("javaAndroid.csv")
+swing <- read.csv("javaSwing.csv")
 swift <- read.csv("swift.csv")
 perl <- read.csv("perl.csv")
 matlab <- read.csv("matLab.csv")

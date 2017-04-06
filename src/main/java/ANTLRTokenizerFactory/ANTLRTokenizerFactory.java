@@ -32,6 +32,9 @@ public class ANTLRTokenizerFactory implements TokenizerFactory, Serializable {
         this.stateIsJavaCode = false;
     }
 
+
+
+
     public Tokenizer tokenizer(char[] ch, int start, int length) {
         if (stateIsJavaCode) {
             return new ANTLRTokenizer(ch);

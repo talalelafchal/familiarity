@@ -35,14 +35,14 @@ object JavaLM {
       val codeUnits = (artifact.question.informationUnits ++ artifact.answers.flatMap {
         _.informationUnits
       }).filter(_.isInstanceOf[CodeTaggedUnit])
-
+      // map each units to HASTNode
       val hastNodeSeq = codeUnits.map(_.astNode)
       //  train JavaCode
       hastNodeSeq.foreach(x => trainJavaCode(x, tokenizedLM))
 
 
     }
-    println(trainingSet.size)
+    println("training set size : " + trainingSet.size)
     tokenizedLM
   }
 
@@ -68,18 +68,18 @@ object JavaLM {
 
     case javaNode: JavaASTNode => val code = Try(javaNode.toCode)
       code match {
-        case Success(a) =>
+        case Success(javaCode) =>
           tokenizerFactory.setStateIsJavaCode()
-          tokenizedLM.handle(a)
-        case Failure(f) => println(" check failed JavaNode" + f)
+          tokenizedLM.handle(javaCode)
+        case Failure(f) => println(" failed JavaNode" + f)
       }
 
-    case otherNode: Any => val code = Try(otherNode.toCode)
+    case otherNode: HASTNode => val code = Try(otherNode.toCode)
       code match {
         case Success(s) =>
           tokenizerFactory.setStateIsNonJavaCode()
           tokenizedLM.handle(s)
-        case Failure(f) => println(" check failed otherNode" + f)
+        case Failure(f) => println(" failed otherNode" + f)
       }
   }
 

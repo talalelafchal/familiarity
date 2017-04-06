@@ -15,31 +15,30 @@ object SetuP extends App {
 
   val stormedDataPath = "/Users/Talal/Tesi/stormed-dataset"
 
-  //  createBiMLProbCSVFile("R/BiLMValidationSum/android.csv","R/BiLMValidationSum/swing.csv")
+  //  createBiMLProbCSVFile("R/BiLMValidationSum/javaAndroid.csv","R/BiLMValidationSum/javaSwing.csv")
 
 
-//  createNaturalLM(3, "modelLanguage/naturalLm10Files.dat",10)
-//  createNaturalLM(3, "modelLanguage/naturalLm100Files.dat",100)
-//  createNaturalLM(3, "modelLanguage/naturalLm1000Files.dat",1000)
-//  createNaturalLM(3, "modelLanguage/naturalLm10000Files.dat",10000)
+  //  createNaturalLM(3, "modelLanguage/naturalLm10Files.dat",10)
+  //  createNaturalLM(3, "modelLanguage/naturalLm100Files.dat",100)
+  //  createNaturalLM(3, "modelLanguage/naturalLm1000Files.dat",1000)
+  //  createNaturalLM(3, "modelLanguage/naturalLm10000Files.dat",10000)
 
 
-  createJavaLM(3, "modelLanguage/javaLm10Files.dat",10)
-  createJavaLM(3, "modelLanguage/javaLm100Files.dat",100)
-  createJavaLM(3, "modelLanguage/javaLm1000Files.dat",1000)
-  createJavaLM(3, "modelLanguage/javaLm10000Files.dat",10000)
+  createJavaLM(3, "modelLanguage/javaLm10Files.dat", 10)
+  createJavaLM(3, "modelLanguage/javaLm100Files.dat", 100)
+  createJavaLM(3, "modelLanguage/javaLm1000Files.dat", 1000)
+  createJavaLM(3, "modelLanguage/javaLm10000Files.dat", 10000)
 
-//  createCodeLM(3, "modelLanguage/codeLm10Files.dat",10)
-//  createCodeLM(3, "modelLanguage/codeLm100Files.dat",100)
-//  createCodeLM(3, "modelLanguage/codeLm1000Files.dat",1000)
-//  createCodeLM(3, "modelLanguage/codeLm10000Files.dat",10000)
+  //  createCodeLM(3, "modelLanguage/codeLm10Files.dat",10)
+  //  createCodeLM(3, "modelLanguage/codeLm100Files.dat",100)
+  //  createCodeLM(3, "modelLanguage/codeLm1000Files.dat",1000)
+  //  createCodeLM(3, "modelLanguage/codeLm10000Files.dat",10000)
 
 
-  def createJavaLM(nGram: Int, lmFileName: String, fileNumber :Int) = {
-    val lm = JavaLM.train(nGram, "/Users/Talal/Tesi/familiarity/AndroidSets/androidTrainingList.txt", stormedDataPath,fileNumber)
+  def createJavaLM(nGram: Int, lmFileName: String, fileNumber: Int) = {
+    val lm = JavaLM.train(nGram, "/Users/Talal/Tesi/familiarity/AndroidSets/androidTrainingList.txt", stormedDataPath, fileNumber)
     JavaLM.serializeTLM(lm, lmFileName)
   }
-
 
 
   //  createAvProbCSVFile("lm6Gram.dat",6,10000,"R/androidPbAV6Gram10000FIles.csv","R/swingPbAV6Gram10000Files.csv")
@@ -76,13 +75,13 @@ object SetuP extends App {
   }
 
 
-  def createCodeLM(nGram: Int, lmFileName: String, fileNumber :Int) = {
-    val lm = CodeLanguageModel.train(nGram, "/Users/Talal/Tesi/familiarity/AndroidSets/androidTrainingList.txt", stormedDataPath,fileNumber)
+  def createCodeLM(nGram: Int, lmFileName: String, fileNumber: Int) = {
+    val lm = CodeLanguageModel.train(nGram, "/Users/Talal/Tesi/familiarity/AndroidSets/androidTrainingList.txt", stormedDataPath, fileNumber)
     CodeLanguageModel.serializeTLM(lm, lmFileName)
   }
 
-  def createNaturalLM(nGram: Int, lmFileName: String, fileNumber :Int ) = {
-    val lm = NaturalLanguageModel.train(nGram, "/Users/Talal/Tesi/familiarity/AndroidSets/androidTrainingList.txt", stormedDataPath,fileNumber)
+  def createNaturalLM(nGram: Int, lmFileName: String, fileNumber: Int) = {
+    val lm = NaturalLanguageModel.train(nGram, "/Users/Talal/Tesi/familiarity/AndroidSets/androidTrainingList.txt", stormedDataPath, fileNumber)
     NaturalLanguageModel.serializeTLM(lm, lmFileName)
   }
 

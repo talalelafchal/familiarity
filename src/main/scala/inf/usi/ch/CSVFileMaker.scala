@@ -5,6 +5,7 @@ import java.io.{BufferedWriter, File, FileWriter}
 import com.aliasi.lm.CompiledTokenizedLM
 import inf.usi.ch.biLMValidation.BiLMValidation
 import inf.usi.ch.codeLanguageModel.CodeLanguageModel
+import inf.usi.ch.javaAntlerLMTokenizer.{JavaLM, JavaLMEvaluator}
 import inf.usi.ch.parser.DiscussionParser
 
 /**
@@ -13,29 +14,43 @@ import inf.usi.ch.parser.DiscussionParser
 object CSVFileMaker extends App {
 
   val stormedDataPath = "/Users/Talal/Tesi/stormed-dataset"
-//  val codeLm3Gram = CodeLanguageModel.deserializeTLM("codeLm3Gram.dat")
-//  val naturalLm3Gram = NaturalLanguageModel.deserializeTLM("naturalLm3Gram.dat")
+  //  val codeLm3Gram = CodeLanguageModel.deserializeTLM("codeLm3Gram.dat")
+  //  val naturalLm3Gram = NaturalLanguageModel.deserializeTLM("naturalLm3Gram.dat")
 
 
-//  val code10Lm = CodeLanguageModel.deserializeTLM("modelLanguage/codeLm10Files.dat")
-  val code100Lm = CodeLanguageModel.deserializeTLM("modelLanguage/codeLm100Files.dat")
-//  val code1000Lm = CodeLanguageModel.deserializeTLM("modelLanguage/codeLm1000Files.dat")
-//  val code10000Lm = CodeLanguageModel.deserializeTLM("modelLanguage/codeLm10000Files.dat")
+  //  val code10Lm = CodeLanguageModel.deserializeTLM("modelLanguage/codeLm10Files.dat")
+  //  val code100Lm = CodeLanguageModel.deserializeTLM("modelLanguage/codeLm100Files.dat")
+  //  val code1000Lm = CodeLanguageModel.deserializeTLM("modelLanguage/codeLm1000Files.dat")
+  //  val code10000Lm = CodeLanguageModel.deserializeTLM("modelLanguage/codeLm10000Files.dat")
+
+
+//  val java10Lm = JavaLM.deserializeTLM("modelLanguage/javaLm10Files.dat")
+//  val java100Lm = CodeLanguageModel.deserializeTLM("modelLanguage/javaLm100Files.dat")
+  val java1000Lm = CodeLanguageModel.deserializeTLM("modelLanguage/javaLm1000Files.dat")
+//  val java10000Lm = CodeLanguageModel.deserializeTLM("modelLanguage/javaLm10000Files.dat")
+
+//  createJavaNGramCSVFIle("R/10/javaNGram10.csv", java10Lm,3)
+//  createJavaNGramCSVFIle("R/100/javaNGram100.csv", java100Lm,3)
+  createJavaNGramCSVFIle("R/1000/javaNGramTesting1000.csv", java1000Lm,3)
+//  createJavaNGramCSVFIle("R/10000/javaNGram10000.csv", java10000Lm,3)
+
+
+//  JavaLMEvaluator.getTopLeast100(java1000Lm, 3, 1000, "AndroidSets/androidTestingList.txt", stormedDataPath,"TopLeast/javaAndroidTop.csv","TopLeast/javaAndroidLeast.csv" )
+//  JavaLMEvaluator.getTopLeast100(java1000Lm, 3, 1000, "SwingSets/swingList.txt", stormedDataPath,"TopLeast/javaSwingTop.csv","TopLeast/javaSwingLeast.csv" )
 
 
 
-//  DiscussionParser.topLeastToFile("TopLeast/swiftTop.csv","TopLeast/swiftLeast.csv",DiscussionParser.getTopLeastNGramProbabilityTupleList("SwiftFiles",code100Lm))
-//  DiscussionParser.topLeastToFile("TopLeast/perlTop.csv","TopLeast/perlLeast.csv",DiscussionParser.getTopLeastNGramProbabilityTupleList("PerlFiles",code100Lm))
-//  DiscussionParser.topLeastToFile("TopLeast/matlabTop.csv","TopLeast/matlabLeast.csv",DiscussionParser.getTopLeastNGramProbabilityTupleList("MatLabFiles",code100Lm))
+  //  DiscussionParser.topLeastToFile("TopLeast/perlTop.csv","TopLeast/perlLeast.csv",DiscussionParser.getTopLeastNGramProbabilityTupleList("PerlFiles",code100Lm))
+  //  DiscussionParser.topLeastToFile("TopLeast/matlabTop.csv","TopLeast/matlabLeast.csv",DiscussionParser.getTopLeastNGramProbabilityTupleList("MatLabFiles",code100Lm))
 
-  DiscussionParser.topLeastToFile("TopLeast/androidTop.csv","TopLeast/androidLeast.csv",BiLMValidation.evalAllCodeTupleNGramTesting("AndroidSets/androidTestingList.txt", stormedDataPath, code100Lm, 1000))
-  DiscussionParser.topLeastToFile("TopLeast/swingTop.csv","TopLeast/swingLeast.csv",BiLMValidation.evalAllCodeTupleNGramTesting("SwingSets/swingList.txt", stormedDataPath, code100Lm, 1000))
+  //  DiscussionParser.topLeastToFile("TopLeast/androidTop.csv","TopLeast/androidLeast.csv",BiLMValidation.evalAllCodeTupleNGramTesting("AndroidSets/androidTestingList.txt", stormedDataPath, code100Lm, 1000))
+  //  DiscussionParser.topLeastToFile("TopLeast/swingTop.csv","TopLeast/swingLeast.csv",BiLMValidation.evalAllCodeTupleNGramTesting("SwingSets/swingList.txt", stormedDataPath, code100Lm, 1000))
 
 
-//  val nl10Lm = CodeLanguageModel.deserializeTLM("modelLanguage/naturalLm10Files.dat")
-//  val nl100Lm = CodeLanguageModel.deserializeTLM("modelLanguage/naturalLm100Files.dat")
-//  val nl1000Lm = CodeLanguageModel.deserializeTLM("modelLanguage/naturalLm1000Files.dat")
-//  val nl10000Lm = CodeLanguageModel.deserializeTLM("modelLanguage/naturalLm10000Files.dat")
+  //  val nl10Lm = CodeLanguageModel.deserializeTLM("modelLanguage/naturalLm10Files.dat")
+  //  val nl100Lm = CodeLanguageModel.deserializeTLM("modelLanguage/naturalLm100Files.dat")
+  //  val nl1000Lm = CodeLanguageModel.deserializeTLM("modelLanguage/naturalLm1000Files.dat")
+  //  val nl10000Lm = CodeLanguageModel.deserializeTLM("modelLanguage/naturalLm10000Files.dat")
 
   //
   //  createAllNGramCSVFile("R/10/allNGram10.csv",code10Lm,nl10Lm)
@@ -43,23 +58,42 @@ object CSVFileMaker extends App {
   //  createAllNGramCSVFile("R/1000/allNGram1000.csv",code1000Lm,nl1000Lm)
   //  createAllNGramCSVFile("R/10000/allNGram10000.csv",code10000Lm,nl10000Lm)
 
-//  createAllCodeNGramCSVFile("R/10/allCodeNGram10.csv", code10Lm)
-//  println("code 10")
-//  createAllCodeNGramCSVFile("R/100/allCodeNGram100.csv", code100Lm)
-//  println("code 100")
-//  createAllCodeNGramCSVFile("R/1000/allCodeNGram1000.csv", code1000Lm)
-//  println("code 1000")
-//  createAllCodeNGramCSVFile("R/10000/allCodeNGram10000.csv", code10000Lm)
-//  println("code 10000")
-//
-//  createAllNLNGramCSVFIle("R/10/allNLNGram10.csv", nl10Lm)
-//  println("NL 10")
-//  createAllNLNGramCSVFIle("R/100/allNLNGram100.csv", nl100Lm)
-//  println("NL 100")
-//  createAllNLNGramCSVFIle("R/1000/allNLNGram1000.csv", nl1000Lm)
-//  println("NL 1000")
-//  createAllNLNGramCSVFIle("R/10000/allNLNGram10000.csv", nl10000Lm)
-//  println("NL 10000")
+  //  createAllCodeNGramCSVFile("R/10/allCodeNGram10.csv", code10Lm)
+  //  println("code 10")
+  //  createAllCodeNGramCSVFile("R/100/allCodeNGram100.csv", code100Lm)
+  //  println("code 100")
+  //  createAllCodeNGramCSVFile("R/1000/allCodeNGram1000.csv", code1000Lm)
+  //  println("code 1000")
+  //  createAllCodeNGramCSVFile("R/10000/allCodeNGram10000.csv", code10000Lm)
+  //  println("code 10000")
+  //
+  //  createAllNLNGramCSVFIle("R/10/allNLNGram10.csv", nl10Lm)
+  //  println("NL 10")
+  //  createAllNLNGramCSVFIle("R/100/allNLNGram100.csv", nl100Lm)
+  //  println("NL 100")
+  //  createAllNLNGramCSVFIle("R/1000/allNLNGram1000.csv", nl1000Lm)
+  //  println("NL 1000")
+  //  createAllNLNGramCSVFIle("R/10000/allNLNGram10000.csv", nl10000Lm)
+  //  println("NL 10000")
+
+
+  def createJavaNGramCSVFIle(filePath: String, javaLm: CompiledTokenizedLM, nGram:Int) = {
+    val androidProbList: List[Double] = JavaLMEvaluator.getProbListFiles(javaLm, nGram, 1000, "AndroidSets/androidTestingList.txt", stormedDataPath)
+    println(" android list size " + androidProbList.size)
+    val swingProbList: List[Double] = JavaLMEvaluator.getProbListFiles(javaLm, nGram, 1000, "SwingSets/swingList.txt", stormedDataPath)
+    println(" swing list size " + swingProbList.size)
+    val listFile = new File(filePath)
+    val listbf = new BufferedWriter(new FileWriter(listFile))
+    listbf.write("android,swing\n")
+    for (i <- 0 until androidProbList.size) {
+      listbf.write(androidProbList(i) + "," + swingProbList(i) + '\n')
+    }
+    for (i <- androidProbList.size until swingProbList.size) {
+      listbf.write("" + "," + swingProbList(i) + '\n')
+    }
+
+    listbf.close()
+  }
 
 
   def createAllNGramCSVFile(filePath: String, codeLm: CompiledTokenizedLM, naturalLm: CompiledTokenizedLM) {
