@@ -2,14 +2,15 @@ package inf.usi.ch.javaAntlerLMTokenizer
 
 import java.io.{File, FileOutputStream, ObjectOutputStream}
 
-import ANTLRTokenizerFactory.ANTLRTokenizerFactory
 import ch.usi.inf.reveal.parsing.artifact.ArtifactSerializer
 import ch.usi.inf.reveal.parsing.model.{HASTNode, HASTNodeSequence, TextFragmentNode}
 import ch.usi.inf.reveal.parsing.units.CodeTaggedUnit
 import com.aliasi.lm.{CompiledTokenizedLM, TokenizedLM}
 import ch.usi.inf.reveal.parsing.model.Implicits._
 import ch.usi.inf.reveal.parsing.model.java.JavaASTNode
+import com.aliasi.tokenizer.IndoEuropeanTokenizerFactory
 import com.aliasi.util.AbstractExternalizable
+import inf.usi.ch.tokenizer.{ANTLRTokenizer, HASTTokenizer, UnitTokenizerFactory}
 
 import scala.io.Source
 import scala.util.{Failure, Success, Try}
@@ -18,9 +19,9 @@ import scala.util.{Failure, Success, Try}
   * Created by Talal on 03.04.17.
   */
 object JavaLM {
+  private val DEFAULT_TOKENIZER_FACTORY = IndoEuropeanTokenizerFactory.INSTANCE
 
-  private val tokenizerFactory = ANTLRTokenizerFactory.INSTANCE
-
+  private val tokenizerFactory = UnitTokenizerFactory.INSTANCE
 
   def train(nGram: Int, trainingSetFilePath: String, stormedDataFolderPath: String, fileNumber: Int): TokenizedLM = {
     val tokenizedLM = new TokenizedLM(tokenizerFactory, nGram)
@@ -40,7 +41,6 @@ object JavaLM {
       //  train JavaCode
       hastNodeSeq.foreach(x => trainJavaCode(x, tokenizedLM))
 
-
     }
     println("training set size : " + trainingSet.size)
     tokenizedLM
@@ -57,30 +57,16 @@ object JavaLM {
     AbstractExternalizable.readObject(file).asInstanceOf[CompiledTokenizedLM]
   }
 
+  private def trainJavaCode(hASTNode: HASTNode, tokenizedLM: TokenizedLM): Unit = {
+    val tokens = HASTTokenizer.tokenize(hASTNode)
+    val string = hASTNode.toCode
+    trainModel(tokens, string, tokenizedLM)
+  }
 
-  private def trainJavaCode(hASTNode: HASTNode, tokenizedLM: TokenizedLM): Unit = hASTNode match {
 
-    case nodeSequence: HASTNodeSequence => nodeSequence.fragments.foreach(node => trainJavaCode(node, tokenizedLM))
-
-    case textNode: TextFragmentNode =>
-      tokenizerFactory.setStateIsNonJavaCode()
-      tokenizedLM.handle(textNode.text)
-
-    case javaNode: JavaASTNode => val code = Try(javaNode.toCode)
-      code match {
-        case Success(javaCode) =>
-          tokenizerFactory.setStateIsJavaCode()
-          tokenizedLM.handle(javaCode)
-        case Failure(f) => println(" failed JavaNode" + f)
-      }
-
-    case otherNode: HASTNode => val code = Try(otherNode.toCode)
-      code match {
-        case Success(s) =>
-          tokenizerFactory.setStateIsNonJavaCode()
-          tokenizedLM.handle(s)
-        case Failure(f) => println(" failed otherNode" + f)
-      }
+  private def trainModel(tokens: Array[String], cs: CharSequence, tokenizedLM: TokenizedLM) = {
+    tokenizerFactory.setTokens(tokens)
+    tokenizedLM.handle(cs)
   }
 
 }
