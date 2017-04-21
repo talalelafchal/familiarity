@@ -1,0 +1,125 @@
+// process incoming messages here    -3.011790181515975
+netstat    -3.011790181515975
+//LAYOUT FILE webview_content.xml    -3.011790181515975
+/*
+     * Copyright (C) 2011 The Android Open Source Project
+     *
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *      http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     */    -3.011790181515975
+jarsigner    -3.011790181515975
+Welcome    -3.011790181515975
+//this.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);    -3.011790181515975
+/**
+ * ... ...
+ *
+ * <h4>DNS caching</h4>
+ * <p>On Android, addresses are cached for 600 seconds (10 minutes) by default. Failed lookups are
+ * cached for 10 seconds. The underlying C library or OS may cache for longer, but you can control
+ * the Java-level caching with the usual {@code "networkaddress.cache.ttl"} and
+ * {@code "networkaddress.cache.negative.ttl"} system properties. These are parsed as integer
+ * numbers of seconds, where the special value 0 means "don't cache" and -1 means "cache forever".
+ *
+ * ... ...
+ */    -3.011790181515975
+Welcome Welcome    -6.02358036303195
+" android :    -7.187957629879129
+) ; }    -7.364784314850306
+( ) ;    -7.389098646020218
+android : layout    -7.950278115873102
+: layout _    -8.247852711939263
+Boo ) ;    -8.28170202468874
+upc ) ;    -8.28170202468874
+".*Physical Address.*: (.*)" ) ;    -8.28170202468874
+"id=" ) ;    -8.28170202468874
+"&amp;search=" ) ;    -8.28170202468874
+" MyUtilityClass constructor" ) ;    -8.28170202468874
+"helper" ) ;    -8.28170202468874
+"checkLibrary" ) ;    -8.28170202468874
+INVALID_APPWIDGET_ID ) ;    -8.28170202468874
+widget_layout ) ;    -8.28170202468874
+awID ) ;    -8.28170202468874
+STYLE_HORIZONTAL ) ;    -8.28170202468874
+"Rebooting. If this hangs, then this app wont work on this device (pull battery)" ) ;    -8.28170202468874
+"su" ) ;    -8.28170202468874
+"reboot" ) ;    -8.28170202468874
+"su -c reboot" ) ;    -8.28170202468874
+load_routes ) ;    -8.28170202468874
+"Fetching routes data ..." ) ;    -8.28170202468874
+TYPE_ORIENTATION ) ;    -8.28170202468874
+pFixtureDef ) ;    -8.28170202468874
+LASTFM_API_KEY ) ;    -8.28170202468874
+EXTRALARGE ) ;    -8.28170202468874
+ARTIST ) ;    -8.28170202468874
+gridview_image ) ;    -8.28170202468874
+viewholder ) ;    -8.28170202468874
+0.75f ) ;    -8.28170202468874
+mGridAdapter ) ;    -8.28170202468874
+sMinute ) ;    -8.28170202468874
+eHour ) ;    -8.28170202468874
+eMinute ) ;    -8.28170202468874
+minuts ) ;    -8.28170202468874
+TYPE_NUMBER_VARIATION_PASSWORD ) ;    -8.28170202468874
+FLAG_ONE_SHOT ) ;    -8.28170202468874
+timeZone ) ;    -8.28170202468874
+"Recieved wake up cal from Alarm Manger" ) ;    -8.28170202468874
+NOTIFICATION_TITLE ) ;    -8.28170202468874
+NOTIFICATION_NOTE ) ;    -8.28170202468874
+rowID ) ;    -8.28170202468874
+loadInfo ) ;    -8.28170202468874
+"foobar" ) ;    -8.28170202468874
+"hello world!" ) ;    -8.28170202468874
+EXTRA_NDEF_MESSAGES ) ;    -8.28170202468874
+"Show Confirm Lock PIN Activity" ) ;    -8.28170202468874
+ACTION_RUN ) ;    -8.28170202468874
+mRequestCode ) ;    -8.28170202468874
+"Show Set Lock PIN Activity" ) ;    -8.28170202468874
+"Show Set Lock Pattern Activity" ) ;    -8.28170202468874
+"http://10.0.0.2/namedate.php" ) ;    -8.28170202468874
+responseText ) ;    -8.28170202468874
+"application/x-www-form-urlencoded" ) ;    -8.28170202468874
+"/newfolder" ) ;    -8.28170202468874
+"files/" ) ;    -8.28170202468874
+"files/newfolder/" ) ;    -8.28170202468874
+"newfolder/pic.jpg" ) ;    -8.28170202468874
+"myPackage.myService" ) ;    -8.28170202468874
+imageRes ) ;    -8.28170202468874
+RESULT_CAMERA_SELECT ) ;    -8.28170202468874
+"Can't create file to take picture!" ) ;    -8.28170202468874
+"SDCard Error!" ) ;    -8.28170202468874
+"/MyFolder/Images" ) ;    -8.28170202468874
+ext ) ;    -8.28170202468874
+UriOfPhoto ) ;    -8.28170202468874
+btnStart ) ;    -8.28170202468874
+CREATE_IF_NECESSARY ) ;    -8.28170202468874
+mysql ) ;    -8.28170202468874
+myInsertData ) ;    -8.28170202468874
+"File not Found" ) ;    -8.28170202468874
+currentFile ) ;    -8.28170202468874
+videoFileName ) ;    -8.28170202468874
+numRead ) ;    -8.28170202468874
+currVid ) ;    -8.28170202468874
+"Updating Progress Bar" ) ;    -8.28170202468874
+menu_wifi ) ;    -8.28170202468874
+menu_cuenta ) ;    -8.28170202468874
+menu_cajeros ) ;    -8.28170202468874
+menu_indicadores ) ;    -8.28170202468874
+menu_contacto ) ;    -8.28170202468874
+menu_promo ) ;    -8.28170202468874
+"create table if not exists Restaraunt (...)" ) ;    -8.28170202468874
+"there" ) ;    -8.28170202468874
+"pass_list" ) ;    -8.28170202468874
+"this" ) ;    -8.28170202468874
+"is" ) ;    -8.28170202468874
+"an" ) ;    -8.28170202468874
+"answer" ) ;    -8.28170202468874
+SCROLLBARS_OUTSIDE_INSET ) ;    -8.28170202468874

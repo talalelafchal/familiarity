@@ -16,7 +16,7 @@ import scala.io.Source
 /**
   * Created by Talal on 03.04.17.
   */
-object JavaLMEvaluator {
+class JavaLMEvaluator {
 
   type Probability = Double
 
@@ -33,6 +33,9 @@ object JavaLMEvaluator {
     codeUnits.map(_.astNode)
   }
 
+
+
+
   def writeListToCSVFile(list: List[Double], filePath: String) = {
     val listFile = new File(filePath)
     val listbf = new BufferedWriter(new FileWriter(listFile))
@@ -42,44 +45,19 @@ object JavaLMEvaluator {
   }
 
 
-  private def getNGramListFromANTLR(codeString: String, nGram: Int): List[String] = {
-    val lexer = new JavaLexer(new ANTLRInputStream(codeString))
-    val tokens = new CommonTokenStream(lexer)
-    tokens.fill()
-    //ignore tokens with less than 3 NGram
-    if (tokens.size() < nGram + 1) {
-      List()
-    }
-    else {
-      var tokensBuffer = new ListBuffer[String]()
-      var index = 0
-      while (index < tokens.size() - 1) {
-        tokensBuffer += tokens.get(index).getText
-        index = index + 1
-      }
-      val tokensList = tokensBuffer.toList
-
-      val nGramStringList = tokensList.sliding(nGram).toList.map(x => x.mkString(" "))
-      nGramStringList
-    }
-
-
-  }
-
-
-  private def buildNGrams(tokens: Array[Token], nGramLength: Int): List[NGram] = {
+  protected def buildNGrams(tokens: Array[Token], nGramLength: Int): List[NGram] = {
     tokens.sliding(nGramLength).toList
   }
 
-  private def computeProbability(ngram: NGram, lm: TokenizedLM): Probability = {
+  protected def computeProbability(ngram: NGram, lm: TokenizedLM): Probability = {
     lm.processLog2Probability(ngram)
   }
 
   private def addHASTNodeProbToList(hastNode: HASTNode, nGramLength: Int, lm: TokenizedLM): List[Probability] = {
 
     val tokens: Array[String] = HASTTokenizer.tokenize(hastNode)
-    val ngrams: List[NGram] = buildNGrams(tokens,nGramLength)
-    val probabilityList: List[Probability] = ngrams.map { ngram => computeProbability(ngram,lm) }
+    val ngrams: List[NGram] = buildNGrams(tokens, nGramLength)
+    val probabilityList: List[Probability] = ngrams.map { ngram => computeProbability(ngram, lm) }
 
     probabilityList
   }
@@ -88,10 +66,11 @@ object JavaLMEvaluator {
     val testingListOfAllFileNames = new File(testListFileName)
     val testingSet: List[String] = Source.fromFile(testingListOfAllFileNames).getLines().take(numberOfFiles).toList
     val listOfUnitsHASTNodes: Seq[HASTNode] = testingSet.flatMap { file => jsonFileToUnitsHASTNodes(file, stormedDataPath) }
-    val ngramProbabilities: Seq[Probability] = listOfUnitsHASTNodes.flatMap { hASTNode => addHASTNodeProbToList(hASTNode,nGram,lm) }
+    val ngramProbabilities: Seq[Probability] = listOfUnitsHASTNodes.flatMap { hASTNode => addHASTNodeProbToList(hASTNode, nGram, lm) }
 
     ngramProbabilities
   }
+
 
 
 

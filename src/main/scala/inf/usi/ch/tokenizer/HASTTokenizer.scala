@@ -4,7 +4,7 @@ import ch.usi.inf.reveal.parsing.model.{HASTNode, HASTNodeSequence, TextFragment
 import ch.usi.inf.reveal.parsing.model.java.JavaASTNode
 import com.aliasi.tokenizer.IndoEuropeanTokenizerFactory
 
-import scala.util.{Failure, Success, Try}
+import scala.util.{ Try}
 
 /**
   * Created by Talal on 07.04.17.

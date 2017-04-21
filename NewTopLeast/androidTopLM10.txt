@@ -1,0 +1,129 @@
+// process incoming messages here    -2.0035364130130446
+netstat    -2.0035364130130446
+//LAYOUT FILE webview_content.xml    -2.0035364130130446
+/*
+     * Copyright (C) 2011 The Android Open Source Project
+     *
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *      http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     */    -2.0035364130130446
+jarsigner    -2.0035364130130446
+Welcome    -2.0035364130130446
+//this.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);    -2.0035364130130446
+/**
+ * ... ...
+ *
+ * <h4>DNS caching</h4>
+ * <p>On Android, addresses are cached for 600 seconds (10 minutes) by default. Failed lookups are
+ * cached for 10 seconds. The underlying C library or OS may cache for longer, but you can control
+ * the Java-level caching with the usual {@code "networkaddress.cache.ttl"} and
+ * {@code "networkaddress.cache.negative.ttl"} system properties. These are parsed as integer
+ * numbers of seconds, where the special value 0 means "don't cache" and -1 means "cache forever".
+ *
+ * ... ...
+ */    -2.0035364130130446
+Welcome Welcome    -4.007072826026089
+adb devices    -4.007072826026089
+CIRNO & amp    -6.010609239039134
+27000000000000002519 & amp    -6.010609239039134
+46 dated June    -6.010609239039134
+//BitmapRegionDecoder brd = BitmapRegionDecoder.newInstance(...); BitmapRegionDecoderCompat brd    -6.010609239039134
+isbn & term    -6.010609239039134
+0061031321 & source    -6.010609239039134
+SILENCE && start_time    -6.010609239039134
+' inputType '    -6.010609239039134
+value ' numberPassword    -6.010609239039134
+' numberPassword '    -6.010609239039134
+TYPE_CLASS_NUMBER | InputType    -6.010609239039134
+This line was    -6.010609239039134
+line was added    -6.010609239039134
+' jsonarray '    -6.010609239039134
+' json_a '    -6.010609239039134
+' 174 '    -6.010609239039134
+' Expect '    -6.010609239039134
+Analytics Code --    -6.010609239039134
+// COMMENTED OUT WHILE TESTING   // mSoundManager.addSound(1, R.raw.sound1); // mSoundManager.addSound(2, R.raw.sound2);    -6.010609239039134
+// mSoundManager.addSound(1, R.raw.sound1); // mSoundManager.addSound(2, R.raw.sound2); // mSoundManager.addSound(3, R.raw.sound3);    -6.010609239039134
+// mSoundManager.addSound(2, R.raw.sound2); // mSoundManager.addSound(3, R.raw.sound3); // mSoundManager.addSound(4, R.raw.sound4);    -6.010609239039134
+// mSoundManager.addSound(3, R.raw.sound3); // mSoundManager.addSound(4, R.raw.sound4); // mSoundManager.addSound(5, R.raw.sound5);    -6.010609239039134
+// mSoundManager.addSound(4, R.raw.sound4); // mSoundManager.addSound(5, R.raw.sound5); // mSoundManager.addSound(6, R.raw.sound6);    -6.010609239039134
+// mSoundManager.addSound(5, R.raw.sound5); // mSoundManager.addSound(6, R.raw.sound6); // mSoundManager.addSound(7, R.raw.sound7);    -6.010609239039134
+// mSoundManager.addSound(6, R.raw.sound6); // mSoundManager.addSound(7, R.raw.sound7); // mSoundManager.addSound(8, R.raw.sound8);    -6.010609239039134
+// mSoundManager.addSound(7, R.raw.sound7); // mSoundManager.addSound(8, R.raw.sound8); // mSoundManager.addSound(9, R.raw.sound9);    -6.010609239039134
+newString += "/newfolder/"    -6.010609239039134
+newString += afterSplit    -6.010609239039134
+FLAG_WATCH_OUTSIDE_TOUCH | WindowManager    -6.010609239039134
+All clogged up    -6.010609239039134
+// } else { // System.out.println("Lokasi Lama Berpengaruh"); // }    -6.010609239039134
+This application code    -6.010609239039134
+application code retrieves    -6.010609239039134
+code retrieves each    -6.010609239039134
+retrieves each array    -6.010609239039134
+each array and    -6.010609239039134
+array and then    -6.010609239039134
+and then obtains    -6.010609239039134
+in each array    -6.010609239039134
+ret += base64_chars    -6.010609239039134
+ret += '='    -6.010609239039134
+defaults |= Notification    -6.010609239039134
+Error receiving broadcast    -6.010609239039134
+Requires VIBRATE permission    -6.010609239039134
+' latitude '    -6.010609239039134
+' longitude '    -6.010609239039134
+' slug '    -6.010609239039134
+' age '    -6.010609239039134
+' date '    -6.010609239039134
+Some stuff here    -6.010609239039134
+JNIEXPORT jintArray JNICALL    -6.010609239039134
+jintArray JNICALL Java_com_testing_NativeLib_getArrayNative    -6.010609239039134
+JNIEnv * env    -6.010609239039134
+Ian //TODO:Add accelerometer support //TODO:Add Clickable ghosts    -6.010609239039134
+//TODO:Add accelerometer support //TODO:Add Clickable ghosts //TODO:Add camera background    -6.010609239039134
+//TODO:Add Clickable ghosts //TODO:Add camera background /*Completed:(As of 2:30am 4/16)
+ * Activity launches
+ * Ghost appears on screen
+ * Ghost will randomly move around the screen
+ */    -6.010609239039134
+draw_x += xSpeed    -6.010609239039134
+draw_y += ySpeed    -6.010609239039134
+are stored in    -6.010609239039134
+stored in cache    -6.010609239039134
+in cache memory    -6.010609239039134
+Whether cache will    -6.010609239039134
+cache will be    -6.010609239039134
+will be cleared    -6.010609239039134
+START_TAG && parser    -6.010609239039134
+on cannot be    -6.010609239039134
+cannot be accessed    -6.010609239039134
+be accessed directly    -6.010609239039134
+MYPATH \ src    -6.010609239039134
+\ src \    -6.010609239039134
+src \ wtf    -6.010609239039134
+\ wtf \    -6.010609239039134
+\ going \    -6.010609239039134
+going \ on    -6.010609239039134
+\ on \    -6.010609239039134
+DAOMutator cannot be    -6.010609239039134
+keyboardHidden | orientation    -6.010609239039134
+-- This filter    -6.010609239039134
+This filter says    -6.010609239039134
+filter says that    -6.010609239039134
+says that we    -6.010609239039134
+that we can    -6.010609239039134
+single note --    -6.010609239039134
+-- SDK min    -6.010609239039134
+SDK min version    -6.010609239039134
+min version --    -6.010609239039134
+application can receive    -6.010609239039134
+messages and registration    -6.010609239039134
+register and receive    -6.010609239039134
+and receive messages    -6.010609239039134

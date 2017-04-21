@@ -1,0 +1,129 @@
+// process incoming messages here    -2.4781099815541605
+netstat    -2.4781099815541605
+//LAYOUT FILE webview_content.xml    -2.4781099815541605
+/*
+     * Copyright (C) 2011 The Android Open Source Project
+     *
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *      http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     */    -2.4781099815541605
+jarsigner    -2.4781099815541605
+Welcome    -2.4781099815541605
+//this.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);    -2.4781099815541605
+/**
+ * ... ...
+ *
+ * <h4>DNS caching</h4>
+ * <p>On Android, addresses are cached for 600 seconds (10 minutes) by default. Failed lookups are
+ * cached for 10 seconds. The underlying C library or OS may cache for longer, but you can control
+ * the Java-level caching with the usual {@code "networkaddress.cache.ttl"} and
+ * {@code "networkaddress.cache.negative.ttl"} system properties. These are parsed as integer
+ * numbers of seconds, where the special value 0 means "don't cache" and -1 means "cache forever".
+ *
+ * ... ...
+ */    -2.4781099815541605
+Welcome Welcome    -4.956219963108321
+adb devices    -4.956219963108321
+" android :    -7.360505127843939
+//BitmapRegionDecoder brd = BitmapRegionDecoder.newInstance(...); BitmapRegionDecoderCompat brd    -7.4343299446624815
+// COMMENTED OUT WHILE TESTING   // mSoundManager.addSound(1, R.raw.sound1); // mSoundManager.addSound(2, R.raw.sound2);    -7.4343299446624815
+// mSoundManager.addSound(1, R.raw.sound1); // mSoundManager.addSound(2, R.raw.sound2); // mSoundManager.addSound(3, R.raw.sound3);    -7.4343299446624815
+// mSoundManager.addSound(2, R.raw.sound2); // mSoundManager.addSound(3, R.raw.sound3); // mSoundManager.addSound(4, R.raw.sound4);    -7.4343299446624815
+// mSoundManager.addSound(3, R.raw.sound3); // mSoundManager.addSound(4, R.raw.sound4); // mSoundManager.addSound(5, R.raw.sound5);    -7.4343299446624815
+// mSoundManager.addSound(4, R.raw.sound4); // mSoundManager.addSound(5, R.raw.sound5); // mSoundManager.addSound(6, R.raw.sound6);    -7.4343299446624815
+// mSoundManager.addSound(5, R.raw.sound5); // mSoundManager.addSound(6, R.raw.sound6); // mSoundManager.addSound(7, R.raw.sound7);    -7.4343299446624815
+// mSoundManager.addSound(6, R.raw.sound6); // mSoundManager.addSound(7, R.raw.sound7); // mSoundManager.addSound(8, R.raw.sound8);    -7.4343299446624815
+// mSoundManager.addSound(7, R.raw.sound7); // mSoundManager.addSound(8, R.raw.sound8); // mSoundManager.addSound(9, R.raw.sound9);    -7.4343299446624815
+// } else { // System.out.println("Lokasi Lama Berpengaruh"); // }    -7.4343299446624815
+defaults |= Notification    -7.4343299446624815
+Error receiving broadcast    -7.4343299446624815
+JNIEXPORT jintArray JNICALL    -7.4343299446624815
+jintArray JNICALL Java_com_testing_NativeLib_getArrayNative    -7.4343299446624815
+Ian //TODO:Add accelerometer support //TODO:Add Clickable ghosts    -7.4343299446624815
+//TODO:Add accelerometer support //TODO:Add Clickable ghosts //TODO:Add camera background    -7.4343299446624815
+//TODO:Add Clickable ghosts //TODO:Add camera background /*Completed:(As of 2:30am 4/16)
+ * Activity launches
+ * Ghost appears on screen
+ * Ghost will randomly move around the screen
+ */    -7.4343299446624815
+\ wtf \    -7.4343299446624815
+\ going \    -7.4343299446624815
+Horror movies based    -7.4343299446624815
+Những phim kinh    -7.4343299446624815
+phim kinh dị    -7.4343299446624815
+kinh dị dựa    -7.4343299446624815
+dị dựa trên    -7.4343299446624815
+dựa trên chuyện    -7.4343299446624815
+trên chuyện có    -7.4343299446624815
+chuyện có thật    -7.4343299446624815
+250 bộ phim    -7.4343299446624815
+bộ phim hay    -7.4343299446624815
+phim hay nhất    -7.4343299446624815
+hay nhất mọi    -7.4343299446624815
+nhất mọi thời    -7.4343299446624815
+mọi thời đại    -7.4343299446624815
+phim hay dành    -7.4343299446624815
+hay dành cho    -7.4343299446624815
+dành cho phái    -7.4343299446624815
+cho phái đẹp    -7.4343299446624815
+The 84th Annual    -7.4343299446624815
+84th Annual Academy    -7.4343299446624815
+Annual Academy Awards    -7.4343299446624815
+Giải Oscars lần    -7.4343299446624815
+Oscars lần thứ    -7.4343299446624815
+Charlie Chaplin collection    -7.4343299446624815
+Tuyển tập hề    -7.4343299446624815
+tập hề Sác    -7.4343299446624815
+hề Sác lô    -7.4343299446624815
+Tuyển tập điệp    -7.4343299446624815
+tập điệp viên    -7.4343299446624815
+điệp viên 007    -7.4343299446624815
+Donnie Yen movies    -7.4343299446624815
+Yen movies collection    -7.4343299446624815
+Tuyển tập phim    -7.4343299446624815
+tập phim Chung    -7.4343299446624815
+phim Chung Tử    -7.4343299446624815
+Chung Tử Đơn    -7.4343299446624815
+Stieg Larssons Millennium    -7.4343299446624815
+Larssons Millennium trilogy    -7.4343299446624815
+Bộ tiểu thuyết    -7.4343299446624815
+tiểu thuyết Millenium    -7.4343299446624815
+thuyết Millenium của    -7.4343299446624815
+Millenium của nhà    -7.4343299446624815
+của nhà văn    -7.4343299446624815
+nhà văn Stieg    -7.4343299446624815
+văn Stieg Larsson    -7.4343299446624815
+Chan Wook Parks    -7.4343299446624815
+Wook Parks vengeance    -7.4343299446624815
+Parks vengeance trilogy    -7.4343299446624815
+Bộ ba phim    -7.4343299446624815
+ba phim Báo    -7.4343299446624815
+phim Báo thù    -7.4343299446624815
+Báo thù của    -7.4343299446624815
+thù của đạo    -7.4343299446624815
+của đạo diễn    -7.4343299446624815
+đạo diễn Park    -7.4343299446624815
+diễn Park Chan    -7.4343299446624815
+Park Chan Wook    -7.4343299446624815
+Tuyển tập \    -7.4343299446624815
+kinh dị dư    -7.4343299446624815
+dị dư ̣    -7.4343299446624815
+trên chuyê ̣    -7.4343299446624815
+co ́ thâ    -7.4343299446624815
+́ thâ ̣    -7.4343299446624815
+Tuyển tập Trởlạitươnglai    -7.4343299446624815
+overlapping windowed segments    -7.4343299446624815
+Multiple annotations found    -7.4343299446624815
+ignoring focus gain    -7.4343299446624815
+4137b898 --------- beginning    -7.4343299446624815
+AudioHardware pcm playback    -7.4343299446624815
+Killing proc 20698    -7.4343299446624815
