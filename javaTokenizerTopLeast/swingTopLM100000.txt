@@ -1,0 +1,104 @@
+//setContentPane(contentPane);    -4.282453907438158
+//   s.SendData(xpos,ypos);    -4.282453907438158
+/*
+public int getX(){
+        return this.x;
+    }
+*/    -4.282453907438158
+( ) ;    -7.092830292948941
+) ; }    -7.100610626318043
+. java :    -8.088706114932336
+) ) ;    -8.468530865122611
+; } }    -8.471366396555641
+( ) {    -8.719600872957527
+( ) )    -8.783889341390566
+" > <    -8.834291784518902
+@ Override public    -8.881673675827914
+( ) .    -9.000919186328368
+testModel ) ;    -9.390055767761234
+PAGE_START ) ;    -9.390055767761234
+"CARSSémon" ) ;    -9.390055767761234
+"bushes.jpg" ) ;    -9.390055767761234
+"Button POP UP Example" ) ;    -9.390055767761234
+DISPOSE_ON_CLOSE ) ;    -9.390055767761234
+"Menu Item 1" ) ;    -9.390055767761234
+"Menu Item 2" ) ;    -9.390055767761234
+"I am WORKING!!" ) ;    -9.390055767761234
+"ReadCom" ) ;    -9.390055767761234
+fImagePanel ) ;    -9.390055767761234
+"C:\\tmp\\config" ) ;    -9.390055767761234
+"C:\\tmp\\Pictures" ) ;    -9.390055767761234
+"C:\\tmp\\" ) ;    -9.390055767761234
+"C:\\tmp\\artikels.csv" ) ;    -9.390055767761234
+parentWrapper ) ;    -9.390055767761234
+sorters ) ;    -9.390055767761234
+"jdbc:derby:memory:sampleDB;create=true" ) ;    -9.390055767761234
+"create table sample(pw char(10))" ) ;    -9.390055767761234
+"select * from sample" ) ;    -9.390055767761234
+"insert into sample values (?)" ) ;    -9.390055767761234
+panelTest1 ) ;    -9.390055767761234
+panelTest2 ) ;    -9.390055767761234
+WHEN_IN_FOCUSED_WINDOW ) ;    -9.390055767761234
+infoFont ) ;    -9.390055767761234
+"Action performed" ) ;    -9.390055767761234
+"TwoPanelsTest" ) ;    -9.390055767761234
+"Esc" ) ;    -9.390055767761234
+CTRL_DOWN_MASK ) ;    -9.390055767761234
+splitA ) ;    -9.390055767761234
+"Hotel TV Scheduler" ) ;    -9.390055767761234
+LINE_START ) ;    -9.390055767761234
+LINE_END ) ;    -9.390055767761234
+PAGE_END ) ;    -9.390055767761234
+"Channel 1" ) ;    -9.390055767761234
+"Channel 2" ) ;    -9.390055767761234
+"Remove Channel" ) ;    -9.390055767761234
+ch1Label ) ;    -9.390055767761234
+ch2Label ) ;    -9.390055767761234
+chOneTable ) ;    -9.390055767761234
+chTwoTable ) ;    -9.390055767761234
+rmvChOneButton ) ;    -9.390055767761234
+rmvChTwoButton ) ;    -9.390055767761234
+"Rentable" ) ;    -9.390055767761234
+"Synopsis" ) ;    -9.390055767761234
+genreLabel ) ;    -9.390055767761234
+txtGenre ) ;    -9.390055767761234
+durationLabel ) ;    -9.390055767761234
+actorLabel ) ;    -9.390055767761234
+rentableLabel ) ;    -9.390055767761234
+rentCB ) ;    -9.390055767761234
+synLabel ) ;    -9.390055767761234
+txtSynopsis ) ;    -9.390055767761234
+"Add Program" ) ;    -9.390055767761234
+btnAddProg ) ;    -9.390055767761234
+timeList ) ;    -9.390055767761234
+treeModel ) ;    -9.390055767761234
+"Customer ID" ) ;    -9.390055767761234
+CNameTextField ) ;    -9.390055767761234
+roomTypeCombo ) ;    -9.390055767761234
+mealCombo ) ;    -9.390055767761234
+daysCombo ) ;    -9.390055767761234
+"firstTextField" ) ;    -9.390055767761234
+"secondTextField" ) ;    -9.390055767761234
+TextField1 ) ;    -9.390055767761234
+TextField2 ) ;    -9.390055767761234
+comboBox1 ) ;    -9.390055767761234
+comboBox2 ) ;    -9.390055767761234
+comboBox3 ) ;    -9.390055767761234
+firstPanel ) ;    -9.390055767761234
+secondPanel ) ;    -9.390055767761234
+"Compile" ) ;    -9.390055767761234
+compileButton ) ;    -9.390055767761234
+runButton ) ;    -9.390055767761234
+"program.t" ) ;    -9.390055767761234
+editPane ) ;    -9.390055767761234
+"Choose target file location" ) ;    -9.390055767761234
+FILES_ONLY ) ;    -9.390055767761234
+"tbc" ) ;    -9.390055767761234
+RES_TEXT_AREA_PREFFERED_SIZE ) ;    -9.390055767761234
+HORIZONTAL_SCROLLBAR_NEVER ) ;    -9.390055767761234
+VERTICAL_SCROLLBAR_AS_NEEDED ) ;    -9.390055767761234
+UNIT_INCREMENT ) ;    -9.390055767761234
+containerPanel ) ;    -9.390055767761234
+tableModel ) ;    -9.390055767761234
+vColIndex ) ;    -9.390055767761234
+splitPane ) ;    -9.390055767761234

@@ -1,0 +1,104 @@
+//setContentPane contentPane     -2.2657701793045955
+//   s.SendData xpos,ypos     -2.2657701793045955
+repaint    -2.2657701793045955
+/*
+public int getX  {
+        return this.x
+    }
+*/    -2.2657701793045955
+centerJIF jif_test    -4.531540358609191
+revalidate repaint    -4.531540358609191
+playSound "filename.wav"    -4.531540358609191
+focusLost FocusEvent fe    -6.797310537913786
+accept Component comp    -6.797310537913786
+//create jtable based on a table model created from an array JTable table    -6.797310537913786
+JTable testModel table    -6.797310537913786
+setRowSorter sorter //add scrollpane for visibility    -6.797310537913786
+sorter //add scrollpane for visibility JScrollPane    -6.797310537913786
+//add scrollpane for visibility JScrollPane jscrollpane    -6.797310537913786
+JScrollPane table table    -6.797310537913786
+//add the scrollpane to a panel JPanel panel    -6.797310537913786
+//create for use with the dialog JFrame frame    -6.797310537913786
+JFrame JDialog dialog    -6.797310537913786
+JLabel createImageIcon "tile-1.png"    -6.797310537913786
+createImageIcon "tile-1.png" frame    -6.797310537913786
+ImageIcon "image.gif" frame    -6.797310537913786
+JFrame "CARSSémon" JPanel    -6.797310537913786
+"CARSSémon" JPanel panel    -6.797310537913786
+Height //panel.setLayout null  //setBounds 0,0,800,600     -6.797310537913786
+//panel.setLayout null  //setBounds 0,0,800,600  //panel.add this     -6.797310537913786
+//setBounds 0,0,800,600  //panel.add this  // finally make the window visible    -6.797310537913786
+paint Graphics g    -6.797310537913786
+paint g // Draw an Image object    -6.797310537913786
+getImage "bushes.jpg" g    -6.797310537913786
+210 initPopupMenu // this just sets what is inside the popup menu    -6.797310537913786
+JFrame "Button POP UP Example" frame    -6.797310537913786
+JMenuItem "Menu Item 1" JMenuItem    -6.797310537913786
+"Menu Item 1" JMenuItem menuItem2    -6.797310537913786
+JMenuItem "Menu Item 2" popup    -6.797310537913786
+mouseClicked MouseEvent me    -6.797310537913786
+ImagePanel fImagePanel ReadCom    -6.797310537913786
+fImagePanel ReadCom readComPort    -6.797310537913786
+fWidth repaint readComPort    -6.797310537913786
+paintComponent Graphics g    -6.797310537913786
+paintComponent g g    -6.797310537913786
+Graphics g g    -6.797310537913786
+getGraphics paint g    -6.797310537913786
+paint g paintOnto    -6.797310537913786
+remove getPaintableComponent paintOnto    -6.797310537913786
+TabbedPanChangeListener ConfigToolScannersPanel configToolScannersPanel    -6.797310537913786
+CENTER // *** Add and remove from tool bar *** visibaleInvisibale    -6.797310537913786
+DeletePictureAction panel panel    -6.797310537913786
+AddPictureAction panel panel    -6.797310537913786
+IndicesMapFiller indices filler    -6.797310537913786
+getModelWrapper TreeTableRowSorterModelWrapper wrapper    -6.797310537913786
+parentWrapper setModelWrapper wrapper    -6.797310537913786
+setModelWrapper wrapper children    -6.797310537913786
+getChildCount getNode IdentityHashMap    -6.797310537913786
+getConnection "jdbc:derby:memory:sampleDBcreate=true" Statement    -6.797310537913786
+"jdbc:derby:memory:sampleDBcreate=true" Statement statement    -6.797310537913786
+executeQuery "select * from sample" PreparedStatement    -6.797310537913786
+"select * from sample" PreparedStatement preparedStatement    -6.797310537913786
+setDefaultCloseOperation EXIT_ON_CLOSE setResizable    -6.797310537913786
+PanelTest PanelTest panelTest2    -6.797310537913786
+paintComponent g Font    -6.797310537913786
+g Font infoFont    -6.797310537913786
+setFont infoFont g    -6.797310537913786
+ActionController PanelTest panel    -6.797310537913786
+actionPerformed ActionEvent ae    -6.797310537913786
+setString "Action performed" panel    -6.797310537913786
+setDefaultCloseOperation EXIT_ON_CLOSE JPanel    -6.797310537913786
+EXIT_ON_CLOSE JPanel panel    -6.797310537913786
+UpdateAction MyPanel panel    -6.797310537913786
+MyKeyEventListener JPanel one    -6.797310537913786
+addKeyListener listener //method might be wrong    -6.797310537913786
+listener //method might be wrong JPanel    -6.797310537913786
+//method might be wrong JPanel two    -6.797310537913786
+addKeyListener listener listener    -6.797310537913786
+addObserver one listener    -6.797310537913786
+KeyboardFocusManager keyManager keyManager    -6.797310537913786
+// add more actions.. KeyboardFocusManager kfm    -6.797310537913786
+pos JSplitPane mainSplitP    -6.797310537913786
+JFrame "Hotel TV Scheduler" JPanel    -6.797310537913786
+"Hotel TV Scheduler" JPanel mainPanel    -6.797310537913786
+BorderLayout JPanel listPanel    -6.797310537913786
+PAGE_END JTable chOneTable    -6.797310537913786
+JTable JTable chTwoTable    -6.797310537913786
+JTable JTable listTable    -6.797310537913786
+JTable JLabel ch1Label    -6.797310537913786
+JLabel "Channel 1" JLabel    -6.797310537913786
+"Channel 1" JLabel ch2Label    -6.797310537913786
+JLabel "Channel 2" JLabel    -6.797310537913786
+"Channel 2" JLabel listLabel    -6.797310537913786
+JLabel "List" JButton    -6.797310537913786
+"List" JButton rmvChOneButton    -6.797310537913786
+JButton "Remove Channel" JButton    -6.797310537913786
+"Remove Channel" JButton rmvChTwoButton    -6.797310537913786
+JButton "Remove Channel" listPanel    -6.797310537913786
+rmvChTwoButton JLabel titleLabel    -6.797310537913786
+JLabel "Title" JLabel    -6.797310537913786
+"Title" JLabel genreLabel    -6.797310537913786
+JLabel "Genre" JLabel    -6.797310537913786
+"Genre" JLabel durationLabel    -6.797310537913786
+JLabel "Duration" JLabel    -6.797310537913786
+"Duration" JLabel actorLabel    -6.797310537913786

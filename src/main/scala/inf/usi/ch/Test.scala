@@ -3,10 +3,11 @@ package inf.usi.ch
 import java.io.File
 
 import ch.usi.inf.reveal.parsing.artifact.ArtifactSerializer
-import ch.usi.inf.reveal.parsing.model.{HASTNode}
+import ch.usi.inf.reveal.parsing.model.HASTNode
 import ch.usi.inf.reveal.parsing.units.CodeTaggedUnit
 import com.aliasi.lm.TokenizedLM
 import ch.usi.inf.reveal.parsing.model.Implicits._
+import inf.usi.ch.javaAntlerLMTokenizer.JavaLMEvaluator
 import inf.usi.ch.tokenizer.{HASTTokenizer, UnitTokenizerFactory}
 
 /**
@@ -31,13 +32,14 @@ object Test extends App {
       val codeUnits = (artifact.question.informationUnits ++ artifact.answers.flatMap {
         _.informationUnits
       }).filter(_.isInstanceOf[CodeTaggedUnit])
-//  val codeUnits = (artifact.question.informationUnits).filter(_.isInstanceOf[CodeTaggedUnit])
+
 
   // map each units to HASTNode
   val hastNodeSeq = codeUnits.map(_.astNode)
 
   //  train JavaCode
-  hastNodeSeq.foreach(x => trainJavaCode(x, tokenizedLM))
+   val lm = hastNodeSeq.foreach(x => trainJavaCode(x, tokenizedLM))
+
 
   private def trainJavaCode(hASTNode: HASTNode, tokenizedLM: TokenizedLM): Unit = {
     val tokens = HASTTokenizer.tokenize(hASTNode)

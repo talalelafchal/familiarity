@@ -1,0 +1,129 @@
+// process incoming messages here    -2.7703288998761133
+createMatch    -2.7703288998761133
+netstat    -2.7703288998761133
+//LAYOUT FILE webview_content.xml    -2.7703288998761133
+/*
+     * Copyright  C  2011 The Android Open Source Project
+     *
+     * Licensed under the Apache License, Version 2.0  the "License" 
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *      http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     */    -2.7703288998761133
+jarsigner    -2.7703288998761133
+Welcome    -2.7703288998761133
+//this.getWindow  .setType WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG     -2.7703288998761133
+clickLongInList    -2.7703288998761133
+/**
+ * ... ...
+ *
+ * <h4>DNS caching</h4>
+ * <p>On Android, addresses are cached for 600 seconds  10 minutes  by default. Failed lookups are
+ * cached for 10 seconds. The underlying C library or OS may cache for longer, but you can control
+ * the Java-level caching with the usual {@code "networkaddress.cache.ttl"} and
+ * {@code "networkaddress.cache.negative.ttl"} system properties. These are parsed as integer
+ * numbers of seconds, where the special value 0 means "don't cache" and -1 means "cache forever".
+ *
+ * ... ...
+ */    -2.7703288998761133
+Welcome Welcome    -5.540657799752227
+onPeersAvailable WifiP2pDeviceList    -5.540657799752227
+" android :    -6.942975099853865
+android : layout    -7.708050812156651
+: layout _    -8.002567627973528
+. java :    -8.260031189458374
+setOnBooChangeListener BooChangeListener bcl    -8.31098669962834
+//BitmapRegionDecoder brd = BitmapRegionDecoder.newInstance ...  BitmapRegionDecoderCompat brd    -8.31098669962834
+"Launched task" //TODO Added code to build the screen correctly //FIXIT this need to be finished.    -8.31098669962834
+sound0 // COMMENTED OUT WHILE TESTING   // mSoundManager.addSound 1, R.raw.sound1     -8.31098669962834
+// COMMENTED OUT WHILE TESTING   // mSoundManager.addSound 1, R.raw.sound1  // mSoundManager.addSound 2, R.raw.sound2     -8.31098669962834
+// mSoundManager.addSound 1, R.raw.sound1  // mSoundManager.addSound 2, R.raw.sound2  // mSoundManager.addSound 3, R.raw.sound3     -8.31098669962834
+// mSoundManager.addSound 2, R.raw.sound2  // mSoundManager.addSound 3, R.raw.sound3  // mSoundManager.addSound 4, R.raw.sound4     -8.31098669962834
+// mSoundManager.addSound 3, R.raw.sound3  // mSoundManager.addSound 4, R.raw.sound4  // mSoundManager.addSound 5, R.raw.sound5     -8.31098669962834
+// mSoundManager.addSound 4, R.raw.sound4  // mSoundManager.addSound 5, R.raw.sound5  // mSoundManager.addSound 6, R.raw.sound6     -8.31098669962834
+// mSoundManager.addSound 5, R.raw.sound5  // mSoundManager.addSound 6, R.raw.sound6  // mSoundManager.addSound 7, R.raw.sound7     -8.31098669962834
+// mSoundManager.addSound 6, R.raw.sound6  // mSoundManager.addSound 7, R.raw.sound7  // mSoundManager.addSound 8, R.raw.sound8     -8.31098669962834
+// mSoundManager.addSound 7, R.raw.sound7  // mSoundManager.addSound 8, R.raw.sound8  // mSoundManager.addSound 9, R.raw.sound9     -8.31098669962834
+"Can't create file to take picture!" displayAlert "Can't create file to take picture!"    -8.31098669962834
+// down // t4.setId 4  t4    -8.31098669962834
+childLongitude // buat method untuk menangkap lokasi pertama oldLatitude    -8.31098669962834
+childLongitude // } else { // System.out.println "Lokasi Lama Berpengaruh"     -8.31098669962834
+// } else { // System.out.println "Lokasi Lama Berpengaruh"  // }    -8.31098669962834
+prepareStatement "SELECT Username,Lunch_ID FROM Student where username=? and password=?" prepstmt    -8.31098669962834
+ResultSet rs rs    -8.31098669962834
+MapController mc mc    -8.31098669962834
+anId // add any additional informations with other key values  //  latitude or longitude     -8.31098669962834
+Ian //TODO:Add accelerometer support //TODO:Add Clickable ghosts    -8.31098669962834
+//TODO:Add accelerometer support //TODO:Add Clickable ghosts //TODO:Add camera background    -8.31098669962834
+//TODO:Add Clickable ghosts //TODO:Add camera background /*Completed: As of 2:30am 4/16 
+ * Activity launches
+ * Ghost appears on screen
+ * Ghost will randomly move around the screen
+ */    -8.31098669962834
+rezInt //convert to int to remove unwanted tail rez    -8.31098669962834
+setDecimalSeparator ',' otherSymbols    -8.31098669962834
+ospitiTV getLocali getOspiti    -8.31098669962834
+getLocali getOspiti createMatch    -8.31098669962834
+getOspiti createMatch localiTV    -8.31098669962834
+TeamRugby locali TeamRugby    -8.31098669962834
+locali TeamRugby teamOspiti    -8.31098669962834
+TeamRugby ospiti MatchRugby    -8.31098669962834
+ospiti MatchRugby partita    -8.31098669962834
+MatchRugby TeamRugby teamA    -8.31098669962834
+setTeamA TeamRugby teamA    -8.31098669962834
+setTeamB TeamRugby teamB    -8.31098669962834
+TeamRugby ospiti partita    -8.31098669962834
+Horror movies based    -8.31098669962834
+Những phim kinh    -8.31098669962834
+phim kinh dị    -8.31098669962834
+kinh dị dựa    -8.31098669962834
+dị dựa trên    -8.31098669962834
+dựa trên chuyện    -8.31098669962834
+trên chuyện có    -8.31098669962834
+chuyện có thật    -8.31098669962834
+bộ phim hay    -8.31098669962834
+phim hay nhất    -8.31098669962834
+hay nhất mọi    -8.31098669962834
+nhất mọi thời    -8.31098669962834
+mọi thời đại    -8.31098669962834
+phim hay dành    -8.31098669962834
+hay dành cho    -8.31098669962834
+dành cho phái    -8.31098669962834
+cho phái đẹp    -8.31098669962834
+84th Annual Academy    -8.31098669962834
+Annual Academy Awards    -8.31098669962834
+Giải Oscars lần    -8.31098669962834
+Oscars lần thứ    -8.31098669962834
+Tuyển tập hề    -8.31098669962834
+tập hề Sác    -8.31098669962834
+hề Sác lô    -8.31098669962834
+Tuyển tập điệp    -8.31098669962834
+tập điệp viên    -8.31098669962834
+điệp viên 007    -8.31098669962834
+Donnie Yen movies    -8.31098669962834
+Tuyển tập phim    -8.31098669962834
+tập phim Chung    -8.31098669962834
+phim Chung Tử    -8.31098669962834
+Chung Tử Đơn    -8.31098669962834
+Stieg Larssons Millennium    -8.31098669962834
+Larssons Millennium trilogy    -8.31098669962834
+Bộ tiểu thuyết    -8.31098669962834
+tiểu thuyết Millenium    -8.31098669962834
+thuyết Millenium của    -8.31098669962834
+Millenium của nhà    -8.31098669962834
+của nhà văn    -8.31098669962834
+nhà văn Stieg    -8.31098669962834
+văn Stieg Larsson    -8.31098669962834
+Wook Parks vengeance    -8.31098669962834
+Parks vengeance trilogy    -8.31098669962834
+phim Báo thù    -8.31098669962834
+Báo thù của    -8.31098669962834
+thù của đạo    -8.31098669962834
+của đạo diễn    -8.31098669962834

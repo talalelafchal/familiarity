@@ -1,0 +1,104 @@
+//setContentPane(contentPane);    -3.648664112753421
+//   s.SendData(xpos,ypos);    -3.648664112753421
+/*
+public int getX(){
+        return this.x;
+    }
+*/    -3.648664112753421
+) ; }    -7.224470182431665
+( ) ;    -7.2461275723859115
+. java :    -8.271749806638372
+) ) ;    -8.507620968466297
+; } }    -8.641758774144401
+testModel ) ;    -8.837030409521098
+PAGE_START ) ;    -8.837030409521098
+"CARSSémon" ) ;    -8.837030409521098
+"bushes.jpg" ) ;    -8.837030409521098
+"Button POP UP Example" ) ;    -8.837030409521098
+DISPOSE_ON_CLOSE ) ;    -8.837030409521098
+"Menu Item 1" ) ;    -8.837030409521098
+"Menu Item 2" ) ;    -8.837030409521098
+"I am WORKING!!" ) ;    -8.837030409521098
+contentPane ) ;    -8.837030409521098
+"ReadCom" ) ;    -8.837030409521098
+fImagePanel ) ;    -8.837030409521098
+"C:\\tmp\\config" ) ;    -8.837030409521098
+"C:\\tmp\\Pictures" ) ;    -8.837030409521098
+"C:\\tmp\\" ) ;    -8.837030409521098
+"C:\\tmp\\artikels.csv" ) ;    -8.837030409521098
+parentWrapper ) ;    -8.837030409521098
+sorters ) ;    -8.837030409521098
+sortChildren ) ;    -8.837030409521098
+"jdbc:derby:memory:sampleDB;create=true" ) ;    -8.837030409521098
+"create table sample(pw char(10))" ) ;    -8.837030409521098
+"select * from sample" ) ;    -8.837030409521098
+"insert into sample values (?)" ) ;    -8.837030409521098
+panelTest1 ) ;    -8.837030409521098
+panelTest2 ) ;    -8.837030409521098
+WHEN_IN_FOCUSED_WINDOW ) ;    -8.837030409521098
+"up" ) ;    -8.837030409521098
+infoFont ) ;    -8.837030409521098
+"Action performed" ) ;    -8.837030409521098
+"TwoPanelsTest" ) ;    -8.837030409521098
+"Esc" ) ;    -8.837030409521098
+CTRL_DOWN_MASK ) ;    -8.837030409521098
+keyStroke ) ;    -8.837030409521098
+splitA ) ;    -8.837030409521098
+"Hotel TV Scheduler" ) ;    -8.837030409521098
+LINE_START ) ;    -8.837030409521098
+LINE_END ) ;    -8.837030409521098
+PAGE_END ) ;    -8.837030409521098
+"Channel 1" ) ;    -8.837030409521098
+"Channel 2" ) ;    -8.837030409521098
+"Remove Channel" ) ;    -8.837030409521098
+ch1Label ) ;    -8.837030409521098
+ch2Label ) ;    -8.837030409521098
+listLabel ) ;    -8.837030409521098
+chOneTable ) ;    -8.837030409521098
+chTwoTable ) ;    -8.837030409521098
+listTable ) ;    -8.837030409521098
+rmvChOneButton ) ;    -8.837030409521098
+rmvChTwoButton ) ;    -8.837030409521098
+"Genre" ) ;    -8.837030409521098
+"Actor" ) ;    -8.837030409521098
+"Rentable" ) ;    -8.837030409521098
+"Synopsis" ) ;    -8.837030409521098
+titleLabel ) ;    -8.837030409521098
+genreLabel ) ;    -8.837030409521098
+txtGenre ) ;    -8.837030409521098
+durationLabel ) ;    -8.837030409521098
+txtDuration ) ;    -8.837030409521098
+actorLabel ) ;    -8.837030409521098
+txtActor ) ;    -8.837030409521098
+directorLabel ) ;    -8.837030409521098
+txtDirector ) ;    -8.837030409521098
+rentableLabel ) ;    -8.837030409521098
+rentCB ) ;    -8.837030409521098
+synLabel ) ;    -8.837030409521098
+txtSynopsis ) ;    -8.837030409521098
+"Add Program" ) ;    -8.837030409521098
+btnAddProg ) ;    -8.837030409521098
+channelList ) ;    -8.837030409521098
+timeList ) ;    -8.837030409521098
+mainPanel ) ;    -8.837030409521098
+treeModel ) ;    -8.837030409521098
+"Customer ID" ) ;    -8.837030409521098
+CNameTextField ) ;    -8.837030409521098
+roomTypeCombo ) ;    -8.837030409521098
+mealCombo ) ;    -8.837030409521098
+daysCombo ) ;    -8.837030409521098
+"firstTextField" ) ;    -8.837030409521098
+"secondTextField" ) ;    -8.837030409521098
+TextField1 ) ;    -8.837030409521098
+TextField2 ) ;    -8.837030409521098
+comboBox1 ) ;    -8.837030409521098
+comboBox2 ) ;    -8.837030409521098
+comboBox3 ) ;    -8.837030409521098
+firstPanel ) ;    -8.837030409521098
+secondPanel ) ;    -8.837030409521098
+"Compile" ) ;    -8.837030409521098
+"Run" ) ;    -8.837030409521098
+compileButton ) ;    -8.837030409521098
+runButton ) ;    -8.837030409521098
+"program.t" ) ;    -8.837030409521098
+editPane ) ;    -8.837030409521098

@@ -59,10 +59,10 @@ object Setup extends App {
     val swingLeast = swingNgrams.drop(swingNgrams.size - 100)
 
     //write to file
-    writeToFile("NewTopLeast/androidTopLM100000.txt", androidTop)
-    writeToFile("NewTopLeast/androidLeastLM100000.txt", androidLeast)
-    writeToFile("NewTopLeast/swingTopLM100000.txt", swingTop)
-    writeToFile("NewTopLeast/swingLeastLM100000.txt", swingLeast)
+    writeToFile("javaTokenizerNoPunctuationsTopLeast/androidTopLM100000.txt", androidTop)
+    writeToFile("javaTokenizerNoPunctuationsTopLeast/androidLeastLM100000.txt", androidLeast)
+    writeToFile("javaTokenizerNoPunctuationsTopLeast/swingTopLM100000.txt", swingTop)
+    writeToFile("javaTokenizerNoPunctuationsTopLeast/swingLeastLM100000.txt", swingLeast)
   }
 
   private def writeToFile(filePath: String, topLeastList: Seq[(Double, String)]) = {
@@ -74,9 +74,9 @@ object Setup extends App {
     bufferWriter.close()
   }
 
-  val lm = createJavaLM(3, 100000)
-  createJavaTopLeastCSVFile(lm, 3)
-  createJavaNGramCSVFIle("New/java100000.csv", lm, 3)
+  val lm = createJavaLM(3, 10000)
+  //createJavaTopLeastCSVFile(lm, 3)
+  createJavaNGramCSVFIle("javaTokenizerNoPunctuationsCSVFiles/java10000.csv", lm, 3)
 
 
 }

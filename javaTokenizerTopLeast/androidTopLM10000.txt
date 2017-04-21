@@ -1,0 +1,125 @@
+// process incoming messages here    -3.648664112753421
+netstat    -3.648664112753421
+//LAYOUT FILE webview_content.xml    -3.648664112753421
+/*
+     * Copyright (C) 2011 The Android Open Source Project
+     *
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *      http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     */    -3.648664112753421
+jarsigner    -3.648664112753421
+//this.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);    -3.648664112753421
+/**
+ * ... ...
+ *
+ * <h4>DNS caching</h4>
+ * <p>On Android, addresses are cached for 600 seconds (10 minutes) by default. Failed lookups are
+ * cached for 10 seconds. The underlying C library or OS may cache for longer, but you can control
+ * the Java-level caching with the usual {@code "networkaddress.cache.ttl"} and
+ * {@code "networkaddress.cache.negative.ttl"} system properties. These are parsed as integer
+ * numbers of seconds, where the special value 0 means "don't cache" and -1 means "cache forever".
+ *
+ * ... ...
+ */    -3.648664112753421
+) ; }    -7.224470182431665
+" android :    -7.245628579859157
+( ) ;    -7.2461275723859115
+android : layout    -7.955933003248616
+: layout _    -8.162302610269489
+. java :    -8.271749806638372
+) ) ;    -8.507620968466297
+; } }    -8.641758774144401
+( R .    -8.689974819054196
+E / AndroidRuntime    -8.822085977111369
+Boo ) ;    -8.837030409521098
+".*Physical Address.*: (.*)" ) ;    -8.837030409521098
+"&amp;search=" ) ;    -8.837030409521098
+" MyUtilityClass constructor" ) ;    -8.837030409521098
+"helper" ) ;    -8.837030409521098
+"checkLibrary" ) ;    -8.837030409521098
+awID ) ;    -8.837030409521098
+"Rebooting. If this hangs, then this app wont work on this device (pull battery)" ) ;    -8.837030409521098
+"su -c reboot" ) ;    -8.837030409521098
+load_routes ) ;    -8.837030409521098
+"Fetching routes data ..." ) ;    -8.837030409521098
+pFixtureDef ) ;    -8.837030409521098
+LASTFM_API_KEY ) ;    -8.837030409521098
+EXTRALARGE ) ;    -8.837030409521098
+gridview_image ) ;    -8.837030409521098
+mGridAdapter ) ;    -8.837030409521098
+sMinute ) ;    -8.837030409521098
+eHour ) ;    -8.837030409521098
+eMinute ) ;    -8.837030409521098
+"Recieved wake up cal from Alarm Manger" ) ;    -8.837030409521098
+NOTIFICATION_TITLE ) ;    -8.837030409521098
+NOTIFICATION_NOTE ) ;    -8.837030409521098
+loadInfo ) ;    -8.837030409521098
+"hello world!" ) ;    -8.837030409521098
+"Show Confirm Lock PIN Activity" ) ;    -8.837030409521098
+ACTION_RUN ) ;    -8.837030409521098
+"Show Set Lock PIN Activity" ) ;    -8.837030409521098
+"Show Set Lock Pattern Activity" ) ;    -8.837030409521098
+"http://10.0.0.2/namedate.php" ) ;    -8.837030409521098
+"/newfolder" ) ;    -8.837030409521098
+"files/" ) ;    -8.837030409521098
+"files/newfolder/" ) ;    -8.837030409521098
+"newfolder/pic.jpg" ) ;    -8.837030409521098
+"myPackage.myService" ) ;    -8.837030409521098
+imageRes ) ;    -8.837030409521098
+RESULT_CAMERA_SELECT ) ;    -8.837030409521098
+"Can't create file to take picture!" ) ;    -8.837030409521098
+"SDCard Error!" ) ;    -8.837030409521098
+"/MyFolder/Images" ) ;    -8.837030409521098
+UriOfPhoto ) ;    -8.837030409521098
+myInsertData ) ;    -8.837030409521098
+"File not Found" ) ;    -8.837030409521098
+videoFileName ) ;    -8.837030409521098
+currVid ) ;    -8.837030409521098
+"Updating Progress Bar" ) ;    -8.837030409521098
+menu_wifi ) ;    -8.837030409521098
+menu_cuenta ) ;    -8.837030409521098
+menu_cajeros ) ;    -8.837030409521098
+menu_indicadores ) ;    -8.837030409521098
+menu_contacto ) ;    -8.837030409521098
+menu_promo ) ;    -8.837030409521098
+"create table if not exists Restaraunt (...)" ) ;    -8.837030409521098
+"there" ) ;    -8.837030409521098
+"pass_list" ) ;    -8.837030409521098
+"an" ) ;    -8.837030409521098
+SCROLLBARS_OUTSIDE_INSET ) ;    -8.837030409521098
+"pic rounded-8" ) ;    -8.837030409521098
+lulpix ) ;    -8.837030409521098
+tmd ) ;    -8.837030409521098
+myDateAsString ) ;    -8.837030409521098
+MYcald ) ;    -8.837030409521098
+"EVENT WILL TAKE PLACE FOR SURE WITHIN THE NEXT 10 DAYS!!" ) ;    -8.837030409521098
+"EVENT WILL *NOT* TAKE PLACE WITHIN THE NEXT 10 DAYS" ) ;    -8.837030409521098
+loginListener ) ;    -8.837030409521098
+clearListener ) ;    -8.837030409521098
+psw ) ;    -8.837030409521098
+"http://ik.su.lt/*****" ) ;    -8.837030409521098
+"skype" ) ;    -8.837030409521098
+descriptionFromDB ) ;    -8.837030409521098
+"Klaida!" ) ;    -8.837030409521098
+"Toks vartotojas neegzistuoja" ) ;    -8.837030409521098
+"Jūs neįvedėte slapyvardžio" ) ;    -8.837030409521098
+"Jūs neįvedėte slaptažodžio" ) ;    -8.837030409521098
+firstnameFromDB ) ;    -8.837030409521098
+lastnameFromDB ) ;    -8.837030409521098
+emailFromDB ) ;    -8.837030409521098
+phoneFromDB ) ;    -8.837030409521098
+skypeFromDB ) ;    -8.837030409521098
+cityFromDB ) ;    -8.837030409521098
+"In 1st try blck" ) ;    -8.837030409521098
+"In 2nd try blck" ) ;    -8.837030409521098
+"socket created" ) ;    -8.837030409521098
+"socket accepted" ) ;    -8.837030409521098

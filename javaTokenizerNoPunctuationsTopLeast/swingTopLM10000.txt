@@ -1,0 +1,104 @@
+//setContentPane contentPane     -3.3946120556975736
+//   s.SendData xpos,ypos     -3.3946120556975736
+/*
+public int getX  {
+        return this.x
+    }
+*/    -3.3946120556975736
+centerJIF jif_test    -6.789224111395147
+. java :    -8.010200341935729
+" > <    -8.636002027237696
+@ Override public    -8.695241833218569
+Override public void    -9.250412033173532
+width = "    -9.342642350152058
+height = "    -9.373199810240184
+} @ Override    -9.464414733084197
+. app .    -9.544416366553692
+} } }    -9.65630951679205
+id = "    -9.68762697997414
+> < /    -9.805412182994036
+. view .    -9.873947670957739
+at com .    -9.889558080008873
+java . lang    -9.91011265946321
+NODEID = "    -9.933862014683864
+recID = "    -9.933862014683864
+horizontally = "    -9.933862014683864
+vertically = "    -9.933862014683864
+methodvalue = "    -9.933862014683864
+stringvalue = "    -9.933862014683864
+permanent = "    -9.933862014683864
+. layout .    -10.002380824404693
+name = "    -10.082010182631786
+ImageIcon "grass.jpg" .    -10.088812553221427
+setBorder BorderFactory .    -10.088812553221427
+"ReadCom" readPortThread .    -10.088812553221427
+getPaintableComponent getPaintableComponent .    -10.088812553221427
+getPaintableComponent paintOnto .    -10.088812553221427
+getGui dirPictures .    -10.088812553221427
+getGui diraxi .    -10.088812553221427
+getRowSorter treeTableModel .    -10.088812553221427
+fillIndicesMap treeTableModel .    -10.088812553221427
+TreeTableRowSorterModelWrapper getModelWrapper .    -10.088812553221427
+WHEN_IN_FOCUSED_WINDOW inputmap .    -10.088812553221427
+getActionMap actionmap .    -10.088812553221427
+CTRL_DOWN_MASK actionMap .    -10.088812553221427
+getCurrentKeyboardFocusManager kfm .    -10.088812553221427
+getInputMap WHEN_IN_FOCUSED_WINDOW .    -10.088812553221427
+JSplitPane JSplitPane .    -10.088812553221427
+CardLayout appContent .    -10.088812553221427
+LINE_START mainPanel .    -10.088812553221427
+LINE_END mainPanel .    -10.088812553221427
+"Remove Channel" listPanel .    -10.088812553221427
+ch1Label listPanel .    -10.088812553221427
+ch2Label listPanel .    -10.088812553221427
+listLabel listPanel .    -10.088812553221427
+chOneTable listPanel .    -10.088812553221427
+chTwoTable listPanel .    -10.088812553221427
+listTable listPanel .    -10.088812553221427
+rmvChOneButton listPanel .    -10.088812553221427
+JCheckBox infoPanel .    -10.088812553221427
+titleLabel infoPanel .    -10.088812553221427
+genreLabel infoPanel .    -10.088812553221427
+txtGenre infoPanel .    -10.088812553221427
+durationLabel infoPanel .    -10.088812553221427
+txtDuration infoPanel .    -10.088812553221427
+actorLabel infoPanel .    -10.088812553221427
+txtActor infoPanel .    -10.088812553221427
+directorLabel infoPanel .    -10.088812553221427
+txtDirector infoPanel .    -10.088812553221427
+rentableLabel infoPanel .    -10.088812553221427
+rentCB infoPanel .    -10.088812553221427
+synLabel infoPanel .    -10.088812553221427
+JList addPanel .    -10.088812553221427
+btnAddProg addPanel .    -10.088812553221427
+channelList addPanel .    -10.088812553221427
+// create the Customer Name text field CNameTextField .    -10.088812553221427
+// set editable text box topPanel .    -10.088812553221427
+CNameTextField topPanel .    -10.088812553221427
+JComboBox roomTypeCombo .    -10.088812553221427
+JComboBox mealCombo .    -10.088812553221427
+roomTypeCombo topPanel .    -10.088812553221427
+mealCombo topPanel .    -10.088812553221427
+TextField1 firstPanel .    -10.088812553221427
+comboBox1 secondPanel .    -10.088812553221427
+comboBox2 secondPanel .    -10.088812553221427
+"Compile" compileButton .    -10.088812553221427
+"Run" runButton .    -10.088812553221427
+"program.t" tabbedPanel .    -10.088812553221427
+TTokenMarker textPanes .    -10.088812553221427
+//Add the new "file" to the editor window in a new tab tabbedPanel .    -10.088812553221427
+setSelectedIndex tabbedPanel .    -10.088812553221427
+JFileChooser fileChooser .    -10.088812553221427
+"Choose target file location" fileChooser .    -10.088812553221427
+setFileSelectionMode JFileChooser .    -10.088812553221427
+FILES_ONLY fileChooser .    -10.088812553221427
+"tbc" fileChooser .    -10.088812553221427
+//The newly added tab is set as the active tab tabbedPanel .    -10.088812553221427
+HORIZONTAL_SCROLLBAR_NEVER scrollPane .    -10.088812553221427
+VERTICAL_SCROLLBAR_AS_NEEDED scrollPane .    -10.088812553221427
+containerPanel containerPanel .    -10.088812553221427
+tableModel contactTable .    -10.088812553221427
+setSelectionMode ListSelectionModel .    -10.088812553221427
+GridBagConstraints gbc_btnSearch .    -10.088812553221427
+hahaButton panel_2 .    -10.088812553221427
+leftPanel jSplitPane .    -10.088812553221427
