@@ -1,4 +1,0 @@
-Simple tunnel build fails - NEAppProxyErrorDomain
-I downloaded the last version of SimpleTunnel. https://developer.apple.com/library/content/samplecode/SimpleTunnel/Introduction/Intro.html#//apple_ref/doc/uid/TP40016140-Intro-DontLinkElementID_2 I have Xcode 8.1. When I try to build that project I receive 2 times the error "Use of undeclared type 'NEAppProxyErrorDomain'" in ClientAppProxyConnection file, in these lines: func handleErrorCondition(_ flowError: NEAppProxyErrorDomain? = nil, notifyServer: Bool = true) { func closeConnection(_ direction: TunnelConnectionCloseDirection, flowError: NEAppProxyErrorDomain?) { I tried to clean the project and rebuild them several times, and I deleted the entire project and downloaded again, etc... What can I do? Regards,
-This only occurs with Xcode 8.1. I installed again Xcode 8.0 and works well.
-Replace "NEAppProxyErrorDomain" with "NEAppProxyFlowError.Code" will work.

@@ -1,0 +1,3 @@
+Iframe CSS Properties
+<p>I am using iframe with design mode on like textbox (The Richtextarea Concept) and which changes i am making in iframe that will affect in the div. but there will be only text changes no Image.</p> <p>How to do this Because the changes will be done in this iframe only but can not be seen to user.</p>
+<p>See this:</p> <p><a href="http://cross-browser.com/talk/inter-frame_comm.html" rel="nofollow noreferrer">Inter-Frame Communication with Javascript</a></p>

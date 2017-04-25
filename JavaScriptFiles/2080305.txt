@@ -1,0 +1,5 @@
+How do I know how many items an object literal contains?
+<p>For example, how do I know that the myObject object literal contains two items?</p> <pre><code>var myObject = { item1 : "blablabla", item2 : "blablabla }; </code></pre>
+<p>If you didn't override the prototypes of <code>myObject</code>,</p> <pre><code>var count = 0; for (var k in myObject) ++ count; return count; </code></pre> <p>Otherwise, see the answer haim's link.</p>
+<p><a href="http://stackoverflow.com/questions/1345939/how-do-i-count-javascript-objects-attributes">How do I count a JavaScript object&#39;s attributes?</a></p>
+<pre><code>var n = 0 for (var i in o) ++n alert(n) </code></pre>

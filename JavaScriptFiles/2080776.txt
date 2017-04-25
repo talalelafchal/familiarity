@@ -1,0 +1,4 @@
+avoid the confirm dialog box when trying to close IE popup
+<p>How to avoid the confirm dialog box “the web page you are viewing is trying to close the window” when trying to close IE popup?</p>
+<p>This hack used to work in IE, but not sure if it still does:</p> <pre><code>window.opener = window; window.close(); </code></pre>
+<p>Make sure the window you are trying to close is one you opened with JavaScript, and not the one the user arrived at your site with (complete with history they might want to go back through).</p>

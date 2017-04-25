@@ -1,2 +1,0 @@
-Scrolling like WhatsApp Chat where scrolling to top, scrolling further shows &quot;Archived Chats&quot;
-Just not getting the proper search term, but my question is how can i achieve this tableview feature where i can scroll to top, but only on further scrolling to top, a row appears on top of the first row. Similar feature where WhatsApp uses to show "Archived Chats", here scrolling to your chat list, further scrolling shows you Archived chats. I am using swift 2.3 Thank you

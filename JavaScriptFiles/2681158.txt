@@ -1,0 +1,3 @@
+XMLHttpRequest in a loaded XMLHttpRequest
+<p>I'm using javascript to load data in a <code>div</code> trough XMLHttpRequest now i'm wondering if it's possible to make another XMLHttpRequest in that loaded <code>div</code> so an new onclick in my result</p> <p>Greetings</p>
+<p>You're over thinking this. It's actually quite simple. The "Ajax" link that you click on to load the data into the div container.. Well, the data that you load into the div container can use the same function and it will use the same container it's inside to update.</p>

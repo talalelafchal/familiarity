@@ -1,0 +1,4 @@
+Javascript links open in same page
+<p>How do i use Javascript to load content on the same page without reloading the entire page,</p>
+<p>what you are looking for is called <a href="http://www.google.de/#hl=de&amp;q=javascript+ajax+tutorial&amp;meta=&amp;aq=0&amp;aqi=g10&amp;aql=&amp;oq=javascript+ajax&amp;gs_rfai=&amp;fp=35e96e80585d6444" rel="nofollow noreferrer">AJAX</a> - and there are lots of tutorials out there.</p>
+<p>The easiest way is to use the jQuery append method: <a href="http://api.jquery.com/append/" rel="nofollow noreferrer">http://api.jquery.com/append/</a> or the jQuery text method: <a href="http://api.jquery.com/text/" rel="nofollow noreferrer">http://api.jquery.com/text/</a></p>

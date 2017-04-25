@@ -1,2 +1,0 @@
-Firebase crash reporting doesn't recognise (symbolicate) function name
-Everything is working fine, in my viewDidload(:) I am calling fatalError() and the app is crashing, But when it comes to the crash reporting console it doesn't show the function name as you can see below. Am I missing something regarding the integration or is this a default behavior ?

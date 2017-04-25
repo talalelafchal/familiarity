@@ -1,0 +1,4 @@
+Debugging a javascript error that only occurs on the live site
+<p>Something broke and I get "Object Expected" error on my live site, but I can't figure out where. If I run visual studio at the same time, it breakpoints it and shows the error as being half way along the viewstate, highlighted yellow... which is useless as its just gobbledegook.</p> <p>How can I debug this? I want to know what javascript its trying to run that is breaking it.</p>
+<p>Firefox and Firebug.</p> <p><a href="http://getfirebug.com/" rel="nofollow noreferrer">http://getfirebug.com/</a></p> <p>Never debug Javascript without it.</p>
+<p>Check out <a href="http://ScriptCanary.com" rel="nofollow noreferrer">ScriptCanary.com</a> so you can get all the details from live site errors and vastly improve your chances of quickly fixing them.</p>

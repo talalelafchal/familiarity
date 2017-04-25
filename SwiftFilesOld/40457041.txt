@@ -1,2 +1,0 @@
-Transition animation for page icons using Scrollview for menu layout
-Hi I am using the menu layout explained in this Youtube Video I would like to know how I can create icons at the top for each page that will scroll out with the page as i scroll. Also clickable so that I can click on it and go to that specific page. (sort of like how snapchat has at the bottom - or like tinder has on the top) Any help will be appreciated thanks

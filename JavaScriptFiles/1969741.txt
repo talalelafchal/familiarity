@@ -1,0 +1,4 @@
+How do I get this expression Chr$(&amp;H8) in Javascript
+<p>How do I get this expression Chr$(&amp;H8) in Javascript. I need to get this escape code in Javascript</p> <pre><code>sCmd = Chr$(&amp;H8) + Chr$(&amp;H2) </code></pre> <p>Thanks a lot.</p>
+<pre><code>sCmd = String.fromCharCode("&amp;#0xh8") + String.fromCharCode("&amp;#0xh2") </code></pre>
+<p>Try String.fromCharCode(), or you can use these escape sequences:</p> <pre><code>\ddd Octal sequence (3 digits: ddd) \xdd Hexadecimal sequence (2 digits: dd) \udddd Unicode sequence (4 hex digits: dddd) </code></pre>

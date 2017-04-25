@@ -1,0 +1,3 @@
+Preserving the radiobutton values using cookies
+<p>I have three radio buttons I want to preserve the radio button values after the browser refresh using cookies.</p> <p>Please help me out.</p>
+<p>Attach a "onchange" event handler to you radio buttons and save the new value into a cookie. Then attach a "onload" event handler to your body and set the values of radio buttons based on the value in the cookie (if it is present) ...</p>

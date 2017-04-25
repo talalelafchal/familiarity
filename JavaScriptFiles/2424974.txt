@@ -1,0 +1,5 @@
+expression evaluation with boolean values
+<p>In Java or other similar languages I can't do:</p> <pre><code>a &lt; b &gt; c </code></pre> <p>where a,b,c are boolean types.</p> <p>In Javascript I can do that and also with other data types values:</p> <pre><code>var t = 3; var z = true; t &gt; z // will be true </code></pre> <p>Now why the results is true???</p>
+<p>Because Javascript is willing to do type conversions at the drop of a hat. Boolean <code>true</code> is coerced to numeric <code>1</code>.</p> <p>Note that <code>1 == true</code> is <code>true</code>, but <code>1 === true</code> is <code>false</code>.</p>
+<p>JavaScript first casts the boolean <code>true</code> to a number for the comparison. In this case <code>true</code> is cast to <code>1</code>.</p> <p>Many objects will not be cast to numbers though. For example, <code>{}</code> is <code>NaN</code>.</p>
+<p>True will be converted to 1. And 3 is greater than one...</p>

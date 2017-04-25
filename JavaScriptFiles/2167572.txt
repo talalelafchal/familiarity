@@ -1,0 +1,3 @@
+showing images moving using java script
+<p>i want to Create new page named “MySlidShow.htm”, and put link to in PhotoGallary page. The slide show page has four links (previous, Start SlideShow, End Slide Show, Next). When user put the mouse over an image show this image description and date taken below it and pause the slide show if it is running, and when the moves the mouse away hide the description and date and resume the slide show. (Use array to store images name, and another to store images description and date taken (you may use associative array). can any one show me how or write me the code</p>
+<p><a href="http://jonraasch.com/blog/a-simple-jquery-slideshow" rel="nofollow noreferrer">here</a> is a good place to start </p>

@@ -1,3 +1,0 @@
-iOS SplitViewController: Show master view when loading in compact width
-iOS 10/Swift: Using SplitViewController on an iPhone the user sees the detail view when the app loads (whether in portrait or landscape both have compact width). How can you change this to load the master view on startup? Note that when you load in a Regular Width view (ie: iPhone 6s Plus landscape) we want the Split View to continue to be shown (and not master).
-You should use method func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool which provided by UISplitViewControllerDelegate

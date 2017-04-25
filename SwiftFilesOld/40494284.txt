@@ -1,4 +1,0 @@
-Adding white status bar
-I'm trying to add a white status bar to my ViewController like that: override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent } but it doesn't work in most of the views (it worked on some) Any idea how to make it work? Thanks!
-To set white status bar do the follwing steps: Add new key "status bar style" in info.plist Set the status bar style value to "UIStatusBarStyleLightContent" in info.plist. Refer below screen shot: OR 1.select project target. 2.goto info tab. 3.Add new key "status bar style" 4.Set the status bar style value to "UIStatusBarStyleLightContent". Refer below screen shot:
-Subclass UINavigationController as below. Then in interface builder set the class of your navigation controller to "MyNavigationController. class MyNavigationController: UINavigationController { override func preferredStatusBarStyle() -> UIStatusBarStyle { return .LightContent } }

@@ -1,0 +1,4 @@
+Array inside a Javascript Object?
+<p>I've tried looking to see if this is possible, but I can't find my answer.</p> <p>I'm trying to get the following to work:</p> <pre><code>var defaults = { 'background-color': '#000', color: '#fff', weekdays: {['sun','mon','tue','wed','thu','fri','sat']} }; </code></pre> <p>It just gives an error, and I've tried using <code>({...})</code> and <code>[{...}]</code> I'd like to be able to access the weekdays using somthing like:</p> <pre><code>defaults.weekdays[0]; </code></pre> <p>is this possible?</p>
+<pre><code>// define var foo = { bar: ['foo', 'bar', 'baz'] }; // access foo.bar[2]; // will give you 'baz' </code></pre>
+<p>Kill the braces.</p> <pre><code>var defaults = { backgroundcolor: '#000', color: '#fff', weekdays: ['sun','mon','tue','wed','thu','fri','sat'] }; </code></pre>

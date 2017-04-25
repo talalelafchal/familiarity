@@ -1,2 +1,0 @@
-UICollection Add borders to the inside part
-I'm looking how I can accomplish this task.  X X X X X X X X X X X X I need to set up borders like this  X | X | X | X - - - - X | X | X | X - - - - X | X | X | X How can be done this? Thanks in advance

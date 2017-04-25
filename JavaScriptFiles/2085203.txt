@@ -1,0 +1,5 @@
+javascript object remove
+<p>Please excuse my question if it doesnt make much sense.</p> <p>I am using javascript to create a dom element to do that i create an object ( <code>obj ={}</code>) and fill out the properties as i go, one of which is the dom element to be created. once the element is created and appended to the document i do not need the object to occupy any space in the memory so i was thinking i should remove it. how would i go about doing that? thank you</p>
+<p>here is how:</p> <pre><code>my_var = null; //or remove it delete my_var; </code></pre>
+<p>The object's going to exist in memory as soon as it's in the DOM, and the obj property that holds it is really holding a reference to it, not a copy. So as far as I know, the memory required to keep the reference as a property of obj should be negligible. In which case I wouldn't worry about removing it at all.</p>
+<p>if you define you object as locale like</p> <p>var obj ={}</p> <p>it will be automatically undefined at the end of the function.</p>

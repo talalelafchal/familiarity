@@ -1,0 +1,3 @@
+Events to iframe
+<p>How to assign events to iframe in javascript? Thanks in advance. I want to assign Keypress or keyup or click events.</p>
+<p>An iframe contains the usual <code>document</code>, <code>window</code> and <code>body</code> elements that you can assign events to. For maximum simplicity, do it inside the IFrame. Otherwise, just address the iframe from the outlying document:</p> <pre><code>document.getElementById("your_iframe_id"). .... </code></pre>

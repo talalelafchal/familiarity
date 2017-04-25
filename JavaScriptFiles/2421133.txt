@@ -1,0 +1,4 @@
+light confirm script
+<p><a href="http://lalalafactory.blogspot.com/2008/02/light-alet-lightalertjs.html" rel="nofollow noreferrer">http://lalalafactory.blogspot.com/2008/02/light-alet-lightalertjs.html</a></p> <p>Can anyone tell me what to change that JS confirm button will also work. I add </p> <pre><code>function confirm(obj){ new LightAlert(obj); } </code></pre> <p>but still works like alert not confirm.</p>
+<p>Not sure, you would have to get in and modify their code. You can use the <a href="http://jqueryui.com/demos/dialog/#modal-confirmation" rel="nofollow noreferrer">jQuery dialog</a> and acheive this.</p>
+<p>is it possible to use some similar design to ajax ConfirmButtonExtender in C# or to connect it with jquery dialog?</p>

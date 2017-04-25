@@ -1,2 +1,0 @@
-Save video with CAEmitterLayer as sublayer
-I'm working on a Swift 3.0 AVFoundation project where user takes video and app displays preview with CAEmitterLayer as a effect (like raining etc) and be able to save it to Photos Library. I've got session all set and app displaying effect in a Preview view but when recording only video got saved without the effect. I'm using AVCaptureFileOutputRecordingDelegate to save my output. Is there a way to save everything that is displaying on the preview view as a video? Edit: I've ended up using ReplayKit.

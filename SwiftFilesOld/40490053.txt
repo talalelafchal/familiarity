@@ -1,2 +1,0 @@
-NSCollectionView ~&gt; Kingfisher
-So I am attempting at making a clickable gallery using images from an API. I have tried over and over and seem to consistently get eveyrthing wrong so I dont even have code to share. Is there a tutorial on how to do this well? Im fresh to NSCollectionView and all things OSX but very well accustomed to UICollectionView and the normal UIKit components. Can anyone help?

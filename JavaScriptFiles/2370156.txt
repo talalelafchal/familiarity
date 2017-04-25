@@ -1,0 +1,4 @@
+Most efficient way to check that string variable is a single alphanumeric character
+<p>I could do it with regex (something like <code>myString.match(/^[A-Za-z0-9]$/)</code>) but it seems like an overkill. </p> <p>What would be more effective performance-wise?</p> <p>Thanks.</p>
+<p>Well obviously, the most efficient is an indexed lookup into an array (pre-configured with appropriate boolean results). This is a very bad approach, in general, however. (Because it's non-standard and almost certainly not neccessary).</p>
+<p>Use the length property and the charCodeAt( 0 ) function to check the range of the ASCII value...</p>

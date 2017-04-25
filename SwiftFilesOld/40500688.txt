@@ -1,3 +1,0 @@
-Override Objective C Methods in Swift File
-I have some methods in Objective C. I created a subclass from objective C superclass. Now I want to override the Objective C superclass method in my Swift class. My code: @objc class JobBusinessTableViewCell: AdItemTableViewCell { override func commonInit() { super.commonInit() } override func updateWithAd(ads: ResponseSimpleAd) { super.updateWithAd(ads) } } Here AdItemTableViewCell is an Objective C superclass. I want to override updateWithAd method in Swift. How can I do this?
-I found the answer .. But looks weird .. Worked Code :  public final override func update(with ad : ResponseSimpleAd) { super.update(with: ad) } I don't understand the method name change in swift .. But working as expected ...

@@ -1,0 +1,3 @@
+Check if elemntFromPoint() bumps into a hyperlink
+<p>I am using elemntFromPoint in order to return onclick some element. I would like to check if the returned element ('span' div' whatever...) is part of a link or if it is a button etc. How should I start? Thanks.</p>
+<p>To check if the element "is part of a link" you'll want to traverse up the DOM tree until you hit an anchor - if you don't hit an anchor then the element isn't in a link. E.g.</p> <pre><code>var el = document.elementFromPoint(x,y), cur = el, isInAnchor = false; do { if (cur.nodeName.toLowerCase() === 'a') { isInAnchor = true; break; } } while (cur = cur.parentNode); alert(isInAnchor); // either true or false </code></pre>

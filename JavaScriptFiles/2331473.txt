@@ -1,0 +1,3 @@
+In Javascript (not JQuery), how do I make the window close after 2 seconds?
+<p>How do I create a function that will close the window after 2 seconds?</p> <pre><code>&lt;a href="" onclick="close_it(); return false;"&gt; Click to close the window after 2 seconds &lt;/a&gt; </code></pre>
+<p>You could use the <code>setTimeout</code> where an action is postponed for x number of milliseconds.</p> <pre><code>setTimeout(function(){ window.close(); }, 2000); </code></pre>

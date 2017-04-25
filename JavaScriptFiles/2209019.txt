@@ -1,0 +1,3 @@
+JavaScript timer implementation
+<p>I am trying to find out exactly how JavaScript timers work. In particular whether a timer function is executed immediately the timer expires or instead when the JavaScript engine is in some kind of idle state.</p> <p>For example if the JavaScript engine is executing a block of code and a timer goes off does the execution of the block of code get interrupted and the timer function called. Or does the JavaScript engine wait until it returns to some kind of idle state before it calls the timer function?</p> <p>Thanks,</p> <p>AJ</p>
+<p>Here's a very good explanation from John Resig</p> <p><a href="http://ejohn.org/blog/how-javascript-timers-work/" rel="nofollow noreferrer">how-javascript-timers-work</a></p>

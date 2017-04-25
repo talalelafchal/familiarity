@@ -1,0 +1,6 @@
+How do I cast a decimal number to String in Javascript?
+<p>325.234 to string?</p> <p>is it toString()?</p>
+<p>Simplest way, concatenate it with an empty string:</p> <pre><code>325.234 + ''; </code></pre> <p>Which will implicitly call <code>toString()</code> on the number.</p> <p>You could also use:</p> <pre><code>String(325.234); </code></pre> <p>And:</p> <pre><code>325.234.toString(); </code></pre>
+<p>Sure, why not just:</p> <pre><code>325.234.toString() </code></pre>
+<p>or <code>String(325.234)</code></p>
+<pre><code>var number = 123.54 var string = number.toString(); </code></pre> <p>The "toString()" method is called implicitly when you use a non-string as part of a string concatenation. Such as:</p> <pre><code>var newString = "Hello " + number; </code></pre>

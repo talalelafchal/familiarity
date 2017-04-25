@@ -1,0 +1,3 @@
+How to Write javascript running on the child page (PopUp.aspx) to update the value of a label on the parent page
+<p>any references document</p>
+<p>Here's how:</p> <p><a href="http://www.webreference.com/js/tutorial1/opener.html" rel="nofollow noreferrer">http://www.webreference.com/js/tutorial1/opener.html</a></p> <p>You'll have full access to any javascript methods in the parent opener simply by using </p> <pre><code>window.opener.myFunction(params); </code></pre> <p>Clarity EDIT: </p> <pre><code>window.opener.document.getElementById('myLabel').value = 'some text'; </code></pre>

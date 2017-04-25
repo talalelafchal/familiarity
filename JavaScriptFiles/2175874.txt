@@ -1,0 +1,5 @@
+Date manipulations in Javascript
+<p>I am using a dropdownlist and a calendar control in my page. In that I am having following list items. 1)Last Week 2)last month</p> <p>If I choose last week in the dropdownlist the calendar control should display the date range from date 7 days ago and today's date. How can I get it through Java Script</p>
+<pre><code>// current date var now = new Date(); // 7 days earlier now.setDate(now.getDate()-7); </code></pre>
+<pre><code>var curDate = new Date(); var prevDate = new Date(); prevDate.setDate ( curDate.getDate() - 7 ); </code></pre>
+<p>How about using <a href="http://datejs.com" rel="nofollow noreferrer">DateJS</a> library?</p> <p>Its return </p> <ul> <li>7 days ago => Monday, January 25, 2010 12:00:00 AM</li> <li>last week => Monday, January 25, 2010 12:00:00 AM</li> <li>last month => Friday, January 01, 2010 12:00:00 AM</li> </ul>

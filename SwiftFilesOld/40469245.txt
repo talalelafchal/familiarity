@@ -1,3 +1,0 @@
-How to get a substring of a label's string value in swift
-I know that you can access get a substring of a string via: let greeting = "Guten Tag!" let index = greeting.index(greeting.startIndex, offsetBy: 7) greeting[index] But what if I don't have a string but instead have a label's stringvalue such as label.stringvalue How do I get a substring of that stringvalue?
-Looks like it's just a typo. It should be stringValue (upper case V).

@@ -1,4 +1,0 @@
-XCode 8.1 crashes when I open .swift/.xib file
-I had previously installed XCode 7.3 and updated it to 8.1 through the AppStore. When the project opened(XCode 8.1, Swift 3.0, Mac OS X El Capitan 10.11.6) I'm trying to open any file(.swift/.xib/.storyboard/.plist/.coredata etc.) the XCode just crashes. Here is the my Crash Log of XCode 8.1: https://gist.github.com/anonymous/339bffc7b67100ae5e82012393cb00bd
-Try below steps, it may solve problem: Open a Finder window and navigate to your project Right-click on the .xcodeproj file (it’s a package actually) Select Show Package Contents New window appears Delete a folder called xcuserdata Also, Clear the derived data folder. Some helpfull links: http://pinkstone.co.uk/xcode-crashes-every-time-you-open-it-and-how-to-fix-it/ XCode Crashing When Opening Project File How to add .gitignore file into Xcode project
-In the Utilities view, put "Top Bar" and "Status Bar" entries to "None". Temporary fix from Apple.

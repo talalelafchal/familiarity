@@ -1,0 +1,3 @@
+A simple If...else block. Why is it doing nothing?
+<pre><code> &lt;html&gt; &lt;head&gt;&lt;/head&gt; &lt;body&gt; &lt;script type = "text/javascript"&gt; var x = 5; var y = 8; if (x &lt; 6) { document.write("They are equal"); } else { document.write{"They are NOT equal"); } &lt;/script&gt; &lt;/body&gt; &lt;/html&gt; </code></pre>
+<p>I think you have a syntax error:</p> <pre><code>document.write{"They are NOT equal"); </code></pre> <p>Should be</p> <pre><code>document.write("They are NOT equal"); </code></pre>

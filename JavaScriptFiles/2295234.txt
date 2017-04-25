@@ -1,0 +1,3 @@
+Storing selected row in array in JavaScript
+<p>How do we stor selected row in array in JavaScript?</p>
+<p>You shoud be more specific in what kind of object youre using in your html (DOM) code.</p> <p>exampl: if you're using a SELECT 'resources' in a form </p> <pre><code>var fl = form.resources.length -1; //Pull selected resources and add them to list for (fl; fl &gt; -1; fl--) { if (form.resources.options[fl].selected) { theText = form.resources.options[fl].text; theValue = form.resources.options[fl].value); //your code to store in an aray goes here //... } } </code></pre>

@@ -1,7 +1,0 @@
-ios first cell is not start from top of UITableView
-My Application has a navigation and UITableView. I set backgroundColor to my tableView. Look at the picture bellow. I don't understand why the first cell is not started from top of UITableView. When I use View Debbuger in Xcode, TableViewWrapperView is not fulled in UITableView. I already searched many times. I removed check Adjust Scroll View Insets and set .zero tableview's contentinsets. At last I made New Project and make it again but I can't. How can I resolve this problem!! enter image description here
-I answer my own question. I don't know what is different to top layout guide and view. But I resolve to set top constraint 0 to view. Thank you. enter image description here
-Open your storyboard and click on the table view controller/view controller that contains the table view. Open the attribute inspector and untick Adjust Scroll View Insets.
-Open the storyboard, click on the UITableView. In your sizeInspector set the Headerand Footer in section height field to be 1.
-The table view tries to adjust itself to accommodate the navigation bar assuming that navigation bar is translucent and it has to display itself behind it. To resolve this issue in the storyboard/xib file set the view controller property extends edges under top bar to false as shown below.
-Write this two line on viewdidload of your viewcontroller, it will fix your issue self.edgesForExtendedLayout = UIRectEdgeNone; self.automaticallyAdjustsScrollViewInsets = NO;

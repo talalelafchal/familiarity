@@ -1,0 +1,3 @@
+load a page or video in to the dialog box
+<p>Helo,</p> <p>Can you please explain the line in this code </p> <pre><code> // Load rules in to modal $('#rules .text').load('rules.html'); </code></pre> <p>as i want to load a page or video in to the dialgue box.</p>
+<p>Load the rules.html into the element with id #rules with class .text</p> <p>rules.html will be loaded from the server and the content is written into the element</p>

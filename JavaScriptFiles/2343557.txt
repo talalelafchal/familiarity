@@ -1,0 +1,3 @@
+()[]+! in javascript
+<p>How is it possible to only use ()[]+! to make javascript code?</p> <p>Ex: <a href="http://discogscounter.getfreehosting.co.uk/js-noalnum.php" rel="nofollow noreferrer">http://discogscounter.getfreehosting.co.uk/js-noalnum.php</a></p>
+<p>See <a href="http://sla.ckers.org/forum/read.php?24,33349,33405" rel="nofollow noreferrer">Java/script: no alnum cheat sheets</a>.</p> <p>In short, various constructs yield NaN/undefined/window/etc. Stringify and index them to yield any string. Extract a property and call it to execute code.</p>

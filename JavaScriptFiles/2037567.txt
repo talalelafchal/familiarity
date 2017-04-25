@@ -1,0 +1,3 @@
+JavaScript: Rotate Polys
+<p>My code doesn't work right:</p> <pre><code>function rotate(Points, Angle) { for (var i=0; i&lt;Points.length;i++) { Points[i] = [Math.cos(Angle) * Points[i][0] - Math.sin(Angle) * Points[i][1], Math.sin(Angle) * Points[i][0] + Math.cos(Angle) * Points[i][1]]; } return Points; } rotate([[0, 0], [50, 0], [25, 25]], 5); </code></pre> <p>I used the following: <a href="http://www.vb-helper.com/howto_rotate_polygon_points.html" rel="nofollow noreferrer">http://www.vb-helper.com/howto_rotate_polygon_points.html</a></p>
+<p><code>cos</code> and <code>sin</code> in most programming languages are in radians. Are you sure you want to rotate by 5 radians (= 286 degrees)?</p>

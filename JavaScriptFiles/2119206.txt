@@ -1,0 +1,3 @@
+Only Load Javascript if Supported
+<p>I don't want my users having to load a ton of JS files if their browser doesn't support it. What's the best/easiest/fastest to <strong>only</strong> load JS scripts if the browser supports Javascript?</p> <p>Thanks in advance, - JS noob</p>
+<p>If JavaScript is off, the browser won't download files from the <code>src</code> attribute of <code>&lt;script type='text/javascript'&gt;</code> tags.</p>

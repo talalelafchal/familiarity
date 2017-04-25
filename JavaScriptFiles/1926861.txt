@@ -1,0 +1,3 @@
+iframe onblur event
+<pre><code>document.getElementById(Iframe_Id).contentWindow.addEventListener("onblur", test, true); </code></pre> <p>Is this Line True? and can we assign onblur to iframe?.</p>
+<p>Hai pranjali,</p> <p>For your second question have a look at this <a href="http://codingforums.com/showthread.php?t=136421" rel="nofollow noreferrer">Crossbrowser IFRAME OnBlur</a></p>

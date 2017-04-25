@@ -1,0 +1,2 @@
+How to find browser date time format
+<p>I have date as 31.03.2010 in german ofcourse 31 is date,03 is month and 2010 is year. Now I want to display the date as per the selected datetime format for the browser, say is user has german for him I would display 31.03.2010 whereas for English I would display 03/31/2010.</p> <p>Any Idea how this can be done?</p>

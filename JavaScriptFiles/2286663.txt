@@ -1,0 +1,6 @@
+javascript, just like stackoverflow's comment preview
+<p>I need to do a preview just like how stackoverflow does their preview such as when you write questions or add comments.</p>
+<p>Just to give an idea.</p> <p>You can do that by wiring up a onchange event on the textarea in which you are typing and in the function that handles the onchange event update a div with the text from the textarea and that div is shown below which serves as a preview.</p> <p>Thanks</p>
+<p><a href="http://jsbin.com/eraca" rel="nofollow noreferrer"><strong>I created this for you as demo.</strong></a> You can expand on that, hope that helps :)</p>
+<p>In case your interested in the markup language (<a href="http://en.wikipedia.org/wiki/Markdown" rel="nofollow noreferrer">Markdown</a>) too, <em>plus</em> the preview system, check out the live preview demos of</p> <ul> <li><a href="http://attacklab.net/showdown/" rel="nofollow noreferrer">Showdown</a></li> <li><a href="http://wmd-editor.com/demo" rel="nofollow noreferrer">WMD Editor</a></li> </ul>
+<p>You can use a <strong><a href="http://en.wikipedia.org/wiki/WYSIWYM" rel="nofollow noreferrer">WYSIWYM</a></strong> editor for this.</p> <p><strong><a href="http://wmd-editor.com/" rel="nofollow noreferrer">WMD: The Wysiwym Markdown Editor</a></strong></p>

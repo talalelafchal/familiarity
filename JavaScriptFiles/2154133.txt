@@ -1,0 +1,4 @@
+JavaScript: Make first hidden element visible
+<p>How can I find the first element in a document which has style="display:none;" set and make it visible?</p> <p>I want to attach this function to a button to display several hidden elements, one by one.</p>
+<p>In jQuery it's simple:</p> <pre><code>$(':hidden:first').show(); </code></pre> <p>but if you haven't got access to jQuery, it's a bit more complicated. Any information about what elements might possibly be hidden would be helpful to come up with a good resolution to this in plain javascript. Are they all children of a certain DIV? Are they all of a certain element?</p>
+<p>In simple Javascript:</p> <pre><code>var el=document.getElementsByTagName("*"); for(i=0;i&lt;el.length;i++) if(el[i].style.display=="none"){ el[i].style.display="block"; break; } </code></pre>

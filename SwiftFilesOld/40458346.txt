@@ -1,2 +1,0 @@
-How do weak references work when in an array?
-I made an array full of objects of a class. I followed the instructions here (How do I declare an array of weak references in Swift?) to make a wrapper and make every object in the array a weak reference. However my app still crashes after memory warning due to the memory filling up. Why aren't objects deallocating when not needed? Additional info, I am using the class to hold images and filters associated with the image, and a collection view to display the images. After scrolling through too many images, the app will crash.

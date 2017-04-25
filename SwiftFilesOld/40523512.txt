@@ -1,3 +1,0 @@
-Can you still program in xcode 7 with swift 2?
-Im working on a school project to build an iOS application in Swift. I saw that they updated to Swift 3.0 and now many tutorials don't work. My question is can you download xCode 7.3.1 and still work in Swift 2? So that I can follow the tutorials on the web? My application only has to work on a emulator. So not in de App store Thanks!
-Yes you can use swift 2.2 in Xcode 7 and 2.3 in Xcode 8 by enabling the Use Legacy Swift Language Version in Build setting (SWIFT_VERSION = 2.2) Swift 2.2.1 and Swift 2.3 are very similar, with key changes being related to SDK differences.

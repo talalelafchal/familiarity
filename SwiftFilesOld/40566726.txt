@@ -1,2 +1,0 @@
-Rails Devise &quot;Authorized Users Only&quot; error on iOS
-I want to know if devise has any compatibility issues with iOS I have an android and web clients using retrofit that work perfectly but my iOS client is giving me "Authorized Users Only", I presume, after doing batch requests. I've tried using Swift 2 native NSURLRequests and Alamofire but I'm still recieving the error message. The API was built on Ruby 2.3.1 and Rails 4.2.7.1 using token authentication. But I'm storing and sending the token in every request, so the token isn't the cause.

@@ -1,0 +1,4 @@
+Javascript timer to close
+<p>I have the following code that closes an iframe footer pop-up I have.</p> <pre><code>&lt;a href="javascript:void(0)" onclick="parent.adpHide('footer')" class='close'&gt; &lt;img alt='' src="images/close.png" /&gt;&lt;/a&gt; </code></pre> <p>That works fine, what I'm wanting though is to set a timer that after 5 seconds closes footer. Any suggestions?</p>
+<p>Change your <code>onclick</code> to:</p> <pre><code>setTimeout( function() { parent.adpHide('footer'); }, 5000 ); </code></pre>
+<pre><code>setTimeout(function() { parent.adpHide('footer') }, 5000) </code></pre>

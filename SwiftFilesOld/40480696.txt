@@ -1,4 +1,0 @@
-On Button click, I want to bring app to background from fore ground?Is it possible? and How?
-When I click the button, I want my app which is running in foreground needs to go to background. Is it possible? If so how?
-@IBAction func bringToBackgroundButtonClicked(sender: UIButton) { let app = UIApplication.sharedApplication() app.performSelector(#selector(self.suspend)) } func suspend() { exit(0) } makes your app which is running in foreground will go to background. This is not recommended, not sure about app store approval.
-Warning: This is an private instance method. Your app may get rejected in the app store. UIApplication *app = [UIApplication sharedApplication]; [app performSelector:@selector(suspend)];

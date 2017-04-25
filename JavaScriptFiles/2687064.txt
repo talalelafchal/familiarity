@@ -1,0 +1,3 @@
+Chrome page refresh problem
+<p>Pressing enter inside a textbox refreshes the whole page in Google Chrome.<br> please help me out</p>
+<p>Pressing Enter in an <em>input field</em> submits a form which, depending on your form's action attribute, may well be submitting the form to the same page (causing it to appear like a refresh). This is intended behaviour. If you're talking about a <em>text-area</em>, then that's an entirely different matter (and is probably relating to some custom JavaScript event).</p> <p>If this isn't what you mean, you're going to need to clarify your question. At the very least, please post the excerpt of HTML that encompasses your &lt;form&gt; tags.</p>

@@ -1,0 +1,3 @@
+A javascript function to format javascript code
+<p>Does anyone know of a javascript library that will take a chunk of javascript source and format it according to some set of rules. I can of course do it in my editor but I would like to be able to automate it as part of a build process. </p>
+<p>Not in js, but maybe it could help:</p> <ul> <li><a href="http://jsbeautifier.org/" rel="nofollow">http://jsbeautifier.org/</a></li> </ul> <p>(online and python version)</p>

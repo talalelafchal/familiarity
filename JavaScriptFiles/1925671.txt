@@ -1,0 +1,4 @@
+JavaScript window.scroll vs. window.scrollTo?
+<p>Any idea what, if any, difference there is between window.scroll(x, y) and window.scrollTo(x, y) [not talking about jQuery]?</p> <p>Also any ideas as to which browsers support which? Thanks</p>
+<p>There are no differences: <a href="https://developer.mozilla.org/en/DOM/window.scroll" rel="nofollow noreferrer">https://developer.mozilla.org/en/DOM/window.scroll</a></p> <p>As far as I know, all major browsers support both.</p>
+<p>There is <a href="http://msdn.microsoft.com/en-us/library/ms536728(VS.85).aspx" rel="nofollow noreferrer">scrollTo, scroll, and scrollBy</a>! Apparently there is no standard covering this functionality so all Browsers may not implement it the same.</p>

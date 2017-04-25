@@ -1,0 +1,4 @@
+javascript add rel facebox
+<p>i want to enable facebox jquery using javascript.</p> <p>here in normal html </p> <pre><code>&lt;a href="stairs.jpg" rel="facebox"&gt;text&lt;/a&gt; </code></pre> <p>how do in javascript ?something like this?</p> <pre><code>document.location.href="stairs.jpg"; document.location.rel="facebox"; </code></pre>
+<p>Is something like this, what you are looking for ?</p> <pre><code>var alink = document.createElement('a'); alink.setAttribute('href', 'stairs.jpg'); alink.setAttribute('rel','facebox'); </code></pre>
+<p>If you want to open a facebox window and populate it with stairs.jpg then you would use the following:</p> <pre><code>jQuery.facebox({ image: 'stairs.jpg' }); </code></pre>

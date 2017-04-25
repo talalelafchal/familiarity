@@ -1,0 +1,3 @@
+Custom form elements script
+<p>I am looking for a customized Form elements like RadioButton, Checkbox and Selectbox script. What do you suggest. (widthout using any framework please!)</p> <p>Thanks in advance.</p>
+<p>Check out this <a href="http://www.protofunc.com/scripts/jquery/checkbox-radiobutton/" rel="nofollow noreferrer">jQuery checkbox/radio button plugin</a>, I think it does what you're looking for.</p>

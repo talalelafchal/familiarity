@@ -1,0 +1,5 @@
+how to disable the image toolbar
+<p>How can I disable the image toolbar that popups whenever mouse pointer is over an image. I need to do this within javascript only.</p>
+<p>You can display the image as a background element through CSS instead of using img tag. The tag will probably always have the popup.</p>
+<p>Try:</p> <pre><code>&lt;meta http-equiv="imagetoolbar" content="no" /&gt; </code></pre> <p>or for an individual image:</p> <pre><code>&lt;img src="imageurl.png" galleryimg="no" /&gt; </code></pre>
+<p>The image toolbar can be disabled through a meta tag:</p> <pre><code>&lt;META HTTP-EQUIV="imagetoolbar" CONTENT="no"&gt; </code></pre> <p>or apparently (though I haven't tried this) using an attribute on the tag itself:</p> <pre><code>GALLERYIMG="no" </code></pre> <p>The latter approach could obviously be done in a pure Javascript solution...</p>

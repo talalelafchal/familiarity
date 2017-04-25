@@ -1,4 +1,0 @@
-How to reuse same storyboard for different targets by changing colors and appearance
-I want to do another target of my IOS app by changing colors and texts to rebranding by reusing the same storyboards and swift code, but in storyboards colors and texts are hard coded so that I am able to effectively and it is confusing to to do,Can you please suggest the better approach to do this white labeling or rebranding of IOS Application.
-You can either use runtime attributes, or, you can have outlets for the specific UI elements and set the color programmatically.
-Its better to use coloring logic to be given via code. and you can create category class for each target so that you can specifie the color you need for each target.

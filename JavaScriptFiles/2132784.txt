@@ -1,0 +1,4 @@
+Javascript: access to an object's member by name
+<p>I have an object called <code>themesData</code>:</p> <pre><code>var themesData = {} themesData.a = { key: "value" }; themesData.b = { key: "another value"}; </code></pre> <p>...and I want to access one of the members by its name. I get a string which contains either "a" or "b" and I want to get the appropriate member's value.</p> <p>I'd be happy to get some help on that.</p>
+<p><code>themesData["a"].key</code> does what you need and is equivalent to <code>themesData.a.key</code>, still the "array index style" notation allows you to dynamically generate index names.</p>
+<p>You can do it in this way:</p> <pre><code>var member="a"; //or B var rightMember=themesData[member].key; </code></pre>

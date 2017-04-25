@@ -1,0 +1,4 @@
+JavaScript: Set border radius
+<p>How can I set the -moz-border-radius with pure JavaScript (no jQuery, no plugins etc)?</p> <pre><code>document.getElementById('id') </code></pre>
+<p>Try:</p> <pre><code>document.getElementById('id').style.borderRadius = '1em'; // w3c document.getElementById('id').style.MozBorderRadius = '1em'; // mozilla </code></pre> <p>But why not do it in a stylesheet?</p>
+<pre><code>var myElementStyle = document.getElementById('id').style; myElementStyle.borderRadius = '1em'; // standard myElementStyle.MozBorderRadius = '1em'; // Mozilla myElementStyle.WebkitBorderRadius = '1em'; // WebKit </code></pre>

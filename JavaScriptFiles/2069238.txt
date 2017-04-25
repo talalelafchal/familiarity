@@ -1,0 +1,3 @@
+How to Validate the password using regular expression with Special Symbols, Characters and Numeric in Java Script
+<p>below Syntax var re = /(?!^[0-9]<em>$)(?!^[.|</em>+(){}]<em>$)(?!^[a-zA-Z]</em>$)^([a-zA-Z0-9]{6,15})$/; But it doesn't validate the special symbols?</p>
+<pre><code>/(?!^[0-9]*$)(?!^[.|*+(){}\[\]]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9.|*+(){}\[\]]{6,15})$/ </code></pre>

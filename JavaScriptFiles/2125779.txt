@@ -1,0 +1,3 @@
+array join() method without a separator
+<pre><code>var arr= ['g','o','o','d']; var arr2 = arr.join(); </code></pre> <p>Arr2 will be "g,o,o,d". I would like to get "good". I know there are a million other ways to achieve this but was curious if there was a way with join.</p> <p>Thanks</p>
+<p>Sure - just pass an empty string:</p> <pre><code>var arr2 = arr.join(''); </code></pre>

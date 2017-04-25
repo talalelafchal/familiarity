@@ -1,0 +1,3 @@
+holding scroll position of a div tag as page refreshes
+<p>I have a div tag and I want to hold the scroll position even if the page is refreshed.How do i implement in JavaScript. Any help would be appreciated. Need just In IE. Thanks</p>
+<p>If the entire page refreshes, you'll have to store the scroll position of the DIV in a cookie (or send/retrieve that position from the server, which is more trouble), then add a listener to the window.onload event that resets the DIV to the correct scroll position.</p>

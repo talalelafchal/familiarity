@@ -1,0 +1,3 @@
+What does &quot;Return false;&quot; in onclick event for JavaScript mean?
+<p>What does "Return false;" in onclick event for JavaScript mean?</p> <pre><code> &lt;input type="button" runat="server" id="btnCancel" value=" Cancel " style="width:70px;" onclick="document.location.href = 'ReportPanel.aspx'; return false;" /&gt; </code></pre> <p>in the onclick event. It has <code>return false;</code> What does it mean? What does it mean if <code>return true;</code>?</p>
+<p>It says "the event never happened" to the browser. If you had a submit button instead of a simple button and didn't have "return false", the form would get submitted when you click it (after executing the javascript).</p>

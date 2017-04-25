@@ -1,0 +1,5 @@
+Call a javascript function at distinct time intervals
+<p>I've created a stock ticker function and need to call it every 2 minutes.</p> <p>I've succeeded in doing this with the javascript <code>setInterval</code> function, but the problem is on the first call it waits 2 minutes before calling the function, whereas I want the first load to be called right away.</p> <pre><code>function CallFunction() { setInterval("GetFeed()", 2000); } </code></pre>
+<pre> function CallFunction() { GetFeed(); setInterval("GetFeed()", 2000); } </pre>
+<pre><code>function CallFunction() { GetFeed(); return setInterval(GetFeed, 2 * 60 * 1000); } var id = CallFunction(); </code></pre>
+<p>The following snippet shown in image calls a function after every 20 seconds and it can be stopped by calling cancelRepeat() function. Hope this helps.</p> <p><img src="https://i.stack.imgur.com/Xnszl.png" alt="enter image description here"></p>

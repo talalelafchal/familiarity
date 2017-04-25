@@ -1,0 +1,4 @@
+Write Js from C# api
+<p>There is an advert displayed on this site about an API to write javascript from C#. Does anyone have the link for this?</p> <p>Thanks</p>
+<p>Try <a href="http://sharpkit.net/" rel="nofollow noreferrer">http://sharpkit.net/</a></p>
+<p>You may take a look at <a href="http://projects.nikhilk.net/ScriptSharp" rel="nofollow noreferrer">Script#</a>.</p>

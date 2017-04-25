@@ -1,0 +1,4 @@
+how can i reference form data from the referring document?
+<p>Hi I have a web page that opens up from another page after the user clicks a link. What i want to do using JS is reference the form data from the original page and use it on the page that has just been opened . my first page contains something like </p> <pre><code> function date_change() { window.open("//www.abbeysoft.co.uk/adi/datepicker.php"); } </code></pre> <p>Then i want to use something like the code below in page two </p> <pre><code> nam = document.form1.name.value </code></pre> <p>is this something I can do easily </p> <p>Any hints or pointers would be great </p> <p>thanks </p>
+<p>With <a href="https://developer.mozilla.org/en/DOM/window.opener" rel="nofollow noreferrer">opener</a></p>
+<p><code>window.opener.document.forms["form1"].elements["fieldname"].value</code> will get you to the value of any object in a given form.</p>

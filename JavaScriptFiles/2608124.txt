@@ -1,0 +1,5 @@
+How to create a file by getting the filename from the user in javascript?
+<p>How to create a file by getting the filename from the user in javascript?</p>
+<p>Some more information might prove helpful, but if I take your question at face value the answer is "You can't".</p> <p>Javascript run in the browser from a website (the most common way) has no access to the desktop and can't create a file on it.</p>
+<p>Since javascript is a client-side language, you cannot create a file on the server using javascript alone. Probably the best thing to do is POST the variable with the filename to a PHP file.</p>
+<p>Im guessing here that you want to use ?</p>

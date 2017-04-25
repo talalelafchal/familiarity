@@ -1,0 +1,5 @@
+string to datetime conversion javascript
+<p>How do I convert string(09-Apr-2010) in to date time (09 April 2010 00:00:00) using java script? I need to compare the dates for validation.</p>
+<p>Take a look here: <a href="http://www.w3schools.com/jsref/jsref_parse.asp" rel="nofollow noreferrer">http://www.w3schools.com/jsref/jsref_parse.asp</a></p>
+<p>check out <a href="https://developer.mozilla.org/En/Core_JavaScript_1.5_Reference/Objects/Date/Parse" rel="nofollow noreferrer">Date.parse</a></p> <pre><code>str = "09-Apr-2010" date = new Date(Date.parse(str.replace(/-/g, " "))) alert(date.toLocaleString()) </code></pre>
+<p>Try this should work</p> <pre><code>&lt;script language="javascript"&gt; function validateDate(oSrc, args) { var iDay, iMonth, iYear; var arrValues; arrValues = args.Value.split("/"); iMonth = arrValues[0]; iDay = arrValues[1]; iYear = arrValues[2]; var testDate = new Date(iYear, iMonth - 1, iDay); if ((testDate.getDate() != iDay) || (testDate.getMonth() != iMonth - 1) || (testDate.getFullYear() != iYear)) { args.IsValid = false; return; } return true; } &lt;/script&gt; </code></pre>

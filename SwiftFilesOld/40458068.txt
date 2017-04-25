@@ -1,4 +1,0 @@
-Hiding the statusbar iOS
-I'm trying to hide the statusbar on the landingpage of my app only. I figured this is the right function and it does get executed, however the status bar still remains there override func viewDidAppear(animated: Bool) { super.viewDidAppear(animated) FBSDKLoginManager().logOut() self.prefersStatusBarHidden() } override func prefersStatusBarHidden() -> Bool { return true } What am I doing wrong?
-Set value "No" for key "View controller-based status bar appearance" in plist file and No need to call "self.prefersStatusBarHidden()" manually so remove it from viewDidAppear
-Try this. Add below entries in info.plist View controller-based status bar appearance -> YES Status bar is initially hidden -> YES And In ViewControllers, In which you want to hide the StatusBar, Write below method. override var prefersStatusBarHidden: Bool { return true }

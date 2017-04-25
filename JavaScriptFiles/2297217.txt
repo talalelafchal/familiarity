@@ -1,0 +1,4 @@
+IE 8 defaultView equivalent
+<p>I need from document object or from a DOM element (i.e. a DIV) to know which is its window object.</p> <p>In Firefox I can do:</p> <pre><code>document.documentElement.ownerDocument.defaultView </code></pre> <p>but obviously in that AWFUL browser that statement not work!!!</p>
+<p><a href="http://msdn.microsoft.com/en-us/library/ms534331%28VS.85%29.aspx" rel="nofollow noreferrer">parentWindow</a>. So:</p> <pre><code>var doc= el.ownerDocument; var win= 'defaultView' in doc? doc.defaultView : doc.parentWindow; </code></pre>
+<pre><code>var win = doc.defaultView || doc.parentWindow; </code></pre> <p>should do the trick too.</p>

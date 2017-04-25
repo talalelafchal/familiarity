@@ -1,2 +1,0 @@
-Why is withUnsafePointer using a new pointer (or different pointers)?
-Consider the following: class MyClass { private static let c = MyClass() func shared() -> MyClass { return MyClass.c } } var a = MyClass().shared() var b = MyClass().shared() let message = a === b ? "same instance" : "different instance" print(message) // "same instance" withUnsafePointer(to: &a) { print("a: \($0)") // 0x0000000119dfcc18 } withUnsafePointer(to: &b) { print("a: \($0)") // 0x0000000110abcc20 } I would have expected the pointers to be the same. Why are the pointers different?

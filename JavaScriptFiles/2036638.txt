@@ -1,0 +1,6 @@
+Javascript scroll
+<p>How to scroll to top of the page in php with javascript </p> <p>scroll(0,0); -> this is not working? On click of submit, i call a function to validate the form and incase of error i will be setting the errormessage thru innerhtml and need to scroll to top of the page without submitting.</p> <p>Everything works...but its not scrolling to top of the page</p>
+<p>Scrolling to the absolute top of the page can be achieved by either </p> <pre><code>window.scrollTo(0,0); </code></pre> <p>or</p> <pre><code>window.location = "#"; </code></pre> <p>Note that the second method will append "#" to the current URL.</p>
+<p>Use window property scrollTop (<a href="http://msdn.microsoft.com/en-us/library/ms534618(VS.85).aspx" rel="nofollow noreferrer">MSDN</a>, <a href="https://developer.mozilla.org/En/DOM/Element.scrollTop" rel="nofollow noreferrer">MDC</a>) to set number of pixels to scroll offset.</p> <pre><code>window.scrollTop = '0'; </code></pre>
+<p>How about trying window.scrollTo(0,0). It is basically the same thing as scroll(0,0).</p> <p>If it does not work, show us more code.</p>
+<p>If you have a particular element that you want to scroll over, lets say, the element of whose <code>innerHTML</code> you are modifying then you can use the following</p> <pre><code> element.scrollIntoView(true); </code></pre> <p>Works in all browsers</p>

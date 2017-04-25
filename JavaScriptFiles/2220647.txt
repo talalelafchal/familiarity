@@ -1,0 +1,4 @@
+checked check box count
+<p>How do I count the number of checked checkboxes in a <code>div</code>?</p>
+<pre><code>var count = 0; var inputs = myDiv.getElementsByTagName('input'); for (var i = 0, j = inputs.length; i&lt;j; i++) { var input = inputs[i]; if (input.type &amp;&amp; input.type === 'checkbox' &amp;&amp; input.checked) { count++; } } return count; </code></pre>
+<p>If you have JQuery on your site you can do it this way (assuming yor div has id='myDiv'):</p> <p><code> $("#myDiv input:checkbox:checked").length </code></p>

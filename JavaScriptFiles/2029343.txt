@@ -1,0 +1,5 @@
+How to stop window unloading?
+<p>when user click a another link or refresh the page, the window will unload, how to prevent/confirm it?</p>
+<p>I think the onbeforeunload event handler would be what you're looking for.</p> <p>Try the following:</p> <pre><code> window.onbeforeunload = confirmExit; function confirmExit() { return "You have attempted to leave this page. If you have made any changes to the fields without clicking the Save button, your changes will be lost. Are you sure you want to exit this page?"; } </code></pre>
+<p>From here <a href="http://bytes.com/topic/javascript/insights/825556-using-onbeforeunload-javascript-event" rel="nofollow noreferrer">http://bytes.com/topic/javascript/insights/825556-using-onbeforeunload-javascript-event</a></p> <pre><code>&lt;script type="text/javascript"&gt; window.onbeforeunload = function(){ return 'Your Returned String Goes Here';} &lt;/script&gt; </code></pre>
+<p>Look at the unload at the bottom of this <a href="http://www.javascript-coder.com/window-popup/javascript-popup-window.phtml" rel="nofollow noreferrer">page</a>.</p>

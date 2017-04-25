@@ -1,0 +1,3 @@
+javascript prototype getting a div wid id and display='none'
+<p>i am using protoype and i want to get the div wid id='div_3' and display='none' means in a single line i want to find the element wid these two attribs</p>
+<p>The <code>id</code> attribute already uniquely defines an element (assuming your markup is valid). So, all you need to do is select the element with id <code>div_3</code> - and <em>then</em> worry about its <code>display</code> CSS property, if you need to:</p> <pre><code>var $myDiv = $('div_3'); if($myDiv.getStyle('display')) { // do something } </code></pre>

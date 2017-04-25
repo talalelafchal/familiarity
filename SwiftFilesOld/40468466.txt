@@ -1,2 +1,0 @@
-ios - how to import user external XLS/CSV files into the application
-My user needs to create lists with 2 or 3 columns. It will be a pain to do one-by-one with iOS keyboard. So, is there any way the user can import XLS or CSV files into the application? How can I do this? Maybe a document picker? PS: this is not a file already on app. This is a file user can create on computer and then import to application.

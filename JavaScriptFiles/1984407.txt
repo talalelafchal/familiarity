@@ -1,0 +1,4 @@
+Invoke a Link in custom size browser
+<p>I want to have a link or something which could be inserted in an email/forum etc. It's a typical url. But I would like that link to be opened in a custom sized new browser window ( say 800 x 600 ) . It sounds weird, but that is the requirement. Can it be achieved somehow?</p> <p>Thanks</p>
+<p>In an email?</p> <p>You can't. Email clients insane enough to execute JavaScript are all by unheard of.</p> <p>In a forum?</p> <p>Assuming you aren't the administrator of it, you can't. Forums insane enough to encourage XSS attacks are, again, all but unheard of.</p>
+<p>Ok. This is how we could kinda achieve this. Let that link be a normal link. It would contain the custom code to create a desired popup on invocation. But the issue is popup blocker in browser. But they somehow liked it.So basically a page opens up which launches the popup without user interference.</p>

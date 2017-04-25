@@ -1,0 +1,4 @@
+how to call [object htmlDivElement]
+<p>i want to call the functions <strong>movein(this)</strong> &amp; <strong>moveout(this)</strong> directly with out using onmouseover or onmouseout by the way (<strong>this</strong>) is [object htmlDivElement]</p> <pre><code> var tb = '&lt;div id="' + o.id + '" onmouseover="movein(this);" onmouseout="moveout(this);"&gt;&lt;div&gt;&lt;table&gt;\n'; </code></pre>
+<p>Tried <code>movein(document.getElementById(o.id))</code> &amp; <code>moveout(document.getElementById(o.id))</code> ?</p>
+<p>Using <em>event delegation</em> may be an option for you, see my answer to <a href="http://stackoverflow.com/questions/1824206/how-to-detect-which-row-tr-is-clicked/1824700#1824700">this question</a>. Using event delegation, you define a mouseover/-out handler on the table and let the handler decide if and what action has to be taken.</p>

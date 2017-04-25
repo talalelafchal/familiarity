@@ -1,0 +1,5 @@
+Delaying Javascript
+<p>How do I delay JavaScript - I tried the following but it doesn't delay??:</p> <pre><code>setTimeout(document.getElementById("loading1").innerHTML="", 4000); </code></pre> <p>Thanks, B</p>
+<pre><code>function setHtml() { document.getElementById("loading1").innerHTML=""; } setTimeout(setHtml, 4000); </code></pre>
+<p>try:</p> <pre><code>setTimeout(function(){document.getElementById("loading1").innerHTML="";}, 4000); </code></pre>
+<p>You would want to put your code inside of a function:</p> <pre><code>setTimeout(function() { document.getElementById("loading1").innerHTML=""; }, 4000); </code></pre>

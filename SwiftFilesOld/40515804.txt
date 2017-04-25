@@ -1,2 +1,0 @@
-iMessage app prevent selection when swiping between apps
-I have a UICollectionView with a 'didSelectItemAt indexPath' that seems to be receiving a touchUp gesture when swiping to the next iMessage app. I tried preventing this in the 'didResignActive' method, but that doesn't get called when transitioning between apps. Any ideas?

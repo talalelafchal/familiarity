@@ -1,3 +1,0 @@
-The bundle UITests couldn’t be loaded because it is damaged or missing necessary resources. Try reinstalling the bundle
-I can't run my test case due to this following errors : The bundle “UITests” couldn’t be loaded because it is damaged or missing necessary resources. Try reinstalling the bundle. Library not loaded: @rpath/Alamofire.framework/Alamofire. Reason: image not found Try searching and solving since two days but couldn't get through this issue can someone please help.
-]3 Go To Build Phases Open Copy Pods Resources and copy the path Paste the path that you have copied from Copy Pods Resources and change tag name resources with frameworks Clean and Build Run your UITestsFile

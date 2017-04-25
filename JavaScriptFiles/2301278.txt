@@ -1,0 +1,6 @@
+refresh parent window when closing child window
+<p>How can I refresh the parent window when clicking the close button of a child window?</p> <p>The child window is a pop-up.</p>
+<p>You can access the parent window using</p> <pre><code>window.opener </code></pre> <p>and refresh the parent window using </p> <pre><code>window.opener.reload() </code></pre> <p>See <strong><a href="https://developer.mozilla.org/en/DOM/window.opener" rel="nofollow noreferrer">window.opener</a></strong></p>
+<pre><code>&lt;body onunload="window.opener.reload();"&gt; </code></pre> <p>If you use this when you close your child window, the parent will be reloaded. window.opener refers to the parent window object.</p>
+<p>To refresh the parent page on close of child window use the following javascript in the popup page and call that using onunload in the popup page.</p> <pre><code>function refreshParent() { window.opener.location.reload(true); } &lt;body onunload="javascript:refreshParent()"&gt; </code></pre>
+<p><strong>Try this</strong></p> <pre><code>self.opener.location.reload(); </code></pre>

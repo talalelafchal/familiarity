@@ -1,0 +1,5 @@
+Splitting in string in JavaScript
+<p>How to split a string in JavaScript with the "<code>,</code>" as seperator?</p>
+<p>var expression = "h,e,l,l,o";</p> <p>var tokens = expression.split("\,");</p> <p>alert(tokens[0]);// will return h</p>
+<p>Use <a href="https://developer.mozilla.org/En/Core_JavaScript_1.5_Reference/Objects/String/Split" rel="nofollow noreferrer"><code>split</code></a> to split your string:</p> <pre><code>"foo,bar,baz".split(",") // returns ["foo","bar","baz"] </code></pre>
+<pre><code>var splitString = yourstring.split(','); </code></pre> <p>See <strong><a href="https://developer.mozilla.org/En/Core_JavaScript_1.5_Reference/Objects/String/Split" rel="nofollow noreferrer">split</a></strong></p> <pre><code>var str = "test,test1,test2"; var arrStr = str.split(','); var arrLength = arrStr.length; //returns 3 </code></pre>

@@ -1,0 +1,5 @@
+JS error: play is not a function
+<p> function play(id, song) { alert(id+song); } </p> <pre><code> &lt;img id="oi1" class="oi" src="/images/miniplay.png" alt="Play" onclick="play(24, '325s2sq2h');"/&gt; &lt;img id="oi2" class="oi" src="/images/miniplay.png" alt="Play" onclick="play(35, 'skf8s2n2');"/&gt; &lt;/body&gt; &lt;/html&gt; </code></pre> <p>Firebug gives an error</p> <blockquote> <p>play is not a function [Break on this error] play (24, "325s2sq2h");</p> </blockquote> <p>How fix it? Thank you!</p>
+<p>The problem is with the <code>img</code> with <code>id="play"</code> - it's conflicting with your function name; rename one or the other</p>
+<p>Either rename the function, or change the id of the first image. Currently they are both <code>play</code>, so they conflict.</p>
+<p>Marek's right. That must b the one ;)</p>

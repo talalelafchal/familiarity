@@ -1,0 +1,3 @@
+JavaScript - Navigate to a Named Anchor
+<p>I have an named HTML anchor tag that works like a bookmark. This tag is defined as:</p> <pre><code>&lt;a name="myLocation"&gt;&lt;/a&gt; </code></pre> <p>I need to be able to jump to this link via JavaScript. How do I jump to a location in my HTML page from JavaScript?</p> <p>Thank you!</p>
+<p>Try:</p> <pre><code>window.location = window.location + "#myLocation"; </code></pre> <p>Hope this helps.</p>

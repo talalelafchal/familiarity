@@ -1,0 +1,3 @@
+Search and replace all elements
+<p>I need script to append text or delete all matched elements if there are any in textarea. I tried this: <a href="http://pastie.org/789631" rel="nofollow noreferrer">http://pastie.org/789631</a> What's wrong there? Thanks.</p>
+<p>Try</p> <pre><code>txt.replaceText(RegExp(elem,"g"), ''); </code></pre>

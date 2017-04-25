@@ -1,2 +1,0 @@
-How to send HTTP POST request to Firebase
-How can I send a simple post request to Firebase RealtimeDatabase? Currently Database secrets are deprecated. I am using Vapor + Swift on server, Firebase SDK requires Node JS or Java. This method is deprectate. curl 'https://docs-examples.firebaseio.com/rest/saving-data/auth-example.json?auth=CREDENTIAL'

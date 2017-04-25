@@ -1,2 +1,0 @@
-How to fetch current location when users move in swift
-am new to ios developing am developing a app using mapview in swift.The app is connected between driver and passenger.if the driver starts drive,every 15 seconds drivers current location should be update.how to do that?? what i have tried: 1)I turn on my capabilities from target of the project 2)selected location updates and background fetch 3)I have displayed and fetched current location

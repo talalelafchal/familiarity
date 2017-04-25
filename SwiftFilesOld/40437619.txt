@@ -1,2 +1,0 @@
-Blend a movie with UIImageView
-I was wondering is there any possible way to blend a movie with an image ? for example to create something like this image : I know it's possible to blend two images with CGBlendMode and its constants like kCGBlendModeMultiply , kCGBlendModeScreen ,and kCGBlendModeOverlay but how can I achieve this with a movie file and image file to blend together ? Is it possible anyway ?

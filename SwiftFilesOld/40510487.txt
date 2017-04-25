@@ -1,3 +1,0 @@
-Comparing two array and matching elements based on boolean
-Let's say I have two arrays let array1 = [1,2,3] let array2 = [false, true, false] I'd like to return the list of values from array1 that matches true boolean at certain index. In this simple example this would be [2] How to achieve it using functional approach?
-"Zip" the arrays, then map each pair to the first element or nil, depending on the second element. flatMap() returns only the non-nil results: let array1 = [1,2,3] let array2 = [false, true, false] let result = zip(array1, array2).flatMap { $1 ? $0 : nil } print(result) // [2]

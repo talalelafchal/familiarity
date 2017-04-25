@@ -1,0 +1,4 @@
+Javascript How do i call functions from an array of function names
+<pre><code>var action = ['function1','function2' etc ] var obj = new objectcreate (); for (functionname in action){ obj+'.'+action[variablename]+'()'; } </code></pre> <p>the functions are already generated I just wanna go through an array and execute all the functions it on the object i created thanks for your help</p>
+<p>You should be able to do this.</p> <pre><code>obj[action[functionName]](); </code></pre>
+<p><code>obj[action[functionname]]();</code> will do the trick.</p>

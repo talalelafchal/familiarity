@@ -1,0 +1,4 @@
+Javascript image url replacement
+<p>I want to write a greasemonkey script/chrome user script that takes any images with a certain syntax and replace a section of the url and puts it back in the dom.</p> <p>Namely I have a page full of thumbnails, e.g. www.example.com/small/randomstuff and I want to replace the imades with the equivilant www.example.com/large/randomstuff</p> <p>How would I do this?</p>
+<p>To replace a image source url, you can do something like this:</p> <pre><code>var imgs = document.getElementsByTagName('img') imgs[0].src = "http://www.example.com/large/randomstuff" </code></pre>
+<p>After page was loaded.</p> <pre><code>var imgs = document.getElementsByTagName('img'); var len =imgs.length; for(var i=0;i&lt;len;i++){ imgs[i].src=imgs[i].src.replace("small","large"); } </code></pre>

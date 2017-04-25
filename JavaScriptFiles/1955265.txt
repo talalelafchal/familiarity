@@ -1,0 +1,3 @@
+How do I load a page in javascript from its source string?
+<p>if I have a javascript variable:</p> <pre><code>var page = "&lt;!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\"&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;Example&lt;/body&gt;&lt;/html&gt;" </code></pre> <p>and I want to load that page, what do I do?</p>
+<p>By load, I assume you mean write the contents of page to the current document. If so,</p> <pre><code>document.write(page); </code></pre> <p>See <a href="http://javascript.about.com/library/blwrite.htm" rel="nofollow noreferrer">http://javascript.about.com/library/blwrite.htm</a> for some caveats to using this function.</p>

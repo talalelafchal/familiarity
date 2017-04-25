@@ -1,0 +1,3 @@
+Skipping arguments in JavaScript
+<pre><code>function my_func(a, b){ if(typeof(a) !== 'undefined'){ // do stuff } return b; } </code></pre> <p>How can I call this function will only the second argument? In other words, I want <strong>a</strong> to be undefined.</p>
+<pre><code>my_func(undefined, b); </code></pre>

@@ -1,2 +1,0 @@
-Mongoose Schema for user selected date and time
-I'm currently creating an iOS app that uses UiDatePicker and wanting to know how to set up the Mongo Schema to store the user's selected date-time. The backend is used with node.js/express.js.

@@ -1,0 +1,3 @@
+how to validate space in htmleditor using javascript
+<pre><code>function CheckDateEmpty(oSrc,args) { var editor = $find("&lt;%=editorContent.ClientID%&gt;"); var value = editor.get_content(); if (value == "") { args.IsValid = false; return; } else { editor.set_content(value); args.IsValid = true; return; } } </code></pre> <p>the above function check perfectly weather the html editor is empty or not....but if i'll enter space in my editor ...it consider it as a value ...i want it validate for the space...</p>
+<p>Using a regex, check if all characters are whitespaces:</p> <pre><code>if (value.match(/^\s*$/)) </code></pre>

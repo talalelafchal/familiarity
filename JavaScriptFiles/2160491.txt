@@ -1,0 +1,2 @@
+How to save the contents of Data URI to image
+<p>In Google Chrome the <strong>'chrome.tabs.captureVisibleTab(integer windowId, function callback)</strong>' method will return a data URL of the JPEG encoding of the visible area of the captured tab.</p> <p>We want to save that content as image to hard disk without opening/passing the contents into new html page.</p> <p>Does anybody know how it can be done by javascript. Please provide help.</p> <p>Thanks.</p>

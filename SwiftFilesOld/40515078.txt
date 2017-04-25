@@ -1,2 +1,0 @@
-rpush and apns universal certificate
-I'm looking for a way to use a universal apns certificate with rpush, based on the documentation I need to select the APNS environment, which I'm guessing it'll use to know which server to use.. Is it possible to use the universal certificates with rpush? https://github.com/rpush/rpush app = Rpush::Apns::App.new app.name = "ios_app" app.certificate = File.read("/path/to/sandbox.pem") app.environment = "sandbox" # APNs environment. app.password = "certificate password" app.connections = 1 app.save!

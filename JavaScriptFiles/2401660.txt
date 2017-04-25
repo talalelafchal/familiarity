@@ -1,0 +1,5 @@
+0 in [1, 2] == true, why?
+<p>Excerpt from my JavaScript console:</p> <pre><code>&gt; 0 in [1, 2] true </code></pre> <p>Why?</p>
+<p>Because "in" returns true if the specified property/index is available in the object. [1, 2] is an array, and has a object at the 0 index. Hence, 0 in [1, 2], and 1 in [1, 2]. But !(2 in [1, 2]).</p> <p>Edit: For what you probably intended, David Dorward's comment below is very useful. If you (somewhat perversely) want to stick with 'in', you could use an object literal</p> <pre><code>x = {1: true, 2: true}; </code></pre> <p>This should allow <code>1 in x &amp;&amp; 2 in x &amp;&amp; !(0 in x)</code> etc. But really, just use indexOf.</p>
+<p>You are probably looking for <code>[1,2].indexOf(0)</code>. <code>indexOf</code> might not work in ie6 though.</p> <p>Here is one implementation that fixes it:</p> <pre><code>if(!Array.indexOf) { Array.prototype.indexOf = function(obj) { for(var i=0; i&lt;this.length; i++) { if (this[i]==obj) { return i; } } return -1; } } </code></pre>
+<p>Because there is a <code>0</code>-th element in the array.</p> <pre><code>&gt; 0 in [8,9] true &gt; 1 in [8,9] true &gt; 8 in [8,9] false </code></pre>

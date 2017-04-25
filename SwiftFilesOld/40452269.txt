@@ -1,2 +1,0 @@
-How to get swift mangled object name
-I've learned that swift actually creates a naming method called "mangling" used internally for all objects. All threads talk about demangling, but how to actually get the mangled name? i've tried 1- object_getClass(self) 2- NSStringFromClass(MyClass.self) but they return the normal class name. I've found this demangle project.. https://github.com/mattgallagher/CwlDemangle/blob/master/CwlDemangle/CwlDemangle.swift is there a mangling project maybe? Note: Im using swift 3.0.1

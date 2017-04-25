@@ -1,0 +1,4 @@
+JavaScript Concat
+<p>Via jquery / Javascript</p> <p>Given a number 1234567891234</p> <p>How can I concat, or truncast By removing the 2 from the left to make that number a valid integer I can insert into MySQL:'</p> <p>4567891234</p> <p>Thanks</p> <hr /> <p>This question edited by someone other than the OP, who's trying to guess at what the OP wants. Bear this in mind, but I <em>think</em> he wants to know:</p> <p>How can I remove the first two characters from a string, using jQuery?</p>
+<p>A crossbrowser way:</p> <p>(1234567891234).toString().slice(2);</p>
+<p>Assuming they want a substring of the original number:</p> <pre><code>var result = String(1234567891234).substr(2); console.log(result); // Should be 34567891234 </code></pre>

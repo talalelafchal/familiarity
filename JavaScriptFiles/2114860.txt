@@ -1,0 +1,4 @@
+How to split strings
+<p>I have tried <code>Split("?")</code> and <code>Split('?')</code>. Both give the same error (<code>link.split</code> is not a function), so i assume that there is a way to be able to split but not using this <code>Split</code>? Maybe jQuery?</p> <p><em>Edit</em>: Got it, it should be <code>href.split</code>. So as jordan said, it was not a string. So i used <code>x.href.split("?")</code> and it worked like a charm.</p>
+<p>Jetpack just uses JavaScript so this should work:</p> <pre><code>var str = "My.string"; str.split("."); // =&gt; [ "My", "string" ] </code></pre> <p>If it tells you "split is not a function" then it probably means your variable doesn't hold a string like you think it does.</p>
+<p>If the object is not already a string, convert it first.</p> <pre><code>myObject.toString().split("?"); </code></pre>

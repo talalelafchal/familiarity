@@ -1,0 +1,3 @@
+How to close the pop up window of modal dialog?
+<p>I am using modal dialog to validate server credentials. After clicking on submit button it pops up new window. Further i want call a servel. But its get called in the same pop up window. I want to call it in the parent window by closing the pop up window. How to achieve this?</p>
+<pre><code>// opening new window var myWindow = window.open(...); // when you want to close it myWindow.close(); </code></pre> <p>If you want to close the popup window in JS executed on this new window's content it's even easier:</p> <pre><code>window.close() </code></pre>

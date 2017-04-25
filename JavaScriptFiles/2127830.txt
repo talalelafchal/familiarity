@@ -1,0 +1,4 @@
+JavaScript: What is the equivalent of PHP's &quot;$this-&gt;$somefunc()&quot;?
+<p>Is it possible to store the name of a function as string in JS, and invoke it from an object, pretty much like the PHP code below?</p> <pre><code>$this-&gt;$someFunc(); </code></pre>
+<pre><code>this[someFunc](); </code></pre>
+<p>Sure thing. Try this:</p> <pre><code>var f = "foo"; var result = obj[f](); </code></pre> <p>where <code>foo</code> is a method on <code>obj</code>, or</p> <pre><code>this[f](); </code></pre> <p>where <code>foo</code> is a method on the current instance.</p>

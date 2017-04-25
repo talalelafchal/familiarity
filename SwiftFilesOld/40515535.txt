@@ -1,3 +1,0 @@
-Mac O Linker errors with Tesseract
-I have a simple Swift iOS project created in Xcode 8.1 and added Tesseract Framework. I am getting clang: error: -E or -x required when input is from standard input There is no help on Google about this error. Can someone explain what this error means. I have -lstdc++ and -$(inherited) in my other linker flags. If I try to add -E flag it gives me a Found an unexpected MAch-O header code: 0x20312023
-Problem was wrong version of TesseractOCR.frmaework generated earlier (probably for simulator). Fixed it by regenerating the framework and replacing it in the project.

@@ -1,0 +1,5 @@
+How to check whether the input text field contains only white spaces?
+<p>What is the easiest way to check in Javascript whether the input text field is empty (contains nothing or white spaces only)?</p>
+<pre><code>var str = document.getElementById("myInput").value; if (str.match(/^\s*$/)) { // nothing, or nothing but whitespace } else { // something } </code></pre>
+<p>You are looking for something like <strong><a href="http://www.webtoolkit.info/javascript-trim.html" rel="nofollow noreferrer">trim function</a></strong>, right?</p>
+<p>Include this function somewhere (in order to provide a trim function)</p> <pre><code>String.prototype.trim = function () { return this.replace(/^\s*(\S*(\s+\S+)*)\s*$/, "$1"); }; </code></pre> <p>see here <a href="http://javascript.crockford.com/remedial.html" rel="nofollow noreferrer">http://javascript.crockford.com/remedial.html</a></p> <p>then...</p> <pre><code>if (document.forms['id_of_form'].elements['id_of_input'].value.trim()=='') { //do xyz } </code></pre>

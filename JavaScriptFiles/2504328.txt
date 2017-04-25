@@ -1,0 +1,3 @@
+Resize iframe by dragging the bottom right corner
+<p>Is there any avaliable solution to iframe resizing? I am looking for something ready and tested.</p>
+<p>See jQuery's <a href="http://docs.jquery.com/UI/Resizable" rel="nofollow noreferrer">UI/Resizeable</a>. Not 100% sure if it works with iframe.</p>

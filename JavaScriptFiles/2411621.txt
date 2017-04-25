@@ -1,0 +1,11 @@
+What are best firebug equivalents for other browsers?
+<p>I sometimes need to debug JS in other browsers, and it would be really nice if they all had Firebug - failing that, what's the closest they have?</p>
+<ul> <li>Firebug Lite - any up-to-date browser, but limited</li> <li>IE - number of options depending of IE version and do you have Visual Studio</li> <li>Opera - Dragonfly</li> <li>Webkit based browsers have inspector and debugger in menu</li> </ul> <p>IMHO Firebug is the best tool but could be used only on Firefox</p>
+<p>Opera has the excellent dragonfly developer console, which can profile your code (to find bottlenecks and redundent code) as well as step through breakpoints.</p>
+<p>Fiddler is the one I use: <a href="http://www.fiddler2.com/fiddler2/" rel="nofollow noreferrer">http://www.fiddler2.com/fiddler2/</a></p> <p>There is Charles: <a href="http://www.charlesproxy.com/" rel="nofollow noreferrer">http://www.charlesproxy.com/</a> Also WireShark: <a href="http://www.wireshark.org/" rel="nofollow noreferrer">http://www.wireshark.org/</a></p>
+<p><a href="http://getfirebug.com/firebuglite" rel="nofollow noreferrer">Firebug Lite</a> </p>
+<p>How about <a href="http://getfirebug.com/firebuglite" rel="nofollow noreferrer">Firebug Lite</a>? It claims to work in IE, Opera and Safari by simply being a Javascript file.</p>
+<p>Firebug can be used in other browser with it's javascript version : hhttp://getfirebug.com/firebuglite</p> <p>Anyway, in Safari there is Web Inspector which is brilliant.</p>
+<p>IE8 - Developer Tools (F12)<br> IE6,7,8 - Visual Studio/Microsoft Script Debugger/DynaTrace (for tracing JS, not debugging)<br> Chrome, Safari - Developer Tools.</p>
+<p>IE has the <a href="http://www.microsoft.com/downloads/details.aspx?familyid=e59c3964-672d-4511-bb3e-2d5e1db91038&amp;displaylang=en" rel="nofollow noreferrer">developer toolbar</a>.</p>
+<p>For Safari and Google Chrome, the <strong>Developer Tools</strong>.</p> <p>Just right-click anywhere and select "Inspect Element", or use the <strong>Ctrl + Shift + J</strong> shortcut:</p> <p><img src="http://img79.imageshack.us/img79/426/devtools.png" alt="Developer Tools"></p>

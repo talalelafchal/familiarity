@@ -1,0 +1,4 @@
+Div mouse hover
+<p>Work on Asp.net 2.0 C# in web.In my site i have three <strong>div</strong> .Each div contain several element ,When i mouse hover a div then it expand on vertically ,initially all div are in Collapsible.<strong>How to write this mouse hover event.</strong> How to set all div content in collapsible . I want <strong>Accordion</strong> but the Accordion header takes place vertically not horizontally. </p>
+<p>Sounds like you want an <a href="http://docs.jquery.com/UI/Accordion" rel="nofollow noreferrer">Accordion</a></p>
+<p>You can use a <a href="http://docs.jquery.com/UI/Accordion" rel="nofollow noreferrer">jquery Accordion</a>. </p> <p>To make the sections expand and collapse on mouse over, use this:</p> <pre><code>$('.selector').accordion({ event: 'mouseover' }); </code></pre>

@@ -1,4 +1,0 @@
-UserDefine Runtime Attributes doesn't work in Xcode8.0
-It seems like xcode8.0 does not set the value of user runtime attributes when set from storyboard.What am trying to do is simple,set the label inside a cell as corneRadius of 10 which has width/height of 20. When i try to debug the views i got the following output which has weird width height(1000/1000..?) _UILabelLayer:0x600000283750; position = CGPoint (500 500); bounds = CGRect (0 0; 1000 1000); delegate = >; opaque = YES; allowsGroupOpacity = YES; cornerRadius = 10; contentsMultiplyColor = (null); rasterizationScale = 2; contentsScale = 2>
-i think it's helpful for you. and also check the clipToBounds Checking "Clip Subviews" is equal to the code addMessageLabel.clipsToBounds = YES;
-You can use this code and method on your controller  override func viewDidLayoutSubviews() { super.viewDidLayoutSubviews() yourLabel.clipsToBounds = true yourLabel.layoutIfNeeded() print("Frame ------> ",yourLabel.frame) }

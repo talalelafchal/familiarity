@@ -1,0 +1,3 @@
+How can I assign the contents of a form text field?
+<p>How can I assign the contents of a form text field called "username" which is in the first form in a document to a variable called "thename"</p>
+<p>Did you try this?</p> <pre><code>var thename=document.getElementById(&lt;textFieldId&gt;).value </code></pre>

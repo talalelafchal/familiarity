@@ -1,0 +1,8 @@
+How do I declare multiple vars in JavaScript's &quot;for&quot; statement?
+<pre><code>for(var i = 0, var p = ''; i &lt; 5; i++) { p += i; } </code></pre> <p>Based on a JavaScript book i'm reading, this is valid code. When I test it doesn't work, and in FireBug I get this error:</p> <pre><code>SyntaxError: missing variable name </code></pre>
+<pre><code>var i = 0, var p = ''; </code></pre> <p>should be</p> <pre><code>var i = 0, p = ''; </code></pre> <p>the <code>var</code> keyword applies to the whole line.</p>
+<pre><code>var p = 0; var i = 0; for(i = 0; i &lt; 5; i++) { p += i; } </code></pre> <p>or</p> <pre><code>for(var i = 0, p = 0; i &lt; 5; i++) { p += i; } </code></pre>
+<p>remove the <code>var</code> from before <code>p = ''</code>.</p>
+<p>It looks like a typo.</p> <p>You need to remove the second <code>var</code> and it will work perfectly:</p> <pre><code>for(var i = 0, p = ''; i &lt; 5; i++) { p += i; } </code></pre>
+<p>Don't repeat the <a href="https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Statements/var" rel="nofollow noreferrer"><code>var</code></a>, you only need it once in the declaration:</p> <pre><code>for (var i = 0, p = ''; i &lt; 5; i++) { p += i; } </code></pre>
+<p>you can't declare a variable in the second position termitation expression is the following works</p> <pre><code>var p; for(var i = 0, p = ''; i &lt; 5; i++) { p += i; } </code></pre>

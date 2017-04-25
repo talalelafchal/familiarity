@@ -2,7 +2,7 @@ package inf.usi.ch.javaAntlerLMTokenizer
 
 import java.io.{BufferedWriter, File, FileWriter}
 
-import antlr4.JavaLexer
+import antlr4Java.JavaLexer
 import ch.usi.inf.reveal.parsing.artifact.ArtifactSerializer
 import ch.usi.inf.reveal.parsing.model.{HASTNode}
 import ch.usi.inf.reveal.parsing.units.CodeTaggedUnit

@@ -1,0 +1,5 @@
+How do you delete divs that have the same ids but their dispaly properties are different
+<p>i have two divs with the same ids but one has display=none and the other has display=block i want to delete the one with display='none' i am using javascript framework <strong>prototype</strong></p>
+<p>You shouldn't have two elements with the same ID. You should use classes.</p>
+<p>You cannot have two controls with the same ID, it is invalid. You should rewrite your code so the IDs are not the same.</p>
+<p>You should switch to giving the divs classes instead of id's. ID's are unique identifiers, thus are unique, and a page should only contain one element per id (an id can not have multiple elements).</p> <p>If you'd gave the divs classes instead of id's you could do this:</p> <pre><code>$$(".&lt;your_class_here&gt;").reject(Element.visible).each(Element.remove); </code></pre> <p>My Prototype is a bit rusty, but I think this should do it.</p> <p>EDIT: forgot you can't directly filter by CSS properties.</p>

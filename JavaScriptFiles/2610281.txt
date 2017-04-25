@@ -1,0 +1,2 @@
+window.focus is not working when we load PDF file
+<p>Window.focus is not working, when we load a PDF file in a popup window.</p> <p>EX. Say, we have 2 PDF links, 1st link is clicked, no issues, PDF file opened. Now, without closing the 1st window, i m trying to open the 2nd link...here comes the issue. PDF file is opened in that window, but its not getting the focus.</p> <p>Thanks</p>

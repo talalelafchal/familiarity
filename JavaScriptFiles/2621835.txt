@@ -1,0 +1,3 @@
+Detect Click on Browser
+<p>How to detect click (including browser's back button) events using javascript?</p>
+<p>You can detect clicks inside the page with a simple <code>click</code> event handler:</p> <pre><code>document.onclick= function(event) { // Compensate for IE&lt;9's non-standard event model // if (event===undefined) event= window.event; var target= 'target' in event? event.target : event.srcElement; alert('clicked on '+target.tagName); }; </code></pre> <p>It is impossible for web-page script detect clicks outside the page such as the back button and other browser chrome, for good security reasons. You would have to be part of a browser extension to do this.</p>

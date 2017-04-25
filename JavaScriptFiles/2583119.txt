@@ -1,0 +1,3 @@
+javascript setinterval function problem
+<p>i am using this code</p> <pre><code> &lt;a onclick="javascript:var t=setInterval("GetUpdates(5,ajaxResult)",300);"&gt;GetUpdates&lt;/a&gt; </code></pre> <p>but getting the syntax error</p>
+<p>Try</p> <pre><code>var t=setInterval(function(){GetUpdates(5,ajaxResult);},300); </code></pre> <p>You are including a double quote inside the onclick event handler which is causing the problem.</p> <pre><code>&lt;a onclick="javascript:var t=setInterval(function(){GetUpdates(5,ajaxResult);},300);"&gt;GetUpdates&lt;/a&gt; </code></pre>

@@ -1,2 +1,0 @@
-Auto Layout Issue with UICollectionView and iPhone 5
-I have a uicollectionview with cells that contain an image view laid out using constraints, but I have a problem. If I execute the code on an iPhone 6(or major) I see the collection view fine, but on an iPhone 5 I don't see the images. iPhone 6 screen: iPhone 5 screen: Autolayout (FotoProfilo is the imageview) Can you help me?

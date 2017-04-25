@@ -1,3 +1,0 @@
-How to set a storyboard id to a ViewController without using interface builder?
-I've been searching answers to this but all tutorial with "programatically setting up the storyboardid" ends up using an actual Storyboard to set the viewcontroller's storyboard id and only does the "programatically" part when navigating. Is there ever a way to assign the storyboard id to a viewcontroller programatically like do it in appdelegate or viewdidload?
-You cannot create or fill storyboards programmatically. When you use no interface builder, your storyboard will be empty (or not existent).

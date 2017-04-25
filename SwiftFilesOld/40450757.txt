@@ -1,2 +1,0 @@
-How can you make device vibrate at different frequencies using swift?
-I want to make an app that make phone vibrate at different frequencies. How can I control the frequency of the phone vibrating?

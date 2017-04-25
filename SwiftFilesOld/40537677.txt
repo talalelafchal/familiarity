@@ -1,2 +1,0 @@
-In my iOS app, how can I ensure, that at any given point of time only one user can update a record?
-I am new to swift, and I am developing an application in which I am using a database table, wherein users can update records of an entity. Now my question is, how can I guarantee that multiple users can not update same data in any record at the same point of time? Is there a way I can lock the record for a single update request at any given point of time or this is already taken care of?

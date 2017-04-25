@@ -1,0 +1,3 @@
+How to shake the page with JavaScript
+<p>I want to prompt the user that something special has happened, so I want to shake the page or blink the whole page. How can I do this in JavaScript?</p>
+<p>It will be really easy if you use jQuery for this and you can use <code>animate</code> of jQuery to do this.</p> <p>or you can use jQuery UI Effects to do this!</p> <p><a href="http://docs.jquery.com/UI/Effects/Shake" rel="nofollow noreferrer">http://docs.jquery.com/UI/Effects/Shake</a></p>

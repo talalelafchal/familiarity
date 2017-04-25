@@ -1,0 +1,3 @@
+billboard.js is not working in safari
+<p>I have a billboard.js script running on a simple php file and for some reason it works fine in FF and IE but not Safari. I checked source code it and is pulling the content but the scrolling feature does not work when you click. Can someone please help me. Here is the link to try: <a href="http://www.luc.edu/test/cabplan/soc/test.php" rel="nofollow noreferrer">www.luc.edu/test/cabplan/soc/test.php</a></p>
+<p>it was an extra div tag</p>

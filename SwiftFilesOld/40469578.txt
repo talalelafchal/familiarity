@@ -1,4 +1,0 @@
-Add life every N hours
-I want to implement mechanism that will be add one life to UserDefaults.standard.value(forKey: "lifes") every 4 hours even if app was closed and notify user about it. About notifications i read articles, it will not be hard. But how increase life number value if i didn't be in game for 12 hours. I should get +3 lifes when back.
-This is not possible if the app is "closed". The only way to achieve this behaviour is to use Push Notifications (pushed by your server, not the app). See this and this Apple documentation. My opinion is, that the user will delete your app, as she will get disturbed by too frequent notifications.
-You get an event when the game is paused (UIApplicationWillResignActive) so you can write down in user defaults what time it was. You get an event when the game resumes (UIApplicationDidBecomeActive) so you can check to see what time it is and how many hours have elapsed since you became inactive.

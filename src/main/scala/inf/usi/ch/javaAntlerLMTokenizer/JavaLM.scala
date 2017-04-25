@@ -10,7 +10,7 @@ import ch.usi.inf.reveal.parsing.model.Implicits._
 import ch.usi.inf.reveal.parsing.model.java.JavaASTNode
 import com.aliasi.tokenizer.IndoEuropeanTokenizerFactory
 import com.aliasi.util.AbstractExternalizable
-import inf.usi.ch.tokenizer.{ANTLRTokenizer, HASTTokenizer, UnitTokenizerFactory}
+import inf.usi.ch.tokenizer.{JavaANTLRTokenizer, HASTTokenizer, UnitTokenizerFactory}
 
 import scala.io.Source
 import scala.util.{Failure, Success, Try}

@@ -1,0 +1,4 @@
+Call a javascript function after loading the Div
+<p>How to call the javascript function, after loading the particular div?</p>
+<p>Typically, JavaScript execution is deferred till after the entire document is loaded by using the <code>window.onload</code> event.</p> <pre><code>window.onload = function() { // Do stuff }; </code></pre> <p>Otherwise, if you don't want to or if you have no need to wait for the entire document to load, you can include your JavaScript directly after the closing tag of the element (<code>div</code>) which you are concerned with.</p> <pre><code>&lt;div&gt; ... &lt;/div&gt; &lt;script src="blah-blah-blah.js"&gt;&lt;/script&gt; </code></pre>
+<p>I'd check if div exists in DOM like this : javascript</p> <pre><code> if(document.getElementById('myDiv')) </code></pre> <p>or jQuery</p> <p><code>if($("#myDiv"))</code></p>

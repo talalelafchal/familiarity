@@ -1,2 +1,0 @@
-Changing Navigation Button Title in ShareSelectViewController SWIFT
-The button "Post" I need to change the title to something else. I have tried let play = UIBarButtonItem(title: "Play", style: .plain, target: self, action: #selector(playTapped)) navigationItem.rightBarButtonItems = [play] But that did not change anything What is another way to do that? is it even possible ?

@@ -1,3 +1,0 @@
-Swift SpriteKit turning sprite to certain angle
-In Swift SpriteKit I have the "angle" of a sprite stored in an integer. It starts at zero and adds or subtracts 45 whenever the user rotates left or right (0-360), how would I create an SKAction to rotate the sprite to the stored angle? (in the case that the angle gets shifted unintentionally)
-iOS generally uses radians to describe angles. You'll need to convert your angle in degrees to radians before you can create the action. let radAngle = CGFloat(angle) * .pi / 180 let rotationAction = SKAction.rotateToAngle(radAngle, duration: 0.5) node.runAction(rotationAction)

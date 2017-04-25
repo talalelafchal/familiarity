@@ -1,2 +1,0 @@
-How Can I Record Karoke Music while Headphone is plug-in?
-I want to make a karaoke app and everything is perfect, without headphone plug-in. try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayAndRecord, withOptions: [.MixWithOthers, .DefaultToSpeaker]) I want to set it to [.MixWithOthers, .DefaultToHeadPhones]) but there is not any function like that. However mix recording not working when headphone plugged-in. Do you have any sample?

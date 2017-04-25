@@ -1,0 +1,4 @@
+How to alert variable name, not a value
+<p>How to alert variable name, not a value of variable?</p> <pre><code>var color = 'red'; alert(color); // Will alert 'red' alert(/* magic */); // Will alert 'color' </code></pre>
+<p>In the Firebug console:</p> <pre><code>&gt;&gt;&gt; a=[] [] &gt;&gt;&gt; a [] &gt;&gt;&gt; b=a [] &gt;&gt;&gt; a.push(3) 1 &gt;&gt;&gt; b [3] &gt;&gt;&gt; a [3] </code></pre> <p>So, which variable name would you like that array to return? <code>a</code>? <code>b</code>? Something completely different?</p>
+<p>It's not possible in JavaScript, because arguments in this language are passed by value or by reference, not by name, so when variable is passed to function, its name is lost.</p>

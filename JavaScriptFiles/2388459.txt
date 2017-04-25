@@ -1,0 +1,3 @@
+Open page on the same tab after submission?
+<p>I have this code:</p> <pre><code>function submitTwice(f){ f.action = 'http://mydomain.com/threevideopage.php'; f.target='name'; f.submit(); } </code></pre> <p>I left out the form code. What it does is display the name of the visitor after submission. It works great. But I would like to open it in the current tab, not on another tab. How would I do it? </p> <p>If possible only provide suggestions/tips in pure javascript, not jQuery..</p> <p>Thanks!</p>
+<p>Change it to be </p> <pre><code>function submitTwice(f){ f.action = 'http://mydomain.com/threevideopage.php'; f.target='_self'; f.submit(); } </code></pre> <p>Using _self will make it open on the same tab</p>

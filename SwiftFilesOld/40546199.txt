@@ -1,3 +1,0 @@
-How to implement AES With GCM Mode Encryption and Decryption in iOS 10?
-I want to use AES with GCM mode with 128,192,256 key sizes. I have done AES Encryption with CBC Mode but,still I have no solution for GCM mode. If any one have please suggest some useful guidance
-There is an undocumented implementation of AES GCM in Common Crypto, by adding a header it can be used. Note: it does not support associated data (AEAD). See this SO answer for a header example. There is an implemntation AES GCM on github that seems reasonable albiet slow in comparison to Common Crypto. Use at your own risk.

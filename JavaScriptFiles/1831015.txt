@@ -1,0 +1,4 @@
+disableing enter/return key from within Tiny MCE
+<p>Hi I've tried a numerous amounts of "googled" snippets for disabling enter / return key but nothing is working. Any ideas on how to disable the enter / return key whilst in tinyMCE textarea? </p>
+<p>Hai Phil,</p> <pre><code>ed.onKeyPress.addToTop(function(ed, e) { if ((e.charCode == 13 || e.keyCode == 13)) { ed.setContent(""); return tinymce.dom.Event.cancel(e); }}); </code></pre> <p>Or refer this <a href="http://tinymce.moxiecode.com/punbb/viewtopic.php?id=10677" rel="nofollow noreferrer">Disable enter key on tiny mce editor</a></p>
+<p>Here is the code I used to disable the enter key on certain inline elements. It works with TinyMCE 4:</p> <pre><code>tinymce.init({ tinymce_jquery: true, selector: ".className", inline: true, toolbar: "undo redo", menubar: false, setup : function(ed) { ed.on('keydown', function(e) { if (e.keyCode == 13) { e.preventDefault(); } }); } }); </code></pre>

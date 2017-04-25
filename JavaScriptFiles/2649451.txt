@@ -1,0 +1,3 @@
+Graphing a dataset
+<p>What type of graphical tool shows the shape of the data set by stacking x's above each data value on q number line?</p>
+<p>You're not providing much detail of what the dataset looks like, so specific advice is hard to give. However, you might find a solution for your graphing needs with <a href="http://code.google.com/apis/visualization/documentation/gallery.html" rel="nofollow noreferrer">Google Visualizations</a></p>

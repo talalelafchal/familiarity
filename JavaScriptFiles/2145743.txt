@@ -1,0 +1,4 @@
+replace space in URL JavaScript
+<p>These are the 2 relevant lines from a function written in Javascript.</p> <pre><code> var v_depttime = document.getElementById("EDDepttime").value ; url=url+"?select_bno="+v_busno+"&amp;select_depttime="+v_depttime ; </code></pre> <p>It sends the select_depttime as 2010-01-24 14:30:00 and I want it to be an URL encoded string like 2010-01-24%2014:30:00</p> <p>How is it done in JavaScript?</p>
+<p>Use <a href="https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Functions/encodeURI" rel="nofollow noreferrer"><code>encodeURI</code></a> or <a href="https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Functions/encodeURIComponent" rel="nofollow noreferrer"><code>encodeURIComponent</code></a>.</p>
+<p>Use encodeURIComponent:</p> <pre><code>url = url + "?select_bno=" + encodeURIComponent(v_busno) + "&amp;select_depttime=" + encodeURIComponent(v_depttime); </code></pre>

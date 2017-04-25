@@ -1,0 +1,4 @@
+how to access the id of textarea in javascript
+<p>i have to acces the id of textarea in javasript.Please tell me how we can access the id of the textarea in javascript.</p>
+<pre><code>alert(document.getElementById("urtextboxId").id); </code></pre>
+<p>If you want to access ids of all textarea in your document you can use this</p> <pre><code>var txtAreas = document.getElementsByTagName("textarea"); var len = txtAreas.length; var ids = new Array(); for(i=0; i&lt;len; i++) { ids.push(txtAreas[i].id); } </code></pre>

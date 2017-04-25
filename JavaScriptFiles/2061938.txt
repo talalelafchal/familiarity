@@ -1,0 +1,4 @@
+Javascript Execution Question
+<p>If I have an event that runs multiple javascripts does the following script wait until the previous script is complete before it runs?</p> <p>Example:</p> <pre><code>&lt;a href="#" onclick="javascript:SCRIPT_1();SCRIPT_2();SCRIPT_3();"&gt;Test Me&lt;/a&gt; </code></pre> <p>Will <code>SCRIPT_2</code> not execute until <code>SCRIPT_1</code> is complete doing its stuff?</p> <p>Thanks.</p>
+<p>AFAIK, yes, javascript execution is synchronous. So, <code>SCRIPT_2</code> will not execute untill <code>SCRIPT_1</code> is done.</p> <p><strong>edit</strong> Yep, the accepted answer on <a href="http://stackoverflow.com/questions/2035645/when-is-javascript-synchronous">when-is-javascript-synchronous</a> is worth a read</p>
+<p>That is correct. Javascript is executed synchronously so <code>SCRIPT_1</code> will complete before <code>SCRIPT_2</code> begins (at least when defined like you have).</p>

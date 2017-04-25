@@ -39,12 +39,23 @@ object ScalaJdbcConnectSelect extends App {
   //  getAnswers("PerlFiles",perlQuestionId)
 
   //Matlab
-  val sqlQueryMatlab =
-    """SELECT * FROM posts WHERE tags like '%&lt;matlab&gt;%' and post_type_id =1
-    LIMIT 1000"""
-  val matLabQuestionId: List[String] = getQuestionsId("MatLabFiles", sqlQueryMatlab)
-  println(matLabQuestionId)
-  getAnswers("MatLabFiles", matLabQuestionId)
+//  val sqlQueryMatlab =
+//    """SELECT * FROM posts WHERE tags like '%&lt;matlab&gt;%' and post_type_id =1
+//    LIMIT 1000"""
+//  val matLabQuestionId: List[String] = getQuestionsId("MatLabFiles", sqlQueryMatlab)
+//  println(matLabQuestionId)
+//  getAnswers("MatLabFiles", matLabQuestionId)
+
+  val sqlQueryJavaScript =
+      """SELECT * FROM posts WHERE tags like '&lt;javascript&gt;' and post_type_id =1
+      LIMIT 1000"""
+    val javascriptQuestionId: List[String] = getQuestionsId("JavascriptFiles", sqlQueryJavaScript)
+    println(javascriptQuestionId)
+    getAnswers("JavascriptFiles", javascriptQuestionId)
+
+
+
+
 
   def getQuestionsId(directory: String, sqlQuery: String) = {
 
@@ -84,7 +95,6 @@ object ScalaJdbcConnectSelect extends App {
           var stringAnswers = ""
           while (rs.next) {
             val bodyToSkip = Jsoup.parse(rs.getString("body")).text()
-            // val body = Jsoup.parse(bodyToSkip).text()
             stringAnswers = stringAnswers + "\n" + bodyToSkip
 
           }

@@ -1,0 +1,5 @@
+100.toString vs 100['toString']
+<pre><code>100['toString'] //does not fail 100.toString //fails </code></pre> <p>why?</p> <p>100.toString is not same as 100.toString() . So why in the second case I am not getting the function as returned value?</p>
+<p>Use <code>(100).toString</code> instead.</p>
+<p>The second line fails because it is parsed as a number "100.", followed by "toString".</p> <p>To use the dot notation, Any of the following will work:</p> <pre><code>(100).toString 100.0.toString 100..toString var a = 100; a.toString </code></pre> <p>If you are trying to <em>call</em> the <code>toString</code> function , you will also need to include the parentheses:</p> <pre><code>(100).toString() 100.0.toString() 100..toString() var a = 100; a.toString() </code></pre> <p>I prefer using parentheses (or a variable, if I already have one obviously), because the alternatives could be confusing and unintuitive.</p>
+<p>Parens is the best way to go. You've got the same issue w/ function definitions as well.</p> <pre><code>function () {}.call() =&gt; fails (function () {}).call() =&gt; succeeds </code></pre>

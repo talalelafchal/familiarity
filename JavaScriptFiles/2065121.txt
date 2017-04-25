@@ -1,0 +1,4 @@
+Javascript responseText
+<p>How to load an page instead of http.responseText</p> <pre><code>document.getElementById("content").innerHTML = http.responseText; // works document.getElementById("content2").innerHTML = "test"; // works document.getElementById("content3").src = "dir/file.txt;"; // how display file.txt content. </code></pre> <p>the file.txt path is at the same location as javascript. [web sever]</p>
+<p>I don't think you can do that through JavaScript directly, you'll have to do it server-side...</p>
+<p>With jQuery, you could just do:</p> <pre><code>$("#element").load("file.txt"); </code></pre> <p>All you need to do is download the jQuery js file and put it on your webserver, then include it at the top of your page:</p> <pre><code>&lt;script src="jquery.js"&gt;&lt;/script&gt; </code></pre> <p>...this is assuming your file is server side. It's not possible if it's a client-side file you want</p>

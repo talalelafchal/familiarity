@@ -1,0 +1,5 @@
+How to clear all radio buttons using right click in Javascript?
+<p>I would like to clear all radio buttons in a group if I right click on one of them. How can I implement this using Javascript ?</p>
+<p>Rather than</p> <pre> Right click an option to deselect: (*) option 1 ( ) option 2 ( ) option 3 </pre> <p>which is abusing the user interface, you're better to do this:</p> <pre> ( ) none (*) option 1 ( ) option 2 ( ) option 3 </pre>
+<p>Check out <a href="http://www.quirksmode.org/js/events_properties.html" rel="nofollow noreferrer">this link at quirksmode</a> on capturing the right mouse click. The combination of an element and a right click should let you uncheck all radio buttons in a given group.</p>
+<p>Conceptually you can't unselect radio buttons. The point of a radio button group is that at least one needs to be selected. It could actually be considered a bug that it's possible to have a radio button group in which no item is selected.</p> <p>I suppose you'd have to remove and re-generate the group to clear the selection, exploiting this "bug".</p>

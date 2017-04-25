@@ -1,0 +1,5 @@
+Change browser time
+<p>Is there any way to change the browser's time without manipulating the system clock?</p>
+<p>No. The browser doesn't have a time. The system does.</p>
+<p>The browser doesn't really "have time", it gets its time from the system clock. Of course, if you want to do something particularly nasty, you could override the Date functions.</p> <pre><code>Date.prototype.getTime = function() { return 1 }; (new Date).getTime(); // 1 </code></pre>
+<p>You can run the browser in a virtual machine (VMWare/VirtualPC/etc.) and change the time of the OS in the VM.</p>

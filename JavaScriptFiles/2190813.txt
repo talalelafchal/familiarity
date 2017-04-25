@@ -1,0 +1,9 @@
+Javascript string formatting, short question
+<p>How can I use javascript to add a number (any number between 0-100) followed by a underscore, before the variable value?</p> <p>Example: </p> <pre><code> 2000 becomes 12_2000 //a number of my choice is added followed by an underscore hello becomes 12_hello </code></pre> <p>The number (12 in this case) is a constant chosen by me!</p> <p>Thanks</p>
+<p>Just use string concatenation:</p> <pre><code>var res = '12_' + myNum; </code></pre> <p>Or with a variable prefix:</p> <pre><code>var res = prefix + '_' + myNum; </code></pre>
+<p>This is just basic string concatenation, which can be done with the + operator:</p> <pre><code>var num = 2000; "12_" + num; // "12_2000" </code></pre>
+<p><code>i + '_' + x</code> where <code>i</code> is the number and <code>x</code> is an arbitrary value.</p>
+<pre><code>var_name = "2000"; output = "12_" + var_name; </code></pre>
+<pre><code>function prefixWithNumber(value, number) { return number + "_" + value; } </code></pre> <p>This expression is evaluated as <code>(number + "_") + value</code>. Since one of the operants in the first addition is a string literal, the second argument <code>number</code> is converted (coerced) to a string. The result is a string, which causes the third argument to be converted to a string as well.</p> <p>This is what the JS engine does behind the scenes:</p> <pre><code>(number.toString() + "_") + value.toString(); </code></pre>
+<p>Maybe you're looking for something like this:</p> <pre><code>Object.prototype.addPrefix = function(pre){ return pre + '_' + this; }; </code></pre> <p>This allows code like:</p> <pre><code>var a = 5; alert(a.addPrefix(7)); </code></pre> <p>or even:</p> <pre><code>"a string".addPrefix(7); </code></pre>
+<p>Joining an array can be faster in some cases and more interesting to program than "+"</p> <pre><code>[i, '_', myNum].join('') </code></pre>

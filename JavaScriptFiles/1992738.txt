@@ -1,0 +1,3 @@
+is there Any Dropdown &lt;select&gt; contains checkboxes?
+<p>I need a dropdown menu <code>&lt;select&gt;</code> which contains multiple checkboxes. so people can drop down and select many options (all the checkboxes should be inside the dropdown)</p> <p>Sometimes this is called a combobox (just to make everyone understands what I'm looking for)</p> <p>I want this with javascript/css &amp; not java applet or flash.</p>
+<p>I think this is the thing you're describing - <a href="http://code.google.com/p/dropdown-check-list/" rel="nofollow noreferrer">http://code.google.com/p/dropdown-check-list/</a></p>

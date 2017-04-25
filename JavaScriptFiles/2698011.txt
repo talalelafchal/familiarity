@@ -1,0 +1,5 @@
+How to send parameter?
+<p>How can I send image path to the function? My code is:</p> <pre><code>&lt;a href="#" onclick="addElement(this.id);" id="cricket" tabindex="1"&gt;Cricket&lt;/a&gt; </code></pre> <p>I want to send my image path in the function <code>addElement</code> along with the <code>id</code>. </p>
+<p>How the image path may be, are you defined the image path?</p> <p>if you defined the image path, can workout like that</p> <pre><code> &lt;a href="#" onclick="addElement(this.id,'&lt;?php echo "images/img.gif";?&gt;');" id="cricket" tabindex="1"&gt;Cricket&lt;/a&gt; </code></pre>
+<p>addElement(this.id, this.getAttribute('href'));</p>
+<p>I see what you're trying to do, but no, it is impossible to show an image in an alert window, the funcion window.alert() won't allow it in any possible way but not all is lost, if you wish to explore some alternatives you can try this link <a href="http://code.google.com/p/submodal/" rel="nofollow noreferrer">http://code.google.com/p/submodal/</a> which is a way to do something similar to what you seem to need, or you can try to use CSS to accomplish it if you're just trying to show an image.</p>

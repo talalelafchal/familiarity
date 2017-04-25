@@ -1,0 +1,6 @@
+Why can't I set value to display in a div?
+<p>So I'm new to JavaScript and I'm trying to figure out why doesn't this work:</p> <p>My function has this line:</p> <pre><code>document.getElementById("displayResult").value = ("test"); </code></pre> <p>and this is my div:</p> <pre><code>&lt;div id="displayResult"&gt;&lt;/div&gt; </code></pre>
+<p>you have to test if innerHTML is supported by your brwser. As it is not the DOM Standard. You can write it like</p> <pre><code>var oDiv = document.getElementById("displayResult") if(typeof oDiv.innerHTML != undefined) { oDiv .innerHTML = message; } else { oDiv .appendChild(document.createTextNode(message)); } </code></pre>
+<p>You will want to use - .innerHTML no?</p> <pre><code>document.getElementById("displayResult").innerHTML = "&lt;b&gt;test&lt;/b&gt;"; </code></pre>
+<p>.value is only a valid attribute on form fields. You likely want to use the following code:</p> <p><code>document.getElementById("displayResult").innerHTML = "test";</code></p>
+<p>div's don't have a <code>value</code> property. You want to set the <code>.innerText</code> property.</p> <p>And by all means, have fun testing things yourself, but you'll find it a lot easier if you use a framework to do these things (like <a href="http://jquery.com" rel="nofollow noreferrer">jQuery</a>)</p>

@@ -1,2 +1,0 @@
-How to can we detect incoming phone number with call kit in iOS 10
-I have a iOS application where I want to detect any incoming phone number on the device. CallKit is only giving me option to map some numbers to a label but the problem is that there are tons of phone number out there. Also nothing is mentioned about the lifecycle of CallDirectory Extension. Could anyone help me out with my problem as to how can we achieve this.

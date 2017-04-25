@@ -1,0 +1,5 @@
+OnResize Event for all browsers?
+<p>I was wondering if there was to fire an event upon the resizing of the window that would work for all browsers. Any help would be appreciated.</p> <p>Thanks in advance.</p>
+<p>jQuery, as usual, has a <a href="http://api.jquery.com/resize/" rel="nofollow noreferrer">cross-browser resize event</a>.</p>
+<p>This should answer your question:</p> <pre><code>&lt;script type="text/javascript"&gt; window.onresize = function () { &lt;!-- YOUR CODE WILL GO HEAR --&gt; } &lt;/script&gt; </code></pre>
+<p>You can try <code>document.body.onresize=function(){//your code}</code>.</p> <p>I don't have opera. I have tested this on IE 9 and chrome.</p>

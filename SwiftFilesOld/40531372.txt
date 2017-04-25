@@ -1,2 +1,0 @@
-POST Request using RestKit API for iOS
-Here I have mentioned JSON POST response.Can anyone help us how to configure the Request and Response Descriptor using RestKit { "result": { "token": "8726348715345354712635471364", "endDate": "10 nov 2016", "profile": { "type": "user", "id": ",sjdhoisdgf628736478", "studySiteId": "768976sdg7dfh7fdg8jdfgjfh8", "roleId": "9u98876545sdfhgasdf" }, "id": "123354652386", "role": "YYYYYYYY", "name": "XXXXX" } }

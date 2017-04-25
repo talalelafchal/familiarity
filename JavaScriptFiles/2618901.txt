@@ -1,0 +1,4 @@
+JavaScript Prompt - Is it ok to use? Or does it act strange in some browsers?
+<p>I'm interested in using a JavaScript Prompt to have the user enter data. Any concerns on using JS prompt? Will any browsers freak out?</p>
+<p>In IE <code>prompt</code> will cause a <a href="http://www.hunlock.com/blogs/Working_around_IE7s_prompt_bug,_er_feature" rel="nofollow noreferrer">security warning</a>. It's for this reason that I don't use it</p>
+<p>I personally advise against it. The appearance of the window is up to the browser and out of your control. In some browsers, the dialog will be modal to the point that the user will not be able to switch to another tab without addressing the prompt</p> <p>I personally recommend <a href="http://jqueryui.com" rel="nofollow noreferrer">jQuery UI</a> - the widgets are customizable, and prompts will not spawn another window</p>

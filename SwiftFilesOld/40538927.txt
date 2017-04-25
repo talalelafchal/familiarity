@@ -1,2 +1,0 @@
-is there a way of showing blinking cursor inside UITextView without showing actual keyboard?
-In my Swift app I have a UITextView and when user opens the panel, I want to show there blinking cursor (but do not show keyboard). The latter should appear when user touches the UITextView - is that achievable? I tried adding textView.becomeFirstResponder() in viewDidLoad but then it brings the keyboard.

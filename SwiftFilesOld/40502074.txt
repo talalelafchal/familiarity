@@ -1,2 +1,0 @@
-force StoryBoard localization with auto layout on the fly from LTR to RTL
-i am currently developing an app, which have the option of choosing different languages. One method is using the localization String, which works with the Phone Language. Other method is to create different storyboards for different languages, and load them on the fly when user changes the language, but it gives a navigation effect, when i am going to change the storyboard on the fly. I want functionality like the Wego App.

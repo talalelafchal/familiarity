@@ -1,0 +1,3 @@
+What would be your take on Doctype version detection?
+<p>What would be your take on Doctype version detection. One solution comes to mind – feature detection, but is that the correct way to go? What I need in particular is to know wether the document is HTML4, XHTML (don't need the version) or HTML5.</p> <p>Ideas?</p>
+<p>It's not really universal, but: <a href="http://bytes.com/topic/javascript/answers/520145-doctype-detector" rel="nofollow noreferrer">http://bytes.com/topic/javascript/answers/520145-doctype-detector</a></p>

@@ -1,0 +1,4 @@
+How can I send some attributes to the callback function?
+<p>When I add an event listener like so: <b>oTarget.addEventListener(sEventType, fnHandler, false);</b> how can I send some attributes to the fnHandler function? </p>
+<p>Use a wrapper function like:</p> <pre><code>oTarget.addEventListener(sEventType, function(evt) { return fnHandler(evt, "foo", "bar"); }, false) </code></pre> <p>Now you’re passing an anonymous function (the wrapper function) that calls <code>fnHandler</code> with the listed attributes and returns the value to where that callback function is called.</p>
+<p>You can can create an anonymous function that passes the additional parameters:</p> <pre><code>oTarget.addEventListener(sEventType, function(e) { myFunction(e, attr2, attr3); }, false); </code></pre>

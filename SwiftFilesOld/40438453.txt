@@ -1,3 +1,0 @@
-Failed to load info.plist bundle for Quickblox framework
-We are using pod of Quickblox framework in app and we are facing below problem. Failed to load Info.plist from bundle at path /Users/SandeepApple/Library/Developer/CoreSimulator/Devices/55985961-C1EC-4102-BF08-2FFD1EE5BDD0/data/Library/Caches/com.apple.mobile.installd.staging/temp.JzPbI0/extracted/GigMates.app/Frameworks/Quickblox.framework
-You have in the Bridging-Header.h this line: #import <Quickblox/Quickblox.h> If you use pods, you need 3 pods: pod 'QuickBlox' pod 'Fabric' pod 'Crashlytics'

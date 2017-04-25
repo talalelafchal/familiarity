@@ -1,0 +1,6 @@
+where did the other/ come from?
+<p>why some thing like this </p> <pre><code>url="http:/"+"www.pathname.com"+"/"+"anotherString"; </code></pre> <p>turns into <code>http://www.pathname.com/anotherString</code>. Notice the <code>//</code> after the http:.</p>
+<p>I am not sure what you mean exactly, but if it is in the URL bar of the web-browser, then it is just correcting you. you are meant to have the two forward slashes their. Its just the way you are meant to do it.</p>
+<p>As a string in your file, it does not add an extra <code>/</code> to it, but if you type that string into the browser address bar, the browser will automatically add the additional <code>/</code> to the URL to make it valid. I do believe it will do this for images and other links on the page to make them valid.</p>
+<p>Its just the way urls are designed, and the way browsers interpret them. For more details see this blog post</p> <p><strong><a href="http://blogs.zdnet.com/igeneration/?p=3090" rel="nofollow noreferrer">Double slash in Web addresses 'a bit of a mistake'</a></strong> and</p> <p><a href="http://news.bbc.co.uk/2/hi/technology/8306631.stm" rel="nofollow noreferrer"><strong>Berners-Lee 'sorry' for slashes</strong></a></p>
+<p>An interesting anecdote: Nokia older phones write http:/ instead of http://.</p>

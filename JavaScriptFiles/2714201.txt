@@ -1,0 +1,6 @@
+javascript date increment
+<p>I want to set a text box with a date (in dd/mm/yyyy format) 14 days ahead to current date in javascript . can any one help me regarding this ? </p>
+<p>This should do it:</p> <pre><code>var myDate=new Date(); myDate.setDate(myDate.getDate()+14); </code></pre> <p>then </p> <pre><code>document.getElementById(YOUR_TEXTBOX_ID).value = myDate.getDate() + "/" + (myDate.getMonth() + 1) + "/" + myDate.getFullYear(); </code></pre>
+<p><a href="http://www.datejs.com/" rel="nofollow noreferrer">Date.js</a> is a handy script for all kinds of JavaScript date manipulation. I've used it to make many date-based interfaces, including calendar controls.</p>
+<p>Like Deodeus suggested, use Date.js:</p> <pre><code>var myDate = Date.today().add(14).days(); document.getElementById('mytextbox').value = myDate.toString('dd/MM/yyyy'); </code></pre>
+<p>Following is the function to increment date by one day in javascript.</p> <pre><code>function IncrementDate(date) { var tempDate = new Date(date); tempDate.setDate(tempDate.getDate() + 1); return tempDate; } </code></pre> <p>Function calling...</p> <pre><code>var currentDate = new Date(); var IncrementedDate = IncrementDate(currentDate); </code></pre>

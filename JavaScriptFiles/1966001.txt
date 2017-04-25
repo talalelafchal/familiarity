@@ -1,0 +1,8 @@
+Editor for JavaScript
+<p>Which is the best editor for JavaScript programming (Servlet programming)?</p>
+<p>use geany <a href="http://www.geany.org/Main/HomePage" rel="nofollow noreferrer">http://www.geany.org/Main/HomePage</a></p> <p>It's lightweight and useful editor</p>
+<p>Servlet Programming with JavaScript? Am I missing Something? </p> <p>Anyway, for plain JavaScript I would use either Spket IDE, Adobe JSEclipse or the native JavaScript Development Tools support from Eclipse (part of WTP)</p>
+<p>Emacs (Aquamacs on Mac).</p>
+<p>Notepad++ <a href="http://notepad-plus.sourceforge.net/uk/site.htm" rel="nofollow noreferrer">http://notepad-plus.sourceforge.net/uk/site.htm</a> with Google for documentaion</p>
+<p>Mozilla Bespin</p> <p><a href="https://bespin.mozillalabs.com/" rel="nofollow noreferrer">https://bespin.mozillalabs.com/</a></p>
+<p>You can't be an evil in javascript without vi ;)</p>

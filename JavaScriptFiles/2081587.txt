@@ -1,0 +1,4 @@
+document.getElementById(&quot;ID&quot;).focus() + Google Chrome
+<p>document.getElementById("ID").focus() not work in Google Chrome. Is there any alternative? Thank you.</p>
+<p>Apparently it does work, so I'd suggest that you verify that your <code>ID</code> is correct and that <code>document.getElementById()</code> is returning the element that you were expecting.</p>
+<p>If you're trying to focus something that can't normally be focused you might need to add a tabindex:</p> <pre><code>&lt;span id="something" tabindex="0"&gt;Something&lt;/span&gt; document.getElementById("something").focus() </code></pre>

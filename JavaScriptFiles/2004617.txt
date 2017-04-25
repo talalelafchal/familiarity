@@ -1,0 +1,4 @@
+page onload alerts
+<p>i want to show an alerts when a page loads .but i wat it to show only once in a session so that the users does not get disturbed. please help me with some javascript codes.</p> <p>in hope robin .</p>
+<p>Here is the javascript code <a href="http://www.javascriptkit.com/script/script2/alertmsg.shtml" rel="nofollow noreferrer">link</a> alert onload and only once per browser session</p>
+<p>You can use <a href="http://www.quirksmode.org/js/cookies.html" rel="nofollow noreferrer">cookie</a> with short expiration date, e.g. 1 day.</p>

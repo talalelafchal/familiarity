@@ -1,0 +1,4 @@
+how to return a value from javascript to jsp page without using java beans?
+<p>i need to return a boolean value frm java script to jsp page....</p> <p>can someone help me??</p>
+<p>You'll need to provide a bit more information. Why don't you post the value to the JSP page as a URL parameter?</p>
+<p>To send data from Java Script to Server, <a href="http://api.jquery.com/category/ajax/" rel="nofollow noreferrer">AJAX</a> would be friend for you.</p>

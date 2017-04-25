@@ -1,0 +1,6 @@
+How do I convert an integer to decimal in JavaScript?
+<p>I have a number in JavaScript that I'd like to convert to a money format:</p> <pre><code>556633 -&gt; £5566.33 </code></pre> <p>How do I do this in JavaScript?</p>
+<p>Try</p> <pre><code>"£"+556633/100 </code></pre>
+<p>Try this:</p> <pre><code>var num = 10; var result = num.toFixed(2); // result will equal 10.00 </code></pre>
+<p>This works:</p> <pre><code>var currencyString = "£" + (amount/100).toFixed(2); </code></pre>
+<p>This script making only integer to decimal. Seperate the thousands </p> <pre><code>onclick='alert(MakeDecimal(123456789));' function MakeDecimal(Number) { Number = Number + "" // Convert Number to string if not Number = Number.split('').reverse().join(''); //Reverse string var Result = ""; for (i = 0; i &lt;= Number.length; i += 3) { Result = Result + Number.substring(i, i + 3) + "."; } Result = Result.split('').reverse().join(''); //Reverse again if (!isFinite(Result.substring(0, 1))) Result = Result.substring(1, Result.length); // Remove first dot, if have. if (!isFinite(Result.substring(0, 1))) Result = Result.substring(1, Result.length); // Remove first dot, if have. return Result; } </code></pre>

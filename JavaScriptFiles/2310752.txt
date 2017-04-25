@@ -1,0 +1,4 @@
+javascript-how enable controls of a parent window from child window
+<p>My requirement is as follows on click of a begin button a popup window opens up and begin button gets disabled. now when the user clicks the "done" button present on the child window the "begin" button on the parent window should get enabled.</p>
+<p>Use <code>window.opener</code> to get the parent window, and find the element using <code>document.getElementById</code>. </p> <pre><code>window.opener.document.getElementById("yourbuttonid").disabled = false; </code></pre>
+<p>IN PARENT WINDOW DO:</p> <ol> <li>disable begin button</li> <li>open the childwindow</li> </ol> <p>IN CHILD WINDOW DO:</p> <pre><code>&lt;input type="submit" value="done" onclick="window.opener.document.getElementById('begin').disabled = false;"&gt; </code></pre>

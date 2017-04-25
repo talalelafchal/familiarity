@@ -1,0 +1,4 @@
+Javascript plugin creation methods
+<p>I want to create a plugin 'myPlugin' which simply add some text to a div. like:</p> <pre><code> document.getElementById('testDiv').myPlugin("this is a text"); </code></pre> <p>how can I achieve this through singleton method as well as prototype method ?</p>
+<pre><code>function appendTextToElement(element, text) { var textProperty = element.innerText === undefined ? "textContent" : "innerText"; element[textProperty] = element[textProperty] + text; } </code></pre> <p>And a <a href="http://jsfiddle.net/RrsVa/" rel="nofollow noreferrer">test</a>.</p>
+<pre><code>HTMLElement.prototype.myPlugin = function(t) { // ... } </code></pre> <p>Will add a method to all HTML elements in compliant browsers. It won't work on IE though (at least on the old versions, I honestly haven't tried in IE8).</p> <p>What do you mean by "singleton method"?</p>

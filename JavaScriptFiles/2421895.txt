@@ -1,0 +1,6 @@
+How can I set existing HREF links to open in a new window with javascript
+<p>[edit] I am NOT using jquery in this app.</p> <p>Looking for a way to force preexisting links to open in a new window. But I only want to Apply this behavior to links appearing in a specific div element that has a classname but no ID</p>
+<p>The simplest way to do this is to use <a href="http://jquery.com" rel="nofollow noreferrer">jQuery</a>:</p> <pre><code>$('div.SomeClass a').attr('target', '_blank'); </code></pre>
+<p>If you are using jQuery you can do like this:</p> <pre><code>$(function(){ $('.ClassNameOfTheDiv a').attr('target', '_blank'); }); </code></pre>
+<p>Try...</p> <pre><code>&lt;a href="javascript:window.open('www.yoursite.org')&gt;Your Site Opens in a new window&lt;/a&gt; </code></pre>
+<p>If you're not using jQuery, first get the element that you want to apply it to.</p> <pre><code>var allDivs = document.getElementsByTagName('div'); var myDiv = null; for (var j = 0; j &lt; allDivs.length; j++) { var divClass = allDivs[j].getAttribute('class'); if (divClass != null &amp;&amp; divClass.indexof(THE_CLASS_NAME) &gt;= 0) { myDiv = allDivs[i]; var allAnchors = myDiv.getElementsByTagName('a'); for (var i = 0; i &lt; allAnchors.length; a++) { allAnchors[i].setAttribute('target', '_blank'); } } } </code></pre>

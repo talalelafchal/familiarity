@@ -1,0 +1,6 @@
+Call JavaScript function in opener
+<p>I need to to trigger a JavaScript function in an opener window by clicking a button in the child.</p> <p>I thought the following would work, but it is not.</p> <pre><code>window.opener.MyFunction() </code></pre>
+<p>Try using :</p> <p>window.onload = function() { MyFunction(); }</p>
+<p>Are both windows on the same domain (e.g. foo.com?) It might be blocked due to reasons of cross-site scripting security.</p>
+<p>It turns out that MyFunction() was inside a jQuery document.ready statement. It worked fine after I changed that. Interesting though, window.opener.close() still does not work.</p>
+<p>It works for me on IE9. I need to open separate window for a user to upload a doc and on successful upload I must tell opener window to perform some task. Might be other browser you mentioned does not support this.</p>

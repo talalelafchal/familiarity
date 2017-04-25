@@ -1,3 +1,0 @@
-Setting different view controller for one tab
-I have 5 tab in my tab bar controller. Users can use my application as anonymus user. One of my tabs is Login page. if user logged in my application, that tab should be Home page. but I don't know how set different view controller for one tab based on if condition
-One of the possible solutions is to use container view controller. So, your view controller will have 2 embedded view controllers, and in code you can choose between them based on your logic. There you can find some relevant examples and topics: https://developer.apple.com/library/content/featuredarticles/ViewControllerPGforiPhoneOS/ImplementingaContainerViewController.html iOS Switching an embedded view in storyboard Embed UIViewController Programatically?

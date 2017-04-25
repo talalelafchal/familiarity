@@ -1,0 +1,3 @@
+Diff between document.getSelection() and window.getSelection()
+<p>Also can you please answer this question? <a href="http://stackoverflow.com/questions/2605133/how-do-i-get-co-ordinates-of-selected-text-in-an-html-using-javascript-document-g">how do I get co-ordinates of selected text in an html using javascript document.getSelecttion()</a></p> <p>thanks</p>
+<p>You get Error message "Deprecated method document.getSelection() called. Please use window.getSelection() instead." in Firefox which means document.getSelection() is a deprecated method.</p>

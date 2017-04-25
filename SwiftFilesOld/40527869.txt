@@ -1,3 +1,0 @@
-setBounds in Swift
-I'm trying to convert a Objective-C app to Swift but I'm stuck with setBounds. The original code looks like this: - (void)setBounds:(CGRect)bounds { [super setBounds:bounds]; // code } What is the equivalent in Swift? I've tried looking in the documents and google but can't seem to figure it out.
-You need to override bounds: override var bounds: CGRect{ didSet{ //your code here } }

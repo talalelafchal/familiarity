@@ -1,0 +1,3 @@
+IE 8 make a fullscreen window
+<p>In Javascript into a LAN I want to make a window completely fullscreen (Kiosk mode) but I think for security reasons IE 8 always display title bar and location bar.</p> <p>Does it exsist a way to do that? I'm into a LAN and so no matter if a user is warned about that.</p> <p>In Firefox we can force that enabling security privileges.</p>
+<p>I don't know a programmatical way, but starting IE with</p> <pre><code>iexplore -k www.stackoverflow.com </code></pre> <p>works for me (IE 8, Windows 7).</p> <p>More info: <a href="http://en.kioskea.net/faq/636-how-to-use-kiosk-mode-with-internet-explorer" rel="nofollow noreferrer"><strong>How to use kiosk mode with Internet Explorer?</strong></a></p>

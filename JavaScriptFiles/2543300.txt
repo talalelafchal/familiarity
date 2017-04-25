@@ -1,0 +1,4 @@
+java script program to handle http post request
+<p>I just want a java script program to handle http post request</p>
+<p>You can use it to send one, but not do much to very much to really handle it.<br> Maybe there is some solution to what you want to do if you explain more what you are after.</p>
+<p>jQuery's <a href="http://api.jquery.com/category/ajax/" rel="nofollow noreferrer">AJAX</a> support lets you submit HTTP POSTs from a web page.</p>

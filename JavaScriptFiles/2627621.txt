@@ -1,0 +1,3 @@
+adjusting table content with javascript by enumerating rows
+<p>I have a table row with 4 columns on my ecommerce site and I want to replace the content of 1st column if total amount in last column (TD class "total") is over 10 EUR.</p> <p>How can I do this with javascript only, I guess somehow to enumerate through the table rows and look for a correct row (one with the last column class as total) and then access the content of 1st column on this row but how?</p>
+<p>You could do easily with JQuery:</p> <pre><code>if (parseInt($('.total').text(), 10) &gt; 10) { $('#your_table_id td:first').html('your content here'); } </code></pre> <p><strong>Note:</strong> You could use <code>text()</code> instead of <code>html()</code> if you are interested in textual contents.</p>

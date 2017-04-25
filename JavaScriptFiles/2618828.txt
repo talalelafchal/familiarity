@@ -1,0 +1,3 @@
+Why can't I do this in a function?
+<pre><code>function focus(element) { document.form.element.focus(); } </code></pre> <p>I want to have a function to focus on an input box, but it seems I can't do that. Is there a better way to do this?</p>
+<p>If you're passing <code>element</code> directly to the function, call <code>focus</code> directly on that.</p> <pre><code>function focus(element) { element.focus(); } </code></pre> <p>If you're just passing the name of the element to the function, then ..</p> <pre><code>function focus(element) { document.form[element].focus(); } </code></pre>

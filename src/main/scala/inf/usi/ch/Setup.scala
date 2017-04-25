@@ -1,6 +1,6 @@
 package inf.usi.ch
 
-import java.io.{BufferedWriter, File, FileWriter}
+import java.io.{BufferedWriter, File, FileWriter, Serializable}
 
 import com.aliasi.lm.TokenizedLM
 import inf.usi.ch.javaAntlerLMTokenizer.{JavaLM, JavaLMEvaluator, JavaLMEvaluatorTopLeast}
@@ -18,7 +18,9 @@ object Setup extends App {
     lm
   }
 
-  def buildCSVRepresentation(doubleList1: Seq[Double], doubleList2: Seq[Double]): Seq[(String, String)] = {
+
+
+  def buildCSVRepresentation(doubleList1: Seq[Double], doubleList2: Seq[Double], doubleList3: Seq[Double]): Seq[(String, String, String)] = {
     val stringList1 = doubleList1.map {
       _.toString
     }
@@ -26,21 +28,41 @@ object Setup extends App {
       _.toString
     }
 
-    stringList1.zipAll(stringList2, "", "")
+    val stringList3 = doubleList3.map {
+      _.toString
+    }
+
+    val zip2List: Seq[(String, String)] = stringList1.zipAll(stringList2, "", "")
+
+    val listTuple3 : Seq[(String,String,String)] = zipAllLists(zip2List,stringList3)
+    listTuple3
+
   }
+
+  private def zipAllLists(zip2List: Seq[(String, String)], stringList3: Seq[String]) = {
+    val zipedList = zip2List.zipAll(stringList3,("",""),(""))
+    val listTuple3 = zipedList.map(x =>(x._1._1,x._1._2,x._2))
+    listTuple3
+  }
+
+
 
   def createJavaNGramCSVFIle(filePath: String, javaLm: TokenizedLM, nGram: Int) = {
     val androidProbList: Seq[Double] = new JavaLMEvaluator().getProbListFiles(javaLm, nGram, 1000, "AndroidSets/androidTestingList.txt", stormedDataPath)
-    println(" android list size " + androidProbList.size)
+    println(" android tokens list size " + androidProbList.size)
 
     val swingProbList: Seq[Double] = new JavaLMEvaluator().getProbListFiles(javaLm, nGram, 1000, "SwingSets/swingList.txt", stormedDataPath)
-    println(" swing list size " + swingProbList.size)
+    println(" swing tokens list size " + swingProbList.size)
 
-    val csvEntries: Seq[(String, String)] = Seq(("android", "swing")) ++ buildCSVRepresentation(androidProbList, swingProbList)
+
+    val javaProbList: Seq[Double] = new JavaLMEvaluator().getProbListFiles(javaLm, nGram, 100, "JavaSet/javaSet.txt", stormedDataPath)
+    println(" java tokens list size " + javaProbList.size)
+
+    val csvEntries: Seq[(String, String, String)] = Seq(("android", "swing", "java")) ++ buildCSVRepresentation(androidProbList, swingProbList, javaProbList)
 
     val listFile = new File(filePath)
     val listBufferWriter = new BufferedWriter(new FileWriter(listFile))
-    csvEntries.foreach(entry => listBufferWriter.write(s"${entry._1},${entry._2}\n"))
+    csvEntries.foreach(entry => listBufferWriter.write(s"${entry._1},${entry._2},${entry._3}\n"))
     listBufferWriter.close()
   }
 
@@ -74,9 +96,8 @@ object Setup extends App {
     bufferWriter.close()
   }
 
-  val lm = createJavaLM(3, 100000)
-//  createJavaTopLeastCSVFile(lm, 3)
-  createJavaNGramCSVFIle("JavaRemoveAllPunctuationsCSVFIles/java100000.csv", lm, 3)
-
+  val lm = createJavaLM(3, 100)
+    createJavaTopLeastCSVFile(lm, 3)
+  //createJavaNGramCSVFIle("AndroidSwingJavaFormattedPunctuationCSVFiles/java100000.csv", lm, 3)
 
 }

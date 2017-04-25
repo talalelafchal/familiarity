@@ -1,0 +1,4 @@
+Getting text of html select in javascript?
+<pre><code>select.onchange = function() { this.value; } </code></pre> <p>It's easy to retrieve the value but now I need the text of the selected element. How to do it? </p>
+<p>(Sorry... put .value before my edit instead of .text by accident 8-)...)</p> <pre><code>this.options[this.selectedIndex].text </code></pre>
+<pre><code>//assuming "this" is the select element if (this.selectedIndex &gt;= 0) { this.options[this.selectedIndex].text = "some text"; } </code></pre>

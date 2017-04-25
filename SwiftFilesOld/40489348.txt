@@ -1,3 +1,0 @@
-file upload using Vapor
-I can't find any example of handling file upload, especially how to save into some specific folder. Here is the code, addVideo is a HTTP POST multipart/form-data: videos.post("addVideo") { req in // need to save req.multipart["video"] into /data/videos/ return try JSON(node: ["status": 0, "message": "success"]) }
-From your Multipart.File get the Bytes and convert to Data. guard let file = request.multipart?["video"]?.file else { return "Not found" } try Data(file.data).write(to: URL(fileURLWithPath: "/data/videos/FILENAME")) You can get FILENAME from the File object or make your own.

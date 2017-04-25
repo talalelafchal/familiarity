@@ -1,0 +1,5 @@
+Expected Expression
+<p>I cannot figure out what I did or did not do here syntactically to cause this error. I don't see what's missing:</p> <pre><code>function ShowWaitMessage(button) { var isValid; if (buttonSelected()) { showWaitMessage(button, "showMessage1"); isValid = true; } else { Page_ClientValidate(); if (Page_IsValid) { showWaitMessage(button, "showMessage2"); isValid = true; } } return isValid; } </code></pre>
+<p>I had a comment on the same line as one of my if statements....causing this whole issue.</p>
+<p>I don't think there's anything syntactically wrong with your code, having "run" it in both FireFox and IE. (By "run" I mean "loaded in a <code>&lt;script&gt;</code> tag", which ought to find syntax errors.)</p> <p>What line does the error message point to?</p>
+<p>You're missing a declaration of the Page_IsValid variable. I'm guessing that it's a local variable set inside of Page_ClientValidate, which isn't in scope in this function?</p> <p>You should probably also initialize isValid to false instead of leaving it undefined if both checks fail.</p>

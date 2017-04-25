@@ -1,2 +1,0 @@
-'FBSDKMacros.h' file not found
-My podfile has the following dependecies in swift. pod 'FBSDKLoginKit' pod 'FBSDKCoreKit' pod 'FBSDKShareKit' pod 'FBAudienceNetwork' When building the project, an issue is thrown as below: Lexical or preprocessor issue 'FBSDKMacros.h' file not found FBSDKAccessTokenCacheV3.h I am new to iOS programming and am not able to identify what the error is about.

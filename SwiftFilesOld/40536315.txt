@@ -1,2 +1,0 @@
-Switching off Wifi, Data, Bluetooth on ios
-is there a possibility to programmaticaly disable wifi, Data, Bluetooth using Swift?

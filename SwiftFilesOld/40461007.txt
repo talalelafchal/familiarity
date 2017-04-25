@@ -1,5 +1,0 @@
-Why is the font optional?
-I have created a struct to have my fonts pre cached available globally: struct Fonts { static let avenirRegular = UIFont(name: "AvenirNextCondensed-Regular", size: 14.0) } Usage...: xy.font = Fonts.avenirRegular It tells me, that my constant is an Optional. Value of optional type 'UIFont?' not unwrapped; did you mean to use '!' or '?'? Why is it an optional? Is there a chance that AvenirNextCondensed-Regular is not available on every iOS devices? Help is very appreciated.
-The initializer you are using for UIFont is return optional UIFont? object ie the reason you are getting that suggestion for wrapping optional. init?(name fontName: String, size fontSize: CGFloat) Check Apple Documentation of UIFont for more details.
-the "optional" here means that the problem is the font might not exist(even though we know it does) and you have to recognize it, by making it optional you are telling the compiler that I know the font is not part of your library BUT I am sure it is there.
-Just use force unwrap to prevent this: struct Fonts { static let avenirRegular = UIFont(name: "AvenirNextCondensed-Regular", size: 14.0)! }

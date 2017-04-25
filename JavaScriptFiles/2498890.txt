@@ -1,0 +1,2 @@
+JavaScript cleaner/purifier?
+<p>Is there any way to cleanup JavaScript code? </p> <p>I want to enable users to post arbitrary JS but i want to filter some of it out, like eval and document.write. Do you know of any tool that can do this?</p>

@@ -1,0 +1,3 @@
+java script to alert the mutile option selected ..in&lt;select&gt; HTMl tag. and tag .is not inside &lt;form&gt;tag body
+<p>java script to alert the mutile option selected ..in<code>&lt;select&gt;</code> HTMl tag. and tag .is not inside <code>&lt;form&gt;</code>tag body how will do it ....</p> <p>thank you</p>
+<pre><code>var elem = document.getElementById("sel1").getElementsByTagName("option"); var len = elem.length; var sel = new Array(); for(i=0; i&lt;len;i++) { if(elem[i].selected == true) { sel.push(elem[i].value); } } alert(sel.join()); </code></pre> <p><strong><a href="http://jsbin.com/uriru3/2" rel="nofollow noreferrer">Working demo</a></strong></p>

@@ -1,0 +1,6 @@
+javascript string length compare
+<p>I want to check the size of the string entered in a text box. what am I missing?</p> <pre><code>var com = document.getElementById("comment").value; if(com.lenght &lt;= 100){ alert("good"); } else { alert("bad"); } </code></pre>
+<p>Try changing lenght to length.</p>
+<p>It is written length not lenght.</p>
+<p>misspelled <code>lenght</code> - should be <code>length</code></p>
+<p>Mis-spelling:</p> <pre><code>if(com.lenght &lt;= 100){ </code></pre> <p>use this:</p> <pre><code>if(com.length &lt;= 100){ </code></pre>

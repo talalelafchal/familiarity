@@ -1,0 +1,6 @@
+JavaScript Replace String with a Character |
+<p>when I try the following it doesn't work: <code>str.replace("| stuff", "")</code></p> <p>But if I remove the PIPE it does? <code>str.replace("stuff", "")</code></p> <p>Why doesn't the JS function allow for the PIPE | ? What can I do to do a replace that includes a pipe?</p>
+<p>Because <code>.replace</code> accepts a RegExp, and <code>|</code> is a special character in RegExp. You need to escape it.</p> <p>For example, use <code>str.replace(/\|/g, "")</code> to remove every <code>|</code> character. </p>
+<p>No, it should be working, unless you use <code>/| stuff/</code> or <code>RegExp("| stuff")</code> instead of <code>"| stuff"</code></p> <pre><code>"xyz| stuff".replace("| stuff", ""); //returns xyz </code></pre>
+<p>Isn't it </p> <pre><code>"xyz| stuff".replace("\| stuff", ""); //returns xyz </code></pre>
+<p><code>str.replace("| stuff", "")</code> should work but will only replace the first occurrence. If you want to replace all of them, try a using a regex like <code>str.replace(/\|\sstuff/g, "")</code></p>

@@ -1,0 +1,4 @@
+JavaScript Output to a File
+<p>I am creating quite a bit of XML with JavaScript which is then processed by variuos components. I would like to send this XML to some file and prompt the user to save it on their disk (all this happens in the browser at the client, no server interaction whatsoever). Is this at all possible? Google is not a lot of help here :(</p>
+<p>Javascript's sandbox policy restricts writing to the filesystem so you'll have to use an installed program or ActiveX in the case of your IE users (the one time IE does something extra that you need :P). </p> <p>EDIT: If you can use a server you could write the file there then prompt the user to download it. </p>
+<p>Give a look to <a href="http://www.downloadify.info/downloadify/test.html" rel="nofollow noreferrer">Downloadify</a>, is a tiny JavaScript + Flash library that enables the creation and download of text files without server interaction.</p>

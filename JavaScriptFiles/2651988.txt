@@ -1,0 +1,4 @@
+allow only alphabets and underscore using javascript
+<p>I am allowing a string to contain only alphabets and underscore,but is i enter fist character as alphabet or underscore and later if i put any invalid character then this validation is being done.I have done validation as follows:</p> <pre><code>function permission_validate() {var permission=document.permissionForm.permission.value;var allowedStr=/[A-Za-z_]/; if(!allowedStr.test(permission)){document.getElementById("permission_Er").innerHTML="* Required field can contain Only A-Z/az/_"; document.permissionForm.permission.focus();return false;}else{return true;} </code></pre>
+<p>The correct regex to use would be</p> <pre><code>/^[a-zA-Z\_]+$/g </code></pre> <p>^ matches beginning<br> $ matches end<br> g matches the whole string.</p>
+<pre><code>/^[a-z_]+$/gi </code></pre> <p><strong>Note</strong>: You need anchors ^ and $ and + to accept one of more characters of alphabets and underscores.</p>

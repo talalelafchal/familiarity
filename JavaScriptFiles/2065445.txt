@@ -1,0 +1,4 @@
+open source projects in javascript 
+<p>I mainly do javascript coding , I am doing javascript coding from last 6 months. I feel, to improve my knowledge I have to get involved in open source projects. Where can I find good open source projects for starters. I am mainly looking for javascript and web services related projects or browser based. Which is the best place to start with ? Anybody in stackoverflow is starting open source projects or any opensource projects u know? </p>
+<p>In all honesty, I would encourage you to start working with jQuery Plugins. That is a wealth of them online that you can download, modify, and provide to the community of developers. It's a large community, with enormous potential, and a great opportunity for you to not only gain a better understanding of Javascript, but also a way to gain some recognition.</p>
+<p><a href="http://github.com/languages/JavaScript" rel="nofollow noreferrer">http://github.com/languages/JavaScript</a></p>

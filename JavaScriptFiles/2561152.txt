@@ -1,0 +1,3 @@
+Whats the quickest way to get rid of all the properties of a an object in javascript?
+<p>I have an on object like so</p> <pre><code>var obj = {}; function set() { obj.x1 = 20; obj.y1 = 35; obj.x2 = 60; obj.y2 = 55; ... } </code></pre> <p>Whats the quickest way to delete/reset all of the properties of obj?</p>
+<pre><code>for (p in obj) { if (obj.hasOwnProperty(p)) { delete obj[p]; } } </code></pre> <p>If you only have one reference to the object, then replacing it with a new one would be faster.</p> <pre><code>obj = {}; </code></pre>

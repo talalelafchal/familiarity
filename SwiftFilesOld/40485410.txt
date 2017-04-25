@@ -1,4 +1,0 @@
-Completion handler is not called
-Pardon me for beginner's question, I have this function with a completion handler, but it's not called when the function complete. Any tip? thanks  func updateDailyLength(completion: ()-> Void ) { //do something here } And in the caller: updateDailyLength(completion: { getMonthlyDistance() }) The function getMonthlyDistance() is never called.
-You need to call it from updateDailyLength func updateDailyLength(completion: ()-> Void ) { completion() }
-func updateDailyLength(completion: ()-> Void ) { completion() } updateDailyLength(completion: { getMonthlyDistance() }) You need to call the completion handler in the updateDailyLength() function. Once you call the function with the parameter as getMonthlyDistance() it is called in place of completion()

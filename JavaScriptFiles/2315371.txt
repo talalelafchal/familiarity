@@ -1,0 +1,4 @@
+How to create RollOver Effects in JS?
+<p>Ive seen buttons in html have RollOver effects but what else can you add this effect too ?</p>
+<p>You can add a mouseover event handler to any element in a page. The important part is what you do once the event is fired.</p>
+<p>Like zneak said in comments, pretty much anything. Set code in the onmouseover event of an HTML element.</p> <p>A couple of elements can have rollover effects set through css pseudoclasses (for example, a:hover for an anchor tag), but it's limited and not 100% warranted across all browsers.</p>

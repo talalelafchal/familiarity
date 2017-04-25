@@ -1,2 +1,0 @@
-CoreImage - how to isolate one color
-I'm wondering if there's a way to isolate a given color with CoreImage? Given an input image like the one below, color #D61915 and a threshold say 10%: Desaturating an image is easy with CIPhotoEffectMono or CIPhotoEffectNoir but removing non-red parts might not be trivial. Can anyone point me to the right filter/combination of filters to use?

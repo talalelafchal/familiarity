@@ -1,3 +1,0 @@
-How to access an ImageView in my Custom TableviewCell without making its outlet
-I have an ImageView in my TableView Cell xib, I want to access this image view in my viewController but i don't want to make an outlet of imageView i.e. in my cell as i can access my Cell in ViewController ,so how can i make access to the image view. Thanks in advance
-I assume you're wanting to find the imageView in your code's cellForRowAt function, so that you can set its image. In the design of the cell, give the UIImageView a tag (eg. 7). Then within your code after you have retrieved the cell, you can find the imageView using: let imageView = cell.viewWithTag(7) as! UIImageView

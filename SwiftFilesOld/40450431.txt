@@ -1,2 +1,0 @@
-How can I create an incoming call screen for my app (ios)
-I looked anywhere I could think of to find a tutorial or explanation for this but I couldn't find anything. The app I'm building (for ios devices) has a calling feature, just like WhatsApp and Skype, and I want to pop a screen whenever an incoming call (in my app, not a real incoming call) arrives, even if the app is closed and the phone is locked. How can I do it? Thanks!

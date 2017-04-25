@@ -1,0 +1,4 @@
+Is it possible to send special character in parameter values in url path?
+<p>I have an url link "Change", a pop up window will get open when the user clicks the link. During that time, some parameters with values also sending in the url. Some parameter values contains special characters (' eg: &amp;name=D'LOREY&amp;lname=VALENTINE). If the value is full of alphabets it is working fine but throwing javascript error when the value contains special character. Please help to resolve this issue. Thanks in advance.</p>
+<p>Look up the Javascript built-in <code>escape</code> function.</p>
+<p>Use <code>encodeURIComponent</code> on both the name and the value for your parameter. It's supported in all the mainstream desktop browsers going back to IE 5.5. If you need to support IE 5, you'll have to make do with <code>escape</code>, which as noted elsewhere is not perfect.</p>

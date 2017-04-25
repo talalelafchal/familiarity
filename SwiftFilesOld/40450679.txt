@@ -1,4 +1,0 @@
-How can I append to a specific dictionary within an array of dictionaries in swift?
-My data structure: var defs = [["a":"b","c":"d"],["e":"f","g":"h"]] I have tried the following: dict[1]["testKey"] = "testValue" in an attempt to attain the following: defs = [["a":"b","c":"d"],["e":"f","g":"h","testKey":"testValue"]] This doesn't work though. Does anyone have a good solution?
-You have a typo in your code (I see you're using dict instead of defs but this works fine: var defs = [ [ "a": "b", "c": "d" ], [ "e": "f", "g": "h" ] ] defs[1]["key"] = "value" print(defs[1]["key"]) // "Optional("value")\n"
-var defs = [["a":"b","c":"d"],["e":"f","g":"h"]] defs[1]["testKey"] = "testValue" print(defs) prints: [["a": "b", "c": "d"], ["e": "f", "testKey": "testValue", "g": "h"]] The elements contained within the defs array are of type Dictionary, which by definition is unordered. If the order is an issue, you have to use another collection type.

@@ -1,3 +1,0 @@
-find project path in derived data folder in xcode 8
-i have searched a lot but can not find a helpful link to find project location in derived data folder using swift in xcode 8. Please help me regarding this issue.
-You can't get this path with Swift from your app: the "Derived Data" folder is only useful for Xcode, not for your app, which doesn't "see" it at all. Xcode is the IDE and uses the folder when building your app - but your app is not aware of Xcode or its folders, your app is independent from the IDE.

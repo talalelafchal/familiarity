@@ -1,4 +1,0 @@
-Xcode 8.1 slow when varying for traits
-When I try to make changes to the storyboard for iPad size class using vary for traits, Xcode 8.1 becomes horribly slow. I am not able to move the views around in interface builder. Please help. Thanks in advance.
-I have solved it. For anyone facing this in the future, please view as iPad pro 12.9" instead of iPad pro 9.7" while varying traits.
-This was a huge pain for me but I finally found the solution: change the "Status Bar" and "Top Bar" Simulated Metrics options to "Inferred" or "None" and Xcode Interface Builder will be usable again. See below for links to a couple of discussions in the Apple Developer Forums: IB using a lot of CPU and unusably slow in 8.1 XCode 8.1 Xib editing extremely slow and completely unusable. HELP!

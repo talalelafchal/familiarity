@@ -1,0 +1,5 @@
+Set desktop background image with JavaScript
+<p>Is it possible to set the desktop background image using JavaScript? I'm pretty sure it's not possible but I thought I would check.</p> <p>If it isn't possible, is there any way for it to be done from the page?</p>
+<p>No, this is not possible (without a browser plugin).</p> <p>You should just write instructions to the user for how to set an image as their wallpaper.</p>
+<p>If that was possible, it would be a serious security issue. Many browser allow the user to right-click an image and select "use as wallpaper" or something similar.</p>
+<p>I certainly hope not.</p> <p>Changing the OS's desktop background requires access to the filesystem. JS doesn't have this, but browser plugins (Java applets, Flash, etc) do, so that's where you'd need to look.</p>

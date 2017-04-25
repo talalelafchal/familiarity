@@ -1,2 +1,0 @@
-Xcode8 Memory Graph says &quot;No selection&quot; and not working
-I am working with a project using Xcode8.0/Swift3. I want to use Memory Graph Debugger but it shows nothing. Actual screen shot Expected appearance (from tutorial) Expected screen shot Why cannot I use this feature? This project was created using Xcode8 (not migrated from old version of Xcode). Is bitcode related to this problem? I am trying to use Memory Graph with "Debug" configuration and bitcode on "Debug" is enabled(YES).

@@ -1,0 +1,3 @@
+javascript adjust div (show/hide) display according to window scroll bar
+<p>How to change the div position, i.e in absolute position, up or down according to window scroll position?</p> <p>If there any information regarding this, please help me out.</p> <p>Or if there any example over this please share.</p>
+<p>It's hard to understand what you're saying, but could you be looking for <code>position:fixed</code> instead of <code>position:absolute</code>? Fixed position elements don't scroll with the rest of the page, but remain at a specific position in the window.</p>

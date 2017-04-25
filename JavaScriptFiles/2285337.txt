@@ -1,0 +1,4 @@
+Javascript reduction loop doesnt work
+<p>OK its late so I must be doing something stupid, but myreduction for loop which works fine in c# does not work in javascript. The loop is NEVER entered. What have I missed?</p> <pre><code>var count = 12; var j = count - 3 for (i = count; i&lt;1 ; i--) { if (i % 3 == 0) break; else j = i - 1; } alert(j); </code></pre> <p>In this case I am expecting the following:</p> <pre><code>12 -&gt; 9; 11 -&gt; 7; 10 -&gt; 7; 9 -&gt; 6; 8 -&gt; 4; 7 -&gt; 4; </code></pre>
+<pre><code>for (i = count; i&gt;1 ; i--) </code></pre> <p>??</p> <p>You want the loop to continue while i is greater than 1 (perhaps this might differ with this logic change)</p>
+<p>You can try :</p> <pre><code>for (var i = count; i &gt; 1 ; i--) { // code } </code></pre>

@@ -1,0 +1,3 @@
+Tool that can tell what handler functions are bind on which events with a given element?
+<p>Do you know is there any software that can tell what handler functions are bind on which events with a given element on the page, probably works like 'Inspect Element' on Firefox.</p> <p>Thx in advance.</p>
+<p>There is a feature for this in latest builds of Webkit, in the Developer tools.</p> <p>I don't know if it's available in any stable builds yet, but I'd suggest downloading latest Safari or Chrome, and if it's not there, then get a Webkit nightly from <a href="http://nightly.webkit.org" rel="nofollow noreferrer">http://nightly.webkit.org</a></p>

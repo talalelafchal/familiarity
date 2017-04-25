@@ -1,0 +1,4 @@
+Any simplest way to get cookie value in javascript
+<p>I search Google but found entire functions to get cookie value. Isn't there one line statement to retrieve cookie value in javascript?</p>
+<p>try document.cookie. <a href="http://www.w3schools.com/JS/js_cookies.asp" rel="nofollow noreferrer">Here is a good link</a></p>
+<p>You could use a javascript library, e.g. <a href="http://jquery.com/" rel="nofollow noreferrer">jQuery</a> in addition with a plugin: <a href="http://plugins.jquery.com/project/cookie" rel="nofollow noreferrer">http://plugins.jquery.com/project/cookie</a></p> <p>Demo page: <a href="http://stilbuero.de/jquery/cookie/" rel="nofollow noreferrer">http://stilbuero.de/jquery/cookie/</a></p>

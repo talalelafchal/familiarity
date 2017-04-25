@@ -1,0 +1,5 @@
+Why are javascripts sometimes surrounded by these tags?
+<p>Why are some JavaScripts encapsulated within these tags:</p> <pre><code>&lt;!--//--&gt;&lt;![CDATA[//&gt;&lt;!-- some js here //--&gt;&lt;!]]&gt; </code></pre>
+<p>It makes it <a href="http://javascript.about.com/library/blxhtml.htm" rel="nofollow noreferrer">valid</a> <a href="http://www.codehouse.com/javascript/tips/xhtml/" rel="nofollow noreferrer">XHTML</a>.</p>
+<p>They were used for old browsers which didn't understand the <code>&lt;script&gt;</code> tag. That way if a browser didn't properly read the JavaScript, it would just render it as a comment and not show up on the page.</p> <p>It also allows JavaScript code to be inside valid XHTML pages without having to escape characters which aren't valid in XML.</p>
+<p><code>&lt;![CDATA[//&gt;</code> is to prevent XML parsers from choking on the script.</p> <p><code>&lt;!-- ... --&gt;</code> is not required unless you're using Netscape 1.0.</p> <p>See: <a href="http://stackoverflow.com/questions/204813/does-it-still-make-sense-to-use-html-comments-on-blocks-of-javascript">Does it still make sense to use HTML comments on blocks of JavaScript?</a></p>

@@ -1,0 +1,3 @@
+how to find out html textfield field focus in .js file
+<p>i want find html textfield blur or focus through .js file </p>
+<p>Are you looking for javascript events?</p> <blockquote> <p>onFocus, onBlur and onChange</p> <p>The onFocus, onBlur and onChange events are often used in combination with validation of form fields.</p> </blockquote> <p>Source: <a href="http://www.w3schools.com/JS/js_events.asp" rel="nofollow noreferrer">http://www.w3schools.com/JS/js_events.asp</a></p>

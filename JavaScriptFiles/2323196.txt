@@ -1,0 +1,3 @@
+how to obtain browser url in javascript from an iframe
+<p>Whilst inside an iframe, can you please let me know how I can obtain main/parent window browser url using javascript?</p> <p>Thanks.</p>
+<pre><code>window.top.location.href </code></pre>

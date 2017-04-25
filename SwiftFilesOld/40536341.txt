@@ -1,3 +1,0 @@
-Draw custom view within UITextField
-I want to extend UITextField to draw inputed text in a custom UILabel like class that draws certain symbols in a special way. Would I have to modify the drawing code directly or is there a way to add this view "on top" of the UITextField while still being able to input text into the UITextField?
-This should add a view to a text field. Now just change thisView to any custom view you want with any custom frame you want and pow! You got what you want ;) let frame = CGRect(x: 0, y: 0, width: 30, height: 30) let thisView = UIView(frame: frame) thisView.backgroundColor = UIColor.blue textField.addSubview(thisView)

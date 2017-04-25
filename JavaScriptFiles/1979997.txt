@@ -1,0 +1,4 @@
+HighSlide Close
+<p>I am using Highslide popup. I want to close the popup on button Click. The button is inside the page. For opening hs.htmlExpand(this, { src: 'add_image.php', objectType: 'iframe' } ) used this function it is opening.</p> <p>When Closing used this But it is not working. </p> <p>Thanks in advance.</p>
+<p>use this:</p> <pre><code>&lt;input id="Button1" type="button" value="Cancel" onclick="javascript:parent.window.hs.close();" /&gt; </code></pre>
+<p>do this on body tag if you want to close it on clicking outside..</p> <pre><code>&lt;body onClick="hs.close()"&gt; </code></pre>

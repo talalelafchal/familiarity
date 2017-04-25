@@ -1,0 +1,5 @@
+Using window.getSelection to get a string
+<p>I'm trying to use <code>window.getSelection</code> to get a string but it's returning an object.</p> <pre><code>var text = ''; text = document.getSelection(); alert(typeof(text)); //object </code></pre>
+<p><code>.getSelection()</code> returns a DOMSelection object. The <a href="https://developer.mozilla.org/en/DOM/selection#Introduction" rel="nofollow noreferrer">DOMSelection class</a> contains a <code>.toString()</code> method to turn it into a string.</p> <p>So</p> <pre><code>var str = window.getSelection().toString(); alert(typeof(str)); // string. </code></pre>
+<p><code>getSelection</code> returns a <a href="https://developer.mozilla.org/en/DOM/Selection" rel="nofollow noreferrer"><code>Selection</code></a> object. You can get the selected text by calling its <code>toString</code> method.</p>
+<pre><code>text = document.getSelection()+''; alert(typeof(text)); // &lt;&lt; it returns string </code></pre>

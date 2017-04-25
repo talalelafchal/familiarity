@@ -1,0 +1,3 @@
+retype password verification
+<p>Please give me some JavasSript code so that I can implement retype password verification while changing a password.</p>
+<p>Very simplified, but the following code could be placed on the submit event of your form to check the two inputs when the user tries to save.</p> <pre><code>var password1 = document.getElementById("password1input"); // get a reference to the first input var password2 = document.getElementById("password2input"); // get a reference to the second input if (password1.value != password2.value) { // compare the values alert("They don't match!"); // alert the user return false; // prevent the form from submitting } </code></pre>

@@ -1,0 +1,3 @@
+How to increase google searching limit?
+<p>I have built an Plagiarism Detection application, using Google API and JavaScript which is working fine, but It could not search when searching material exceeds more than 235 words. Please tell me how to do that.</p>
+<p>You can try <a href="http://github.com/pkrumins/xgoogle" rel="nofollow noreferrer">xgoogle Python lib</a>.</p> <pre><code>from xgoogle.search import GoogleSearch, SearchError try: gs = GoogleSearch("quick and dirty") gs.results_per_page = 50 results = gs.get_results() for res in results: print res.title.encode('utf8') print res.desc.encode('utf8') print res.url.encode('utf8') print except SearchError, e: print "Search failed: %s" % e </code></pre>

@@ -1,0 +1,5 @@
+How to make on click an label combo box should appear
+<p>On click an label an combo box should appear... please check <a href="http://guruji.com/en/local.html" rel="nofollow noreferrer">http://guruji.com/en/local.html</a> on clicking near mycity the label changes into combobox (dropdown list)..how to do it.</p>
+<p>You can use the <a href="http://www.appelsiini.net/projects/jeditable/default.html" rel="nofollow noreferrer">jEditable</a> plugin for <a href="http://jquery.com/" rel="nofollow noreferrer">jQuery</a> to accomplish this.</p>
+<p>simple. you need to have two span element and play with js, css</p> <pre><code> &lt;span style='display:block' id="click me"&gt; &lt;a href="#" onclick="javascript:document.getElementbyId('dropdownspan').style.display=hidden" select me&lt;/span&gt;&lt;span style='display:hidden' id="dropdownspan"&gt; &lt;select name="test"&gt;&lt;option value="1"&gt;one&lt;/option&gt;&lt;/select&gt; &lt;/span&gt; </code></pre>
+<p>Clicking that link simply hides the original link and makes the "cities" dropdown visible. The dropdown is already on the page, you just can't see it. </p>

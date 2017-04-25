@@ -1,3 +1,0 @@
-UITextFiled with Secure Text Entry on iOS10 will crash when pasting in long string
-This seems to only affect apps running on iOS 10. Both on devices and in the simulator. There is no exception thrown, but the CPU load jumps to 100% and memory runs up until the app gets killed. Still trying to isolate the issue and would appreciate any help.
-This appears to be a genuine iOS10 bug, but it's only caused when the text field has it's 'adjust to fit' property enabled. So far the only fix I found is to disable it. passwordTextField.adjustsFontSizeToFitWidth = false

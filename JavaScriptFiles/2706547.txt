@@ -1,0 +1,3 @@
+which is the best datepicker for birth date?
+<p>Which is the easiest to use/select date of birth?</p>
+<p>A simple text input and server side code (possibly duplicated on the client) that can parse various date formats and prompt the user to disambiguate entries such as 01/02/03.</p>

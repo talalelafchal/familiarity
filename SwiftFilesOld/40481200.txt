@@ -1,2 +1,0 @@
-How to change UIWebView's User-Agent, dynamically on the url being request?
-I understand I can set the user-agent via NSUserDefaults.standardUserDefaults().registerDefaults(["UserAgent" : "ABC"]) However, is it possible to set the user agent, only when I am browsing a particular url, e.g. http://www.example.com, for other urls, I want to keep the user-agent remain unchanged. Is it possible?

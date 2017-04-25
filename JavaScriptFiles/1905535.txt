@@ -1,0 +1,10 @@
+Splitting a string in javascript
+<p>In javascript, how can I get three different substrings for the date, month, and year from the following string: "12/15/2009" ? </p>
+<pre><code>var splitDate = "12/15/2009".split("/"); var month = splitDate[0]; var day = splitDate[1]; var year = splitDate[2]; </code></pre>
+<pre><code>var date = "12/15/2009"; var parts = date.split("/"); alert(parts[0]); // 12 alert(parts[1]); // 15 alert(parts[2]); // 2009 </code></pre>
+<p>Try the following:</p> <pre><code>var dateString = "12/15/2009"; var dateParts = dateString.split("/"); var month = dateParts[0]; var day = dateParts[1]; var year = dateParts[2]; </code></pre>
+<p>Do you want, "12","15", and "2009"? if yes following would return 3 string array.</p> <pre><code>"12/15/2009".split("/") </code></pre>
+<p>try using [yourstring].split(char splitter) to achieve the desired result (i.E. date.split("/")). This will yield a string array.</p>
+<p>You can use <code>split</code> to split the string :</p> <pre><code>var list = "12/15/2009".split('/'); var year = list[2]; var month = list[0]; var day = list[1]; console.log(day, month, year); </code></pre> <p>Will get you :</p> <pre><code>15 12 2009 </code></pre>
+<p>You can use the .split() method to break apart the string.</p> <pre><code>var strDate = "12/15/2009"; var arrDate = strDate.split('/'); var month = arrDate[0]; var day = arrDate[1]; var year = arrDate[2]; </code></pre>
+<p>If you want to do any more complex date manipulation, you can also convert the string to a <a href="http://www.w3schools.com/jsref/jsref_obj_date.asp" rel="nofollow noreferrer">JavaScript Date object</a> like this:</p> <pre><code>var date = new Date("12/15/2009"); alert(date.getFullYear()); alert(date.getMonth() + 1); alert(date.getDate()); var newYear = new Date("1/1/2010"); alert((new Date(newYear - date)).getDate() + " days till the new year"); </code></pre>

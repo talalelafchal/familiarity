@@ -1,0 +1,4 @@
+How to conduct stack/memory overflow with javascript?
+<p>Like the following:</p> <pre><code>#include &lt;stdio.h&gt; #include &lt;string.h&gt; void bad() { printf("Oh shit really bad~!\r\n"); } void foo() { char overme[4] = "WOW"; *(int*)(overme+8) = (int)bad; } int main() { foo(); } </code></pre>
+<pre><code>function Recurse() { Recurse(); } </code></pre>
+<p>Well, first you find a JavaScript runtime with a bug in its memory management system…</p> <p>The short answer is that you can't. JavaScript doesn't let you manually manage your memory allocation. </p>

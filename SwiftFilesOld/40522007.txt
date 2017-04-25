@@ -1,3 +1,0 @@
-Cocoapods - Module Compiled with Swift 3.0 cannot be imported in Swift 3.0.1
-Just updated to Xcode v8.1 and am trying to install a pod. However, once I import it, Xcode gives me an error saying Module Compiled with Swift 3.0 cannot be imported in Swift 3.0.1 and then a path to the module. I have tried saying Use Legacy Swift Language Version however this does not solve the issue. Any other ideas of what I can change to make this compile? I have a hard time believing a minor version change should cause this much trouble. Thanks in advance for any help.
-This happens almost every update. Try pod update in the terminal where the pods are located to get all your pods to the latest versions.

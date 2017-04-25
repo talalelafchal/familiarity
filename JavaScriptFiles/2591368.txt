@@ -1,0 +1,4 @@
+.jsm vs .js files
+<p>I am creating a javascript module for a firefox extension. I'm curious if the extension makes a difference. In the examples I've seen, it looks like either one is ok and I wanted to make sure.</p> <p>Thanks</p>
+<p>No difference at all. </p> <p>I guess it is just convenient to know which files are "modules" at a glance, but anyway there is no such thing as a formal javascript module, it is all convention.</p>
+<p>Mozilla defines .jsm here: <a href="https://developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules/Using" rel="nofollow">JavaScript code modules</a><br> In their definition you must define exported vars and functions,<br> <code>var EXPORTED_SYMBOLS = ["foo", "bar"];</code> Only those will be in the scope.<br> But I really do not know if this works in HTML pages.</p>

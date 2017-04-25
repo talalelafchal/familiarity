@@ -1,3 +1,0 @@
-How to load css on UIWebview in tvOS app built using swift(SpriteKit)?
-I am creating tvOS app using spriteKit and unable to load css on UIWebview.
-Let my html including CSS is - let myHTML = "<html>"+"<head>"+"<style type=\"text/css\">"+"@font-face{font-family: myFirstFontB;src: url('\(fontPath)')}"+"</style>"+"<link rel='stylesheet' type='text/css' href='styleIPAD.css' /></head>"+"<body>"+"<div class='page'>\(value)</div>"+"</body>"+"</html>" Here styleIPAD.css is located in my project. Now you can load this html string to your uiwebview - webview?.loadHTMLString(myHTML, baseURL: Bundle.main.bundleURL) Please give the bundle url, else CSS will not load.

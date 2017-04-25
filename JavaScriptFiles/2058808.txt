@@ -1,0 +1,4 @@
+javascript validation error
+<p>here's my code, which says error when i run it through w3.validator.org.</p> <p>for (var i = 0; i &lt; CheckBox.length; i++) </p> <p>error message - character "&lt;" is the first character of a delimiter but occurred as data </p> <p>how do i fix this?</p>
+<p>Is your input XHTML? If so, to validate it as XML you would need a CDATA block to contain your javascript code.</p>
+<p>If you are "using" XHTML then you need to wrap the code in CDATA:</p> <pre><code>&lt;script type="text/javascript"&gt; //&lt;![CDATA[ // rest of your javascript goes here //]]&gt; &lt;/script&gt; </code></pre>

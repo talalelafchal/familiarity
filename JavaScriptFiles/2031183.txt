@@ -1,0 +1,5 @@
+Detecting if onsubmit was cancelled by another event handler?
+<p>I would like a way of detecting/triggering a function when the form <code>onsubmit</code> is cancelled by any <code>onsubmit</code> handler. What's the most reliable method for doing this?</p>
+<p>I'm probably wrong, but would returning <code>false</code> on one handler cancel the stack? Failing that, you could attach a check call on each event to check whether another one in the stack canceled.</p>
+<p>Wrap it up...</p> <pre><code>// This code should execute last (after onsubmit was already assigned) var oldsub = document.forms[0].onsubmit; document.forms[0].onsubmit = function() { if(!oldsub) alert("Onsubmit did not exist!"); else if(oldsub()) alert("Onsubmit passed!"); else alert("Onsubmit failed!"); } </code></pre>
+<p>you could override all the forms' <code>onsubmit</code> handlers with your own:</p> <pre><code>var f = document.getElementById('myForm'); // or whatever if (f.onsubmit) { var oldSubmit = f.onsubmit; f.onsubmit = function () { var result = oldSubmit.call(this); if (result === false) { alert("Cancelled."); } return result; }; } </code></pre>

@@ -1,0 +1,3 @@
+Is it Possible to set the Target of a form to an Iframe which has Src of a different domain
+<p>Is it possible to postback to a Iframe which is a different domain?</p> <p>For eg: ` Form runat="server" action="Something in Domain A"</p> <pre><code>Iframee src="DomainA.com" name="A" Form runat="Server" **action="DomainB/default.aspx" Target="A"** Form Iframee </code></pre> <p>Form `</p> <p>I will do a postback in the Iframe, so that the whole page doesnt get refreshed, but when I do a postback, can I set the Target of the Form to Iframe which has a source url from DomainA?</p> <p>Please advice.</p> <p>-Ben</p>
+<p>Yes, you can set the form action to be an off-domain site. That restriction is really around for AJAX request.</p> <p>Or am I misunderstanding?</p>

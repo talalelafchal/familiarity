@@ -1,0 +1,3 @@
+alternative to Javascript Narcissus engine
+<p>Are there any pure Javascript alternatives to Narcissus for running Javascript in a web browser? ( Narcissus is the Javascript interpreter written in Javascript itself and is made by the inventor or Javascript)</p>
+<p>Here's a <a href="http://en.wikipedia.org/wiki/List_of_ECMAScript_engines" rel="nofollow noreferrer">List of ECMAScript engines</a>, but Narcissus seems to be the only one implemented using JavaScript.</p>

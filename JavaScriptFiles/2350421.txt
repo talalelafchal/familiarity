@@ -1,0 +1,3 @@
+images not showing in internet explorer but in firefox no problem
+<p>can anyone help me please why my images is not showing on internet explorer 6;7 but in firefox, chrome,avant, IE8 no problem at all... <a href="http://previewagency.com/index.shtml" rel="nofollow noreferrer">http://previewagency.com/index.shtml</a></p>
+<p>You have an error on this line:</p> <pre><code>obj.style.left = theLeft + 'px' ; </code></pre> <p>Because you are doing this</p> <pre><code>setTimeout("placeIt('layer1')", 500); </code></pre> <p>Which leads to this</p> <pre><code>obj = document.getElementById(obj); </code></pre> <p>So whatever layer1 is, make sure there is actually an element in the DOM with that ID before you call the function.</p>

@@ -1,0 +1,3 @@
+onMouseOver(SomeInt, SomeString) not working
+<p>I'm creating the following div using javascript, task_id is an int and person_name is a string, why is my alert not working! when i send 2 integers, the alert works fine, when i send 2 strings the alert still doesn't work, what am i doing wrong?</p> <pre><code>'&lt;div " onMouseOver="Drag(' + task_id + ',' + person_name +');"&lt;/div&gt;' ..... function Drag(id, name){ alert(id + " " + name); } </code></pre> <p>thanks a million in advance</p>
+<p>You need to correctly add escaped string delimiters around the string, otherwise you're sending a variable with the name of <code>person_name</code>'s value. Try:</p> <pre><code>'&lt;div onMouseOver="Drag(' + task_id + ',\'' + person_name +'\');"&gt;&lt;/div&gt;' </code></pre>

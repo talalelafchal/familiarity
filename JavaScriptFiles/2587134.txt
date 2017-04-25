@@ -1,0 +1,3 @@
+Block javascript Alert box
+<p>I'm working on a website using extensively javascript. The code I'm working on also rely on other <em>big</em> javascript libs. The thing is that somewhere in these libraries, some alert box are poping.</p> <p>I was wondering if there are some way to disable the javascript alert box <em>on the fly</em> and re-enable it later.</p> <p>Thanks</p>
+<p>Save the old <code>alert</code> function, to a variable.</p> <pre><code>_alert=alert; </code></pre> <p>And then set the old <code>alert</code> to either <code>null</code> a custom function.</p> <pre><code>alert=function(){}; /*or*/ alert = null; </code></pre> <p>To restore the original version of <code>alert</code> simply reverse step 1.</p> <pre><code>alert=_alert </code></pre>

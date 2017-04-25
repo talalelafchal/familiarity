@@ -1,0 +1,5 @@
+Javascript needed for finding a box in a html page then setting contents
+<p>Can anyone show me how to get to a text edit box in a html page and set its value using Java script please?</p>
+<pre><code>&lt;input type="text" id="ExampleTextBox" /&gt; </code></pre> <p>If you know the id of it:</p> <pre><code>document.getElementById(TEXTBOX_ID).value = YOUR_VALUE; </code></pre> <p>or in a function:</p> <pre><code>function chanageTextBoxValue(newValue) { document.getElementById('ExampleTextBox').value = newValue; } </code></pre>
+<p>Given a text box</p> <pre><code>&lt;input type="text" id="MyInput"&gt; </code></pre> <p>You Javascript would look like:</p> <pre><code>document.getElementById("MyInput").value = "some value"; </code></pre> <p>There will be other ways of doing this if you are using a JavaScript framework, for example in jquery, the following will suffice:</p> <pre><code>$("#MyInput").val("some value"); </code></pre>
+<p>You can access it through your form:</p> <pre><code>document.myForm.firstName.value = "Hello World"; </code></pre> <p>--</p> <pre><code>&lt;form name="myForm"&gt; &lt;input type="text" name="firstName" /&gt; &lt;/form&gt; </code></pre>

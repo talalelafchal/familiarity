@@ -1,2 +1,0 @@
-How to Work With Relationships in Core Data in Swift (IOS)
-Hi All AM Working on Core Data am able to save and fect entities succesfully but am bit confused with relationships in core data i like to save some objects for a key(unique Key) for better understanding of my problem am attaching an image . how can i achive this kind of saving in core data uinique key and some objectss to the each key in core data and guys am looking for help from you Thanks in advance

@@ -1,2 +1,0 @@
-using ObjectMapper framework without implementing func mapping
-i wonder if there is a way to use ObjectMapper framework https://github.com/Hearst-DD/ObjectMapper without implementing func mapping because I have some objects that contains more than 200 properties. thanks in advance

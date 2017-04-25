@@ -1,4 +1,0 @@
-Count occurrences of part key value in Dict (Swift)
-Lets say I have a dict containing the following values and keys let dict = ["Foo" : 1, "FooBar" : 2, "Bar" : 3, "BarBar" : 4, "FooFoo" : 5 ] My question is :- How would one count the occurrences of the KEY containing or partly containing the key string "Foo" The result should be 3 ("Foo","FooBar","FooFoo" ) One direction I am looking at is using print( dict.keys .contains("Foo")) This of course returns true print( dict.keys .contains("Fo")) It will return a false value when in actual fact "Fo" occurs 3 times but only as a part key name. Hoping that makes sense :F So again how do I count the par key name occurrences in a given dictionary
-A straightforward way is this: dict.filter{ $0.key.contains("Foo") }.count We leave all the keys that conatins "Foo" in the dictionary and count the number of KVPs left!
-You need to filter the keys and then count them let arr = dict.keys.filter{ $0.contains("Fo") } print(arr.count)

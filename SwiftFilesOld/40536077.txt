@@ -1,4 +1,0 @@
-Keeping a center point when scene is moving
-I am new to swift and making a game where the SKCamera is moving on the scene but I wanna keep the center of the scene updated when skcamera moves along. Just wondering what can I use. thank you
-If you add a SKSpriteNode as child of your camera node, and you set it to the center of the camera node, it will stay at the center of the screen, even when the camera moves.
-What do you mean "keep the center of the scene updated when skcamera moves along" If you are using a camera, the camera is always the the center of the screen, and the entire scene is always updating. I am going to take a stab in the dark here and say you are not setting scene.camera = SKCameraNode. Other than this, you will need to clarify what you are asking for. Use this to set the camera to the ball after it passes a certain point: camera.y = ball.position.y > scene.height/2 ? ball.position.y : scene.height / 2

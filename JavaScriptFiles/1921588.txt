@@ -1,0 +1,5 @@
+Store data as Text File from HTML
+<p>I want store data from an html page to a text file using javascript on Client Side. Any method is there?</p>
+<p>You cannot store as file in Client Side with javascript, most of the browsers not allowed you to do that.</p>
+<p>You can't work with the filesystem with JavaScript. Flash can work with the filesystem, so a combination of JavaScript and Flash (such as <a href="http://downloadify.info/" rel="nofollow noreferrer">Downloadify</a>) will work.</p>
+<p><a href="http://ajaxian.com/archives/dojostorage-offline-access-and-permanent-client-side-storage" rel="nofollow noreferrer">Here's</a> how to do it (with user intervention)</p> <p>Also try <a href="http://pablotron.org/?cid=1557" rel="nofollow noreferrer">these</a> <a href="http://www.sitepoint.com/blogs/2005/10/21/store-large-data-client-side-with-amass/#" rel="nofollow noreferrer">APIs</a>.</p> <p>You cannot do that automatically without user intervention (Thank God!)</p>

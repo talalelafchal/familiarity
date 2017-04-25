@@ -1,3 +1,0 @@
-Detecting clicks on pictures in WKWebView?
-I have a WKWebView that navigates to facebook, instagram. Is there any way to detect whether a photo was pressed within the webView and to download the picture and present it in a modal view controller?
-You need to add a user script to the webview that handles long press on images. User scripts are JavaScript code that runs at the time of your choosing. Using these scripts, you can, using a specific Apple API, pass data to your native code and do what you want.

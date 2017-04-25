@@ -1,4 +1,0 @@
-Unable to install IPA in device after cocoapods integratation
-I am able to generate the ipa but unable to install it in device after I integrated the pods. XCode version: 8.0 Base SDK: 10.0 Cocoa pods version: 1.1.1
-I have removed framework search paths and re-generated the ipa and it worked.
-Check following, 1. Have you added your device UDID in provisional profile? 2. Have you used correct profile to generate the ipa? 3. Check your device version meet out your app's minimum deployment target. 4. Make sure you generated the ipa properly.

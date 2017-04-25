@@ -1,0 +1,6 @@
+JavaScript exit method
+<p>I have a JavaScript method that i want to validate a form</p> <p>if the validation fails so</p> <pre><code>if (validationChecks ...... ){ return alert("message") } else{ //proceed } </code></pre> <p>however no matter what i do in the if the form still seems to submit, any ideas?</p>
+<p>you should return false after checking validation.</p> <pre><code> if (validationChecks ...... ){ alert("message") return false; } else{ //procced } </code></pre>
+<p>You need to <code>return false;</code> in the case of failure</p>
+<p>You have spelt 'return' wrong. Also, returning an alert will not work, you'll need to return false explicitly to stop the form submitting.</p> <pre><code>if (validationChecks ...... ){ alert("message"); return false; } else{ //procced } </code></pre>
+<p>Your validation must return <code>false</code> when the form is not valid, and if you're calling your validationin <code>onSubmit</code>, then you must make sure that you include a <code>return</code> statement there as well:</p> <pre><code>&lt;form onSubmit="return validationChecks();"&gt; </code></pre>

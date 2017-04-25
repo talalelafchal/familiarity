@@ -1,0 +1,3 @@
+JSON-P and a GET resource?
+<p>If a website operating on a domain other than my own supports get requests, like:</p> <pre><code>http://api.someothersite.com/v1/farms </code></pre> <p>There's no way for me to access it using JSON-P right, they would have to have support for it as a query parameter? Something like:</p> <pre><code>http://api.someothersite.com/v1/farms?callback=fantastic </code></pre> <p>I mean, there's no way for me to use it without them explicitly supporting it, right?</p> <p>Thanks</p>
+<p>Correct. For JSONP to work, the server must choose to process and echo a callback parameter.</p>

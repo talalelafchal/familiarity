@@ -1,0 +1,5 @@
+How do we find the width of scroll bar?
+<p>Do you know any cross-browser methods?</p>
+<p>There aren't any way working cross browser (IE is the problem, as always), sorry</p>
+<pre><code>window.scrollBarWidth = function() { document.body.style.overflow = 'hidden'; var width = document.body.clientWidth; document.body.style.overflow = 'scroll'; width -= document.body.clientWidth; if(!width) width = document.body.offsetWidth - document.body.clientWidth; document.body.style.overflow = ''; return width; } </code></pre>
+<p>Here is an example in MooTools, and I just finished full cross-browser testing.</p> <p><a href="http://jsfiddle.net/jP6q2/2/" rel="nofollow">http://jsfiddle.net/jP6q2/2/</a></p> <p>Long story short: </p> <pre><code>var body = $$('body')[0]; var test = new Element('div', {'style':'visibility:hidden; width: 100px; height: 100px; overflow: scroll;'}); test.inject(body); var scrollbar = { width: test.offsetWidth - test.scrollWidth , height: test.offsetHeight - test.scrollHeight } test.dispose(); </code></pre>

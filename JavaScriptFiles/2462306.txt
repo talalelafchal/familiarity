@@ -1,0 +1,3 @@
+In Js How to wrap all last childred of an oject tree?
+<p>Just wanted to write some recursion but can't check if the child is in fact some finite thing, when checking throught jQuery.isPlainObject , just getting a saparate letters as a childs , like I want "this is error message" - to be a last child , but can't detect it</p>
+<p>Shot in the dark here:</p> <pre><code>typeof "hello" === "string" typeof {} === "object" </code></pre> <p>With this, you can tell if the child is a string ("this is error message") or another type of object.</p>

@@ -1,0 +1,4 @@
+How to detect if start and end date overlaps another start and end date in JavaScript?
+<p>I got both a start and end date object on an event object. I got another object with the same start and end date objects in it. How do I test if they overlap each other?</p>
+<pre><code>function doesOverlap(e1, e2) { var e1start = e1.start.getTime(); var e1end = e1.end.getTime(); var e2start = e2.start.getTime(); var e2end = e2.end.getTime(); return (e1start &gt; e2start &amp;&amp; e1start &lt; e2end || e2start &gt; e1start &amp;&amp; e2start &lt; e1end) } </code></pre>
+<p>There are some edge cases to consider here, but if you have two ranges [b1, e1] and [b2, e2], then they overlap if: </p> <ol> <li>b1 &lt;= b2 &lt;= e1 or</li> <li>b1 &lt;= e2 &lt;= e1 or</li> <li>b2 &lt;= b1 &lt;= e2 or</li> <li>b2 &lt;= e2 &lt;= e2</li> </ol> <p>I think those cover it.</p>

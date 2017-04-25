@@ -1,3 +1,0 @@
-Swift's stride(from: , to: , by: ) causing &quot;cannot invoke&quot;
-I'm using Swift's stride for the first time. However first is on the verge of being the last since I can't get this to work: let boundingBox = createdShape.frame //=SKShapeNode stride(from: Int(boundingBox.minX), to: Int(boundingBox.maxX), by: 10) { The result is: Cannot invoke 'stride' with an argument list of type '(from: Int, to: Int, by: Int, () -> ())' What am I doing wrong?
-The syntax should be: let boundingBox = createdShape.frame //=SKShapeNode for x in stride(from: Int(boundingBox.minX), to: Int(boundingBox.maxX), by: 10) { // TODO: Use x here. }

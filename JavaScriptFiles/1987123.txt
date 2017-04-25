@@ -1,0 +1,4 @@
+declaration order and assignment
+<pre><code>function() { var w = new Object(), w.x = 10, y = 11; } SyntaxError: Expected ';' </code></pre> <p>whereas,</p> <pre><code>function() { var w = new Object(), x = w, y = 11; } </code></pre> <p>produces no error and x does have w. What is wrong with the first one?</p>
+<p>You cannot <em>declare</em> a variable called <code>w.x</code>.</p>
+<p>The <code>var</code> keyword is used to declare variables.</p> <p>The only things you can put in the comma-separated list following the <code>var</code> keyword are variable declarations.</p> <p>Therefore, your first syntax is invalid - it's read as <em>declaring</em> three variables (<code>w</code>, <code>w.x</code>, and <code>y</code>).<br> The assignment to <code>w.x</code> is a statement (which assigns a value to the <code>w</code> property of <code>x</code>), not a variable declaration, so you need a semicolon to terminate the <code>var</code> statement.</p>

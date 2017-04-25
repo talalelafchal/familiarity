@@ -1,0 +1,6 @@
+How to have function recall private variable between invocations
+<p>Here's an easy one straight from the text book I can't seem to find.</p> <p>I have a javascript function. I want it to contain a <em>private</em> variable which remembers its value between invocations.</p> <p>Can someone jog my memory please.</p>
+<p>Create it using a closure:</p> <pre><code>function f() { var x = 0; return function() {return x++;}; } </code></pre> <p>Then use it as follows:</p> <pre><code>&gt; g = f() function () {return x++} &gt; g() 0 &gt; g() 1 &gt; g() 2 </code></pre>
+<p>Here is a truly private implementation</p> <pre><code> (function() { var privateVar = 0; window.getPreviousValue = function(arg) { var previousVal = privateVar; privateVar = arg; return previousVal; } })() alert(getPreviousValue(1)); alert(getPreviousValue(2)); </code></pre> <p>Cheers</p>
+<pre><code> var accumulator = (function() { var accum = 0; return function(increment) { return accum += increment; } })(); alert(accumulator(10)); alert(accumulatot(15)); </code></pre> <p>Displays 10 then 25.</p>
+<p>I am not sure if I understood correctly but maybe something like this would do the trick :</p> <pre><code>function Foo() { var x = "some private data"; return { getPrivateData : function(){ return x; } }; }; var xx = new Foo(); xx.getPrivateData(); </code></pre>

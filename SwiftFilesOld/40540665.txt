@@ -1,3 +1,0 @@
-Swift 3 Extension of generic Obj-c cannot access class' generic parameters
-extension PHFetchResult: Sequence { public func makeIterator() -> NSFastEnumerationIterator { return NSFastEnumerationIterator(self) } } Did apple fix this bug? Or is there a 'working' workaround?
-Did apple fix this bug No. Basically you just can't use for...in with a PHFetchResult any more. Fortunately there are other ways to cycle through your PHFetchResult; they are just ugly, that's all. Example from my code: let result = PHCollectionList.fetchCollectionLists(with: .momentList, subtype: .momentListYear, options: opts) for ix in 0..<result.count { let list = result[ix] // ... } (For a while you couldn't subscript a PHFetchResult either, but now at least you can do that.)

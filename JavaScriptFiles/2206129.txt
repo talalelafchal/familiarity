@@ -1,0 +1,5 @@
+Javascript Prompt: best practice?
+<p>I would like to prompt the user for some input on a webpage.</p> <p>I can't use the builtin Javascript <em>prompt</em> function as it is creates security warnings in IE.</p> <p>Is there a best practice/method/example that people use to recreate this?</p> <p>The Javascript would need to be embedded in the page, so I'm looking at avoiding weighty external libraries.</p>
+<p>I use jQuery plugin <a href="http://www.trentrichardson.com/Impromptu/index.php" rel="nofollow noreferrer">Impromptu</a>. It's nice and unobtrusive and sufficiently lightweight.</p>
+<p>I'd steer away from prompts; they're obtrusive. You could render a form.</p>
+<p>The easiest, most user-friendly approach would probably be to create a normal HTML form that you show with JavaScript in response to a click event on a link or button; you'd then hide the form after the data has been submitted.</p>

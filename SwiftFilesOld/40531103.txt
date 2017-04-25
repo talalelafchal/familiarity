@@ -1,3 +1,0 @@
-Swift ios check if remote push notifications are enabled in ios9 and ios10
-How can I check if the user has enabled remote notifications on ios 9 or ios 10? If the user has not allowed or clicked No I want to toggle a message asking if they want to enable notifications.
-Use this code let isRegisteredForRemoteNotifications = UIApplication.shared.isRegisteredForRemoteNotifications if isRegisteredForRemoteNotifications { // User is registered for notification } else { // Show alert user is not registered for notification }

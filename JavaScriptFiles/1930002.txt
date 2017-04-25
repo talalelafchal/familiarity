@@ -1,0 +1,4 @@
+how lightboxes for pics works? they use iframes? how they download pics?
+<p>how lightboxes for pics works? they use iframes? how they download pics?</p>
+<p>Usually just by creating an <code>&lt;img&gt;</code> element with JS and DOM.</p>
+<p>This is similar to a modal dialog. A translucent overlay is put over the entire screen. A DIV is placed over top of the overlay that displays the picture and controls. Images are usually supplied as a list. It's all JavaScript and CSS. JavaScript is used to flip the images.</p>

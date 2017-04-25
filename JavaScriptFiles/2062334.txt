@@ -1,0 +1,4 @@
+How Replace some url by ID with Javascript
+<pre><code>&lt;a href='http://www.domain.com' id='replace' style='text-decoration:none;color:black;font-size:10px;'&gt;This is text link&lt;/a&gt; &lt;script language="javascript"&gt; var newURL = "mydomain.com/?refid=4877"; onload=function() { var dt = document.getElementById("replace"); document.body.innerHTML = dt.getAttributeNode("href").value.replace(/domain.com/g,newURL); } </code></pre> <p></p>
+<p>You should probably use JQuery:</p> <pre><code>$(document).ready(function(){ $("#replace").attr("href","http://www.mydomain.com/?refid=4877"); }); </code></pre>
+<p>Just assign to the <code>href</code> attribute:</p> <pre><code>dt.href = dt.href.replace(/domain.com\/?/, newURL); </code></pre> <p>The optional trailing slash caters for browsers that automatically add a slash to <code>href</code>s.</p>

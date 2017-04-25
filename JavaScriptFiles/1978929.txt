@@ -1,0 +1,5 @@
+Why file dialog box not opening?
+<p>I am using following code to open a file dialog box, but nothing happens on button click(). What's wrong?</p> <pre><code>&lt;input id="btnBrowse" name="btnBrowse" type="button" value="Browse" onclick="document.execCommand('SaveAs');"/&gt; </code></pre> <p><strong>Edited:</strong></p> <p>Any other way to open such a dialog on other browsers as well?</p>
+<p><a href="http://bytes.com/topic/javascript/answers/169427-execcommand-saveas" rel="nofollow noreferrer">IT works in IE only !</a></p>
+<p>AFAIK, It will work only in IE. It is working on my IE 7 and not in FF.</p> <p>Check this : <a href="http://msdn.microsoft.com/en-us/library/ms536419%28VS.85%29.aspx" rel="nofollow noreferrer">http://msdn.microsoft.com/en-us/library/ms536419%28VS.85%29.aspx</a></p>
+<p>I found an alternative. It's name is <a href="http://www.uploadify.com/" rel="nofollow noreferrer">Uploadify</a> and is a JQuery implementation.</p>

@@ -1,0 +1,3 @@
+JS: Events and variables
+<p>Is there a way to raise event where some variable is changed?</p>
+<p>You can create an observer for that variable that will be called whenever an action is made, and it will raise a specific event for that variable.</p>

@@ -1,0 +1,3 @@
+How do I determine if a page is a MODAL
+<p>Is there any way in javascript I can see if the page I am loading is a modal? </p> <p>I know I can see if its in iframe by doing something like this..</p> <p>var isInIFrame = (window.location != window.parent.location) ? true : false;</p> <p>But I wanted to know if there was code to see if it was a modal window..</p>
+<p>You can check for <code>window.dialogArguments</code>.</p> <pre><code>if (window.dialogArguments) { // modal window } </code></pre> <p>Edit: That also applies to showModelessDialog, but if you don't use that function, then this works.</p>
