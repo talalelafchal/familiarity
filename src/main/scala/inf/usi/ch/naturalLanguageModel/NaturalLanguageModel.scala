@@ -13,7 +13,7 @@ import scala.io.Source
 /**
   * Created by Talal on 10.03.17.
   */
-object NaturalLanguageModel {
+class NaturalLanguageModel {
 
   private val tokenizerFactory = IndoEuropeanTokenizerFactory.INSTANCE
 

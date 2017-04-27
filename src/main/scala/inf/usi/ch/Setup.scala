@@ -3,6 +3,8 @@ package inf.usi.ch
 import java.io.{BufferedWriter, File, FileWriter, Serializable}
 
 import com.aliasi.lm.TokenizedLM
+import inf.usi.ch.Test.NGram
+import inf.usi.ch.dumpedFileCodeEvaluator.{JavascriptCodeEvaluator, JavascriptCodeEvaluatorTopLeast}
 import inf.usi.ch.javaAntlerLMTokenizer.{JavaLM, JavaLMEvaluator, JavaLMEvaluatorTopLeast}
 
 
@@ -19,8 +21,7 @@ object Setup extends App {
   }
 
 
-
-  def buildCSVRepresentation(doubleList1: Seq[Double], doubleList2: Seq[Double], doubleList3: Seq[Double]): Seq[(String, String, String)] = {
+  def buildCSVRepresentation(doubleList1: Seq[Double], doubleList2: Seq[Double], doubleList3: Seq[Double], doubleList4: Seq[Double]): Seq[(String, String, String, String)] = {
     val stringList1 = doubleList1.map {
       _.toString
     }
@@ -32,19 +33,24 @@ object Setup extends App {
       _.toString
     }
 
-    val zip2List: Seq[(String, String)] = stringList1.zipAll(stringList2, "", "")
+    val stringList4 = doubleList4.map {
+      _.toString
+    }
 
-    val listTuple3 : Seq[(String,String,String)] = zipAllLists(zip2List,stringList3)
-    listTuple3
+
+    val zip1List: Seq[(String, String)] = stringList1.zipAll(stringList2, "", "")
+    val zip2List: Seq[(String, String)] = stringList3.zipAll(stringList4, "", "")
+
+    val listTuple4: Seq[(String, String, String,String)] = zipAllLists(zip1List, zip2List)
+    listTuple4
 
   }
 
-  private def zipAllLists(zip2List: Seq[(String, String)], stringList3: Seq[String]) = {
-    val zipedList = zip2List.zipAll(stringList3,("",""),(""))
-    val listTuple3 = zipedList.map(x =>(x._1._1,x._1._2,x._2))
-    listTuple3
+  private def zipAllLists(zip1List: Seq[(String, String)], zip2List: Seq[(String,String)]) = {
+    val zipedList = zip1List.zipAll(zip2List, ("", ""), ("",""))
+    val listTuple4 = zipedList.map(x => (x._1._1, x._1._2, x._2._1,x._2._2))
+    listTuple4
   }
-
 
 
   def createJavaNGramCSVFIle(filePath: String, javaLm: TokenizedLM, nGram: Int) = {
@@ -55,14 +61,17 @@ object Setup extends App {
     println(" swing tokens list size " + swingProbList.size)
 
 
-    val javaProbList: Seq[Double] = new JavaLMEvaluator().getProbListFiles(javaLm, nGram, 100, "JavaSet/javaSet.txt", stormedDataPath)
+    val javaProbList: Seq[Double] = new JavaLMEvaluator().getProbListFiles(javaLm, nGram, 1000, "JavaSet/javaSet.txt", stormedDataPath)
     println(" java tokens list size " + javaProbList.size)
 
-    val csvEntries: Seq[(String, String, String)] = Seq(("android", "swing", "java")) ++ buildCSVRepresentation(androidProbList, swingProbList, javaProbList)
+    val javascriptPobList: Seq[Double] = new JavascriptCodeEvaluator().getProbListFiles(javaLm, nGram, "JavaScriptFiles")
+    println(" javaScript tokens list size " + javascriptPobList.size)
+
+    val csvEntries: Seq[(String, String, String,String)] = Seq(("android", "swing", "java", "javascript")) ++ buildCSVRepresentation(androidProbList, swingProbList, javaProbList, javascriptPobList)
 
     val listFile = new File(filePath)
     val listBufferWriter = new BufferedWriter(new FileWriter(listFile))
-    csvEntries.foreach(entry => listBufferWriter.write(s"${entry._1},${entry._2},${entry._3}\n"))
+    csvEntries.foreach(entry => listBufferWriter.write(s"${entry._1},${entry._2},${entry._3},${entry._4}\n"))
     listBufferWriter.close()
   }
 
@@ -96,8 +105,26 @@ object Setup extends App {
     bufferWriter.close()
   }
 
-  val lm = createJavaLM(3, 100)
-    createJavaTopLeastCSVFile(lm, 3)
-  //createJavaNGramCSVFIle("AndroidSwingJavaFormattedPunctuationCSVFiles/java100000.csv", lm, 3)
 
+  def createJavaTopLeastJavaScriptCSVFile(javaLm :TokenizedLM, nGram:Int): Unit = {
+    val javascriptList = new JavascriptCodeEvaluatorTopLeast().getTopLeastFile(lm,3,"JavaScriptFiles")
+    val javascriptDistinct = javascriptList.map { t => (t._1, t._2.mkString(" ")) }.distinct
+    val javascriptTop = javascriptDistinct.take(100)
+    val javascriptLeast = javascriptDistinct.drop(javascriptDistinct.size - 100)
+
+    writeToFile("JavascriptTopLeast/javascriptTopLM10.txt", javascriptTop)
+    writeToFile("JavascriptTopLeast/javascriptLeastLM10.txt", javascriptLeast)
+
+
+  }
+
+
+
+  val lm = createJavaLM(3, 100000)
+
+
+  createJavaNGramCSVFIle("AndroidSwingJavaJavascriptFormattedPunctuationCSVFiles/java100000.csv", lm, 3)
+
+  //createJavaTopLeastCSVFile(lm, 3)
+//  createJavaTopLeastJavaScriptCSVFile(lm,3)
 }

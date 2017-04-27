@@ -13,24 +13,29 @@ public class JavascriptANTLRTokenizer extends Tokenizer {
     int tokensSize;
     int index = 0;
 
-    public JavascriptANTLRTokenizer(char[]ch) {
-        String input  = new String(ch);
+    public JavascriptANTLRTokenizer(char[] ch) {
+        String input = new String(ch);
         ECMAScriptLexer lexer = new ECMAScriptLexer(new ANTLRInputStream(input));
         tokens = new CommonTokenStream(lexer);
         tokens.fill();
         // last token is always <EOF>
-        tokensSize = tokens.size()-1;
+        tokensSize = tokens.size() - 1;
     }
 
 
     @Override
     public String nextToken() {
-        if(index == tokensSize){
+        if (index == tokensSize) {
             return null;
+        }
+        while (tokens.get(index).getType() == 100) {
+            index++;
+            if (index == tokensSize) {
+                return null;
+            }
         }
         String tokenString = tokens.get(index).getText();
         index++;
-
         return tokenString;
     }
 }

@@ -9,6 +9,7 @@ import inf.usi.ch.javaAntlerLMTokenizer.JavaLM
 import inf.usi.ch.tokenizer.{JavaANTLRTokenizer, JavascriptANTLRTokenizer}
 import org.antlr.v4.runtime.{ANTLRInputStream, CommonTokenStream}
 import org.jsoup.Jsoup
+import org.jsoup.nodes.Element
 import org.jsoup.parser.Parser
 import org.jsoup.select.Elements
 
@@ -34,33 +35,42 @@ object Test extends App {
   }
 
 
-  val lm = createJavaLM(3,1000)
+  val lm = createJavaLM(3, 10)
 
   val file = new File("JavascriptFiles", "1793845.txt")
   val postString = Source.fromFile(file).getLines().mkString
   val doc = Jsoup.parse(postString, "", Parser.xmlParser())
 
   //Code
-  val code: Elements = doc.select(">code")
-  val codeIterator = code.iterator()
-  while (codeIterator.hasNext) {
-    val code = codeIterator.next().text()
-    println("code : " + code)
-  }
+  val code: List[AnyRef] = doc.select(">code").toArray.toList
+  val codeStringList: List[String] = code.map(x =>
+    x.asInstanceOf[Element].text().replaceAll("[^\\w\"]", " "))
 
   //PreCode
-  val preCode: Elements = doc.select(">pre")
-  val preCodeIterator = preCode.iterator()
-  while (preCodeIterator.hasNext) {
-    val code = preCodeIterator.next().text().replaceAll("[^a-zA-Z0-9 ]", " ")
+  val preCode: List[AnyRef] = doc.select(">pre").toArray.toList
+  val preCodStringList: List[String] = preCode.map(x =>
+    x.asInstanceOf[Element].text().replaceAll("[^\\w\"]", " "))
 
-    val tokens = new JavascriptANTLRTokenizer(code.toCharArray).tokenize()
-    val ngramsList = buildNGrams(tokens,3)
-    val probabilityList = ngramsList.map(x => computeProbability(x,lm))
-    println(probabilityList)
+  val result = codeStringList ::: preCodStringList
 
 
-  }
+  val tokenizedList: Seq[NGram] = result.map(x => new JavascriptANTLRTokenizer(x.toCharArray).tokenize())
+  val nGramList = tokenizedList.flatMap(x=>buildNGrams(x,3))
+  val probabilityList = nGramList.map(x=>computeProbability(x,lm))
+  println( "list : " + probabilityList.size)
+
+
+  //  val preCodeIterator = preCode.iterator()
+  //  while (preCodeIterator.hasNext) {
+  //    val code = preCodeIterator.next().text().replaceAll("[^a-zA-Z0-9 ]", " ")
+  //
+  //    val tokens = new JavascriptANTLRTokenizer(code.toCharArray).tokenize()
+  //    val ngramsList = buildNGrams(tokens,3)
+  //    val probabilityList = ngramsList.map(x => computeProbability(x,lm))
+  //    println(probabilityList)
+
+
+  // }
 
   protected def buildNGrams(tokens: Array[Token], nGramLength: Int): List[NGram] = {
     tokens.sliding(nGramLength).toList

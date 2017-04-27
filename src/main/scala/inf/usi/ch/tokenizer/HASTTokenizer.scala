@@ -31,7 +31,7 @@ object HASTTokenizer {
 
       case javaNode: JavaASTNode => {
         //remove brackets and parenthesis and ;
-        val code = Try(javaNode.toCode.replaceAll("[^a-zA-Z0-9 ]"," "))
+        val code = Try(javaNode.toCode.replaceAll("[^\\w\"]", " "))
         val tokens = new JavaANTLRTokenizer(code.get.toCharArray).tokenize()
         tokens
       }

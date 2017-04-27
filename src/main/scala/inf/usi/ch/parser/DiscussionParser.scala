@@ -65,8 +65,8 @@ object DiscussionParser {
     val notCodeIterator = notCode.iterator()
     while (notCodeIterator.hasNext) {
       val text = notCodeIterator.next().text()
-      val ngram = NaturalLanguageModelEvaluator.nGramList(text, 3)
-      prob += NaturalLanguageModelEvaluator.getProb(ngram, naturalLm3Gram)
+      val ngram = new NaturalLanguageModelEvaluator().nGramList(text, 3)
+      prob += new NaturalLanguageModelEvaluator().getProb(ngram, naturalLm3Gram)
     }
 
     println(prob)
@@ -104,8 +104,8 @@ object DiscussionParser {
     val notCodeIterator = notCode.iterator()
     while (notCodeIterator.hasNext) {
       val text = notCodeIterator.next().text()
-      val ngram = NaturalLanguageModelEvaluator.nGramList(text, 3)
-      listBuffer ++= NaturalLanguageModelEvaluator.getAllNgramProb(ngram, naturalLm3Gram)
+      val ngram = new NaturalLanguageModelEvaluator().nGramList(text, 3)
+      listBuffer ++= new NaturalLanguageModelEvaluator().getAllNgramProb(ngram, naturalLm3Gram)
     }
 
     listBuffer.toList
@@ -169,8 +169,8 @@ object DiscussionParser {
     val notCodeIterator = notCode.iterator()
     while (notCodeIterator.hasNext) {
       val text = notCodeIterator.next().text()
-      val nGram = NaturalLanguageModelEvaluator.nGramList(text, 3)
-      listBuffer ++= NaturalLanguageModelEvaluator.getAllNgramProb(nGram, naturalLm3Gram)
+      val nGram = new NaturalLanguageModelEvaluator().nGramList(text, 3)
+      listBuffer ++= new NaturalLanguageModelEvaluator().getAllNgramProb(nGram, naturalLm3Gram)
     }
 
     listBuffer.toList

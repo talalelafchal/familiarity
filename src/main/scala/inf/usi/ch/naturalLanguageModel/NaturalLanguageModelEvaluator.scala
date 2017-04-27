@@ -13,7 +13,7 @@ import scala.io.Source
 /**
   * Created by Talal on 10.03.17.
   */
-object NaturalLanguageModelEvaluator {
+class NaturalLanguageModelEvaluator {
 
   private def jsonFileToText(fileName: String, stormedDataPath: String): String = {
     val testingFile = new File(stormedDataPath, fileName)

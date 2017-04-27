@@ -2,15 +2,11 @@ package inf.usi.ch.javaAntlerLMTokenizer
 
 import java.io.{BufferedWriter, File, FileWriter}
 
-import antlr4Java.JavaLexer
 import ch.usi.inf.reveal.parsing.artifact.ArtifactSerializer
 import ch.usi.inf.reveal.parsing.model.{HASTNode}
 import ch.usi.inf.reveal.parsing.units.CodeTaggedUnit
 import com.aliasi.lm.TokenizedLM
 import inf.usi.ch.tokenizer.{HASTTokenizer}
-import org.antlr.v4.runtime.{ANTLRInputStream, CommonTokenStream}
-
-import scala.collection.mutable.ListBuffer
 import scala.io.Source
 
 /**
