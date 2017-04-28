@@ -18,7 +18,7 @@ import scala.util.{Failure, Success, Try}
 /**
   * Created by Talal on 03.04.17.
   */
-object JavaLM {
+class JavaLM {
   private val DEFAULT_TOKENIZER_FACTORY = IndoEuropeanTokenizerFactory.INSTANCE
 
   private val tokenizerFactory = UnitTokenizerFactory.INSTANCE

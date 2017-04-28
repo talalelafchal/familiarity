@@ -2,83 +2,64 @@ package inf.usi.ch
 
 import java.io.File
 
-import antlr4JavaScript.ECMAScriptLexer
+import ch.usi.inf.reveal.parsing.artifact.ArtifactSerializer
+import ch.usi.inf.reveal.parsing.units.{InformationUnit, NaturalLanguageTaggedUnit}
 import com.aliasi.lm.TokenizedLM
-import inf.usi.ch.codeLanguageModel.CodeLanguageModelEvaluator
-import inf.usi.ch.javaAntlerLMTokenizer.JavaLM
-import inf.usi.ch.tokenizer.{JavaANTLRTokenizer, JavascriptANTLRTokenizer}
-import org.antlr.v4.runtime.{ANTLRInputStream, CommonTokenStream}
-import org.jsoup.Jsoup
-import org.jsoup.nodes.Element
-import org.jsoup.parser.Parser
-import org.jsoup.select.Elements
+import com.aliasi.tokenizer.IndoEuropeanTokenizerFactory
 
 import scala.io.Source
-
 
 /**
   * Created by Talal on 30.03.17.
   */
 object Test extends App {
 
-  type Probability = Double
-
-  type Token = String
-  type NGram = Array[Token]
-
-
   val stormedDataPath = "/Users/Talal/Tesi/stormed-dataset"
 
-  def createJavaLM(nGram: Int, fileNumber: Int): TokenizedLM = {
-    val lm = JavaLM.train(nGram, "/Users/Talal/Tesi/familiarity/AndroidSets/androidTrainingList.txt", stormedDataPath, fileNumber)
-    lm
-  }
+  val a = "Switzerland (/ˈswɪtsərlənd/), officially the Swiss Confederation, is a federal republic in Europe. " +
+    "It consists of 26 cantons, and the city of Bern is the seat of the federal authorities.[1][2][note 4] " +
+    "The country is situated in western-Central Europe,[note 5] and is bordered by Italy to the south, " +
+    "France to the west, Germany to the north, and Austria and Liechtenstein to the east. Switzerland is a landlocked country " +
+    "geographically divided between the Alps, the Swiss Plateau and the Jura, spanning an area of 41,285 km2 (15,940 sq mi). " +
+    "While the Alps occupy the greater part of the territory, the Swiss population of approximately eight million people is " +
+    "concentrated mostly on the plateau, " +
+    "where the largest cities are to be found: among them are the two global cities and economic centres Zürich and Geneva."
 
+  val stopWords = new File("stopwords.txt")
 
-  val lm = createJavaLM(3, 10)
+  val stopWordsList: Seq[String] = Source.fromFile(stopWords).getLines().toList
 
-  val file = new File("JavascriptFiles", "1793845.txt")
-  val postString = Source.fromFile(file).getLines().mkString
-  val doc = Jsoup.parse(postString, "", Parser.xmlParser())
-
-  //Code
-  val code: List[AnyRef] = doc.select(">code").toArray.toList
-  val codeStringList: List[String] = code.map(x =>
-    x.asInstanceOf[Element].text().replaceAll("[^\\w\"]", " "))
-
-  //PreCode
-  val preCode: List[AnyRef] = doc.select(">pre").toArray.toList
-  val preCodStringList: List[String] = preCode.map(x =>
-    x.asInstanceOf[Element].text().replaceAll("[^\\w\"]", " "))
-
-  val result = codeStringList ::: preCodStringList
-
-
-  val tokenizedList: Seq[NGram] = result.map(x => new JavascriptANTLRTokenizer(x.toCharArray).tokenize())
-  val nGramList = tokenizedList.flatMap(x=>buildNGrams(x,3))
-  val probabilityList = nGramList.map(x=>computeProbability(x,lm))
-  println( "list : " + probabilityList.size)
-
-
-  //  val preCodeIterator = preCode.iterator()
-  //  while (preCodeIterator.hasNext) {
-  //    val code = preCodeIterator.next().text().replaceAll("[^a-zA-Z0-9 ]", " ")
   //
-  //    val tokens = new JavascriptANTLRTokenizer(code.toCharArray).tokenize()
-  //    val ngramsList = buildNGrams(tokens,3)
-  //    val probabilityList = ngramsList.map(x => computeProbability(x,lm))
-  //    println(probabilityList)
+  //
+  //  val tokenizerFactory = new IndoEuropeanTokenizerFactory()
+  //  val aCharArray = a.toCharArray
+  //  tokenizerFactory.tokenizer(aCharArray, 0, aCharArray.length).tokenize().filter(x => !excludeList.contains(x)).foreach(x => println(x))
+
+  private val tokenizerFactory = IndoEuropeanTokenizerFactory.INSTANCE
+  val tokenizedLM = new TokenizedLM(tokenizerFactory, 3)
+
+  val testingFile = new File(stormedDataPath, "123.json")
+  val artifact = ArtifactSerializer.deserializeFromFile(testingFile)
+  val nlUnits = (artifact.question.informationUnits ++ artifact.answers.flatMap {
+    _.informationUnits
+  }).filter(_.isInstanceOf[NaturalLanguageTaggedUnit])
+
+  nlUnits.foreach(x => tokenizedLM.handle(x.rawText))
+
+  val list = nlUnits.map(_.rawText)
 
 
-  // }
+   val filtered = list.map(x => removeStopWord(x)
+  )
 
-  protected def buildNGrams(tokens: Array[Token], nGramLength: Int): List[NGram] = {
-    tokens.sliding(nGramLength).toList
+//  filtered.foreach(println)
+
+  val text = "You are also missing the function to grab an activity. Again, this is simply what I'm doing in my code and a few examples I saw online"
+  println(removeStopWord(text))
+
+
+  def removeStopWord(text: String) = {
+    text.split(Array(',','.',' ',':',';','?','!')).toList.filterNot(x => stopWordsList.contains(x.toLowerCase())).mkString(" ")
   }
-
-  protected def computeProbability(ngram: NGram, lm: TokenizedLM): Probability = {
-    lm.processLog2Probability(ngram)
-  }
-
 
 }

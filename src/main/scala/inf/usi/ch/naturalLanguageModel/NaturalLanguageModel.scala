@@ -3,7 +3,7 @@ package inf.usi.ch.naturalLanguageModel
 import java.io.{File, FileOutputStream, ObjectOutputStream}
 
 import ch.usi.inf.reveal.parsing.artifact.ArtifactSerializer
-import ch.usi.inf.reveal.parsing.units.NaturalLanguageTaggedUnit
+import ch.usi.inf.reveal.parsing.units.{InformationUnit, NaturalLanguageTaggedUnit}
 import com.aliasi.lm.{CompiledTokenizedLM, TokenizedLM}
 import com.aliasi.tokenizer.IndoEuropeanTokenizerFactory
 import com.aliasi.util.AbstractExternalizable
@@ -13,9 +13,10 @@ import scala.io.Source
 /**
   * Created by Talal on 10.03.17.
   */
-class NaturalLanguageModel {
+class NaturalLanguageModel extends NaturalLanguage{
 
   private val tokenizerFactory = IndoEuropeanTokenizerFactory.INSTANCE
+
 
 
   def train(nGram: Int, trainingSetFilePath: String, stormedDataFolderPath: String, fileNumber: Int): TokenizedLM = {
@@ -26,10 +27,14 @@ class NaturalLanguageModel {
       val file = new File(stormedDataFolderPath, fileName)
       println(fileName)
       val artifact = ArtifactSerializer.deserializeFromFile(file)
-      val nlUnits = (artifact.question.informationUnits ++ artifact.answers.flatMap {
+      val nlUnits: Seq[InformationUnit] = (artifact.question.informationUnits ++ artifact.answers.flatMap {
         _.informationUnits
       }).filter(_.isInstanceOf[NaturalLanguageTaggedUnit])
-      nlUnits.foreach(x => tokenizedLM.handle(x.rawText))
+
+      val nlTextList = nlUnits.map(_.rawText)
+      val filteredTextList = nlTextList.map(removeStopWord)
+
+      filteredTextList.foreach(x => tokenizedLM.handle(x))
 
     }
     println(trainingSet.size)
@@ -46,6 +51,7 @@ class NaturalLanguageModel {
     val file = new File(serializedTLMFile)
     AbstractExternalizable.readObject(file).asInstanceOf[CompiledTokenizedLM]
   }
+
 
 
 }

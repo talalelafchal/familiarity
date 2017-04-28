@@ -47,7 +47,7 @@ p100 <- plot_ly(type = 'box', y = data100$android,
               line = list(color = 'rgb(107,174,214)')) %>%
   
   add_boxplot(y = data100$java,
-              name = "Java10",
+              name = "Java100",
               marker = list(color = 'rgb(10,250,10)'),
               line = list(color = 'rgb(10,250,10)')) %>%
   
@@ -81,7 +81,7 @@ p1000 <- plot_ly(type = 'box', y = data1000$android,
   layout(
     yaxis = list(range = c(0, -80)))
 
-p10000 <- plot_ly(type = 'box', y = data10$android,
+p10000 <- plot_ly(type = 'box', y = data10000$android,
                line = list(color = 'rgb(250,25,25)'),
                name = "Android10000 ") %>%
   

@@ -13,22 +13,8 @@ import scala.io.Source
 /**
   * Created by Talal on 26.04.17.
   */
-class JavascriptCodeEvaluator {
+class JavascriptCodeEvaluator extends JavascriptEvaluator{
 
-  type Probability = Double
-
-  type Token = String
-  type NGram = Array[Token]
-
-
-  protected def getListOfFiles(dir: String): List[File] = {
-    val d = new File(dir)
-    if (d.exists && d.isDirectory) {
-      d.listFiles.filter(_.isFile).toList
-    } else {
-      List[File]()
-    }
-  }
 
   def getProbListFiles(lm: TokenizedLM, nGram: Int, folderPath: String): Seq[Double] = {
     val filesList = getListOfFiles(folderPath)
@@ -48,14 +34,6 @@ class JavascriptCodeEvaluator {
   }
 
 
-  protected def buildNGrams(tokens: Array[Token], nGramLength: Int): List[NGram] = {
-    tokens.sliding(nGramLength).toList
-  }
-
-  private def computeProbability(ngram: NGram, lm: TokenizedLM): Probability = {
-    lm.processLog2Probability(ngram)
-  }
-
   protected def getCodeList(folderPath: String, fileName: String): List[String] = {
     val file = new File(folderPath, fileName)
     val postString = Source.fromFile(file).getLines().mkString
@@ -71,7 +49,7 @@ class JavascriptCodeEvaluator {
 
   }
 
-  def getCodeStringLIst(doc: Document, string: String) = {
+  private def getCodeStringLIst(doc: Document, string: String) = {
     val code: List[AnyRef] = doc.select(string).toArray.toList
     val codeStringList: List[String] = code.map(x =>
       x.asInstanceOf[Element].text().replaceAll("[^\\w\"]", " "))

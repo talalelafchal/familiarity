@@ -1,65 +1,79 @@
 package inf.usi.ch.naturalLanguageModel
 
-import java.io.{BufferedWriter, File, FileWriter}
-import java.util.StringTokenizer
+import java.io.File
 
 import ch.usi.inf.reveal.parsing.artifact.ArtifactSerializer
-import ch.usi.inf.reveal.parsing.units. NaturalLanguageTaggedUnit
-import com.aliasi.lm.CompiledTokenizedLM
+import ch.usi.inf.reveal.parsing.units.{InformationUnit, NaturalLanguageTaggedUnit}
+import com.aliasi.lm.TokenizedLM
+import com.aliasi.tokenizer.IndoEuropeanTokenizerFactory
 
-import scala.collection.mutable.ListBuffer
 import scala.io.Source
+
 
 /**
   * Created by Talal on 10.03.17.
   */
-class NaturalLanguageModelEvaluator {
-
-  private def jsonFileToText(fileName: String, stormedDataPath: String): String = {
-    val testingFile = new File(stormedDataPath, fileName)
-    val artifact = ArtifactSerializer.deserializeFromFile(testingFile)
-    var nlString = ""
-    val nlUnits = (artifact.question.informationUnits ++ artifact.answers.flatMap { _.informationUnits }).filter(_.isInstanceOf[NaturalLanguageTaggedUnit])
-    nlUnits.foreach(x => {
-      nlString = nlString + "\n" + x.rawText
-    })
-    println(nlString)
-    nlString
-  }
-
-  def writeListToCSVFile(list: List[Double], filePath: String) = {
-    val listFile = new File(filePath)
-    val listbf = new BufferedWriter(new FileWriter(listFile))
-    listbf.write("probability\n")
-    list.foreach(x => listbf.write(x.toString + '\n'))
-    listbf.close()
-  }
+class NaturalLanguageModelEvaluator extends NaturalLanguage{
 
 
-  def nGramList(token: String, nGram: Int): List[String] = {
-    var tokenBuffer = new ListBuffer[String]()
-    val stringTokenized = new StringTokenizer(token)
-    while (stringTokenized.hasMoreElements()) {
-      tokenBuffer += (stringTokenized.nextToken())
-    }
-    tokenBuffer.toList.sliding(nGram).toList.map(x => x.mkString(" "))
-  }
+  type Probability = Double
 
-  def getProb(nGramList: List[String], languageModel: CompiledTokenizedLM): Double = {
-    val probList = nGramList.map(x => languageModel.log2Estimate(x))
-    probList.sum
-  }
+  type Token = String
+  type NGram = Array[Token]
 
-  def getAllNgramProb(nGramList: List[String], languageModel: CompiledTokenizedLM): List[Double] = {
-    val probList = nGramList.map(x => languageModel.log2Estimate(x))
+
+  def getProbListFiles(lm: TokenizedLM, nGram: Int, numberOfFiles: Int, testListFileName: String, stormedDataPath: String): Seq[Double] = {
+    val testingListOfAllFilesName = new File(testListFileName)
+    val testingSet: List[String] = Source.fromFile(testingListOfAllFilesName).getLines().toList.take(numberOfFiles)
+    val probList = testingSet.flatMap(file => getProbListForFile(lm,nGram,file,stormedDataPath))
     probList
   }
 
-  def getProbListFiles(compiledTokenizedLM: CompiledTokenizedLM, nGram: Int, numberOfFiles: Int, testListFileName: String, stormedDataPath: String): List[Double] = {
-    val testingListOfAllFilesName = new File(testListFileName)
-    val testingSet: List[String] = Source.fromFile(testingListOfAllFilesName).getLines().toList.take(numberOfFiles)
-    testingSet.map(file => getProb(nGramList(jsonFileToText(file, stormedDataPath), nGram), compiledTokenizedLM))
+
+  private def jsonFileToText(fileName: String, stormedDataPath: String): Seq[String] = {
+    val testingFile = new File(stormedDataPath, fileName)
+    val artifact = ArtifactSerializer.deserializeFromFile(testingFile)
+    val nlUnits: Seq[InformationUnit] = (artifact.question.informationUnits ++ artifact.answers.flatMap {
+      _.informationUnits
+    }).filter(_.isInstanceOf[NaturalLanguageTaggedUnit])
+
+    val textList: Seq[String] = nlUnits.map(_.rawText)
+    val textListWithNoStopWord = textList.map(removeStopWord)
+    textListWithNoStopWord
+
   }
+
+  private def getProbListForFile(lm: TokenizedLM, nGram: Int, stormedDataPath: String, fileName: String): Seq[Double] = {
+    val listNl: Seq[String] = jsonFileToText(stormedDataPath, fileName)
+
+    val tokenizedList: Seq[Array[Token]] = listNl.map(x => getTokensList(x))
+
+    val nGramList: Seq[NGram] = tokenizedList.flatMap(x => buildNGrams(x, nGram))
+    val probabilityList: Seq[Probability] = nGramList.map(x => computeProbability(x, lm))
+    probabilityList
+  }
+
+  private def buildNGrams(tokens: Array[Token], nGramLength: Int): List[NGram] = {
+    tokens.sliding(nGramLength).toList
+  }
+
+  private def computeProbability(nGram: NGram, lm: TokenizedLM): Probability = {
+    lm.processLog2Probability(nGram)
+  }
+
+  private def getTokensList(text : String): Array[Token] = {
+    val tokenizerFactory = new IndoEuropeanTokenizerFactory()
+    val aCharArray = text.toCharArray
+    val tokensList=tokenizerFactory.tokenizer(aCharArray, 0, aCharArray.length).tokenize()
+    filterTokensList(tokensList)
+  }
+
+  private def filterTokensList(tokensList : Array[Token]): Array[Token] ={
+    val excludeList = List(".", ",", "(", ")", ";", ":", "!", "?")
+    val filteredList = tokensList.filter(x => !excludeList.contains(x))
+    filteredList
+  }
+
 
 
 }
