@@ -48,7 +48,10 @@ class NaturalLanguageModelEvaluator extends NaturalLanguage{
 
     val tokenizedList: Seq[Array[Token]] = listNl.map(x => getTokensList(x))
 
-    val nGramList: Seq[NGram] = tokenizedList.flatMap(x => buildNGrams(x, nGram))
+    // at least 3 tokens
+    val filterdeTokenizedList = tokenizedList.filter(x => x.size >= nGram)
+
+    val nGramList: Seq[NGram] = filterdeTokenizedList.flatMap(x => buildNGrams(x, nGram))
     val probabilityList: Seq[Probability] = nGramList.map(x => computeProbability(x, lm))
     probabilityList
   }

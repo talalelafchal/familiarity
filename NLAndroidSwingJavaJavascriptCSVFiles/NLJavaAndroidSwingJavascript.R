@@ -117,7 +117,7 @@ p100000 <- plot_ly(type = 'box', y = data100000$androidNL,
   layout(
     yaxis = list(range = c(0, -80)))
 
-p <- subplot(p10, p100,p1000,p10000)
+p <- subplot(p10, p100,p1000,p10000,p100000)
 p
 
 chart_link = plotly_POST(p, filename="NaturalLM-Andorid-Swift-Java-Javascript")

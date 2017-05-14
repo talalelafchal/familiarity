@@ -3,9 +3,9 @@ package inf.usi.ch
 import java.io.{BufferedWriter, File, FileWriter, Serializable}
 
 import com.aliasi.lm.TokenizedLM
-import inf.usi.ch.dumpedFileCodeEvaluator.{JavascriptCodeEvaluator, JavascriptCodeEvaluatorTopLeast, JavascriptNLEvaluator}
+import inf.usi.ch.javascript._
 import inf.usi.ch.javaAntlerLMTokenizer.{JavaLM, JavaLMEvaluator, JavaLMEvaluatorTopLeast}
-import inf.usi.ch.naturalLanguageModel.{NaturalLanguageModel, NaturalLanguageModelEvaluator}
+import inf.usi.ch.naturalLanguageModel.{AndroidNLWordsDistribution, NaturalLanguageModel, NaturalLanguageModelEvaluator}
 
 
 /**
@@ -118,6 +118,7 @@ object Setup extends App {
 
   }
 
+
   def createNaturalLanguageLM(nGram: Int, fileNumber: Int): TokenizedLM = {
     val lm = new NaturalLanguageModel().train(nGram, "/Users/Talal/Tesi/familiarity/AndroidSets/androidTrainingList.txt", stormedDataPath, fileNumber)
     lm
@@ -125,6 +126,9 @@ object Setup extends App {
 
 
   def createNaturalLanguageProbabilityCSVFile(filePath: String, naturalLanguageLm: TokenizedLM, nGram: Int) = {
+
+    val javascriptNLPobList: Seq[Double] = new JavascriptNLEvaluator().getProbListFiles(naturalLanguageLm, nGram, "JavaScriptFiles")
+    println(" javaScript nl tokens list size " + javascriptNLPobList.size)
 
     val androidNLProbList: Seq[Double] = new NaturalLanguageModelEvaluator().getProbListFiles(naturalLanguageLm, nGram, 1000, "AndroidSets/androidTestingList.txt", stormedDataPath)
     println(" android nl tokens list size " + androidNLProbList.size)
@@ -135,8 +139,6 @@ object Setup extends App {
     val javaNLProbList: Seq[Double] = new NaturalLanguageModelEvaluator().getProbListFiles(naturalLanguageLm, nGram, 1000, "JavaSet/javaSet.txt", stormedDataPath)
     println(" java tokens nl list size " + javaNLProbList.size)
 
-    val javascriptNLPobList: Seq[Double] = new JavascriptNLEvaluator().getProbListFiles(naturalLanguageLm, nGram, "JavaScriptFiles")
-    println(" javaScript nl tokens list size " + javascriptNLPobList.size)
 
     val csvEntries: Seq[(String, String, String, String)] = Seq(("androidNL", "swingNL", "javaNL", "javascriptNL")) ++ buildCSVRepresentation(androidNLProbList, swingNLProbList, javaNLProbList, javascriptNLPobList)
 
@@ -147,14 +149,49 @@ object Setup extends App {
   }
 
 
+
+
+
+  def writeDistributionToFile(filePath: String, list: Seq[Int]) = {
+    val frequencyList = list.map(x => (x, list.count(_ == x)))
+    val file = new File(filePath)
+    val bufferWriter = new BufferedWriter(new FileWriter(file))
+    bufferWriter.write("words,count" + "\n")
+    frequencyList.foreach(x => {
+      bufferWriter.write(x._1 + "," + x._2 + "\n")
+    })
+    bufferWriter.close()
+  }
+
+
+  def createTopLeastJavaScriptNLCSVFile(codeLm: TokenizedLM, nGram: Int): Unit = {
+    val javascriptList = new JavaScriptNLEvaluatorTopLeast().getTopLeastFile(codeLm, 3, "JavaScriptFiles")
+    val javascriptDistinct = javascriptList.map { t => (t._1, t._2.mkString(" ")) }.distinct
+    val javascriptTop = javascriptDistinct.take(100)
+    val javascriptLeast = javascriptDistinct.drop(javascriptDistinct.size - 100)
+
+    writeTopLeastToFile("JavaScriptNlTopLeast/javascriptTopLM10.txt", javascriptTop)
+    writeTopLeastToFile("JavaScriptNlTopLeast/javascriptLeastLM10.txt", javascriptLeast)
+
+
   //  val codeLm = createJavaLM(3, 100000)
   //  createCodeProbabilityCSVFIle("AndroidSwingJavaJavascriptFormattedPunctuationCSVFiles/java100000.csv", codeLm, 3)
+    //createJavaTopLeastCSVFile(lm, 3)
+
+    val naturalLanguageLm = createNaturalLanguageLM(3, 10)
+    //createNaturalLanguageProbabilityCSVFile("NLAndroidSwingJavaJavascriptCSVFiles/nl100000.csv", naturalLanguageLm, 3)
+
+//  val javascriptDistributionList = JavascriptNLWordsDistribution.getWordsDistribution("JavaScriptFiles")
+//  writeDistributionToFile("Distribution/javascriptWordsFrequency.csv", javascriptDistributionList)
+
+//    val androidDistributionList = AndroidNLWordsDistribution.gteWordsDistribution("AndroidSets/androidTestingList.txt",stormedDataPath,1000)
+//    writeDistributionToFile("Distribution/androidWordsFrequencyFiltered.csv",androidDistributionList)
 
 
-  val naturalLanguageLm = createNaturalLanguageLM(3, 100000)
-  createNaturalLanguageProbabilityCSVFile("NLAndroidSwingJavaJavascriptCSVFiles/nl100000.csv", naturalLanguageLm, 3)
+     createTopLeastJavaScriptNLCSVFile(naturalLanguageLm,3)
 
 
-  //createJavaTopLeastCSVFile(lm, 3)
-  //  createJavaTopLeastJavaScriptCSVFile(lm,3)
+
+
+  }
 }
