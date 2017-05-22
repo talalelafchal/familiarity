@@ -30,7 +30,7 @@ class NaturalLanguageModelEvaluator extends NaturalLanguage{
   }
 
 
-  private def jsonFileToText(fileName: String, stormedDataPath: String): Seq[String] = {
+  protected def jsonFileToText(fileName: String, stormedDataPath: String): Seq[String] = {
     val testingFile = new File(stormedDataPath, fileName)
     val artifact = ArtifactSerializer.deserializeFromFile(testingFile)
     val nlUnits: Seq[InformationUnit] = (artifact.question.informationUnits ++ artifact.answers.flatMap {
@@ -56,7 +56,7 @@ class NaturalLanguageModelEvaluator extends NaturalLanguage{
     probabilityList
   }
 
-  private def buildNGrams(tokens: Array[Token], nGramLength: Int): List[NGram] = {
+  protected def buildNGrams(tokens: Array[Token], nGramLength: Int): List[NGram] = {
     tokens.sliding(nGramLength).toList
   }
 
@@ -64,7 +64,7 @@ class NaturalLanguageModelEvaluator extends NaturalLanguage{
     lm.processLog2Probability(nGram)
   }
 
-  private def getTokensList(text : String): Array[Token] = {
+  protected def getTokensList(text : String): Array[Token] = {
     val tokenizerFactory = new IndoEuropeanTokenizerFactory()
     val aCharArray = text.toCharArray
     val tokensList=tokenizerFactory.tokenizer(aCharArray, 0, aCharArray.length).tokenize()

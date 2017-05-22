@@ -33,7 +33,7 @@ class NaturalLanguageModel extends NaturalLanguage{
 
       val nlTextList = nlUnits.map(_.rawText)
       val filteredTextList = nlTextList.map(removeStopWord)
-      // filtr units with less than 3 words
+      // filter units with less than 3 words
       val filteredStopWords = filteredTextList.filter { _.split("\\s+").length >= 3  }
       filteredStopWords.foreach(x => tokenizedLM.handle(x))
 

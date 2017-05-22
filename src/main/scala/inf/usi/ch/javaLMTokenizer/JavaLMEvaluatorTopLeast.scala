@@ -1,4 +1,4 @@
-package inf.usi.ch.javaAntlerLMTokenizer
+package inf.usi.ch.javaLMTokenizer
 
 import java.io.File
 

@@ -1,4 +1,4 @@
-package inf.usi.ch.javaAntlerLMTokenizer
+package inf.usi.ch.javaLMTokenizer
 
 import java.io.{BufferedWriter, File, FileWriter}
 
@@ -20,7 +20,7 @@ class JavaLMEvaluator {
   type NGram = Array[Token]
 
 
-  private def jsonFileToUnitsHASTNodes(fileName: String, stormedDataPath: String): Seq[HASTNode] = {
+  protected def jsonFileToUnitsHASTNodes(fileName: String, stormedDataPath: String): Seq[HASTNode] = {
     val testingFile = new File(stormedDataPath, fileName)
     val artifact = ArtifactSerializer.deserializeFromFile(testingFile)
 

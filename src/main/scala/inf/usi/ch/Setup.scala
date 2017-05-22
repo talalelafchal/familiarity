@@ -4,7 +4,7 @@ import java.io.{BufferedWriter, File, FileWriter, Serializable}
 
 import com.aliasi.lm.TokenizedLM
 import inf.usi.ch.javascript._
-import inf.usi.ch.javaAntlerLMTokenizer.{JavaLM, JavaLMEvaluator, JavaLMEvaluatorTopLeast}
+import inf.usi.ch.javaLMTokenizer.{JavaLM, JavaLMEvaluator, JavaLMEvaluatorTopLeast}
 import inf.usi.ch.naturalLanguageModel.{AndroidNLWordsDistribution, NaturalLanguageModel, NaturalLanguageModelEvaluator}
 
 
