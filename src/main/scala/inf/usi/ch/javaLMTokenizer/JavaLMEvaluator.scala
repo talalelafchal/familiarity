@@ -30,8 +30,6 @@ class JavaLMEvaluator {
   }
 
 
-
-
   def writeListToCSVFile(list: List[Double], filePath: String) = {
     val listFile = new File(filePath)
     val listbf = new BufferedWriter(new FileWriter(listFile))
@@ -49,7 +47,7 @@ class JavaLMEvaluator {
     lm.processLog2Probability(ngram)
   }
 
-  private def addHASTNodeProbToList(hastNode: HASTNode, nGramLength: Int, lm: TokenizedLM): List[Probability] = {
+  protected def addHASTNodeProbToList(hastNode: HASTNode, nGramLength: Int, lm: TokenizedLM): List[Probability] = {
 
     val tokens: Array[String] = HASTTokenizer.tokenize(hastNode)
     val ngrams: List[NGram] = buildNGrams(tokens, nGramLength)
@@ -67,7 +65,14 @@ class JavaLMEvaluator {
     ngramProbabilities
   }
 
+  def getQuartileProbListFiles(lm: TokenizedLM, nGram: Int, testListFileName: String, stormedDataPath: String): Seq[Seq[Double]] = {
+    val testingListOfAllFileNames = new File(testListFileName)
+    val testingSet: List[String] = Source.fromFile(testingListOfAllFileNames).getLines().toList
+    val listOfUnitsHASTNodes: Seq[Seq[HASTNode]] = testingSet.map { file => jsonFileToUnitsHASTNodes(file, stormedDataPath) }
+    val ngramProbabilities: Seq[Seq[Probability]] = listOfUnitsHASTNodes.map { hASTNodeList => hASTNodeList.flatMap( hASTNode => addHASTNodeProbToList(hASTNode, nGram, lm)) }
 
+    ngramProbabilities
+  }
 
 
 }

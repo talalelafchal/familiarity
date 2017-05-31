@@ -22,6 +22,15 @@ class NaturalLanguageModelEvaluator extends NaturalLanguage{
   type NGram = Array[Token]
 
 
+  def getQuartileProbListFiles(lm: TokenizedLM, nGram: Int, testListFileName: String, stormedDataPath: String): Seq[Seq[Double]] = {
+    val testingListOfAllFileNames = new File(testListFileName)
+    val testingSet: List[String] = Source.fromFile(testingListOfAllFileNames).getLines().toList
+
+    val probList = testingSet.map(file => getProbListForFile(lm,nGram,file,stormedDataPath))
+    probList
+
+  }
+
   def getProbListFiles(lm: TokenizedLM, nGram: Int, numberOfFiles: Int, testListFileName: String, stormedDataPath: String): Seq[Double] = {
     val testingListOfAllFilesName = new File(testListFileName)
     val testingSet: List[String] = Source.fromFile(testingListOfAllFilesName).getLines().toList.take(numberOfFiles)

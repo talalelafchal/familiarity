@@ -25,7 +25,6 @@ class NaturalLanguageModel extends NaturalLanguage{
     val trainingSet = Source.fromFile(file).getLines().toList.take(fileNumber)
     trainingSet.foreach { fileName =>
       val file = new File(stormedDataFolderPath, fileName)
-      println(fileName)
       val artifact = ArtifactSerializer.deserializeFromFile(file)
       val nlUnits: Seq[InformationUnit] = (artifact.question.informationUnits ++ artifact.answers.flatMap {
         _.informationUnits

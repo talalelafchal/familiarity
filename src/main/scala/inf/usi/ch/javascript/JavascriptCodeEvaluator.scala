@@ -13,7 +13,7 @@ import scala.io.Source
 /**
   * Created by Talal on 26.04.17.
   */
-class JavascriptCodeEvaluator extends JavascriptEvaluator{
+class JavascriptCodeEvaluator extends JavascriptEvaluator {
 
 
   def getProbListFiles(lm: TokenizedLM, nGram: Int, folderPath: String): Seq[Double] = {
@@ -21,6 +21,16 @@ class JavascriptCodeEvaluator extends JavascriptEvaluator{
     val probabilityList = filesList.flatMap(file => getProbListForFile(lm, nGram, folderPath, file.getName))
     probabilityList
   }
+
+
+  def getQuartileProbList(lm: TokenizedLM, nGram: Int, filesFolderPath: String, filesListPath: String): Seq[Seq[Double]] = {
+    val filesList = getQuartileListOfFiles(filesFolderPath,filesListPath)
+    val probabilityList = filesList.map(file => getProbListForFile(lm, nGram, filesFolderPath, file.getName))
+    probabilityList
+  }
+
+
+
 
   protected def getProbListForFile(lm: TokenizedLM, nGram: Int, folderPath: String, fileName: String): Seq[Double] = {
 
@@ -40,10 +50,10 @@ class JavascriptCodeEvaluator extends JavascriptEvaluator{
     val doc: Document = Jsoup.parse(postString, "", Parser.xmlParser())
 
     //Code
-    val codeStringList = getCodeStringLIst(doc,">code")
+    val codeStringList = getCodeStringLIst(doc, ">code")
 
     //PreCode
-    val preCodStringList = getCodeStringLIst(doc,">pre")
+    val preCodStringList = getCodeStringLIst(doc, ">pre")
 
     codeStringList ::: preCodStringList
 

@@ -4,6 +4,7 @@ import java.io.File
 
 import ch.usi.inf.reveal.parsing.model.HASTNode
 import inf.usi.ch.tokenizer.HASTTokenizer
+import inf.usi.ch.util.NGramCountXFile
 
 import scala.io.Source
 
@@ -13,21 +14,21 @@ import scala.io.Source
 class JavaNGramCounter extends JavaLMEvaluator {
 
 
-  private def getNgram(hastNodeSeq: Seq[HASTNode], nGram: Int) = {
+  private def getNGram(hastNodeSeq: Seq[HASTNode], nGram: Int) = {
 
     val tokensSeq: Seq[Array[String]] = hastNodeSeq.map(hastNode => HASTTokenizer.tokenize(hastNode))
-    val ngramsSeq: Seq[List[NGram]] = tokensSeq.map(token => buildNGrams(token, nGram))
+    val nGramsSeq: Seq[List[NGram]] = tokensSeq.map(token => buildNGrams(token, nGram))
 
-    val nGramsCount = ngramsSeq.flatten.length
+    val nGramsCount = nGramsSeq.flatten.length
     nGramsCount
   }
 
-  def getNGramCount(testListFileName: String, numberOfFiles: Integer, stormedDataPath: String, nGram: Int): Seq[Int] = {
+  def getNGramCount(testListFileName: String, numberOfFiles: Integer, stormedDataPath: String, nGram: Int): Seq[NGramCountXFile] = {
     val testingListOfAllFileNames = new File(testListFileName)
     val testingSet: List[String] = Source.fromFile(testingListOfAllFileNames).getLines().take(numberOfFiles).toList
-    val listOfUnitsHASTNodes: Seq[Seq[HASTNode]] = testingSet.map(file => jsonFileToUnitsHASTNodes(file, stormedDataPath))
+    val listOfUnitsHASTNodes: Seq[(Seq[HASTNode],String)] = testingSet.map(file => (jsonFileToUnitsHASTNodes(file, stormedDataPath),file))
 
-    val nGramCount: Seq[Int] = listOfUnitsHASTNodes.map { hASTNodeSeq => getNgram(hASTNodeSeq, nGram) }
+    val nGramCount: Seq[NGramCountXFile] = listOfUnitsHASTNodes.map { hASTNodeSeq =>   NGramCountXFile(hASTNodeSeq._2,getNGram(hASTNodeSeq._1, nGram)) }
     nGramCount
 
 

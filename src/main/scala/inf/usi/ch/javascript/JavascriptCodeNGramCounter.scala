@@ -1,15 +1,16 @@
 package inf.usi.ch.javascript
 
 import inf.usi.ch.tokenizer.JavascriptANTLRTokenizer
+import inf.usi.ch.util.NGramCountXFile
 
 /**
   * Created by Talal on 22.05.17.
   */
 class JavascriptCodeNGramCounter extends JavascriptCodeEvaluator {
 
-  def getNGramCount(nGram: Int, folderPath: String): Seq[Int] = {
+  def getNGramCount(nGram: Int, folderPath: String): Seq[NGramCountXFile] = {
     val filesList = getListOfFiles(folderPath)
-    val NGramList = filesList.map(file => getNGramForFile(nGram, folderPath, file.getName))
+    val NGramList = filesList.map( file =>  NGramCountXFile(file.getName, getNGramForFile(nGram, folderPath, file.getName)))
     NGramList
   }
 

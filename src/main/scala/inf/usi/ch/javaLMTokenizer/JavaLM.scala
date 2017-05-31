@@ -30,7 +30,6 @@ class JavaLM {
     // train on each file
     trainingSet.foreach { fileName =>
       val file = new File(stormedDataFolderPath, fileName)
-      println(fileName)
       val artifact = ArtifactSerializer.deserializeFromFile(file)
       // get code units
       val codeUnits = (artifact.question.informationUnits ++ artifact.answers.flatMap {

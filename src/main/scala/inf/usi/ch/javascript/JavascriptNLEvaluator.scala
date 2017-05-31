@@ -17,6 +17,11 @@ import scala.io.Source
 class JavascriptNLEvaluator extends JavascriptEvaluator{
 
 
+  def getQuartileProbList(lm: TokenizedLM, nGram: Int, filesFolderPath: String, filesListPath: String): Seq[Seq[Double]] = {
+    val filesList = getQuartileListOfFiles(filesFolderPath,filesListPath)
+    val probabilityList = filesList.map(file => getProbListForFile(lm, nGram, filesFolderPath, file.getName))
+    probabilityList
+  }
 
 
   def getProbListFiles(lm: TokenizedLM, nGram: Int, folderPath: String): Seq[Double] = {

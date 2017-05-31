@@ -173,9 +173,9 @@ object Setup extends App {
     writeTopLeastToFile("JavaScriptNlTopLeast/javascriptTopLM10.txt", javascriptTop)
     writeTopLeastToFile("JavaScriptNlTopLeast/javascriptLeastLM10.txt", javascriptLeast)
 
-
+  }
   //  val codeLm = createJavaLM(3, 100000)
-  //  createCodeProbabilityCSVFIle("AndroidSwingJavaJavascriptFormattedPunctuationCSVFiles/java100000.csv", codeLm, 3)
+   // createCodeProbabilityCSVFIle("AndroidSwingJavaJavascriptFormattedPunctuationCSVFiles/java100000.csv", codeLm, 3)
     //createJavaTopLeastCSVFile(lm, 3)
 
     val naturalLanguageLm = createNaturalLanguageLM(3, 10)
@@ -193,5 +193,5 @@ object Setup extends App {
 
 
 
-  }
+
 }

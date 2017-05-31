@@ -2,6 +2,8 @@ package inf.usi.ch.naturalLanguageModel
 
 import java.io.File
 
+import inf.usi.ch.util.NGramCountXFile
+
 import scala.io.Source
 
 /**
@@ -9,10 +11,10 @@ import scala.io.Source
   */
 class NaturalLanguageNGramCounter extends NaturalLanguageModelEvaluator{
 
-  def getNgramCount(nGram: Int, numberOfFiles: Int, testListFileName: String, stormedDataPath: String):Seq[Int] = {
+  def getNGramCount(nGram: Int, numberOfFiles: Int, testListFileName: String, stormedDataPath: String):Seq[NGramCountXFile] = {
     val testingListOfAllFilesName = new File(testListFileName)
     val testingSet: List[String] = Source.fromFile(testingListOfAllFilesName).getLines().toList.take(numberOfFiles)
-    val nGramList = testingSet.map(file => getNGram(nGram,file,stormedDataPath))
+    val nGramList = testingSet.map(file => NGramCountXFile(file, getNGram(nGram,file,stormedDataPath)))
     nGramList
   }
 

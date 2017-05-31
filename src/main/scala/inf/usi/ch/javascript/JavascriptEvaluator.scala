@@ -28,6 +28,20 @@ trait JavascriptEvaluator {
       List[File]()
     }
   }
+
+
+  protected def getQuartileListOfFiles(dir: String, filesListPath: String): List[File] = {
+    val testingListOfAllFilesName = new File(filesListPath)
+    val testingSet: List[String] = Source.fromFile(testingListOfAllFilesName).getLines().toList
+
+    val d = new File(dir)
+    if (d.exists && d.isDirectory) {
+      d.listFiles.filter(file =>file.isFile && testingSet.contains(file.getName)).toList
+    } else {
+      List[File]()
+    }
+  }
+
   protected def buildNGrams(tokens: Array[Token], nGramLength: Int): List[NGram] = {
 
     tokens.sliding(nGramLength).toList
