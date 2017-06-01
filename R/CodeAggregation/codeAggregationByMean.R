@@ -27,7 +27,7 @@ p10 <- plot_ly(type = 'box', y = data10$android,
               name = "JavaScript10 ") %>%
   
   layout(
-    yaxis = list())
+    yaxis = list(range = c(0, -800)))
 
 
 p10
@@ -52,7 +52,7 @@ p100 <- plot_ly(type = 'box', y = data100$android,
               name = "JavaScript100 ") %>%
   
   layout(
-    yaxis = list())
+    yaxis = list(range = c(0, -800)))
 
 
 p1000 <- plot_ly(type = 'box', y = data1000$android,
@@ -75,7 +75,7 @@ p1000 <- plot_ly(type = 'box', y = data1000$android,
               name = "JavaScript1000 ") %>%
   
   layout(
-    yaxis = list())
+    yaxis = list(range = c(0, -800)))
 
 p10000 <- plot_ly(type = 'box', y = data10000$android,
                   line = list(color = 'rgb(250,25,25)'),
@@ -97,7 +97,7 @@ p10000 <- plot_ly(type = 'box', y = data10000$android,
               name = "JavaScript10000 ") %>%
   
   layout(
-    yaxis = list())
+    yaxis = list(range = c(0, -800)))
 
 
 p100000 <- plot_ly(type = 'box', y = data100000$android,
@@ -120,7 +120,7 @@ p100000 <- plot_ly(type = 'box', y = data100000$android,
               name = "JavaScript100000 ") %>%
   
   layout(
-    yaxis = list())
+    yaxis = list(range = c(0, -800)))
 
 p <- subplot(p10, p100,p1000,p10000,p100000)
 p

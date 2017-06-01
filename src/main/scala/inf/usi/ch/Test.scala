@@ -32,15 +32,15 @@ object Test extends App {
 
   val codeLm = createJavaLM(3,10)
 
-  val javascriptNlAggregation: Seq[Double] = new NGramAggregation().aggregateJavascriptNLByMean(nlLm,3,javascriptFilesFolderPath,javascriptFilesListPath)
+//  val javascriptNlAggregation: Seq[Double] = new NGramAggregation().aggregateJavascriptNLByMean(nlLm,3,javascriptFilesFolderPath,javascriptFilesListPath)
 
-  val androidNLAggregationByMedian: Seq[Double] = new NGramAggregation().aggregateStormedNLByMedian(nlLm, 3, androidTestingQuartileSet, stormedDataPath)
-
-
-  val swingNLAggregationByMedian: Seq[Double] = new NGramAggregation().aggregateStormedNLByMedian(nlLm, 3, swingQuartileSet, stormedDataPath)
-
-
-  val javaNLAggregationByMedian: Seq[Double] = new NGramAggregation().aggregateStormedNLByMedian(nlLm, 3, javaQuartileSet, stormedDataPath)
+//  val androidNLAggregationByMedian: Seq[Double] = new NGramAggregation().aggregateStormedNLByMedian(nlLm, 3, androidTestingQuartileSet, stormedDataPath)
+//
+//
+//  val swingNLAggregationByMedian: Seq[Double] = new NGramAggregation().aggregateStormedNLByMedian(nlLm, 3, swingQuartileSet, stormedDataPath)
+//
+//
+//  val javaNLAggregationByMedian: Seq[Double] = new NGramAggregation().aggregateStormedNLByMedian(nlLm, 3, javaQuartileSet, stormedDataPath)
 
 
 //  val androidCodeAggregationByMedian: Seq[Double] = new NGramAggregation().aggregateStormedJavaCodeByMedian(codeLm, 3, androidTestingQuartileSet, stormedDataPath)
@@ -53,7 +53,7 @@ object Test extends App {
 //  val javaCodeAggregationByMedian: Seq[Double] = new NGramAggregation().aggregateStormedJavaCodeByMedian(codeLm, 3, javaQuartileSet, stormedDataPath)
 //
 //
-//  val javascriptCodeAggregation: Seq[Double] = new NGramAggregation().aggregateJavascriptCodeByMedian(codeLm ,3,javascriptFilesFolderPath,javascriptFilesListPath)
+  val javascriptCodeAggregation: Seq[Double] = new NGramAggregation().aggregateJavascriptCodeByMedian(codeLm ,3,javascriptFilesFolderPath,javascriptFilesListPath)
 //
 
 

@@ -36,7 +36,7 @@ trait JavascriptEvaluator {
 
     val d = new File(dir)
     if (d.exists && d.isDirectory) {
-      d.listFiles.filter(file =>file.isFile && testingSet.contains(file.getName)).toList
+      d.listFiles.filter(file => file.isFile && testingSet.contains(file.getName)).toList
     } else {
       List[File]()
     }
@@ -48,10 +48,12 @@ trait JavascriptEvaluator {
   }
 
   protected def computeProbability(nGram: NGram, lm: TokenizedLM): Probability = {
-    lm.processLog2Probability(nGram)
+    val familiarity = lm.processLog2Probability(nGram)
+    println(nGram.foreach(x => print(" " + x + " ")) + "  -> " + familiarity)
+    familiarity
   }
 
   protected def removeStopWord(text: String): String = {
-    text.split(Array(',', '.', ' ', ':', ';', '?', '!','(',')')).toList.filterNot(x => stopWordsList.contains(x.toLowerCase())).mkString(" ")
+    text.split(Array(',', '.', ' ', ':', ';', '?', '!', '(', ')')).toList.filterNot(x => stopWordsList.contains(x.toLowerCase())).mkString(" ")
   }
 }

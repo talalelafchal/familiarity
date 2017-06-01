@@ -43,8 +43,11 @@ class JavaLMEvaluator {
     tokens.sliding(nGramLength).toList
   }
 
-  protected def computeProbability(ngram: NGram, lm: TokenizedLM): Probability = {
-    lm.processLog2Probability(ngram)
+  protected def computeProbability(nGram: NGram, lm: TokenizedLM): Probability = {
+
+    val familiarity = lm.processLog2Probability(nGram)
+    println( nGram.foreach(x => print(" "+x+" "))  + "  -> " + familiarity)
+    familiarity
   }
 
   protected def addHASTNodeProbToList(hastNode: HASTNode, nGramLength: Int, lm: TokenizedLM): List[Probability] = {

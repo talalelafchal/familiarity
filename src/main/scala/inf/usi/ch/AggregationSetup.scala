@@ -31,7 +31,7 @@ object AggregationSetup extends App {
   val nlLm = createNaturalLanguageLM(3, trainingFilesNumber)
 
 //  createAggregationCodeProbabilityByMeanCSVFIle("R/CodeAggregation/codeMeanAggregation"+trainingFilesNumber+".csv",codeLm,3)
-  createAggregationNLProbabilityByMeanCSVFIle("R/NLAggregation/nLMeanAggregation."+trainingFilesNumber+"csv",nlLm,3)
+  createAggregationNLProbabilityByMeanCSVFIle("R/NLAggregation/nLMeanAggregation"+trainingFilesNumber+".csv",nlLm,3)
 
 //  createAggregationCodeProbabilityByMedianCSVFIle("R/CodeAggregation/codeMedianAggregation"+trainingFilesNumber+".csv",codeLm,3)
   createAggregationNLProbabilityByMedianCSVFIle("R/NLAggregation/nLMedianAggregation"+trainingFilesNumber+".csv",nlLm,3)
