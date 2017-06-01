@@ -7,9 +7,17 @@ import inf.usi.ch.util.NGramCountXFile
   */
 class JavascriptNLNGramCounter extends JavascriptNLEvaluator{
 
+  val javascript = "javascript"
+
   def getNGramCount(nGram: Int, folderPath: String): Seq[NGramCountXFile] = {
     val filesList = getListOfFiles(folderPath)
-    val NGramList = filesList.map( file => NGramCountXFile(file.getName,getNGramForFile(nGram, folderPath, file.getName)))
+    val NGramList = filesList.map( file => NGramCountXFile(javascript,file.getName,getNGramForFile(nGram, folderPath, file.getName)))
+    NGramList
+  }
+
+  def getQuartileNGramCount(nGram: Int, folderPath: String, filesListPath : String): Seq[NGramCountXFile] = {
+    val filesList = getQuartileListOfFiles(folderPath,filesListPath)
+    val NGramList = filesList.map( file => NGramCountXFile(javascript,file.getName,getNGramForFile(nGram, folderPath, file.getName)))
     NGramList
   }
 

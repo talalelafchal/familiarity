@@ -4,8 +4,10 @@ import java.io.{BufferedWriter, File, FileWriter}
 
 import com.aliasi.lm.TokenizedLM
 import inf.usi.ch.agragation.NGramAggregation
-import inf.usi.ch.javaLMTokenizer.{JavaLM}
-import inf.usi.ch.naturalLanguageModel.{NaturalLanguageModel}
+import inf.usi.ch.javaLMTokenizer.{JavaLM, JavaNGramCounter}
+import inf.usi.ch.javascript.{JavascriptCodeNGramCounter, JavascriptNLNGramCounter}
+import inf.usi.ch.naturalLanguageModel.{NaturalLanguageModel, NaturalLanguageNGramCounter}
+
 
 
 /**
@@ -25,31 +27,61 @@ object AggregationSetup extends App {
   val javascriptFilesListPath = "JavascriptQuartileSet/javaScriptQuartileList.txt"
 
 
+  val lowerBoundTuple = getLoweBoundTuple(androidTestingQuartileSet, javaQuartileSet, swingQuartileSet, javascriptFilesListPath)
+  val codeLowerBound = lowerBoundTuple._1
+  val nlLowerBound = lowerBoundTuple._2
+
   val trainingFilesNumber = 100000
 
   val codeLm = createJavaLM(3, trainingFilesNumber)
   val nlLm = createNaturalLanguageLM(3, trainingFilesNumber)
 
-//  createAggregationCodeProbabilityByMeanCSVFIle("R/CodeAggregation/codeMeanAggregation"+trainingFilesNumber+".csv",codeLm,3)
-  createAggregationNLProbabilityByMeanCSVFIle("R/NLAggregation/nLMeanAggregation"+trainingFilesNumber+".csv",nlLm,3)
 
-//  createAggregationCodeProbabilityByMedianCSVFIle("R/CodeAggregation/codeMedianAggregation"+trainingFilesNumber+".csv",codeLm,3)
-  createAggregationNLProbabilityByMedianCSVFIle("R/NLAggregation/nLMedianAggregation"+trainingFilesNumber+".csv",nlLm,3)
+  createAggregationCodeProbabilityByMeanCSVFIle("R/CodeAggregation/codeMeanAggregation" + trainingFilesNumber + ".csv", codeLm, 3)
+  createAggregationNLProbabilityByMeanCSVFIle("R/NLAggregation/nLMeanAggregation" + trainingFilesNumber + ".csv", nlLm, 3)
 
+  createAggregationCodeProbabilityByMedianCSVFIle("R/CodeAggregation/codeMedianAggregation"+trainingFilesNumber+".csv",codeLm,3)
+  createAggregationNLProbabilityByMedianCSVFIle("R/NLAggregation/nLMedianAggregation" + trainingFilesNumber + ".csv", nlLm, 3)
+
+
+  def getLoweBoundTuple(androidTestingQuartileSet: String, javaQuartileSet: String, swingQuartileSet: String, javascriptFilesListPath: String): (Int, Int) = {
+    val androidCodeList = new JavaNGramCounter().getNGramCount("android", androidTestingQuartileSet, stormedDataPath, 3)
+    val swingCodeList = new JavaNGramCounter().getNGramCount("swing", swingQuartileSet, stormedDataPath, 3)
+    val javaCodeList = new JavaNGramCounter().getNGramCount("java", javaQuartileSet, stormedDataPath, 3)
+    val javascriptCodeList = new JavascriptCodeNGramCounter().getNGramQuartileCount(3, javascriptFilesFolderPath, javascriptFilesListPath)
+
+    val orderedCodeList = (androidCodeList ++ swingCodeList ++ javaCodeList ++ javascriptCodeList).sortWith(_.nGramCount < _.nGramCount)
+    val codeLowerBound = orderedCodeList(0).nGramCount
+    println("code lowerBound = " + codeLowerBound)
+
+
+    val androidNLList = new NaturalLanguageNGramCounter().getNGramCount("android", 3, androidTestingQuartileSet, stormedDataPath)
+    val swingNLList = new NaturalLanguageNGramCounter().getNGramCount("swing", 3, swingQuartileSet, stormedDataPath)
+    val javaNLList = new NaturalLanguageNGramCounter().getNGramCount("java", 3, javaQuartileSet, stormedDataPath)
+    val javascriptNLList = new JavascriptNLNGramCounter().getQuartileNGramCount(3, javascriptFilesFolderPath, javascriptFilesListPath)
+
+    val orderedNLList = (androidNLList ++ swingNLList ++ javaNLList ++ javascriptNLList).sortWith(_.nGramCount < _.nGramCount)
+    val nLLowerBound = orderedNLList(0).nGramCount
+
+    println("nl lowerBound = " + nLLowerBound)
+
+    (codeLowerBound, nLLowerBound)
+
+  }
 
 
   def createAggregationNLProbabilityByMeanCSVFIle(filePath: String, nlLm: TokenizedLM, nGram: Int) = {
 
-    val javascriptNlAggregation: Seq[Double] = new NGramAggregation().aggregateJavascriptNLByMean(nlLm,nGram,javascriptFilesFolderPath,javascriptFilesListPath)
+    val javascriptNlAggregation: Seq[Double] = new NGramAggregation().aggregateJavascriptNLByMean(nlLm, nGram, javascriptFilesFolderPath, javascriptFilesListPath, nlLowerBound)
     println(" javaScript nl tokens list size " + javascriptNlAggregation.size)
 
-    val androidNLAggregationByMean: Seq[Double] = new NGramAggregation().aggregateStormedNLByMean(nlLm, nGram, androidTestingQuartileSet, stormedDataPath)
+    val androidNLAggregationByMean: Seq[Double] = new NGramAggregation().aggregateStormedNLByMean(nlLm, nGram, androidTestingQuartileSet, stormedDataPath, nlLowerBound)
     println(" android nl tokens list size " + androidNLAggregationByMean.size)
 
-    val swingNLAggregationByMean: Seq[Double] = new NGramAggregation().aggregateStormedNLByMean(nlLm, nGram, swingQuartileSet, stormedDataPath)
+    val swingNLAggregationByMean: Seq[Double] = new NGramAggregation().aggregateStormedNLByMean(nlLm, nGram, swingQuartileSet, stormedDataPath, nlLowerBound)
     println(" swing nl tokens list size " + swingNLAggregationByMean.size)
 
-    val javaNLAggregationByMean: Seq[Double] = new NGramAggregation().aggregateStormedNLByMean(nlLm, nGram, javaQuartileSet, stormedDataPath)
+    val javaNLAggregationByMean: Seq[Double] = new NGramAggregation().aggregateStormedNLByMean(nlLm, nGram, javaQuartileSet, stormedDataPath, nlLowerBound)
     println(" java tokens nl list size " + javaNLAggregationByMean.size)
 
 
@@ -63,19 +95,18 @@ object AggregationSetup extends App {
   }
 
 
-
   def createAggregationCodeProbabilityByMeanCSVFIle(filePath: String, javaLm: TokenizedLM, nGram: Int) = {
-    val androidCodeAggregationByMean: Seq[Double] = new NGramAggregation().aggregateStormedJavaCodeByMean(codeLm, 3, androidTestingQuartileSet, stormedDataPath)
+    val androidCodeAggregationByMean: Seq[Double] = new NGramAggregation().aggregateStormedJavaCodeByMean(codeLm, 3, androidTestingQuartileSet, stormedDataPath, codeLowerBound)
     println(" android code tokens list size " + androidCodeAggregationByMean.size)
 
-    val swingCodeAggregationByMean: Seq[Double] = new NGramAggregation().aggregateStormedJavaCodeByMean(codeLm, 3, swingQuartileSet, stormedDataPath)
+    val swingCodeAggregationByMean: Seq[Double] = new NGramAggregation().aggregateStormedJavaCodeByMean(codeLm, 3, swingQuartileSet, stormedDataPath, codeLowerBound)
     println(" swing code tokens list size " + swingCodeAggregationByMean.size)
 
 
-    val javaCodeAggregationByMean: Seq[Double] = new NGramAggregation().aggregateStormedJavaCodeByMean(codeLm, 3, javaQuartileSet, stormedDataPath)
+    val javaCodeAggregationByMean: Seq[Double] = new NGramAggregation().aggregateStormedJavaCodeByMean(codeLm, 3, javaQuartileSet, stormedDataPath, codeLowerBound)
     println(" java code tokens list size " + javaCodeAggregationByMean.size)
 
-    val javascriptCodeAggregation: Seq[Double] = new NGramAggregation().aggregateJavascriptCodeByMean(codeLm ,3,javascriptFilesFolderPath,javascriptFilesListPath)
+    val javascriptCodeAggregation: Seq[Double] = new NGramAggregation().aggregateJavascriptCodeByMean(codeLm, 3, javascriptFilesFolderPath, javascriptFilesListPath, codeLowerBound)
     println(" javaScript code tokens list size " + javascriptCodeAggregation.size)
 
     val csvEntries: Seq[(String, String, String, String)] = Seq(("android", "swing", "java", "javascript")) ++ buildCSVRepresentation(androidCodeAggregationByMean,
@@ -88,22 +119,18 @@ object AggregationSetup extends App {
   }
 
 
-
-
-
-
   def createAggregationNLProbabilityByMedianCSVFIle(filePath: String, nlLm: TokenizedLM, nGram: Int) = {
 
-    val javascriptNlAggregationByMedian: Seq[Double] = new NGramAggregation().aggregateJavascriptNLByMedian(nlLm,nGram,javascriptFilesFolderPath,javascriptFilesListPath)
+    val javascriptNlAggregationByMedian: Seq[Double] = new NGramAggregation().aggregateJavascriptNLByMedian(nlLm, nGram, javascriptFilesFolderPath, javascriptFilesListPath, nlLowerBound)
     println(" javaScript nl tokens list size " + javascriptNlAggregationByMedian.size)
 
-    val androidNLAggregationByMedian: Seq[Double] = new NGramAggregation().aggregateStormedNLByMedian(nlLm, nGram, androidTestingQuartileSet, stormedDataPath)
+    val androidNLAggregationByMedian: Seq[Double] = new NGramAggregation().aggregateStormedNLByMedian(nlLm, nGram, androidTestingQuartileSet, stormedDataPath, nlLowerBound)
     println(" android nl tokens list size " + androidNLAggregationByMedian.size)
 
-    val swingNLAggregationByMedian: Seq[Double] = new NGramAggregation().aggregateStormedNLByMedian(nlLm, nGram, swingQuartileSet, stormedDataPath)
+    val swingNLAggregationByMedian: Seq[Double] = new NGramAggregation().aggregateStormedNLByMedian(nlLm, nGram, swingQuartileSet, stormedDataPath, nlLowerBound)
     println(" swing nl tokens list size " + swingNLAggregationByMedian.size)
 
-    val javaNLAggregationByMedian: Seq[Double] = new NGramAggregation().aggregateStormedNLByMedian(nlLm, nGram, javaQuartileSet, stormedDataPath)
+    val javaNLAggregationByMedian: Seq[Double] = new NGramAggregation().aggregateStormedNLByMedian(nlLm, nGram, javaQuartileSet, stormedDataPath, nlLowerBound)
     println(" java tokens nl list size " + javaNLAggregationByMedian.size)
 
 
@@ -117,19 +144,18 @@ object AggregationSetup extends App {
   }
 
 
-
   def createAggregationCodeProbabilityByMedianCSVFIle(filePath: String, javaLm: TokenizedLM, nGram: Int) = {
-    val androidCodeAggregationByMedian: Seq[Double] = new NGramAggregation().aggregateStormedJavaCodeByMedian(codeLm, 3, androidTestingQuartileSet, stormedDataPath)
+    val androidCodeAggregationByMedian: Seq[Double] = new NGramAggregation().aggregateStormedJavaCodeByMedian(codeLm, 3, androidTestingQuartileSet, stormedDataPath, codeLowerBound)
     println(" android code tokens list size " + androidCodeAggregationByMedian.size)
 
-    val swingCodeAggregationByMedian: Seq[Double] = new NGramAggregation().aggregateStormedJavaCodeByMedian(codeLm, 3, swingQuartileSet, stormedDataPath)
+    val swingCodeAggregationByMedian: Seq[Double] = new NGramAggregation().aggregateStormedJavaCodeByMedian(codeLm, 3, swingQuartileSet, stormedDataPath, codeLowerBound)
     println(" swing code tokens list size " + swingCodeAggregationByMedian.size)
 
 
-    val javaCodeAggregationByMedian: Seq[Double] = new NGramAggregation().aggregateStormedJavaCodeByMedian(codeLm, 3, javaQuartileSet, stormedDataPath)
+    val javaCodeAggregationByMedian: Seq[Double] = new NGramAggregation().aggregateStormedJavaCodeByMedian(codeLm, 3, javaQuartileSet, stormedDataPath, codeLowerBound)
     println(" java code tokens list size " + javaCodeAggregationByMedian.size)
 
-    val javascriptCodeAggregation: Seq[Double] = new NGramAggregation().aggregateJavascriptCodeByMedian(codeLm ,3,javascriptFilesFolderPath,javascriptFilesListPath)
+    val javascriptCodeAggregation: Seq[Double] = new NGramAggregation().aggregateJavascriptCodeByMedian(codeLm, 3, javascriptFilesFolderPath, javascriptFilesListPath, codeLowerBound)
     println(" javaScript code tokens list size " + javascriptCodeAggregation.size)
 
     val csvEntries: Seq[(String, String, String, String)] = Seq(("android", "swing", "java", "javascript")) ++ buildCSVRepresentation(androidCodeAggregationByMedian,
@@ -140,10 +166,6 @@ object AggregationSetup extends App {
     csvEntries.foreach(entry => listBufferWriter.write(s"${entry._1},${entry._2},${entry._3},${entry._4}\n"))
     listBufferWriter.close()
   }
-
-
-
-
 
 
   def createJavaLM(nGram: Int, fileNumber: Int): TokenizedLM = {

@@ -1,8 +1,6 @@
 package inf.usi.ch.agragation
 
-import inf.usi.ch.javaLMTokenizer.JavaNGramCounter
-import inf.usi.ch.javascript.{JavascriptCodeNGramCounter, JavascriptNLNGramCounter}
-import inf.usi.ch.naturalLanguageModel.NaturalLanguageNGramCounter
+
 import inf.usi.ch.util.NGramCountXFile
 
 /**
@@ -28,7 +26,7 @@ class NGramQuartile {
     sortedList
   }
 
-  private def getIntersection(codeCountList: Seq[NGramCountXFile], nLCountList: Seq[NGramCountXFile]) = {
+  def getIntersection(codeCountList: Seq[NGramCountXFile], nLCountList: Seq[NGramCountXFile]) = {
     val orderedCodeList = orderNGramCountXFileList(codeCountList)
     val orderedNLList = orderNGramCountXFileList(nLCountList)
 
@@ -38,22 +36,6 @@ class NGramQuartile {
     intersection
   }
 
-  def getStormedQuartileFiles(stormedDataPath: String, filesListPath: String, nGram: Int, numberOfFiles: Int): Seq[NGramCountXFile] = {
-    val nGramCounter = new JavaNGramCounter
-    val nlCounter = new NaturalLanguageNGramCounter
-    val codeCountList = nGramCounter.getNGramCount(filesListPath, numberOfFiles, stormedDataPath, nGram)
-    val nLCountList = nlCounter.getNGramCount(nGram, numberOfFiles, filesListPath, stormedDataPath)
 
-    getIntersection(codeCountList,nLCountList)
-
-  }
-
-  def getJavascriptQuartileFiles(filesPath: String, nGram: Int): Seq[NGramCountXFile] = {
-    val javascriptCodeNGramCounter = new JavascriptCodeNGramCounter
-    val javascriptNLNGramCounter = new JavascriptNLNGramCounter
-    val javaScriptCodeCountList = javascriptCodeNGramCounter.getNGramCount(nGram, filesPath)
-    val javascriptNLCountList = javascriptNLNGramCounter.getNGramCount(nGram, filesPath)
-    getIntersection(javaScriptCodeCountList,javascriptNLCountList)
-  }
 
 }

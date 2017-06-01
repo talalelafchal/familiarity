@@ -49,7 +49,7 @@ trait JavascriptEvaluator {
 
   protected def computeProbability(nGram: NGram, lm: TokenizedLM): Probability = {
     val familiarity = lm.processLog2Probability(nGram)
-    println(nGram.foreach(x => print(" " + x + " ")) + "  -> " + familiarity)
+    //println(nGram.foreach(x => print(" " + x + " ")) + "  -> " + familiarity)
     familiarity
   }
 

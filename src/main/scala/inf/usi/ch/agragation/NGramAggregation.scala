@@ -18,13 +18,13 @@ class NGramAggregation {
 
   private def median(slicedList: List[List[Double]]): Double = {
     val sumList: Seq[Double] = slicedList.map(list => list.sum)
-    val sortedList = sumList.sortWith(_<_)
-    val med = sortedList.length/2
+    val sortedList = sumList.sortWith(_ < _)
+    val med = sortedList.length / 2
     if (sortedList.size % 2 != 0) {
-      val median  = sortedList(med)
+      val median = sortedList(med)
       return median
     }
-    val median = (sortedList(med)+ sortedList(med-1)) / 2.0
+    val median = (sortedList(med) + sortedList(med - 1)) / 2.0
     median
   }
 
@@ -48,82 +48,58 @@ class NGramAggregation {
       return median(slicedList)
     }
   }
-  
 
 
-  def aggregateJavascriptCodeByMean(codeLm: TokenizedLM, nGram: Int, filesFolderPath: String, filesListPath: String): Seq[Double] = {
-    val allFilesProbList: Seq[Seq[Double]] = new JavascriptCodeEvaluator().getQuartileProbList(codeLm,nGram,filesFolderPath, filesListPath)
-    val orderedAllFilesProbList = allFilesProbList.sortWith(_.size<_.size)
-    // the list is ordered, so the smallest list is the first
-    val lowerBound = orderedAllFilesProbList(0).size
-    val meanList: Seq[Double] = orderedAllFilesProbList.map(probabilitiesListXFile => getMean(probabilitiesListXFile, lowerBound))
-    meanList
-  }
-
-
-  def aggregateJavascriptCodeByMedian(codeLm: TokenizedLM, nGram: Int, filesFolderPath: String, filesListPath: String): Seq[Double] = {
-    val allFilesProbList: Seq[Seq[Double]] = new JavascriptCodeEvaluator().getQuartileProbList(codeLm,nGram,filesFolderPath, filesListPath)
-    val orderedAllFilesProbList = allFilesProbList.sortWith(_.size<_.size)
-    // the list is ordered, so the smallest list is the first
-    val lowerBound = orderedAllFilesProbList(0).size
-    val medianList: Seq[Double] = orderedAllFilesProbList.map(probabilitiesListXFile => getMedian(probabilitiesListXFile, lowerBound))
-    medianList
-  }
-
-
-  def aggregateJavascriptNLByMean(nlLm: TokenizedLM, nGram: Int, filesFolderPath: String, filesListPath: String): Seq[Double] = {
-    val allFilesProbList: Seq[Seq[Double]] = new JavascriptNLEvaluator().getQuartileProbList(nlLm,nGram,filesFolderPath, filesListPath)
-    val orderedAllFilesProbList = allFilesProbList.sortWith(_.size<_.size)
-    // the list is ordered, so the smallest list is the first
-    val lowerBound = orderedAllFilesProbList(0).size
-    val meanList: Seq[Double] = orderedAllFilesProbList.map(probabilitiesListXFile => getMean(probabilitiesListXFile, lowerBound))
-    meanList
-  }
-
-  def aggregateJavascriptNLByMedian(nlLm: TokenizedLM, nGram: Int, filesFolderPath: String, filesListPath: String): Seq[Double] = {
-    val allFilesProbList: Seq[Seq[Double]] = new JavascriptNLEvaluator().getQuartileProbList(nlLm,nGram,filesFolderPath, filesListPath)
-    val orderedAllFilesProbList = allFilesProbList.sortWith(_.size<_.size)
-    // the list is ordered, so the smallest list is the first
-    val lowerBound = orderedAllFilesProbList(0).size
-    val medianList: Seq[Double] = orderedAllFilesProbList.map(probabilitiesListXFile => getMedian(probabilitiesListXFile, lowerBound))
-    medianList
-  }
-
-
-
-  def aggregateStormedJavaCodeByMean(codeLm: TokenizedLM, nGram: Int, androidTestingQuartileSet: String, stormedDataPath: String): Seq[Double] = {
-    val allFilesProbList: Seq[Seq[Double]] = new JavaLMEvaluator().getQuartileProbListFiles(codeLm, nGram, androidTestingQuartileSet, stormedDataPath)
-    // the list is ordered, so the smallest list is the first
-    val lowerBound = allFilesProbList(0).size
+  def aggregateJavascriptCodeByMean(codeLm: TokenizedLM, nGram: Int, filesFolderPath: String, filesListPath: String, lowerBound : Int): Seq[Double] = {
+    val allFilesProbList: Seq[Seq[Double]] = new JavascriptCodeEvaluator().getQuartileProbList(codeLm, nGram, filesFolderPath, filesListPath)
     val meanList: Seq[Double] = allFilesProbList.map(probabilitiesListXFile => getMean(probabilitiesListXFile, lowerBound))
     meanList
   }
 
 
-
-  def aggregateStormedJavaCodeByMedian(codeLm: TokenizedLM, nGram: Int, androidTestingQuartileSet: String, stormedDataPath: String): Seq[Double] = {
-    val allFilesProbList: Seq[Seq[Double]] = new JavaLMEvaluator().getQuartileProbListFiles(codeLm, nGram, androidTestingQuartileSet, stormedDataPath)
-    // the list is ordered, so the smallest list is the first
-    val lowerBound = allFilesProbList(0).size
+  def aggregateJavascriptCodeByMedian(codeLm: TokenizedLM, nGram: Int, filesFolderPath: String, filesListPath: String, lowerBound :Int): Seq[Double] = {
+    val allFilesProbList: Seq[Seq[Double]] = new JavascriptCodeEvaluator().getQuartileProbList(codeLm, nGram, filesFolderPath, filesListPath)
     val medianList: Seq[Double] = allFilesProbList.map(probabilitiesListXFile => getMedian(probabilitiesListXFile, lowerBound))
     medianList
   }
 
 
-
-  def aggregateStormedNLByMean(nlLm: TokenizedLM, nGram: Int, androidTestingQuartileSet: String, stormedDataPath: String): Seq[Double] = {
-    val allFilesProbList: Seq[Seq[Double]] = new NaturalLanguageModelEvaluator().getQuartileProbListFiles(nlLm, nGram, androidTestingQuartileSet, stormedDataPath)
-    val orderedList = allFilesProbList.sortWith(_.size<_.size)
-    val lowerBound = orderedList(0).size
-    val meanList: Seq[Double] = orderedList.map(probabilitiesListXFile => getMean(probabilitiesListXFile, lowerBound))
+  def aggregateJavascriptNLByMean(nlLm: TokenizedLM, nGram: Int, filesFolderPath: String, filesListPath: String,lowerBound:Int): Seq[Double] = {
+    val allFilesProbList: Seq[Seq[Double]] = new JavascriptNLEvaluator().getQuartileProbList(nlLm, nGram, filesFolderPath, filesListPath)
+    val meanList: Seq[Double] = allFilesProbList.map(probabilitiesListXFile => getMean(probabilitiesListXFile, lowerBound))
     meanList
   }
 
-  def aggregateStormedNLByMedian(nlLm: TokenizedLM, nGram: Int, androidTestingQuartileSet: String, stormedDataPath: String): Seq[Double] = {
+  def aggregateJavascriptNLByMedian(nlLm: TokenizedLM, nGram: Int, filesFolderPath: String, filesListPath: String, lowerBound:Int): Seq[Double] = {
+    val allFilesProbList: Seq[Seq[Double]] = new JavascriptNLEvaluator().getQuartileProbList(nlLm, nGram, filesFolderPath, filesListPath)
+    val medianList: Seq[Double] = allFilesProbList.map(probabilitiesListXFile => getMedian(probabilitiesListXFile, lowerBound))
+    medianList
+  }
+
+
+  def aggregateStormedJavaCodeByMean(codeLm: TokenizedLM, nGram: Int, androidTestingQuartileSet: String, stormedDataPath: String, lowerBound: Int): Seq[Double] = {
+    val allFilesProbList: Seq[Seq[Double]] = new JavaLMEvaluator().getQuartileProbListFiles(codeLm, nGram, androidTestingQuartileSet, stormedDataPath)
+    val meanList: Seq[Double] = allFilesProbList.map(probabilitiesListXFile => getMean(probabilitiesListXFile, lowerBound))
+    meanList
+  }
+
+
+  def aggregateStormedJavaCodeByMedian(codeLm: TokenizedLM, nGram: Int, androidTestingQuartileSet: String, stormedDataPath: String, lowerBound: Int): Seq[Double] = {
+    val allFilesProbList: Seq[Seq[Double]] = new JavaLMEvaluator().getQuartileProbListFiles(codeLm, nGram, androidTestingQuartileSet, stormedDataPath)
+    val medianList: Seq[Double] = allFilesProbList.map(probabilitiesListXFile => getMedian(probabilitiesListXFile, lowerBound))
+    medianList
+  }
+
+
+  def aggregateStormedNLByMean(nlLm: TokenizedLM, nGram: Int, androidTestingQuartileSet: String, stormedDataPath: String, lowerBound: Int): Seq[Double] = {
     val allFilesProbList: Seq[Seq[Double]] = new NaturalLanguageModelEvaluator().getQuartileProbListFiles(nlLm, nGram, androidTestingQuartileSet, stormedDataPath)
-    val orderedList = allFilesProbList.sortWith(_.size<_.size)
-    val lowerBound = orderedList(0).size
-    val medianList: Seq[Double] = orderedList.map(probabilitiesListXFile => getMedian(probabilitiesListXFile, lowerBound))
+    val meanList: Seq[Double] = allFilesProbList.map(probabilitiesListXFile => getMean(probabilitiesListXFile, lowerBound))
+    meanList
+  }
+
+  def aggregateStormedNLByMedian(nlLm: TokenizedLM, nGram: Int, androidTestingQuartileSet: String, stormedDataPath: String, lowerBound: Int): Seq[Double] = {
+    val allFilesProbList: Seq[Seq[Double]] = new NaturalLanguageModelEvaluator().getQuartileProbListFiles(nlLm, nGram, androidTestingQuartileSet, stormedDataPath)
+    val medianList: Seq[Double] = allFilesProbList.map(probabilitiesListXFile => getMedian(probabilitiesListXFile, lowerBound))
     medianList
   }
 

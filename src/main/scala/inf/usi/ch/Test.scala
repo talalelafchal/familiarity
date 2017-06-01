@@ -53,7 +53,7 @@ object Test extends App {
 //  val javaCodeAggregationByMedian: Seq[Double] = new NGramAggregation().aggregateStormedJavaCodeByMedian(codeLm, 3, javaQuartileSet, stormedDataPath)
 //
 //
-  val javascriptCodeAggregation: Seq[Double] = new NGramAggregation().aggregateJavascriptCodeByMedian(codeLm ,3,javascriptFilesFolderPath,javascriptFilesListPath)
+//  val javascriptCodeAggregation: Seq[Double] = new NGramAggregation().aggregateJavascriptCodeByMedian(codeLm ,3,javascriptFilesFolderPath,javascriptFilesListPath)
 //
 
 

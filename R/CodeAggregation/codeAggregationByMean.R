@@ -30,7 +30,6 @@ p10 <- plot_ly(type = 'box', y = data10$android,
     yaxis = list(range = c(0, -800)))
 
 
-p10
 
 p100 <- plot_ly(type = 'box', y = data100$android,
                 line = list(color = 'rgb(250,25,25)'),

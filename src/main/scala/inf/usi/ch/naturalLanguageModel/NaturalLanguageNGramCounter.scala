@@ -11,12 +11,20 @@ import scala.io.Source
   */
 class NaturalLanguageNGramCounter extends NaturalLanguageModelEvaluator{
 
-  def getNGramCount(nGram: Int, numberOfFiles: Int, testListFileName: String, stormedDataPath: String):Seq[NGramCountXFile] = {
+  def getNGramCount( language : String,nGram: Int, numberOfFiles: Int, testListFileName: String, stormedDataPath: String):Seq[NGramCountXFile] = {
     val testingListOfAllFilesName = new File(testListFileName)
     val testingSet: List[String] = Source.fromFile(testingListOfAllFilesName).getLines().toList.take(numberOfFiles)
-    val nGramList = testingSet.map(file => NGramCountXFile(file, getNGram(nGram,file,stormedDataPath)))
+    val nGramList = testingSet.map(file => NGramCountXFile(language,file, getNGram(nGram,file,stormedDataPath)))
     nGramList
   }
+
+  def getNGramCount( language : String,nGram: Int, testListFileName: String, stormedDataPath: String):Seq[NGramCountXFile] = {
+    val testingListOfAllFilesName = new File(testListFileName)
+    val testingSet: List[String] = Source.fromFile(testingListOfAllFilesName).getLines().toList
+    val nGramList = testingSet.map(file => NGramCountXFile(language,file, getNGram(nGram,file,stormedDataPath)))
+    nGramList
+  }
+
 
   private def getNGram(nGram: Int, stormedDataPath: String, fileName: String): Int = {
     val listNl: Seq[String] = jsonFileToText(stormedDataPath, fileName)

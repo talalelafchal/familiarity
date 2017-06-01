@@ -23,12 +23,24 @@ class JavaNGramCounter extends JavaLMEvaluator {
     nGramsCount
   }
 
-  def getNGramCount(testListFileName: String, numberOfFiles: Integer, stormedDataPath: String, nGram: Int): Seq[NGramCountXFile] = {
+  def getNGramCount(language: String, testListFileName: String, numberOfFiles: Integer, stormedDataPath: String, nGram: Int): Seq[NGramCountXFile] = {
     val testingListOfAllFileNames = new File(testListFileName)
     val testingSet: List[String] = Source.fromFile(testingListOfAllFileNames).getLines().take(numberOfFiles).toList
-    val listOfUnitsHASTNodes: Seq[(Seq[HASTNode],String)] = testingSet.map(file => (jsonFileToUnitsHASTNodes(file, stormedDataPath),file))
+    val listOfUnitsHASTNodes: Seq[(Seq[HASTNode], String)] = testingSet.map(file => (jsonFileToUnitsHASTNodes(file, stormedDataPath), file))
 
-    val nGramCount: Seq[NGramCountXFile] = listOfUnitsHASTNodes.map { hASTNodeSeq =>   NGramCountXFile(hASTNodeSeq._2,getNGram(hASTNodeSeq._1, nGram)) }
+    val nGramCount: Seq[NGramCountXFile] = listOfUnitsHASTNodes.map { hASTNodeSeq => NGramCountXFile(language,hASTNodeSeq._2, getNGram(hASTNodeSeq._1, nGram)) }
+    nGramCount
+
+
+  }
+
+
+  def getNGramCount(language: String, testListFileName: String, stormedDataPath: String, nGram: Int): Seq[NGramCountXFile] = {
+    val testingListOfAllFileNames = new File(testListFileName)
+    val testingSet: List[String] = Source.fromFile(testingListOfAllFileNames).getLines().toList
+    val listOfUnitsHASTNodes: Seq[(Seq[HASTNode], String)] = testingSet.map(file => (jsonFileToUnitsHASTNodes(file, stormedDataPath), file))
+
+    val nGramCount: Seq[NGramCountXFile] = listOfUnitsHASTNodes.map { hASTNodeSeq => NGramCountXFile(language,hASTNodeSeq._2, getNGram(hASTNodeSeq._1, nGram)) }
     nGramCount
 
 
