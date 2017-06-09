@@ -1,0 +1,96 @@
+Introduction:
+Bluetooth:The Android platform supports Bluetooth connection, which allows exchanging data with other Bluetooth devices. The application framework provides access to the Bluetooth functionality through the Android Bluetooth APIs connect to other Bluetooth devices.
+All of the Bluetooth APIs is available in the Android Bluetooth package.
+Here is a summary of the classes you will need to create as below:
+BluetoothAdapter	Represents the local Bluetooth adapter (Bluetooth radio).
+BluetoothDevice	Represents a remote Bluetooth device, query information such as its name, address, class, and bonding state.
+BluetoothSocket	Represents the interface for a Bluetooth socket (similar to a TCP Socket).
+BluetoothServerSocket	Represents an open server socket that listens for incoming requests (similar to a TCP ServerSocket).
+BluetoothClass	Describes the general characteristics and capabilities of a Bluetooth device.
+In our example we are going to create an application which get the information about the Bluetooth connections is activates and deactivates Bluetooth.
+
+Step 1 Check Bluetooth Connection
+
+First we need check Bluetooth connection. So Create new class named Connections.
+public class Connections {
+
+    private static boolean state = false;
+
+    public static boolean blueTooth() {
+
+        BluetoothAdapter bluetooth = BluetoothAdapter.getDefaultAdapter();
+        if (!bluetooth.isEnabled()) {
+            System.out.println("Bluetooth is Disable...");
+            state = true;
+        } else if (bluetooth.isEnabled()) {
+            String address = bluetooth.getAddress();
+            String name = bluetooth.getName();
+            System.out.println(name + " : " + address);
+            state = false;
+        }
+        return state;
+    }
+
+}
+
+Step 2 MainActivity.java file
+
+Now when we got the response from the Connections class in our Main Activity with BT in Off state we get dialog for On BT.
+Then we create new method into main activity class for the setting up all the Bluetooth information into Text View.
+copytextpop-up
+
+public class MainActivity extends Activity {
+
+    private static final int REQUEST_ENABLE_BT = 12;
+    private TextView out;
+    private BluetoothAdapter adapter;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main);
+
+        out = (TextView) findViewById(R.id.tvBluetoothInfo);
+        setBluetoothData();
+
+        if (Connections.blueTooth()) {
+            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // TODO Auto-generated method stub
+        super.onActivityResult(requestCode, resultCode, data);
+        out.setText("");
+        setBluetoothData();
+    }
+
+    private void setBluetoothData() {
+
+        // Getting the Bluetooth adapter
+        adapter = BluetoothAdapter.getDefaultAdapter();
+        out.append("\nAdapter: " + adapter.toString() + "\n\nName: " + adapter.getName() + "\nAddress: " + adapter.getAddress());
+
+        // Check for Bluetooth support in the first place
+        // Emulator doesn't support Bluetooth and will return null
+
+        if (adapter == null) {
+            Toast.makeText(this, "Bluetooth NOT supported. Aborting.",
+            Toast.LENGTH_LONG).show();
+        }
+
+        // Starting the device discovery
+        out.append("\n\nStarting discovery...");
+        adapter.startDiscovery();
+        out.append("\nDone with discovery...\n");
+
+        // Listing paired devices
+        out.append("\nDevices Pared:");
+        Set<BluetoothDevice> devices = adapter.getBondedDevices();
+        for (BluetoothDevice device : devices) {
+            out.append("\nFound device: " + device.getName() + " Add: " + device.getAddress());
+        }
+    }
+}

@@ -1,0 +1,253 @@
+Bluetooth has become a very popular technology, especially on mobile devices. It's a technology to discover and transfer data between nearby devices. Virtually every modern mobile device has Bluetooth capabilities these days. If you want to make an app interface with another Bluetooth enabled device, ranging from phones to speakers, you must know how to use Android's Bluetooth API.
+
+In this tutorial, we will be making an app that is similar to the built-in Bluetooth app in Android's settings. It will include the following features:
+
+enable Bluetooth on a device
+display a list of paired devices
+discover and list nearby Bluetooth devices
+
+Enabling Bluetooth
+
+Before we can enable Bluetooth on an Android device, we need to request the necessary permissions. We do this in the app's manifest. The BLUETOOTH permission allows our app to connect, disconnect, and transfer data with another Bluetooth device. The BLUETOOTH_ADMIN permission allows our app to discover new Bluetooth devices and change the device's Bluetooth settings.
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.tutsplus.matt.bluetoothscanner" >
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    We will use the Bluetooth adapter to interface with Bluetooth. We instantiate the adapter in the ListActivity class. If the adapter is null, this means Bluetooth is not supported by the device and the app will not work on the current device. We handle this situation by showing an alert dialog to the user and exiting the app.
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+    ...
+        BTAdapter = BluetoothAdapter.getDefaultAdapter();
+        // Phone does not support Bluetooth so let the user know and exit.
+        if (BTAdapter == null) {
+            new AlertDialog.Builder(this)
+                    .setTitle("Not compatible")
+                    .setMessage("Your phone does not support Bluetooth")
+                    .setPositiveButton("Exit", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            System.exit(0);
+                        }
+                    })
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show();
+        }
+    }
+
+    If Bluetooth is available on the device, we need to enable it. To enable Bluetooth, we start an intent provided to us by the Android SDK, BluetoothAdapter.ACTION_REQUEST_ENABLE. This will present a dialog to the user, asking them for permission to enable Bluetooth on the device. REQUEST_BLUETOOTH is a static integer we set to identify the activity request.
+    public class ListActivity extends ActionBarActivity implements DeviceListFragment.OnFragmentInteractionListener  {
+        public static int REQUEST_BLUETOOTH = 1;
+        ...
+        protected void onCreate(Bundle savedInstanceState) {
+        ...
+            if (!BTAdapter.isEnabled()) {
+                Intent enableBT = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                startActivityForResult(enableBT, REQUEST_BLUETOOTH);
+            }
+        }
+    }
+
+    Obtaining a List of Paired Devices
+
+In this step, we scan for paired Bluetooth devices and display them in a list. In the context of a mobile device, a Bluetooth device can either be:
+
+unknown
+paired
+connected
+It is important to know the difference between a paired and a connected Bluetooth device. Paired devices are aware of each other’s existence and share a link key, which can be used to authenticate, resulting in a connection. Devices are automatically paired once an encrypted connection is established.
+
+Connected devices share an RFCOMM channel, allowing them to send and receive data. A device may have many paired devices, but it can only be connected to one device at a time.
+
+Bluetooth devices are represented by the BluetoothDevice object. A list of paired devices can be obtained by invoking the getBondedDevices() method, which returns a set of BluetoothDevice objects. We invoke the getBondedDevices() method in the DeviceListFragment's onCreate() method.
+public void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+
+Log.d("DEVICELIST", "Super called for DeviceListFragment onCreate\n");
+deviceItemList = new ArrayList<DeviceItem>();
+
+Set<BluetoothDevice> pairedDevices = bTAdapter.getBondedDevices();
+}
+We use the getName() and getAddress()  methods to obtain more information about the Bluetooth devices. The getName() method returns the public identifier of the device while the getAddress() method returns the device's MAC address, an identifier uniquely identifying the device.
+
+Now that we have a list of the paired devices, we create a DeviceItem object for each BluetoothDevice object. We then add each DeviceItem object to an array named deviceItemList. We'll use this array to display the list of paired Bluetooth devices in our app. The code for displaying the list of DeviceItem objects is already present in the starter project.
+if (pairedDevices.size() > 0) {
+    for (BluetoothDevice device : pairedDevices) {
+        DeviceItem newDevice= new DeviceItem(device.getName(),device.getAddress(),"false");
+        deviceItemList.add(newDevice);
+    }
+}
+3. Discover Nearby Bluetooth Devices
+
+The next step is to discover devices the device isn't paired with yet, unknown devices, and add them to the list of paired devices. We do this when the user taps the scan button. The code to handle this is located in DeviceListFragment.
+
+We first need to make a BroadcastReceiver and override the onReceive() method. The onReceive() method is invoked whenever a a Bluetooth device is found.
+
+The onReceive() method takes an intent as its second argument. We can check what kind of intent is broadcasting with by invoking getAction(). If the action is BluetoothDevice.ACTION_FOUND, then we know we have found a Bluetooth device. When this occurs, we create a DeviceItem object using the device's name and MAC address. Finally, we add the DeviceItem object to the ArrayAdapter to display it in our app.
+public class DeviceListFragment extends Fragment implements AbsListView.OnItemClickListener{
+    ...
+    private final BroadcastReceiver bReciever = new BroadcastReceiver() {
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (BluetoothDevice.ACTION_FOUND.equals(action)) {
+                BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+                // Create a new device item
+                DeviceItem newDevice = new DeviceItem(device.getName(), device.getAddress(), "false");
+                // Add it to our adapter
+                mAdapter.add(newDevice);
+            }
+        }
+    };
+}
+When the scan button is toggled on, we simply need to register the receiver we just made and  invoke the startDiscovery() method. If the scan button is toggled off, we unregister the receiver and invoke cancelDiscovery(). Keep in mind that discovery takes up a lot of resources. If your application connects with another Bluetooth device, you should always cancel discovery prior to connecting.
+
+We also clear the ArrayAdapter object, mAdapter, when discovery begins. When we start scanning, we don't want to include old devices that may no longer be in range of the device.
+public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                         Bundle savedInstanceState) {
+    View view = inflater.inflate(R.layout.fragment_deviceitem_list, container, false);
+    ToggleButton scan = (ToggleButton) view.findViewById(R.id.scan);
+    ...
+    scan.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
+            if (isChecked) {
+                mAdapter.clear();
+                getActivity().registerReceiver(bReciever, filter);
+                bTAdapter.startDiscovery();
+            } else {
+                getActivity().unregisterReceiver(bReciever);
+                bTAdapter.cancelDiscovery();
+            }
+        }
+    });
+}
+That's it. We have finished our Bluetooth scanner.
+
+Connecting to a Device
+
+Bluetooth connections work like any other connection. There is a server and a client, which communicate via RFCOMM sockets. On Android, RFCOMM sockets are represented as a BluetoothSocket object. Fortunately for us, most of the technical code for servers is handled by the Android SDK and available through the Bluetooth API.
+
+Connecting as a client is simple. Your first obtain the RFCOMM socket from the desired BluetoothDevice by calling createRfcommSocketToServiceRecord(), passing in a UUID, a 128-bit value that you create. The UUID is similar to a port number.
+
+For example, let's assume you are making a chat app that uses Bluetooth to chat with other  nearby users. To find other users to chat with, you would want to look for other devices with your chat app installed. To do this, we would look for the UUID in the list of services of the nearby devices. Using a UUID to listen and accept Bluetooth connections automatically adds that UUID to the phone's list of services, or service discovery protocol.
+
+Once the BluetoothSocket is created, you call connect() on the BluetoothSocket. This will initialize a connection with the BluetoothDevice through the RFCOMM socket. Once our device is connected, we can use the socket to exchange data with the connected device. Doing this is similar to any standard server implementation.
+
+Maintaining a Bluetooth connection is costly so we need to close the socket when we no longer need it. To close the socket, we call close() on the BluetoothSocket.
+
+The following code snippet shows how to connect with a given BluetoothDevice:
+public class ConnectThread extends Thread{
+    private BluetoothSocket bTSocket;
+
+    public boolean connect(BluetoothDevice bTDevice, UUID mUUID) {
+        BluetoothSocket temp = null;
+        try {
+            temp = bTDevice.createRfcommSocketToServiceRecord(mUUID);
+        } catch (IOException e) {
+            Log.d("CONNECTTHREAD","Could not create RFCOMM socket:" + e.toString());
+            return false;
+        }
+        try {
+            bTSocket.connect();
+        } catch(IOException e) {
+            Log.d("CONNECTTHREAD","Could not connect: " + e.toString());
+            try {
+                bTSocket.close();
+            } catch(IOException close) {
+                Log.d("CONNECTTHREAD", "Could not close connection:" + e.toString());
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean cancel() {
+        try {
+            bTSocket.close();
+        } catch(IOException e) {
+            Log.d("CONNECTTHREAD","Could not close connection:" + e.toString());
+            return false;
+        }
+        return true;
+    }
+}
+Connecting as a server is slightly more difficult. First, from your BluetoothAdapter, you must get a BluetoothServerSocket, which will be used to listen for a connection. This is only used to obtain the connection's shared RFCOMM socket. Once the connection is established, the server socket is no longer need and can be closed by calling close() on it.
+
+We instantiate a server socket by calling listenUsingRfcommWithServiceRecord(String name, UUID mUUID). This method takes two parameters, a name of type String and a unique identifier of type UUID. The name parameter is the name we give the service when it is added to the phone's SDP (Service Discovery Protocol) entry. The unique identifier should match the UUID the client trying to connect is using.
+
+We then call accept() on the newly obtained BluetoothServerSocket to wait for a connection. When the accept() call returns something that isn't null, we assign it to our BluetoothSocket, which we can then use to exchange data with the connected device.
+
+The following code snippet shows how to accept a connection as a server:
+public class ServerConnectThread extends Thread{
+    private BluetoothSocket bTSocket;
+
+    public ServerConnectThread() { }
+
+    public void acceptConnect(BluetoothAdapter bTAdapter, UUID mUUID) {
+        BluetoothServerSocket temp = null;
+        try {
+            temp = bTAdapter.listenUsingRfcommWithServiceRecord("Service_Name", mUUID);
+        } catch(IOException e) {
+            Log.d("SERVERCONNECT", "Could not get a BluetoothServerSocket:" + e.toString());
+        }
+        while(true) {
+            try {
+                bTSocket = temp.accept();
+            } catch (IOException e) {
+                Log.d("SERVERCONNECT", "Could not accept an incoming connection.");
+                break;
+            }
+            if (bTSocket != null) {
+                try {
+                    temp.close();
+                } catch (IOException e) {
+                    Log.d("SERVERCONNECT", "Could not close ServerSocket:" + e.toString());
+                }
+                break;
+            }
+        }
+    }
+
+    public void closeConnect() {
+        try {
+            bTSocket.close();
+        } catch(IOException e) {
+            Log.d("SERVERCONNECT", "Could not close connection:" + e.toString());
+        }
+    }
+}
+Reading and writing to the connection is done using streams, InputStream and OutputStream. We can get a reference to these streams by calling getInputStream() and getOutputStream() on the BluetoothSocket. To read from and write to these streams, we call read() and write() respectively.
+
+The following code snippet shows how to do this for a single integer:
+public class ManageConnectThread extends Thread {
+
+    public ManageConnectThread() { }
+
+    public void sendData(BluetoothSocket socket, int data) throws IOException{
+        ByteArrayOutputStream output = new ByteArrayOutputStream(4);
+        output.write(data);
+        OutputStream outputStream = socket.getOutputStream();
+        outputStream.write(output.toByteArray());
+    }
+
+    public int receiveData(BluetoothSocket socket) throws IOException{
+        byte[] buffer = new byte[4];
+        ByteArrayInputStream input = new ByteArrayInputStream(buffer);
+        InputStream inputStream = socket.getInputStream();
+        inputStream.read(buffer);
+        return input.read();
+    }
+}
+You can find both examples in the finished project on GitHub.
+
+Conclusion
+
+We have successfully made our own Bluetooth scanner and learned the following:
+
+request the necessary Bluetooth permissions
+enable Bluetooth on your phone
+get a list of paired devices
+scan and display a list of nearby Bluetooth devices
+establish a Bluetooth connection between two devices
+send and receive data over a Bluetooth connection
+Feel free to use the code in the finished project on GitHub and modify it in your own applications.

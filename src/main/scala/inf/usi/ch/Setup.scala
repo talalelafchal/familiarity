@@ -15,10 +15,6 @@ object Setup extends App {
 
   val stormedDataPath = "/Users/Talal/Tesi/stormed-dataset"
 
-  def createJavaLM(nGram: Int, fileNumber: Int): TokenizedLM = {
-    val lm = new JavaLM().train(nGram, "/Users/Talal/Tesi/familiarity/AndroidSets/androidTrainingList.txt", stormedDataPath, fileNumber)
-    lm
-  }
 
 
   def buildCSVRepresentation(doubleList1: Seq[Double], doubleList2: Seq[Double], doubleList3: Seq[Double], doubleList4: Seq[Double]): Seq[(String, String, String, String)] = {
@@ -123,6 +119,10 @@ object Setup extends App {
     val lm = new NaturalLanguageModel().train(nGram, "/Users/Talal/Tesi/familiarity/AndroidSets/androidTrainingList.txt", stormedDataPath, fileNumber)
     lm
   }
+  def createJavaLM(nGram: Int, fileNumber: Int): TokenizedLM = {
+    val lm = new JavaLM().train(nGram, "/Users/Talal/Tesi/familiarity/AndroidSets/androidTrainingList.txt", stormedDataPath, fileNumber)
+    lm
+  }
 
 
   def createNaturalLanguageProbabilityCSVFile(filePath: String, naturalLanguageLm: TokenizedLM, nGram: Int) = {
@@ -174,11 +174,11 @@ object Setup extends App {
     writeTopLeastToFile("JavaScriptNlTopLeast/javascriptLeastLM10.txt", javascriptLeast)
 
   }
-  //  val codeLm = createJavaLM(3, 100000)
-   // createCodeProbabilityCSVFIle("AndroidSwingJavaJavascriptFormattedPunctuationCSVFiles/java100000.csv", codeLm, 3)
+    val codeLm = createJavaLM(3, 1)
+    createCodeProbabilityCSVFIle("test.csv", codeLm, 3)
     //createJavaTopLeastCSVFile(lm, 3)
 
-    val naturalLanguageLm = createNaturalLanguageLM(3, 10)
+  //  val naturalLanguageLm = createNaturalLanguageLM(3, 10)
     //createNaturalLanguageProbabilityCSVFile("NLAndroidSwingJavaJavascriptCSVFiles/nl100000.csv", naturalLanguageLm, 3)
 
 //  val javascriptDistributionList = JavascriptNLWordsDistribution.getWordsDistribution("JavaScriptFiles")
@@ -188,7 +188,7 @@ object Setup extends App {
 //    writeDistributionToFile("Distribution/androidWordsFrequencyFiltered.csv",androidDistributionList)
 
 
-     createTopLeastJavaScriptNLCSVFile(naturalLanguageLm,3)
+ //    createTopLeastJavaScriptNLCSVFile(naturalLanguageLm,3)
 
 
 

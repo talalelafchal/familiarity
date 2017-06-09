@@ -15,7 +15,7 @@ import scala.io.Source
   */
 class NaturalLanguageModel extends NaturalLanguage{
 
-  private val tokenizerFactory = IndoEuropeanTokenizerFactory.INSTANCE
+  protected val tokenizerFactory = IndoEuropeanTokenizerFactory.INSTANCE
 
 
 

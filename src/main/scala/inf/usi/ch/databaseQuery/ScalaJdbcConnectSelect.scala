@@ -39,27 +39,33 @@ object ScalaJdbcConnectSelect extends App {
   //  getAnswers("PerlFiles",perlQuestionId)
 
   //Matlab
-//  val sqlQueryMatlab =
-//    """SELECT * FROM posts WHERE tags like '%&lt;matlab&gt;%' and post_type_id =1
-//    LIMIT 1000"""
-//  val matLabQuestionId: List[String] = getQuestionsId("MatLabFiles", sqlQueryMatlab)
-//  println(matLabQuestionId)
-//  getAnswers("MatLabFiles", matLabQuestionId)
+  //  val sqlQueryMatlab =
+  //    """SELECT * FROM posts WHERE tags like '%&lt;matlab&gt;%' and post_type_id =1
+  //    LIMIT 1000"""
+  //  val matLabQuestionId: List[String] = getQuestionsId("MatLabFiles", sqlQueryMatlab)
+  //  println(matLabQuestionId)
+  //  getAnswers("MatLabFiles", matLabQuestionId)
+
+  //JavaScript
+  //  val sqlQueryJavaScript =
+  //      """SELECT * FROM posts WHERE tags like '&lt;javascript&gt;' and post_type_id =1
+  //      LIMIT 1000"""
+  //    val javascriptQuestionId: List[String] = getQuestionsId("JavascriptFiles", sqlQueryJavaScript)
+  //    println(javascriptQuestionId)
+  //    getAnswers("JavascriptFiles", javascriptQuestionId)
+
+  //Experiment
 
   val sqlQueryJavaScript =
-      """SELECT * FROM posts WHERE tags like '&lt;javascript&gt;' and post_type_id =1
-      LIMIT 1000"""
-    val javascriptQuestionId: List[String] = getQuestionsId("JavascriptFiles", sqlQueryJavaScript)
-    println(javascriptQuestionId)
-    getAnswers("JavascriptFiles", javascriptQuestionId)
+    """SELECT * FROM posts WHERE id = 20835768 and post_type_id =1"""
+  val questionId: List[String] = getQuestionsId("ExperimentDiscussions", sqlQueryJavaScript)
+      println(questionId)
+      getAnswers("ExperimentDiscussions", questionId)
 
 
+  def getQuestionsId(directory: String, sqlQuery: String): List[String] = {
 
-
-
-  def getQuestionsId(directory: String, sqlQuery: String) = {
-
-    val swiftIdList = new ListBuffer[String]
+    val idList = new ListBuffer[String]
     try {
       Class.forName(driver)
       connection = DriverManager.getConnection(url, username, password)
@@ -72,13 +78,13 @@ object ScalaJdbcConnectSelect extends App {
         val bodyToSkip = Jsoup.parse(rs.getString("body")).text()
         //val body = Jsoup.parse(bodyToSkip).text()
         writeQuestionToFile(directory, id, title, bodyToSkip)
-        swiftIdList += id
+        idList += id
       }
     } catch {
       case e: Exception => e.printStackTrace
     }
     connection.close
-    swiftIdList.toList
+    idList.toList
   }
 
 

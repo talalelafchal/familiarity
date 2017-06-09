@@ -1,0 +1,213 @@
+Android Bluetooth Tutorial
+
+Bluetooth is a way to exchange data with other devices wirelessly. Android provides Bluetooth API to perform several tasks such as:
+
+scan bluetooth devices
+connect and transfer data from and to other devices
+manage multiple connections etc.
+Android Bluetooth API
+
+The android.bluetooth package provides a lot of interfaces classes to work with bluetooth such as:
+
+BluetoothAdapter
+BluetoothDevice
+BluetoothSocket
+BluetoothServerSocket
+BluetoothClass
+BluetoothProfile
+BluetoothProfile.ServiceListener
+BluetoothHeadset
+BluetoothA2dp
+BluetoothHealth
+BluetoothHealthCallback
+BluetoothHealthAppConfiguration
+android-preferences-example
+BluetoothAdapter class
+
+By the help of BluetoothAdapter class, we can perform fundamental tasks such as initiate device discovery, query a list of paired (bonded) devices, create a BluetoothServerSocket instance to listen for connection requests etc.
+
+Constants of BluetoothAdapter class
+
+BluetoothAdapter class provides many constants. Some of them are as follows:
+
+String ACTION_REQUEST_ENABLE
+String ACTION_REQUEST_DISCOVERABLE
+String ACTION_DISCOVERY_STARTED
+String ACTION_DISCOVERY_FINISHED
+Methods of BluetoothAdapter class
+
+Commonly used methods of BluetoothAdapter class are as follows:
+
+static synchronized BluetoothAdapter getDefaultAdapter() returns the instance of BluetoothAdapter.
+boolean enable() enables the bluetooth adapter if it is disabled.
+boolean isEnabled() returns true if the bluetooth adapter is enabled.
+boolean disable() disables the bluetooth adapter if it is enabled.
+String getName() returns the name of the bluetooth adapter.
+boolean setName(String name) changes the bluetooth name.
+int getState() returns the current state of the local bluetooth adapter.
+Set<BluetoothDevice> getBondedDevices() returns a set of paired (bonded) BluetoothDevice objects.
+boolean startDiscovery() starts the discovery process.
+Android Bluetooth Example: enable, disable and make discovrable bluetooth programmatically
+
+You need to write few lines of code only, to enable or disable the bluetooth.
+
+activity_main.xml
+
+Drag one textview and three buttons from the pallete, now the activity_main.xml file will like this:
+
+File: activity_main.xml
+<RelativeLayout xmlns:androclass="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <TextView android:text=""
+     android:id="@+id/out"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content">
+    </TextView>
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="49dp"
+        android:text="TURN_ON" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button1"
+        android:layout_below="@+id/button1"
+        android:layout_marginTop="27dp"
+        android:text="DISCOVERABLE" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button2"
+        android:layout_below="@+id/button2"
+        android:layout_marginTop="28dp"
+        android:text="TURN_OFF" />
+
+</RelativeLayout>
+Provide Permission
+
+You need to provide following permissions in AndroidManifest.xml file.
+
+<uses-permission android:name="android.permission.BLUETOOTH" />
+<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+The full code of AndroidManifest.xml file is given below.
+
+File: AndroidManifest.xml
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:androclass="http://schemas.android.com/apk/res/android"
+    package="com.example.bluetooth"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="16" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.bluetooth.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
+Activity class
+
+Let's write the code to enable, disable and make bluetooth discoverable.
+
+File: MainActivity.java
+package com.example.bluetooth;
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+import android.app.Activity;
+import android.bluetooth.BluetoothAdapter;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends Activity {
+      private static final int REQUEST_ENABLE_BT = 0;
+      private static final int REQUEST_DISCOVERABLE_BT = 0;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    final TextView out=(TextView)findViewById(R.id.out);
+    final Button button1 = (Button) findViewById(R.id.button1);
+    final Button button2 = (Button) findViewById(R.id.button2);
+    final Button button3 = (Button) findViewById(R.id.button3);
+    final BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+    if (mBluetoothAdapter == null) {
+       out.append("device not supported");
+    }
+    button1.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+            if (!mBluetoothAdapter.isEnabled()) {
+                Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+            }
+        }
+    });
+    button2.setOnClickListener(new View.OnClickListener() {
+     @Override
+        public void onClick(View arg0) {
+            if (!mBluetoothAdapter.isDiscovering()) {
+                  //out.append("MAKING YOUR DEVICE DISCOVERABLE");
+                   Toast.makeText(getApplicationContext(), "MAKING YOUR DEVICE DISCOVERABLE",
+             Toast.LENGTH_LONG);
+
+                Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+                startActivityForResult(enableBtIntent, REQUEST_DISCOVERABLE_BT);
+
+            }
+        }
+    });
+    button3.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View arg0) {
+            mBluetoothAdapter.disable();
+            //out.append("TURN_OFF BLUETOOTH");
+            Toast.makeText(getApplicationContext(), "TURNING_OFF BLUETOOTH", Toast.LENGTH_LONG);
+
+            }
+    });
+}
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.activity_main, menu);
+        return true;
+    }
+
+}  

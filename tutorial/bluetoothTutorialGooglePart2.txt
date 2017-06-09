@@ -1,0 +1,118 @@
+If Bluetooth is not supported, then you should gracefully disable any Bluetooth features. If Bluetooth is supported, but disabled, then you can request that the user enable Bluetooth without leaving your application. This setup is accomplished in two steps, using the BluetoothAdapter:
+
+Get the BluetoothAdapter.
+The BluetoothAdapter is required for any and all Bluetooth activity. To get the BluetoothAdapter, call the static getDefaultAdapter() method. This returns a BluetoothAdapter that represents the device's own Bluetooth adapter (the Bluetooth radio). There's one Bluetooth adapter for the entire system, and your application can interact with it using this object. If getDefaultAdapter() returns null, then the device does not support Bluetooth and your story ends here. For example:
+BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+if (mBluetoothAdapter == null) {
+    // Device does not support Bluetooth
+}
+Enable Bluetooth.
+Next, you need to ensure that Bluetooth is enabled. Call isEnabled() to check whether Bluetooth is currently enabled. If this method returns false, then Bluetooth is disabled. To request that Bluetooth be enabled, call startActivityForResult(), passing in an ACTION_REQUEST_ENABLE intent action. This call issues a request to enable Bluetooth through the system settings (without stopping your application). For example:
+if (!mBluetoothAdapter.isEnabled()) {
+    Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+    startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+}
+A dialog will appear requesting user permission to enable Bluetooth, as shown in Figure 1. If the user responds "Yes," the system will begin to enable Bluetooth, and focus will return to your application once the process completes (or fails).
+Figure 1: The enabling Bluetooth dialog.
+The REQUEST_ENABLE_BT constant passed to startActivityForResult() is a locally defined integer that must be greater than 0. The system passes this constant back to you in your onActivityResult() implementation as the requestCode parameter.
+If enabling Bluetooth succeeds, your activity receives the RESULT_OK result code in the onActivityResult() callback. If Bluetooth was not enabled due to an error (or the user responded "No") then the result code is RESULT_CANCELED.
+Optionally, your application can also listen for the ACTION_STATE_CHANGED broadcast intent, which the system broadcasts whenever the Bluetooth state changes. This broadcast contains the extra fields EXTRA_STATE and EXTRA_PREVIOUS_STATE, containing the new and old Bluetooth states, respectively. Possible values for these extra fields are STATE_TURNING_ON, STATE_ON, STATE_TURNING_OFF, and STATE_OFF. Listening for this broadcast can be useful if your app needs to detect runtime changes made to the Bluetooth state.
+
+Tip: Enabling discoverability will automatically enable Bluetooth. If you plan to consistently enable device discoverability before performing Bluetooth activity, you can skip step 2 above. For more information, read the enabling discoverability, section on this page.
+
+Finding Devices
+Using the BluetoothAdapter, you can find remote Bluetooth devices either through device discovery or by querying the list of paired devices.
+
+Device discovery is a scanning procedure that searches the local area for Bluetooth-enabled devices and requests some information about each one. This process is sometimes referred to as discovering, inquiring, or scanning. However, a nearby Bluetooth device responds to a discovery request only if it is currently accepting information requests by being discoverable. If a device is discoverable, it will respond to the discovery request by sharing some information, such as the device's name, its class, and its unique MAC address. Using this information, the device that is performing the discovery process can then choose to initiate a connection to the discovered device.
+
+Once a connection is made with a remote device for the first time, a pairing request is automatically presented to the user. When a device is paired, the basic information about that device—such as the device's name, class, and MAC address—is saved and can be read using the Bluetooth APIs. Using the known MAC address for a remote device, a connection can be initiated with it at any time without performing discovery, assuming the device is still within range.
+
+Note that there is a difference between being paired and being connected:
+
+To be paired means that two devices are aware of each other's existence, have a shared link-key that can be used for authentication, and are capable of establishing an encrypted connection with each other.
+To be connected means that the devices currently share an RFCOMM channel and are able to transmit data with each other. The current Android Bluetooth API's require devices to be paired before an RFCOMM connection can be established. Pairing is automatically performed when you initiate an encrypted connection with the Bluetooth APIs.
+The following sections describe how to find devices that have been paired, or discover new devices using device discovery.
+
+Note: Android-powered devices are not discoverable by default. A user can make the device discoverable for a limited time through the system settings, or an application can request that the user enable discoverability without leaving the application. For more information, see the enable discoverability section on this page.
+
+Querying paired devices
+Before performing device discovery, it's worth querying the set of paired devices to see if the desired device is already known. To do so, call getBondedDevices(). This will return a set of BluetoothDevice objects representing paired devices. For example, you can query all paired devices and get the name and MAC address of each device, as the following code snippet demonstrates:
+
+Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
+
+if (pairedDevices.size() > 0) {
+    // There are paired devices. Get the name and address of each paired device.
+    for (BluetoothDevice device : pairedDevices) {
+        String deviceName = device.getName();
+        String deviceHardwareAddress = device.getAddress(); // MAC address
+    }
+}
+To initiate a connection with a Bluetooth device, all that's needed from the associated BluetoothDevice object is the MAC address, which you retrieve by calling getAddress(). You can learn more about creating a connection in the section about Connecting Devices.
+
+Caution: Performing device discovery consumes a lot of the Bluetooth adapter's resources. After you have found a device to connect to, be certain that you stop discovery with cancelDiscovery() before attempting a connection. Also, you shouldn't perform discovery while connected to a device because the discovery process significantly reduces the bandwidth available for any existing connections.
+
+Discovering devices
+To start discovering devices, simply call startDiscovery(). The process is asynchronous and returns a boolean value indicating whether discovery has successfully started. The discovery process usually involves an inquiry scan of about 12 seconds, followed by a page scan of each device found to retrieve its Bluetooth name.
+
+In order to receive information about each device discovered, your application must register a BroadcastReceiver for the ACTION_FOUND intent. The system broadcasts this intent for each device. The intent contains the extra fields EXTRA_DEVICE and EXTRA_CLASS, which in turn contain a BluetoothDevice and a BluetoothClass, respectively. The following code snippet shows how you can register to handle the broadcast when devices are discovered:
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    ...
+
+    // Register for broadcasts when a device is discovered.
+    IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
+    registerReceiver(mReceiver, filter);
+}
+
+// Create a BroadcastReceiver for ACTION_FOUND.
+private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
+    public void onReceive(Context context, Intent intent) {
+        String action = intent.getAction();
+        if (BluetoothDevice.ACTION_FOUND.equals(action)) {
+            // Discovery has found a device. Get the BluetoothDevice
+            // object and its info from the Intent.
+            BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+            String deviceName = device.getName();
+            String deviceHardwareAddress = device.getAddress(); // MAC address
+        }
+    }
+};
+
+@Override
+protected void onDestroy() {
+    super.onDestroy();
+    ...
+
+    // Don't forget to unregister the ACTION_FOUND receiver.
+    unregisterReceiver(mReceiver);
+}
+To initiate a connection with a Bluetooth device, all that's needed from the associated BluetoothDevice object is the MAC address, which you retrieve by calling getAddress(). You can learn more about creating a connection in the section about Connecting Devices.
+
+Caution: Performing device discovery consumes a lot of the Bluetooth adapter's resources. After you have found a device to connect to, be certain that you stop discovery with cancelDiscovery() before attempting a connection. Also, you shouldn't perform discovery while connected to a device because the discovery process significantly reduces the bandwidth available for any existing connections.
+
+Enabling discoverability
+If you would like to make the local device discoverable to other devices, call startActivityForResult(Intent, int) with the ACTION_REQUEST_DISCOVERABLE intent. This will issue a request to enable the system's discoverable mode without having to navigate to the Settings app, which would stop your own app. By default, the device becomes discoverable for 120 seconds, or 2 minutes. You can define a different duration, up to 3600 seconds (1 hour), by adding the EXTRA_DISCOVERABLE_DURATION extra.
+
+Caution: If you set the EXTRA_DISCOVERABLE_DURATION extra's value to 0, the device is always discoverable. This configuration is insecure and therefore highly discouraged.
+
+The following code snippet sets the device to be discoverable for 5 minutes (300 seconds):
+
+Intent discoverableIntent =
+        new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300);
+startActivity(discoverableIntent);
+Figure 2: The enabling discoverability dialog.
+A dialog is displayed, requesting the user's permission to make the device discoverable, as shown in Figure 2. If the user responds "Yes," then the device becomes discoverable for the specified amount of time. Your activity then receives a call to the onActivityResult() callback, with the result code equal to the duration that the device is discoverable. If the user responded "No," or if an error occurred, the result code will be RESULT_CANCELED.
+
+Note: If Bluetooth has not been enabled on the device, then enabling device discoverability will automatically enable Bluetooth.
+
+The device silently remains in discoverable mode for the allotted time. If you would like to be notified when the discoverable mode has changed, you can register a BroadcastReceiver for the ACTION_SCAN_MODE_CHANGED intent. This intent contains the extra fields EXTRA_SCAN_MODE and EXTRA_PREVIOUS_SCAN_MODE, which provide the new and old scan mode, respectively. Possible values for each extra are as follows:
+
+SCAN_MODE_CONNECTABLE_DISCOVERABLE
+The device is in discoverable mode.
+SCAN_MODE_CONNECTABLE
+The device is not in discoverable mode but can still receive connections.
+SCAN_MODE_NONE
+The device is not in discoverable mode and cannot receive connections.
+If you are initiating the connection to a remote device, you do not need to enable device discoverability. Enabling discoverability is only necessary when you want your application to host a server socket that accepts incoming connections, as remote devices must be able to discover other devices before initiating connections to those other devices.

@@ -31,6 +31,14 @@
             <version>4.3</version>
         </dependency>
 
+
+        <!-- https://mvnrepository.com/artifact/com.kennycason/fleschkincaid -->
+        <dependency>
+            <groupId>com.kennycason</groupId>
+            <artifactId>fleschkincaid</artifactId>
+            <version>1.0</version>
+        </dependency>
+
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>

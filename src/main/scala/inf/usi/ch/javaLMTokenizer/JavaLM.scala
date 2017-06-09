@@ -3,25 +3,22 @@ package inf.usi.ch.javaLMTokenizer
 import java.io.{File, FileOutputStream, ObjectOutputStream}
 
 import ch.usi.inf.reveal.parsing.artifact.ArtifactSerializer
-import ch.usi.inf.reveal.parsing.model.{HASTNode, HASTNodeSequence, TextFragmentNode}
+import ch.usi.inf.reveal.parsing.model.{HASTNode}
 import ch.usi.inf.reveal.parsing.units.CodeTaggedUnit
 import com.aliasi.lm.{CompiledTokenizedLM, TokenizedLM}
 import ch.usi.inf.reveal.parsing.model.Implicits._
-import ch.usi.inf.reveal.parsing.model.java.JavaASTNode
-import com.aliasi.tokenizer.IndoEuropeanTokenizerFactory
 import com.aliasi.util.AbstractExternalizable
-import inf.usi.ch.tokenizer.{JavaANTLRTokenizer, HASTTokenizer, UnitTokenizerFactory}
+import inf.usi.ch.tokenizer.{HASTTokenizer, UnitTokenizerFactory}
 
 import scala.io.Source
-import scala.util.{Failure, Success, Try}
 
 /**
   * Created by Talal on 03.04.17.
   */
 class JavaLM {
-  private val DEFAULT_TOKENIZER_FACTORY = IndoEuropeanTokenizerFactory.INSTANCE
 
-  private val tokenizerFactory = UnitTokenizerFactory.INSTANCE
+
+  protected val tokenizerFactory = UnitTokenizerFactory.INSTANCE
 
   def train(nGram: Int, trainingSetFilePath: String, stormedDataFolderPath: String, fileNumber: Int): TokenizedLM = {
     val tokenizedLM = new TokenizedLM(tokenizerFactory, nGram)
@@ -36,7 +33,7 @@ class JavaLM {
         _.informationUnits
       }).filter(_.isInstanceOf[CodeTaggedUnit])
       // map each units to HASTNode
-      val hastNodeSeq = codeUnits.map(_.astNode)
+      val hastNodeSeq: Seq[HASTNode] = codeUnits.map(_.astNode)
       //  train JavaCode
       hastNodeSeq.foreach(x => trainJavaCode(x, tokenizedLM))
 
@@ -56,9 +53,9 @@ class JavaLM {
     AbstractExternalizable.readObject(file).asInstanceOf[CompiledTokenizedLM]
   }
 
-  private def trainJavaCode(hASTNode: HASTNode, tokenizedLM: TokenizedLM): Unit = {
+  protected def trainJavaCode(hASTNode: HASTNode, tokenizedLM: TokenizedLM): Unit = {
     val tokens = HASTTokenizer.tokenize(hASTNode)
-    val string = hASTNode.toCode
+    val string: String = hASTNode.toCode
     trainModel(tokens, string, tokenizedLM)
   }
 
