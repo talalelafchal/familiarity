@@ -1,9 +1,10 @@
-package inf.usi.ch.javascript
+package inf.usi.ch.stormedClientService
 
 import java.io.File
 
 import com.aliasi.lm.TokenizedLM
-import inf.usi.ch.tokenizer.JavascriptANTLRTokenizer
+import inf.usi.ch.javascript.FileEvaluator
+import inf.usi.ch.tokenizer.{JavaANTLRTokenizer, JavascriptANTLRTokenizer}
 import org.jsoup.Jsoup
 import org.jsoup.nodes.{Document, Element}
 import org.jsoup.parser.Parser
@@ -11,28 +12,13 @@ import org.jsoup.parser.Parser
 import scala.io.Source
 
 /**
-  * Created by Talal on 26.04.17.
+  * Created by Talal on 12.06.17.
   */
-class JavascriptCodeEvaluator extends FileEvaluator {
-
-
-  def getProbListFiles(lm: TokenizedLM, nGram: Int, folderPath: String): Seq[Double] = {
-    val filesList = getListOfFiles(folderPath)
-    val probabilityList = filesList.flatMap(file => getProbListForFile(lm, nGram, folderPath, file.getName))
-    probabilityList
-  }
-
-
-  def getQuartileProbList(lm: TokenizedLM, nGram: Int, filesFolderPath: String, filesListPath: String): Seq[Seq[Double]] = {
-    val filesList = getQuartileListOfFiles(filesFolderPath,filesListPath)
-    val probabilityList = filesList.map(file => getProbListForFile(lm, nGram, filesFolderPath, file.getName))
-    probabilityList
-  }
+class ServiceJavaScriptEvaluator extends FileEvaluator{
 
 
 
-
-  protected def getProbListForFile(lm: TokenizedLM, nGram: Int, folderPath: String, fileName: String): Seq[Double] = {
+   def getProbListForFile(lm: TokenizedLM, nGram: Int, folderPath: String, fileName: String): Seq[Double] = {
 
     val listCode = getCodeList(folderPath, fileName)
 

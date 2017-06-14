@@ -1,17 +1,16 @@
-package inf.usi.ch.javascript
+package inf.usi.ch.stormedClientService
 
 import java.io.File
 
-import inf.usi.ch.tokenizer.JavascriptANTLRTokenizer
+import inf.usi.ch.tokenizer.{ JavascriptANTLRTokenizer}
 import inf.usi.ch.util.NGramCountXFile
 
 import scala.collection.immutable.Seq
 
 /**
-  * Created by Talal on 22.05.17.
+  * Created by Talal on 12.06.17.
   */
-class JavascriptCodeNGramCounter extends JavascriptCodeEvaluator {
-
+class ServiceJavascriptNGramCounter extends ServiceJavaScriptEvaluator{
   val JAVASCRIPT = "javascript"
 
   def getNGramCount(nGram: Int, folderPath: String): Seq[NGramCountXFile] = {
@@ -19,15 +18,6 @@ class JavascriptCodeNGramCounter extends JavascriptCodeEvaluator {
     val NGramList = filesList.map( file =>  NGramCountXFile(JAVASCRIPT,file.getName, getNGramForFile(nGram, folderPath, file.getName)))
     NGramList
   }
-
-  def getNGramQuartileCount(nGram: Int, folderPath: String,filesListPath:String): Seq[NGramCountXFile] = {
-    val filesList: Seq[File] = getQuartileListOfFiles(folderPath,filesListPath)
-    val NGramList = filesList.map( file =>  NGramCountXFile(JAVASCRIPT,file.getName, getNGramForFile(nGram, folderPath, file.getName)))
-    NGramList
-  }
-
-
-
 
   protected def getNGramForFile(nGram: Int, folderPath: String, fileName: String): Int = {
 
@@ -37,5 +27,4 @@ class JavascriptCodeNGramCounter extends JavascriptCodeEvaluator {
     val nGramList: Seq[NGram] = tokenizedList.flatMap(x => buildNGrams(x, nGram))
     nGramList.size
   }
-
 }

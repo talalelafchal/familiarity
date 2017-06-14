@@ -10,7 +10,7 @@ import scala.io.Source
 /**
   * Created by Talal on 27.04.17.
   */
-trait JavascriptEvaluator {
+trait FileEvaluator {
 
   type Probability = Double
 

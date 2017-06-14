@@ -12,12 +12,9 @@ import scala.io.Source
 /**
   * Created by Talal on 03.04.17.
   */
-class JavaLMEvaluator {
+class JavaLMEvaluator extends JavaCodeEvaluator{
 
-  type Probability = Double
 
-  type Token = String
-  type NGram = Array[Token]
 
 
   protected def jsonFileToUnitsHASTNodes(fileName: String, stormedDataPath: String): Seq[HASTNode] = {
@@ -39,25 +36,7 @@ class JavaLMEvaluator {
   }
 
 
-  protected def buildNGrams(tokens: Array[Token], nGramLength: Int): List[NGram] = {
-    tokens.sliding(nGramLength).toList
-  }
 
-  protected def computeProbability(nGram: NGram, lm: TokenizedLM): Probability = {
-
-    val familiarity = lm.processLog2Probability(nGram)
-    //println( nGram.foreach(x => print(" "+x+" "))  + "  -> " + familiarity)
-    familiarity
-  }
-
-  protected def addHASTNodeProbToList(hastNode: HASTNode, nGramLength: Int, lm: TokenizedLM): List[Probability] = {
-
-    val tokens: Array[String] = HASTTokenizer.tokenize(hastNode)
-    val ngrams: List[NGram] = buildNGrams(tokens, nGramLength)
-    val probabilityList: List[Probability] = ngrams.map { ngram => computeProbability(ngram, lm) }
-
-    probabilityList
-  }
 
   def getProbListFiles(lm: TokenizedLM, nGram: Int, numberOfFiles: Int, testListFileName: String, stormedDataPath: String): Seq[Double] = {
     val testingListOfAllFileNames = new File(testListFileName)

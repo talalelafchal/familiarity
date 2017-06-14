@@ -7,6 +7,7 @@ import inf.usi.ch.agragation.NGramAggregation
 import inf.usi.ch.javaLMTokenizer.{JavaLM, JavaNGramCounter}
 import inf.usi.ch.javascript.{JavascriptCodeNGramCounter, JavascriptNLNGramCounter}
 import inf.usi.ch.naturalLanguageModel.{NaturalLanguageModel, NaturalLanguageNGramCounter}
+import inf.usi.ch.util.NGramCountXFile
 
 
 
@@ -45,7 +46,7 @@ object AggregationSetup extends App {
 
 
   def getLoweBoundTuple(androidTestingQuartileSet: String, javaQuartileSet: String, swingQuartileSet: String, javascriptFilesListPath: String): (Int, Int) = {
-    val androidCodeList = new JavaNGramCounter().getNGramCount("android", androidTestingQuartileSet, stormedDataPath, 3)
+    val androidCodeList: Seq[NGramCountXFile] = new JavaNGramCounter().getNGramCount("android", androidTestingQuartileSet, stormedDataPath, 3)
     val swingCodeList = new JavaNGramCounter().getNGramCount("swing", swingQuartileSet, stormedDataPath, 3)
     val javaCodeList = new JavaNGramCounter().getNGramCount("java", javaQuartileSet, stormedDataPath, 3)
     val javascriptCodeList = new JavascriptCodeNGramCounter().getNGramQuartileCount(3, javascriptFilesFolderPath, javascriptFilesListPath)

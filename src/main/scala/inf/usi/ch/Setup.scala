@@ -3,9 +3,11 @@ package inf.usi.ch
 import java.io.{BufferedWriter, File, FileWriter, Serializable}
 
 import com.aliasi.lm.TokenizedLM
+import com.aliasi.tokenizer.IndoEuropeanTokenizerFactory
 import inf.usi.ch.javascript._
 import inf.usi.ch.javaLMTokenizer.{JavaLM, JavaLMEvaluator, JavaLMEvaluatorTopLeast}
 import inf.usi.ch.naturalLanguageModel.{AndroidNLWordsDistribution, NaturalLanguageModel, NaturalLanguageModelEvaluator}
+import inf.usi.ch.tokenizer.UnitTokenizerFactory
 
 
 /**
@@ -14,7 +16,6 @@ import inf.usi.ch.naturalLanguageModel.{AndroidNLWordsDistribution, NaturalLangu
 object Setup extends App {
 
   val stormedDataPath = "/Users/Talal/Tesi/stormed-dataset"
-
 
 
   def buildCSVRepresentation(doubleList1: Seq[Double], doubleList2: Seq[Double], doubleList3: Seq[Double], doubleList4: Seq[Double]): Seq[(String, String, String, String)] = {
@@ -119,6 +120,7 @@ object Setup extends App {
     val lm = new NaturalLanguageModel().train(nGram, "/Users/Talal/Tesi/familiarity/AndroidSets/androidTrainingList.txt", stormedDataPath, fileNumber)
     lm
   }
+
   def createJavaLM(nGram: Int, fileNumber: Int): TokenizedLM = {
     val lm = new JavaLM().train(nGram, "/Users/Talal/Tesi/familiarity/AndroidSets/androidTrainingList.txt", stormedDataPath, fileNumber)
     lm
@@ -149,9 +151,6 @@ object Setup extends App {
   }
 
 
-
-
-
   def writeDistributionToFile(filePath: String, list: Seq[Int]) = {
     val frequencyList = list.map(x => (x, list.count(_ == x)))
     val file = new File(filePath)
@@ -174,24 +173,28 @@ object Setup extends App {
     writeTopLeastToFile("JavaScriptNlTopLeast/javascriptLeastLM10.txt", javascriptLeast)
 
   }
-    val codeLm = createJavaLM(3, 1)
-    createCodeProbabilityCSVFIle("test.csv", codeLm, 3)
-    //createJavaTopLeastCSVFile(lm, 3)
+
+
+
+
+  val codeLm = createJavaLM(3, 100)
+
+  println("Talal Pinko Pallino : " + codeLm.log2Estimate("Talal Pinko Pallino quatro Condque "))
+  println("public class ViewAdapter" + codeLm.log2Estimate("public ViewAdapter adapter new p"))
+ // createCodeProbabilityCSVFIle("test.csv", codeLm, 3)
+  //createJavaTopLeastCSVFile(lm, 3)
 
   //  val naturalLanguageLm = createNaturalLanguageLM(3, 10)
-    //createNaturalLanguageProbabilityCSVFile("NLAndroidSwingJavaJavascriptCSVFiles/nl100000.csv", naturalLanguageLm, 3)
+  //createNaturalLanguageProbabilityCSVFile("NLAndroidSwingJavaJavascriptCSVFiles/nl100000.csv", naturalLanguageLm, 3)
 
-//  val javascriptDistributionList = JavascriptNLWordsDistribution.getWordsDistribution("JavaScriptFiles")
-//  writeDistributionToFile("Distribution/javascriptWordsFrequency.csv", javascriptDistributionList)
+  //  val javascriptDistributionList = JavascriptNLWordsDistribution.getWordsDistribution("JavaScriptFiles")
+  //  writeDistributionToFile("Distribution/javascriptWordsFrequency.csv", javascriptDistributionList)
 
-//    val androidDistributionList = AndroidNLWordsDistribution.gteWordsDistribution("AndroidSets/androidTestingList.txt",stormedDataPath,1000)
-//    writeDistributionToFile("Distribution/androidWordsFrequencyFiltered.csv",androidDistributionList)
-
-
- //    createTopLeastJavaScriptNLCSVFile(naturalLanguageLm,3)
+  //    val androidDistributionList = AndroidNLWordsDistribution.gteWordsDistribution("AndroidSets/androidTestingList.txt",stormedDataPath,1000)
+  //    writeDistributionToFile("Distribution/androidWordsFrequencyFiltered.csv",androidDistributionList)
 
 
-
+  //    createTopLeastJavaScriptNLCSVFile(naturalLanguageLm,3)
 
 
 }

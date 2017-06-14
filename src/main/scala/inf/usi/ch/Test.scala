@@ -9,6 +9,8 @@ import inf.usi.ch.tokenizer.{HASTTokenizer, UnitTokenizerFactory}
 import ch.usi.inf.reveal.parsing.model.Implicits._
 import com.aliasi.lm.TokenizedLM
 import com.aliasi.tokenizer.IndoEuropeanTokenizerFactory
+import inf.usi.ch.javascript.JavascriptCodeNGramCounter
+import inf.usi.ch.util.NGramCountXFile
 
 import scala.io.Source
 import scala.util.Try
@@ -30,106 +32,14 @@ object Test extends App {
   //  println(o)
 
 
-  private val key = "B8DBDD69F4612953166D624A69DCEDAB344C315CA2D2383725BD08661C6B7183"
-  private val nlTokenizerFactory = IndoEuropeanTokenizerFactory.INSTANCE
-  private val codeTokenizerFactory = UnitTokenizerFactory.INSTANCE
+  val stormedDataPath = "/Users/Talal/Tesi/stormed-dataset"
+  val codeLm = createJavaLM(3, 1000)
 
-  private val file = Source.fromFile("tutorial/bluetoothDiscussion.txt")
-  private val codeToParse = file.mkString.trim
+  println(codeLm.symbolTable().numSymbols())
 
-  private val nl = new TokenizedLM(nlTokenizerFactory, 3)
-  private val code = new TokenizedLM(codeTokenizerFactory,3)
-
-  private val result: Response = StormedService.parse(codeToParse, key)
-
-  private val astNodeResult: Seq[HASTNode] = getHASTNode(result)
-
-  astNodeResult.foreach(tokenize(_))
-
-  def getHASTNode(result: Response): Seq[HASTNode] = {
-    result match {
-      case ParsingResponse(result, quota, status) =>
-        val nodeTypes: Seq[HASTNode] = result
-        nodeTypes
-      case ErrorResponse(message, status) =>
-        println(status + ": " + message)
-        Seq()
-    }
-
+  def createJavaLM(nGram: Int, fileNumber: Int): TokenizedLM = {
+    val lm = new JavaLM().train(nGram, "/Users/Talal/Tesi/familiarity/AndroidSets/androidTrainingList.txt", stormedDataPath, fileNumber)
+    lm
   }
-
-
-
-
-  def tokenize(hASTNode: HASTNode): Unit = {
-
-    hASTNode match {
-      case nodeSequence: HASTNodeSequence => {
-        nodeSequence.fragments.foreach(x => tokenize(x))
-      }
-
-      case textNode: TextFragmentNode => {
-        val text = textNode.text
-        ServiceNL.train(nl,text)
-
-      }
-
-      case javaNode: JavaASTNode => {
-        ServiceJavaLM.train(code,javaNode)
-      }
-
-      case _ => {
-        val defaultCode = Try(hASTNode.toCode).get
-        ServiceNL.train(nl,defaultCode)
-      }
-
-    }
-
-  }
-
-
-
-  println(code.processLog2Probability(Array("Follow instructions talal")))
-  println(code.processLog2Probability(Array("os bundle support")))
-  println( new TokenizedLM(codeTokenizerFactory,3) .log2Estimate("os Bundle support "))
-  println(nl.log2Estimate("Follow instructions talal"))
-
-
-
-
-
-
-
-
-  // println("size =  " + astNodeResult.size)
-
-//  //  val javaASTNode = astNodeResult.filter(x => x.isInstanceOf[JavaASTNode] && !x.isInstanceOf[TextFragmentNode])
-//  private val nlASTNode: Seq[HASTNode] = astNodeResult.filter(x => (!x.isInstanceOf[JavaASTNode]) || x.isInstanceOf[TextFragmentNode])
-//
-//  //val codeLM = new ServiceJavaLM().train(3, javaASTNode)
-//  private val nlLM = new ServiceNL().train(3, nlASTNode)
-
-
-  //  result match {
-  //    case ParsingResponse(result, quota, status) =>
-  //      println(s"Status: $status")
-  //      println(s"Quota Remaining: $quota")
-  //      val nodeTypes: Seq[HASTNode] = result
-  //
-  //      val javaASTNode = nodeTypes.filter(x => x.isInstanceOf[JavaASTNode] && !x.isInstanceOf[TextFragmentNode])
-  //      javaASTNode.foreach(x => x.toCode)
-  //
-  //      val nlASTNode = nodeTypes.filter(x => (!x.isInstanceOf[JavaASTNode]) || x.isInstanceOf[TextFragmentNode])
-  //      //.map{_.getClass.getSimpleName}
-  //      val tokens = nodeTypes.map(x => HASTTokenizer.tokenize(x)
-  //      )
-  //      println("Parsing Result: ")
-  //      nodeTypes.foreach {
-  //        println
-  //      }
-  //    case ErrorResponse(message, status) =>
-  //      println(status + ": " + message)
-  //  }
-
 
 }

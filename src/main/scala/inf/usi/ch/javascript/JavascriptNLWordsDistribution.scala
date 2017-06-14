@@ -11,7 +11,7 @@ import scala.io.Source
 /**
   * Created by Talal on 02.05.17.
   */
-object JavascriptNLWordsDistribution extends JavascriptEvaluator {
+object JavascriptNLWordsDistribution extends FileEvaluator {
 
 
   def getWordsDistribution(folderPath: String): Seq[Int] = {

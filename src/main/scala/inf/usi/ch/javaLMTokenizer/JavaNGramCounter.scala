@@ -23,7 +23,7 @@ class JavaNGramCounter extends JavaLMEvaluator {
     nGramsCount
   }
 
-  //TODO add getNGramCount method
+
 
   def getNGramCount(language: String, testListFileName: String, numberOfFiles: Integer, stormedDataPath: String, nGram: Int): Seq[NGramCountXFile] = {
     val testingListOfAllFileNames = new File(testListFileName)
