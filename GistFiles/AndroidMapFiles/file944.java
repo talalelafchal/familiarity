@@ -1,0 +1,1 @@
+view.startMapOn(<coloque_seu_token_aqui>, <ponto_inicial>);

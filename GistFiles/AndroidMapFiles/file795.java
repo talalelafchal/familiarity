@@ -1,0 +1,2 @@
+@SuppressWarnings("UnusedDeclaration")
+@SuppressWarnings({"UnusedDeclaration"})

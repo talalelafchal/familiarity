@@ -22,7 +22,6 @@ class ServiceJavaEvaluator extends FileEvaluator {
   def getProbListForFile(lm: TokenizedLM, nGram: Int, folderPath: String, fileName: String): Seq[Double] = {
 
     val listCode = getCodeList(folderPath, fileName)
-
     val tokenizedList: Seq[NGram] = listCode.map(x => new JavaANTLRTokenizer(x.toCharArray).tokenize())
     val nGramList = tokenizedList.flatMap(x => buildNGrams(x, nGram))
     val probabilityList = nGramList.map(x => computeProbability(x, lm))

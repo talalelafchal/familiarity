@@ -1,0 +1,2 @@
+mNetPayBluetooth.connectBluetooth(bluetoothAddress);
+mNetPayBluetooth.disconnectBluetooth(bluetoothAddress);

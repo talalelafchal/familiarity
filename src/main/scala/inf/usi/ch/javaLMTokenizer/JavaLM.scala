@@ -20,6 +20,10 @@ class JavaLM {
 
   protected val tokenizerFactory = UnitTokenizerFactory.INSTANCE
 
+  def trainGist(tokens: Array[String], cs: CharSequence, tokenizedLM: TokenizedLM) = {
+    trainModel(tokens, cs, tokenizedLM)
+  }
+
   def train(nGram: Int, trainingSetFilePath: String, stormedDataFolderPath: String, fileNumber: Int): TokenizedLM = {
     val tokenizedLM = new TokenizedLM(tokenizerFactory, nGram)
     val file = new File(trainingSetFilePath)
@@ -54,7 +58,7 @@ class JavaLM {
   }
 
   protected def trainJavaCode(hASTNode: HASTNode, tokenizedLM: TokenizedLM): Unit = {
-    val tokens = HASTTokenizer.tokenize(hASTNode)
+    val tokens: Array[String] = HASTTokenizer.tokenize(hASTNode)
     val string: String = hASTNode.toCode
     trainModel(tokens, string, tokenizedLM)
   }

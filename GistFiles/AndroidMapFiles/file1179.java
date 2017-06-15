@@ -1,0 +1,1 @@
+hs.showSection(MyActivity.this, "SECTION_PUBLISH_ID");

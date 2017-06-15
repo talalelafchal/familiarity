@@ -1,0 +1,1 @@
+mBluetoothLeScanner = mBluetoothAdapter.getBluetoothLeScanner();

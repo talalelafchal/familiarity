@@ -1,0 +1,1 @@
+UXTesting.CustomEvent("THE EVENT MESSAGE YOU WANT TO LOGGED");

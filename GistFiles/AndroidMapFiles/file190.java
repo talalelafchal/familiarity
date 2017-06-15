@@ -1,0 +1,1 @@
+hs.showInbox(MyActivity.this);

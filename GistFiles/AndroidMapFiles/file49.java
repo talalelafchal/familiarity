@@ -1,0 +1,1 @@
+map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(38, 263), 3.0f));

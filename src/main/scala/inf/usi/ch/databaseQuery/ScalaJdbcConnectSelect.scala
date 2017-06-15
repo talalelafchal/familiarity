@@ -57,7 +57,7 @@ object ScalaJdbcConnectSelect extends App {
   //Experiment
 
   val sqlQueryJavaScript =
-    """SELECT * FROM posts WHERE id = 20835768 and post_type_id =1"""
+    """SELECT * FROM posts WHERE id = 6068803 and post_type_id =1"""
   val questionId: List[String] = getQuestionsId("ExperimentDiscussions", sqlQueryJavaScript)
       println(questionId)
       getAnswers("ExperimentDiscussions", questionId)

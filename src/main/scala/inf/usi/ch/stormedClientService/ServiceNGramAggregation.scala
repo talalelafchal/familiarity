@@ -6,62 +6,64 @@ import inf.usi.ch.javascript.{FileEvaluator}
 /**
   * Created by Talal on 12.06.17.
   */
-class ServiceNGramAggregation extends FileEvaluator{
+class ServiceNGramAggregation extends FileEvaluator {
 
 
+  def aggregateJavascriptCodeByMean(codeLm: TokenizedLM, nGram: Int, filesFolderPath: String, lowerBound: Int): Seq[Double] = {
+    val filesList = getListOfFiles(filesFolderPath)
 
-  def aggregateJavascriptCodeByMean(codeLm: TokenizedLM, nGram: Int, filesFolderPath: String, lowerBound : Int): Seq[Double] = {
+    println("javascript files :")
+    filesList.foreach(x => println(x.getName))
+
+    val evaluator = new ServiceJavaScriptEvaluator()
+    val allFilesProbList: Seq[Seq[Double]] = filesList.map(file => evaluator.getProbListForFile(codeLm, nGram, filesFolderPath, file.getName))
+    val meanList: Seq[Double] = allFilesProbList.map(probabilitiesListXFile => getMean(probabilitiesListXFile, lowerBound))
+    meanList
+  }
+
+
+  def aggregateJavascriptCodeByMedian(codeLm: TokenizedLM, nGram: Int, filesFolderPath: String, lowerBound: Int): Seq[Double] = {
     val filesList = getListOfFiles(filesFolderPath)
     val evaluator = new ServiceJavaScriptEvaluator()
-    val allFilesProbList: Seq[Seq[Double]] = filesList.map(file => evaluator.getProbListForFile(codeLm, nGram,filesFolderPath,file.getName))
-    val meanList: Seq[Double] = allFilesProbList.map(probabilitiesListXFile => getMean(probabilitiesListXFile, lowerBound))
-    meanList
-  }
-
-
-
-  def aggregateJavascriptCodeByMedian(codeLm: TokenizedLM, nGram: Int, filesFolderPath: String, lowerBound : Int): Seq[Double] = {
-    val filesList = getListOfFiles(filesFolderPath)
-    val evaluator = new ServiceJavaScriptEvaluator()
-    val allFilesProbList: Seq[Seq[Double]] = filesList.map(file => evaluator.getProbListForFile(codeLm, nGram,filesFolderPath,file.getName))
+    val allFilesProbList: Seq[Seq[Double]] = filesList.map(file => evaluator.getProbListForFile(codeLm, nGram, filesFolderPath, file.getName))
     val medianList: Seq[Double] = allFilesProbList.map(probabilitiesListXFile => getMedian(probabilitiesListXFile, lowerBound))
     medianList
   }
 
 
-  def aggregateNLByMean(codeLm: TokenizedLM, nGram: Int, filesFolderPath: String, lowerBound : Int): Seq[Double] = {
+  def aggregateNLByMean(codeLm: TokenizedLM, nGram: Int, filesFolderPath: String, lowerBound: Int): Seq[Double] = {
     val filesList = getListOfFiles(filesFolderPath)
     val evaluator = new ServiceNLEvaluator()
-    val allFilesProbList: Seq[Seq[Double]] = filesList.map(file => evaluator.getProbListForFile(codeLm, nGram,filesFolderPath,file.getName))
+    val allFilesProbList: Seq[Seq[Double]] = filesList.map(file => evaluator.getProbListForFile(codeLm, nGram, filesFolderPath, file.getName))
     val meanList: Seq[Double] = allFilesProbList.map(probabilitiesListXFile => getMean(probabilitiesListXFile, lowerBound))
     meanList
   }
 
-  def aggregateNLByMedian(codeLm: TokenizedLM, nGram: Int, filesFolderPath: String, lowerBound : Int): Seq[Double] = {
+  def aggregateNLByMedian(codeLm: TokenizedLM, nGram: Int, filesFolderPath: String, lowerBound: Int): Seq[Double] = {
     val filesList = getListOfFiles(filesFolderPath)
     val evaluator = new ServiceNLEvaluator()
-    val allFilesProbList: Seq[Seq[Double]] = filesList.map(file => evaluator.getProbListForFile(codeLm, nGram,filesFolderPath,file.getName))
+    val allFilesProbList: Seq[Seq[Double]] = filesList.map(file => evaluator.getProbListForFile(codeLm, nGram, filesFolderPath, file.getName))
     val medianList: Seq[Double] = allFilesProbList.map(probabilitiesListXFile => getMedian(probabilitiesListXFile, lowerBound))
     medianList
   }
 
-  def aggregateJavaCodeByMean(codeLm: TokenizedLM, nGram: Int, filesFolderPath: String, lowerBound : Int): Seq[Double] = {
+  def aggregateJavaCodeByMean(codeLm: TokenizedLM, nGram: Int, filesFolderPath: String, lowerBound: Int): Seq[Double] = {
     val filesList = getListOfFiles(filesFolderPath)
+    println("java  files :")
+    filesList.foreach(x => println(x.getName))
     val evaluator = new ServiceJavaEvaluator()
-    val allFilesProbList: Seq[Seq[Double]] = filesList.map(file => evaluator.getProbListForFile(codeLm, nGram,filesFolderPath,file.getName))
+    val allFilesProbList: Seq[Seq[Double]] = filesList.map(file => evaluator.getProbListForFile(codeLm, nGram, filesFolderPath, file.getName))
     val meanList: Seq[Double] = allFilesProbList.map(probabilitiesListXFile => getMean(probabilitiesListXFile, lowerBound))
     meanList
   }
 
-  def aggregateJavaCodeByMedian(codeLm: TokenizedLM, nGram: Int, filesFolderPath: String, lowerBound : Int): Seq[Double] = {
+  def aggregateJavaCodeByMedian(codeLm: TokenizedLM, nGram: Int, filesFolderPath: String, lowerBound: Int): Seq[Double] = {
     val filesList = getListOfFiles(filesFolderPath)
     val evaluator = new ServiceJavaEvaluator()
-    val allFilesProbList: Seq[Seq[Double]] = filesList.map(file => evaluator.getProbListForFile(codeLm, nGram,filesFolderPath,file.getName))
+    val allFilesProbList: Seq[Seq[Double]] = filesList.map(file => evaluator.getProbListForFile(codeLm, nGram, filesFolderPath, file.getName))
     val medianList: Seq[Double] = allFilesProbList.map(probabilitiesListXFile => getMedian(probabilitiesListXFile, lowerBound))
     medianList
   }
-
-
 
 
   private def mean(slicedList: List[List[Double]]): Double = {

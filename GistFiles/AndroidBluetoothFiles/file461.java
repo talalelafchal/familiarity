@@ -1,0 +1,1 @@
+this.pubnub = new Pubnub("publish_key", "subscribe_key");

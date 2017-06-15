@@ -1,0 +1,1 @@
+hs.showQuestion(MyActivity.this, "QUESTION_PUBLISH_ID");

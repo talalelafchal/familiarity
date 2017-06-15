@@ -1,0 +1,1 @@
+mBluetoothAdapter.startLeScan(mLeScanCallback);

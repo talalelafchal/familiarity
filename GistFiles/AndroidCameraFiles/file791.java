@@ -1,0 +1,1 @@
+UXTesting.SetFrontCamera(true);

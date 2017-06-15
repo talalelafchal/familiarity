@@ -1,0 +1,1 @@
+UXTesting.SetHiddenMode(true);

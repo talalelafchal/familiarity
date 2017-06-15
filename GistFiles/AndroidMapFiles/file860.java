@@ -1,0 +1,1 @@
+list.setAdapter(new RxAdapter(this, 1000000));
