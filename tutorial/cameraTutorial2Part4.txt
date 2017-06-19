@@ -1,0 +1,201 @@
+Note: Environment.getExternalStoragePublicDirectory() is available in Android 2.2 (API Level 8) or higher. If you are targeting devices with earlier versions of Android, use Environment.getExternalStorageDirectory() instead. For more information, see Saving Shared Files.
+
+To make the URI support work profiles, first convert the file URI to a content URI. Then, add the content URI to EXTRA_OUTPUT of an Intent.
+
+For more information about saving files on an Android device, see Data Storage.
+
+Camera features
+Android supports a wide array of camera features you can control with your camera application, such as picture format, flash mode, focus settings, and many more. This section lists the common camera features, and briefly discusses how to use them. Most camera features can be accessed and set using the through Camera.Parameters object. However, there are several important features that require more than simple settings in Camera.Parameters. These features are covered in the following sections:
+
+Metering and focus areas
+Face detection
+Time lapse video
+For general information about how to use features that are controlled through Camera.Parameters, review the Using camera features section. For more detailed information about how to use features controlled through the camera parameters object, follow the links in the feature list below to the API reference documentation.
+
+Table 1. Common camera features sorted by the Android API Level in which they were introduced.
+Feature	API Level	Description
+Face Detection	14	Identify human faces within a picture and use them for focus, metering and white balance
+Metering Areas	14	Specify one or more areas within an image for calculating white balance
+Focus Areas	14	Set one or more areas within an image to use for focus
+White Balance Lock	14	Stop or start automatic white balance adjustments
+Exposure Lock	14	Stop or start automatic exposure adjustments
+Video Snapshot	14	Take a picture while shooting video (frame grab)
+Time Lapse Video	11	Record frames with set delays to record a time lapse video
+Multiple Cameras	9	Support for more than one camera on a device, including front-facing and back-facing cameras
+Focus Distance	9	Reports distances between the camera and objects that appear to be in focus
+Zoom	8	Set image magnification
+Exposure Compensation	8	Increase or decrease the light exposure level
+GPS Data	5	Include or omit geographic location data with the image
+White Balance	5	Set the white balance mode, which affects color values in the captured image
+Focus Mode	5	Set how the camera focuses on a subject such as automatic, fixed, macro or infinity
+Scene Mode	5	Apply a preset mode for specific types of photography situations such as night, beach, snow or candlelight scenes
+JPEG Quality	5	Set the compression level for a JPEG image, which increases or decreases image output file quality and size
+Flash Mode	5	Turn flash on, off, or use automatic setting
+Color Effects	5	Apply a color effect to the captured image such as black and white, sepia tone or negative.
+Anti-Banding	5	Reduces the effect of banding in color gradients due to JPEG compression
+Picture Format	1	Specify the file format for the picture
+Picture Size	1	Specify the pixel dimensions of the saved picture
+Note: These features are not supported on all devices due to hardware differences and software implementation. For information on checking the availability of features on the device where your application is running, see Checking feature availability.
+
+Checking feature availability
+The first thing to understand when setting out to use camera features on Android devices is that not all camera features are supported on all devices. In addition, devices that support a particular feature may support them to different levels or with different options. Therefore, part of your decision process as you develop a camera application is to decide what camera features you want to support and to what level. After making that decision, you should plan on including code in your camera application that checks to see if device hardware supports those features and fails gracefully if a feature is not available.
+
+You can check the availability of camera features by getting an instance of a camera's parameters object, and checking the relevant methods. The following code sample shows you how to obtain a Camera.Parameters object and check if the camera supports the autofocus feature:
+
+// get Camera parameters
+Camera.Parameters params = mCamera.getParameters();
+
+List<String> focusModes = params.getSupportedFocusModes();
+if (focusModes.contains(Camera.Parameters.FOCUS_MODE_AUTO)) {
+  // Autofocus mode is supported
+}
+You can use the technique shown above for most camera features. The Camera.Parameters object provides a getSupported...(), is...Supported() or getMax...() method to determine if (and to what extent) a feature is supported.
+
+If your application requires certain camera features in order to function properly, you can require them through additions to your application manifest. When you declare the use of specific camera features, such as flash and auto-focus, Google Play restricts your application from being installed on devices which do not support these features. For a list of camera features that can be declared in your app manifest, see the manifest Features Reference.
+
+Using camera features
+Most camera features are activated and controlled using a Camera.Parameters object. You obtain this object by first getting an instance of the Camera object, calling the getParameters() method, changing the returned parameter object and then setting it back into the camera object, as demonstrated in the following example code:
+
+// get Camera parameters
+Camera.Parameters params = mCamera.getParameters();
+// set the focus mode
+params.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
+// set Camera parameters
+mCamera.setParameters(params);
+This technique works for nearly all camera features, and most parameters can be changed at any time after you have obtained an instance of the Camera object. Changes to parameters are typically visible to the user immediately in the application's camera preview. On the software side, parameter changes may take several frames to actually take effect as the camera hardware processes the new instructions and then sends updated image data.
+
+Important: Some camera features cannot be changed at will. In particular, changing the size or orientation of the camera preview requires that you first stop the preview, change the preview size, and then restart the preview. Starting with Android 4.0 (API Level 14) preview orientation can be changed without restarting the preview.
+
+Other camera features require more code in order to implement, including:
+
+Metering and focus areas
+Face detection
+Time lapse video
+A quick outline of how to implement these features is provided in the following sections.
+
+Metering and focus areas
+In some photographic scenarios, automatic focusing and light metering may not produce the desired results. Starting with Android 4.0 (API Level 14), your camera application can provide additional controls to allow your app or users to specify areas in an image to use for determining focus or light level settings and pass these values to the camera hardware for use in capturing images or video.
+
+Areas for metering and focus work very similarly to other camera features, in that you control them through methods in the Camera.Parameters object. The following code demonstrates setting two light metering areas for an instance of Camera:
+
+// Create an instance of Camera
+mCamera = getCameraInstance();
+
+// set Camera parameters
+Camera.Parameters params = mCamera.getParameters();
+
+if (params.getMaxNumMeteringAreas() > 0){ // check that metering areas are supported
+    List<Camera.Area> meteringAreas = new ArrayList<Camera.Area>();
+
+    Rect areaRect1 = new Rect(-100, -100, 100, 100);    // specify an area in center of image
+    meteringAreas.add(new Camera.Area(areaRect1, 600)); // set weight to 60%
+    Rect areaRect2 = new Rect(800, -1000, 1000, -800);  // specify an area in upper right of image
+    meteringAreas.add(new Camera.Area(areaRect2, 400)); // set weight to 40%
+    params.setMeteringAreas(meteringAreas);
+}
+
+mCamera.setParameters(params);
+The Camera.Area object contains two data parameters: A Rect object for specifying an area within the camera's field of view and a weight value, which tells the camera what level of importance this area should be given in light metering or focus calculations.
+
+The Rect field in a Camera.Area object describes a rectangular shape mapped on a 2000 x 2000 unit grid. The coordinates -1000, -1000 represent the top, left corner of the camera image, and coordinates 1000, 1000 represent the bottom, right corner of the camera image, as shown in the illustration below.
+
+
+Figure 1. The red lines illustrate the coordinate system for specifying a Camera.Area within a camera preview. The blue box shows the location and shape of an camera area with the Rect values 333,333,667,667.
+
+The bounds of this coordinate system always correspond to the outer edge of the image visible in the camera preview and do not shrink or expand with the zoom level. Similarly, rotation of the image preview using Camera.setDisplayOrientation() does not remap the coordinate system.
+
+Face detection
+For pictures that include people, faces are usually the most important part of the picture, and should be used for determining both focus and white balance when capturing an image. The Android 4.0 (API Level 14) framework provides APIs for identifying faces and calculating picture settings using face recognition technology.
+
+Note: While the face detection feature is running, setWhiteBalance(String), setFocusAreas(List<Camera.Area>) and setMeteringAreas(List<Camera.Area>) have no effect.
+
+Using the face detection feature in your camera application requires a few general steps:
+
+Check that face detection is supported on the device
+Create a face detection listener
+Add the face detection listener to your camera object
+Start face detection after preview (and after every preview restart)
+The face detection feature is not supported on all devices. You can check that this feature is supported by calling getMaxNumDetectedFaces(). An example of this check is shown in the startFaceDetection() sample method below.
+
+In order to be notified and respond to the detection of a face, your camera application must set a listener for face detection events. In order to do this, you must create a listener class that implements the Camera.FaceDetectionListener interface as shown in the example code below.
+
+class MyFaceDetectionListener implements Camera.FaceDetectionListener {
+
+    @Override
+    public void onFaceDetection(Face[] faces, Camera camera) {
+        if (faces.length > 0){
+            Log.d("FaceDetection", "face detected: "+ faces.length +
+                    " Face 1 Location X: " + faces[0].rect.centerX() +
+                    "Y: " + faces[0].rect.centerY() );
+        }
+    }
+}
+After creating this class, you then set it into your application's Camera object, as shown in the example code below:
+
+mCamera.setFaceDetectionListener(new MyFaceDetectionListener());
+Your application must start the face detection function each time you start (or restart) the camera preview. Create a method for starting face detection so you can call it as needed, as shown in the example code below.
+
+public void startFaceDetection(){
+    // Try starting Face Detection
+    Camera.Parameters params = mCamera.getParameters();
+
+    // start face detection only *after* preview has started
+    if (params.getMaxNumDetectedFaces() > 0){
+        // camera supports face detection, so can start it:
+        mCamera.startFaceDetection();
+    }
+}
+You must start face detection each time you start (or restart) the camera preview. If you use the preview class shown in Creating a preview class, add your startFaceDetection() method to both the surfaceCreated() and surfaceChanged() methods in your preview class, as shown in the sample code below.
+
+public void surfaceCreated(SurfaceHolder holder) {
+    try {
+        mCamera.setPreviewDisplay(holder);
+        mCamera.startPreview();
+
+        startFaceDetection(); // start face detection feature
+
+    } catch (IOException e) {
+        Log.d(TAG, "Error setting camera preview: " + e.getMessage());
+    }
+}
+
+public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {
+
+    if (mHolder.getSurface() == null){
+        // preview surface does not exist
+        Log.d(TAG, "mHolder.getSurface() == null");
+        return;
+    }
+
+    try {
+        mCamera.stopPreview();
+
+    } catch (Exception e){
+        // ignore: tried to stop a non-existent preview
+        Log.d(TAG, "Error stopping camera preview: " + e.getMessage());
+    }
+
+    try {
+        mCamera.setPreviewDisplay(mHolder);
+        mCamera.startPreview();
+
+        startFaceDetection(); // re-start face detection feature
+
+    } catch (Exception e){
+        // ignore: tried to stop a non-existent preview
+        Log.d(TAG, "Error starting camera preview: " + e.getMessage());
+    }
+}
+Note: Remember to call this method after calling startPreview(). Do not attempt to start face detection in the onCreate() method of your camera app's main activity, as the preview is not available by this point in your application's the execution.
+
+Time lapse video
+Time lapse video allows users to create video clips that combine pictures taken a few seconds or minutes apart. This feature uses MediaRecorder to record the images for a time lapse sequence.
+
+To record a time lapse video with MediaRecorder, you must configure the recorder object as if you are recording a normal video, setting the captured frames per second to a low number and using one of the time lapse quality settings, as shown in the code example below.
+
+// Step 3: Set a CamcorderProfile (requires API Level 8 or higher)
+mMediaRecorder.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_TIME_LAPSE_HIGH));
+...
+// Step 5.5: Set the video capture rate to a low number
+mMediaRecorder.setCaptureRate(0.1); // capture a frame every 10 seconds
+These settings must be done as part of a larger configuration procedure for MediaRecorder. For a full configuration code example, see Configuring MediaRecorder. Once the configuration is complete, you start the video recording as if you were recording a normal video clip. For more information about configuring and running MediaRecorder, see Capturing videos.

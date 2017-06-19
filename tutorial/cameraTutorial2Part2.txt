@@ -1,0 +1,136 @@
+If you want to set a specific size for your camera preview, set this in the surfaceChanged() method as noted in the comments above. When setting preview size, you must use values from getSupportedPreviewSizes(). Do not set arbitrary values in the setPreviewSize() method.
+
+Note: With the introduction of the Multi-Window feature in Android 7.0 (API level 24) and higher, you can no longer assume the aspect ratio of the preview is the same as your activity even after calling setDisplayOrientation(). Depending on the window size and aspect ratio, you may may have to fit a wide camera preview into a portrait-orientated layout, or vice versa, using a letterbox layout.
+
+Placing preview in a layout
+A camera preview class, such as the example shown in the previous section, must be placed in the layout of an activity along with other user interface controls for taking a picture or video. This section shows you how to build a basic layout and activity for the preview.
+
+The following layout code provides a very basic view that can be used to display a camera preview. In this example, the FrameLayout element is meant to be the container for the camera preview class. This layout type is used so that additional picture information or controls can be overlaid on the live camera preview images.
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+  <FrameLayout
+    android:id="@+id/camera_preview"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="1"
+    />
+
+  <Button
+    android:id="@+id/button_capture"
+    android:text="Capture"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    />
+</LinearLayout>
+On most devices, the default orientation of the camera preview is landscape. This example layout specifies a horizontal (landscape) layout and the code below fixes the orientation of the application to landscape. For simplicity in rendering a camera preview, you should change your application's preview activity orientation to landscape by adding the following to your manifest.
+
+<activity android:name=".CameraActivity"
+          android:label="@string/app_name"
+
+          android:screenOrientation="landscape">
+          <!-- configure this activity to use landscape orientation -->
+
+          <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+    </intent-filter>
+</activity>
+Note: A camera preview does not have to be in landscape mode. Starting in Android 2.2 (API Level 8), you can use the setDisplayOrientation() method to set the rotation of the preview image. In order to change preview orientation as the user re-orients the phone, within the surfaceChanged() method of your preview class, first stop the preview with Camera.stopPreview() change the orientation and then start the preview again with Camera.startPreview().
+
+In the activity for your camera view, add your preview class to the FrameLayout element shown in the example above. Your camera activity must also ensure that it releases the camera when it is paused or shut down. The following example shows how to modify a camera activity to attach the preview class shown in Creating a preview class.
+
+public class CameraActivity extends Activity {
+
+    private Camera mCamera;
+    private CameraPreview mPreview;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main);
+
+        // Create an instance of Camera
+        mCamera = getCameraInstance();
+
+        // Create our Preview view and set it as the content of our activity.
+        mPreview = new CameraPreview(this, mCamera);
+        FrameLayout preview = (FrameLayout) findViewById(R.id.camera_preview);
+        preview.addView(mPreview);
+    }
+}
+Note: The getCameraInstance() method in the example above refers to the example method shown in Accessing cameras.
+
+Capturing pictures
+Once you have built a preview class and a view layout in which to display it, you are ready to start capturing images with your application. In your application code, you must set up listeners for your user interface controls to respond to a user action by taking a picture.
+
+In order to retrieve a picture, use the Camera.takePicture() method. This method takes three parameters which receive data from the camera. In order to receive data in a JPEG format, you must implement an Camera.PictureCallback interface to receive the image data and write it to a file. The following code shows a basic implementation of the Camera.PictureCallback interface to save an image received from the camera.
+
+private PictureCallback mPicture = new PictureCallback() {
+
+    @Override
+    public void onPictureTaken(byte[] data, Camera camera) {
+
+        File pictureFile = getOutputMediaFile(MEDIA_TYPE_IMAGE);
+        if (pictureFile == null){
+            Log.d(TAG, "Error creating media file, check storage permissions: " +
+                e.getMessage());
+            return;
+        }
+
+        try {
+            FileOutputStream fos = new FileOutputStream(pictureFile);
+            fos.write(data);
+            fos.close();
+        } catch (FileNotFoundException e) {
+            Log.d(TAG, "File not found: " + e.getMessage());
+        } catch (IOException e) {
+            Log.d(TAG, "Error accessing file: " + e.getMessage());
+        }
+    }
+};
+Trigger capturing an image by calling the Camera.takePicture() method. The following example code shows how to call this method from a button View.OnClickListener.
+
+// Add a listener to the Capture button
+Button captureButton = (Button) findViewById(id.button_capture);
+captureButton.setOnClickListener(
+    new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            // get an image from the camera
+            mCamera.takePicture(null, null, mPicture);
+        }
+    }
+);
+Note: The mPicture member in the following example refers to the example code above.
+
+Caution: Remember to release the Camera object by calling the Camera.release() when your application is done using it! For information about how to release the camera, see Releasing the camera.
+
+Capturing videos
+Video capture using the Android framework requires careful management of the Camera object and coordination with the MediaRecorder class. When recording video with Camera, you must manage the Camera.lock() and Camera.unlock() calls to allow MediaRecorder access to the camera hardware, in addition to the Camera.open() and Camera.release() calls.
+
+Note: Starting with Android 4.0 (API level 14), the Camera.lock() and Camera.unlock() calls are managed for you automatically.
+
+Unlike taking pictures with a device camera, capturing video requires a very particular call order. You must follow a specific order of execution to successfully prepare for and capture video with your application, as detailed below.
+
+Open Camera - Use the Camera.open() to get an instance of the camera object.
+Connect Preview - Prepare a live camera image preview by connecting a SurfaceView to the camera using Camera.setPreviewDisplay().
+Start Preview - Call Camera.startPreview() to begin displaying the live camera images.
+Start Recording Video - The following steps must be completed in order to successfully record video:
+Unlock the Camera - Unlock the camera for use by MediaRecorder by calling Camera.unlock().
+Configure MediaRecorder - Call in the following MediaRecorder methods in this order. For more information, see the MediaRecorder reference documentation.
+setCamera() - Set the camera to be used for video capture, use your application's current instance of Camera.
+setAudioSource() - Set the audio source, use MediaRecorder.AudioSource.CAMCORDER.
+setVideoSource() - Set the video source, use MediaRecorder.VideoSource.CAMERA.
+Set the video output format and encoding. For Android 2.2 (API Level 8) and higher, use the MediaRecorder.setProfile method, and get a profile instance using CamcorderProfile.get(). For versions of Android prior to 2.2, you must set the video output format and encoding parameters:
+setOutputFormat() - Set the output format, specify the default setting or MediaRecorder.OutputFormat.MPEG_4.
+setAudioEncoder() - Set the sound encoding type, specify the default setting or MediaRecorder.AudioEncoder.AMR_NB.
+setVideoEncoder() - Set the video encoding type, specify the default setting or MediaRecorder.VideoEncoder.MPEG_4_SP.
+setOutputFile() - Set the output file, use getOutputMediaFile(MEDIA_TYPE_VIDEO).toString() from the example method in the Saving Media Files section.
+setPreviewDisplay() - Specify the SurfaceView preview layout element for your application. Use the same object you specified for Connect Preview.
+Caution: You must call these MediaRecorder configuration methods in this order, otherwise your application will encounter errors and the recording will fail.

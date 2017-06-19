@@ -11,10 +11,6 @@ class ServiceNGramAggregation extends FileEvaluator {
 
   def aggregateJavascriptCodeByMean(codeLm: TokenizedLM, nGram: Int, filesFolderPath: String, lowerBound: Int): Seq[Double] = {
     val filesList = getListOfFiles(filesFolderPath)
-
-    println("javascript files :")
-    filesList.foreach(x => println(x.getName))
-
     val evaluator = new ServiceJavaScriptEvaluator()
     val allFilesProbList: Seq[Seq[Double]] = filesList.map(file => evaluator.getProbListForFile(codeLm, nGram, filesFolderPath, file.getName))
     val meanList: Seq[Double] = allFilesProbList.map(probabilitiesListXFile => getMean(probabilitiesListXFile, lowerBound))
@@ -49,8 +45,6 @@ class ServiceNGramAggregation extends FileEvaluator {
 
   def aggregateJavaCodeByMean(codeLm: TokenizedLM, nGram: Int, filesFolderPath: String, lowerBound: Int): Seq[Double] = {
     val filesList = getListOfFiles(filesFolderPath)
-    println("java  files :")
-    filesList.foreach(x => println(x.getName))
     val evaluator = new ServiceJavaEvaluator()
     val allFilesProbList: Seq[Seq[Double]] = filesList.map(file => evaluator.getProbListForFile(codeLm, nGram, filesFolderPath, file.getName))
     val meanList: Seq[Double] = allFilesProbList.map(probabilitiesListXFile => getMean(probabilitiesListXFile, lowerBound))

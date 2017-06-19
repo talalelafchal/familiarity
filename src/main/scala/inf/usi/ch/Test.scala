@@ -28,18 +28,20 @@ object Test extends App {
   //  println(b)
   //  println(c)
   //
-  //  val o = raykernel.apps.readability.eval.Main.getReadability("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    package=\"com.example.tutorialspoint7.myapplication\">\n\n   <application\n      android:allowBackup=\"true\"\n      android:icon=\"@mipmap/ic_launcher\"\n      android:label=\"@string/app_name\"\n      android:supportsRtl=\"true\"\n      android:theme=\"@style/AppTheme\">\n      \n      <activity android:name=\".MainActivity\">\n         <intent-filter>\n            <action android:name=\"android.intent.action.MAIN\" />\n            <category android:name=\"android.intent.category.LAUNCHER\" />\n         </intent-filter>\n      </activity>\n   </application>\n</manifest>");
-  //  println(o)
+    val readability = raykernel.apps.readability.eval.Main.getReadability("googleMap.addMarker(new MarkerOptions()\n        .position(latLng)\n        .title(\"My Spot\")\n        .snippet(\"This is my spot!\")\n        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));");
+    val b = "googleMap.addMarker(new MarkerOptions()\n.position(latLng)\n.title(\"My Spot\")\n.snippet(\"This is my spot!\")\n.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));"
+    println("formatted  => "  +raykernel.apps.readability.eval.Main.getReadability(b))
+    println("original  => " + readability)
 
 
-  val stormedDataPath = "/Users/Talal/Tesi/stormed-dataset"
-  val codeLm = createJavaLM(3, 1000)
-
-  println(codeLm.symbolTable().numSymbols())
-
-  def createJavaLM(nGram: Int, fileNumber: Int): TokenizedLM = {
-    val lm = new JavaLM().train(nGram, "/Users/Talal/Tesi/familiarity/AndroidSets/androidTrainingList.txt", stormedDataPath, fileNumber)
-    lm
-  }
+//  val stormedDataPath = "/Users/Talal/Tesi/stormed-dataset"
+//  val codeLm = createJavaLM(3, 1000)
+//
+//  println(codeLm.symbolTable().numSymbols())
+//
+//  def createJavaLM(nGram: Int, fileNumber: Int): TokenizedLM = {
+//    val lm = new JavaLM().train(nGram, "/Users/Talal/Tesi/familiarity/AndroidSets/androidTrainingList.txt", stormedDataPath, fileNumber)
+//    lm
+//  }
 
 }

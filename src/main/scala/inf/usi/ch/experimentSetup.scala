@@ -9,9 +9,13 @@ import com.aliasi.tokenizer.IndoEuropeanTokenizerFactory
 import inf.usi.ch.stormedClientService._
 import inf.usi.ch.tokenizer.{JavaANTLRTokenizer, UnitTokenizerFactory}
 import ch.usi.inf.reveal.parsing.model.Implicits._
+import com.kennycason.fleschkincaid.FleschKincaid
 import inf.usi.ch.javaLMTokenizer.{JavaLM, JavaNGramCounter}
 import inf.usi.ch.naturalLanguageModel.NaturalLanguageModel
-import inf.usi.ch.util.NGramCountXFile
+import inf.usi.ch.util.{NGramCountXFile, ResultPerFile}
+import org.jsoup.Jsoup
+import org.jsoup.nodes.{Document, Element}
+import org.jsoup.parser.Parser
 
 import scala.io.Source
 import scala.util.Try
@@ -25,6 +29,10 @@ object experimentSetup extends App {
 
   val androidTestingPath = "ExperimentDiscussions2/Android"
   val javascriptTestingPath = "ExperimentDiscussions2/Cordova"
+
+  val androidList = getListOfFiles(androidTestingPath)
+  val cordovaList = getListOfFiles(javascriptTestingPath)
+  val allFiles = androidList ::: cordovaList
 
   private val key = "B8DBDD69F4612953166D624A69DCEDAB344C315CA2D2383725BD08661C6B7183"
   private val nlTokenizerFactory = IndoEuropeanTokenizerFactory.INSTANCE
@@ -45,30 +53,36 @@ object experimentSetup extends App {
   tutorialFiles.foreach(file => trainFile(file.getPath))
   gistBluetoothFiles.foreach(file => trainGistFile(file.getPath))
   gistCameraFiles.foreach(file => trainGistFile(file.getPath))
-  // gistHttpClientFiles.foreach(file => trainGistFile(file.getPath))
-  //gistMapFiles.foreach(file => trainGistFile(file.getPath))
+
 
   val tuple = getLoweBoundTuple(androidTestingPath, javascriptTestingPath)
   val codeLowerBound = tuple._1
   val nlLowerBound = tuple._2
-
-  //val tokenizerLM = createJavaLM(3, 10000)
-  //val tokenizerLM = createNaturalLanguageLM(3, 10000)
+  getResult()
 
 
-  println("-" * 100)
-  println("#" * 10 + "tutorial" + "#" * 10)
-  //println("# of LM symbols =  " + nlTutorial.symbolTable().numSymbols())
-  println("# of LM symbols =  " + codeTutorial.symbolTable().numSymbols())
-  codeAggregation(codeTutorial)
-  //nlAggregation(nlTutorial)
+  def getResult() = {
+
+    println("-" * 100)
+    println("#" * 10 + "tutorial" + "#" * 10)
+
+    val nlMeanResult = nlAggregationMean(nlTutorial)
+    val nlMedianResult = nlAggregationMedian(nlTutorial)
+    val codeMeanResult = codeAggregationMean(codeTutorial)
+    val codeMedianResult = codeAggregationMedian(codeTutorial)
 
 
-  //  println("-" * 100)
-  //  println("#" * 10 + "10 000 files" + "#" * 10)
-  //  println("# of LM symbols =  " + tokenizerLM.symbolTable().numSymbols())
-  //  //codeAggregation(tokenizerLM)
-  //  nlAggregation(tokenizerLM)
+    val codeReadability: Seq[Double] = calculateCodeReadability()
+    val nlReadability: Seq[Double] = calculateNlReadability()
+
+
+    val resultList: Seq[ResultPerFile] = for (i <- 0 to nlMeanResult.length - 1)
+      yield ResultPerFile(nlMeanResult(i)._2.getName, codeMeanResult(i)._1,
+        nlMeanResult(i)._1, codeMedianResult(i)._1, nlMedianResult(i)._1, nlReadability(i), codeReadability(i))
+
+    resultList.foreach(println(_))
+
+  }
 
 
   def createJavaLM(nGram: Int, fileNumber: Int): TokenizedLM = {
@@ -81,46 +95,100 @@ object experimentSetup extends App {
     lm
   }
 
-  //mean
+  def calculateCodeReadability() = {
+    val codeList = allFiles.map(getCode)
+    val codeReadabilityList = codeList.map(getCodeListReadability)
+    codeReadabilityList
+  }
 
-  def codeAggregation(code: TokenizedLM) = {
+
+  def calculateNlReadability() = {
+    val textList: Seq[String] = allFiles.map(getText)
+    val textReadabilityList = textList.map(new FleschKincaid().calculate)
+    textReadabilityList
+  }
+
+  def getCodeListReadability(list: Seq[String]) = {
+    val pattern1 = "([\\W])(\\s)"
+
+    val formattedString = list.map(x => x.replaceAll(pattern1, "$1\n"))
+    val codeReadabilityResult = formattedString.map(raykernel.apps.readability.eval.Main.getReadability)
+    val median =  (codeReadabilityResult.sum) / codeReadabilityResult.size
+    median
+  }
+
+
+  def getCode(file: File): List[String] = {
+    val postString = Source.fromFile(file).getLines().mkString
+    val doc: Document = Jsoup.parse(postString, "", Parser.xmlParser())
+
+    //Code
+    val code: List[AnyRef] = doc.select(">code").toArray.toList
+    val codeStringList: List[String] = code.map(x =>
+      x.asInstanceOf[Element].text())
+
+    //PreCode
+    val preCode: List[AnyRef] = doc.select(">pre").toArray.toList
+    val preCodeStringList: List[String] = preCode.map(x =>
+      x.asInstanceOf[Element].text())
+
+    val codeString = codeStringList ::: preCodeStringList
+    codeString
+  }
+
+  def getText(file: File): String = {
+    val postString = Source.fromFile(file).getLines().mkString
+    val doc: Document = Jsoup.parse(postString, "", Parser.xmlParser())
+    //text
+    val text: List[AnyRef] = doc.select(">*").not("pre").not("code").toArray().toList
+    val textStringList: List[String] = text.map(x =>
+      x.asInstanceOf[Element].text())
+    textStringList.mkString("\n")
+  }
+
+  def codeAggregationMean(code: TokenizedLM) = {
 
 
     val javascriptCodeAggregationMean: Seq[Double] = new ServiceNGramAggregation().aggregateJavascriptCodeByMean(code, 3, javascriptTestingPath, codeLowerBound)
     val androidCodeAggregationMean: Seq[Double] = new ServiceNGramAggregation().aggregateJavaCodeByMean(code, 3, androidTestingPath, codeLowerBound)
 
 
-    //median
+    val androidAggregatedList = androidCodeAggregationMean.zip(androidList)
+    val javascriptAggregatedList = javascriptCodeAggregationMean.zip(cordovaList)
+    androidAggregatedList ++ javascriptAggregatedList
+
+  }
+
+  def codeAggregationMedian(code: TokenizedLM) = {
+
     val javascriptCodeAggregationMedian: Seq[Double] = new ServiceNGramAggregation().aggregateJavascriptCodeByMedian(code, 3, javascriptTestingPath, codeLowerBound)
     val androidCodeAggregationMedian: Seq[Double] = new ServiceNGramAggregation().aggregateJavaCodeByMedian(code, 3, androidTestingPath, codeLowerBound)
 
 
-    val androidList = getListOfFiles("ExperimentDiscussions2/Android")
-    val cordovaList = getListOfFiles("ExperimentDiscussions2/Cordova")
+    val androidAggregatedList = androidCodeAggregationMedian.zip(androidList)
+    val javascriptAggregatedList = javascriptCodeAggregationMedian.zip(cordovaList)
+    androidAggregatedList ++ javascriptAggregatedList
 
-    println("-" * 100)
-    println()
-    androidCodeAggregationMean.zip(androidList).sortWith(_._1  > _._1).foreach(x => println("\t" + x._1 + "\t" + x._2.getName))
-    javascriptCodeAggregationMean.zip(cordovaList).sortWith(_._1  > _._1).foreach(x => println("\t" + x._1 + "\t" + x._2.getName))
   }
 
-  def nlAggregation(nl: TokenizedLM): Unit = {
+  def nlAggregationMean(nl: TokenizedLM): Seq[(Double, File)] = {
     val javascriptNLAggregationMean: Seq[Double] = new ServiceNGramAggregation().aggregateNLByMean(nl, 3, javascriptTestingPath, nlLowerBound)
     val androidNLAggregationMean: Seq[Double] = new ServiceNGramAggregation().aggregateNLByMean(nl, 3, androidTestingPath, nlLowerBound)
 
+    val androidAggregatedList: Seq[(Double, File)] = androidNLAggregationMean.zip(androidList)
+    val javascriptAggregatedList = javascriptNLAggregationMean.zip(cordovaList)
+    androidAggregatedList ++ javascriptAggregatedList
+  }
+
+
+  def nlAggregationMedian(nl: TokenizedLM): Seq[(Double, File)] = {
 
     val javascriptNLAggregationMedian: Seq[Double] = new ServiceNGramAggregation().aggregateNLByMedian(nl, 3, javascriptTestingPath, nlLowerBound)
     val androidNLAggregationMedian: Seq[Double] = new ServiceNGramAggregation().aggregateNLByMedian(nl, 3, androidTestingPath, nlLowerBound)
 
-
-    println("-" * 100)
-    println("\t javascriptNLAggregationMean")
-    println()
-    javascriptNLAggregationMean.foreach(x => println("\t" + x))
-    println()
-    println("\t androidNLAggregationMean")
-    println()
-    androidNLAggregationMean.foreach(x => println("\t" + x))
+    val androidAggregatedList: Seq[(Double, File)] = androidNLAggregationMedian.zip(androidList)
+    val javascriptAggregatedList = javascriptNLAggregationMedian.zip(cordovaList)
+    androidAggregatedList ++ javascriptAggregatedList
   }
 
 
@@ -141,11 +209,11 @@ object experimentSetup extends App {
 
     val androidNLList = new ServiceNLNGramCounter().getNGramCount(3, androidTestingPath, "android")
     println("Android")
-    androidNLList.foreach(x => println("# nl NGram : " + x.nGramCount+ "\t" + x.fileName))
+    androidNLList.foreach(x => println("# nl NGram : " + x.nGramCount + "\t" + x.fileName))
 
     val javascriptNLList = new ServiceNLNGramCounter().getNGramCount(3, javascriptTestingPath, "javascript")
     println("javascript")
-    javascriptNLList.foreach(x => println("# nl NGram : " + x.nGramCount+ "\t" + x.fileName))
+    javascriptNLList.foreach(x => println("# nl NGram : " + x.nGramCount + "\t" + x.fileName))
 
     val orderedNLList = (androidNLList ++ javascriptNLList).sortWith(_.nGramCount < _.nGramCount)
     val nLLowerBound = orderedNLList(0).nGramCount
@@ -157,7 +225,7 @@ object experimentSetup extends App {
 
   def trainGistFile(tutorialFile: String) = {
     val file = Source.fromFile(tutorialFile)
-    val codeString = file.mkString
+    val codeString = file.mkString.replaceAll("[^\\w\"]", " ")
     val tokens = new JavaANTLRTokenizer(codeString.toCharArray).tokenize()
     javaLm.trainGist(tokens, codeString, codeTutorial)
 

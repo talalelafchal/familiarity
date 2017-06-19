@@ -1,0 +1,300 @@
+ANDROID CAMERA API TUTORIAL
+ANDROID CAMERA API TUTORIAL
+
+In this android tutorial we are going to learn about the android camera API. Camera is one of the numerous hardware devices that mobiles users use the most. The rising of selfie, photo sharing and location based image tagging have contributed to the huge rise of device camera usage.
+
+Starting from Android L (SDK version 21), android introduced a new Camera API called Camera.2 API. Although the Camera API before this version has been deprecated but it still works and we are going to focus this tutorial on this API.
+
+IF YOU WANT TO READ ABOUT THE NEW ANDROID CAMERA.2 API, I WILL SUGGEST YOU READ MY TUTORIAL ON THIS TOPIC – ANDROID CAMERA.2 API TUTORIAL.
+
+There are two ways to access the device camera in our application
+
+1. Using existing android camera application in our application
+
+2. Directly using Camera API provided by android in our application
+
+We are going to focus on the latter in this tutorial but if you want to learn how to use the existing android camera application in your application use the link.
+
+In other to access the camera hardware resources of our device, we have to use the camera permission. We will also add a filter so that device that does not have camera will be excluded for downloading our app in the Google Play Store. The permission is listed below.
+
+<uses-permission android:name="android.permission.CAMERA" />
+
+<uses-feature android:name="android.hardware.camera" />
+
+<uses-feature android:name="android.hardware.camera.autofocus" />
+Before we start, the first thing I will do is to list the environment and tools I used in this android tutorial but feel free to use whatever environment or tools you are familiar with.
+
+Windows 7
+
+Android Studio
+
+Samsung Galaxy Fame Lite
+
+Min SDK 14
+
+Target SDK 19
+
+To create a new android application project, following the steps as stipulated below.
+
+Go to File menu
+
+Click on New menu
+
+Click on Android Application
+
+Enter Project name: AndroidCameraAPITutorial
+
+Package: com.inducesmile.androidcameraapitutorial
+
+Keep other default selections.
+
+Continue to click on next button until Finish button is active, then click on Finish Button
+
+Once you are done with creating your project, make sure you change the package name if you did not use the same package.
+
+MANIFEST.XML FILE
+
+Since we are going to access and make use of some hardware resource in our device like camera, we are going to use some android permissions as stated earlier. The updated version of our Manifest .xml file is shown below.
+
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="inducesmile.com.androidcameraapitutorial" >
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
+We added some string to the string.xml file. The updated version of the file is shown below.
+
+<resources>
+    <string name="app_name">Android Camera API Tutorial</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="capture_button">Capture Image From Camera</string>
+    <string name="desc">capture image place holder</string>
+</resources>
+Now we will move ahead to design our application main layout. Since I created my project with the default activity, the activity_main.xml layout file is where I will put the application UI code.
+
+ACTIVITY_MAIN.XML
+
+Open the activity_main.xml in your project or the layout name you want to use. We are going to add three different View controls in our layout file. The Views are as follow.
+
+1. FlameLayout – This ViewGroup will hold the camera preview
+
+2. Button – The button View will be used to capture the camera preview
+
+3. ImageView – The ImageView will hold the captured image from the camera preview.
+
+Add the following code in activity_main.xml
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity"
+    android:baselineAligned="false">
+
+    <FrameLayout
+        android:id="@+id/camera_preview"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/capture_button"
+        android:id="@+id/button"
+        android:layout_below="@+id/camera_preview"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/captured_image"
+        android:layout_below="@+id/button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="15dp"
+        android:contentDescription="@string/desc" />
+
+</RelativeLayout>
+ SURFACEVIEW CLASS
+
+For the camera preview, we are going to create a custom SurfaceView class which will attached to our FrameLayout as a child to the layout.
+
+The class will implement SurfaceHolder.Callback and the three methods in this class are overridden. The overridden methods are shown below.
+
+1. surfaceCreated(SurfaceHolder holder)
+
+2. surfaceChanged(SurfaceHolder holder, int format, int width, int height)
+
+3. surfaceDestroyed(SurfaceHolder holder)
+
+We will initialize the Camera class. In the surfaceCreated(SurfaceHolder holder) method, the camera object is open and the camera preview started. In the surfaceDestroyed(SurfaceHolder holder) method, the camera preview is stopped and the camera object is released so that other applications can use the camera. The complete code is shown below.
+
+package inducesmile.com.androidcameraapitutorial;
+
+import android.hardware.Camera;
+import android.content.Context;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
+
+import java.io.IOException;
+
+public class ImageSurfaceView extends SurfaceView implements SurfaceHolder.Callback {
+
+    private Camera camera;
+    private SurfaceHolder surfaceHolder;
+
+    public ImageSurfaceView(Context context, Camera camera) {
+        super(context);
+        this.camera = camera;
+        this.surfaceHolder = getHolder();
+        this.surfaceHolder.addCallback(this);
+    }
+
+    @Override
+    public void surfaceCreated(SurfaceHolder holder) {
+        try {
+            this.camera.setPreviewDisplay(holder);
+            this.camera.startPreview();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+
+    }
+
+    @Override
+    public void surfaceDestroyed(SurfaceHolder holder) {
+        this.camera.stopPreview();
+        this.camera.release();
+    }
+}
+ MAINACTIVTY.JAVA
+
+In the MainActivity.java file, the instances of our View controls are obtained. The ImageSurfaceView object was created and passed as a child view to the FrameLayout object.
+
+We created an inner class PictureCallback and override the onPictureTaken(byte[] data, Camera camera) method of the class.
+
+A click event listener was attached to our button view. When the button is click it will execute the takePicture(null, null, pictureCallback) method of the Camera class. The object of the PictureCallback class is passed as one of the parameters required by the method.
+
+package inducesmile.com.androidcameraapitutorial;
+
+import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.hardware.Camera;
+import android.hardware.Camera.PictureCallback;
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+
+public class MainActivity extends ActionBarActivity {
+
+    private ImageSurfaceView mImageSurfaceView;
+    private Camera camera;
+
+    private FrameLayout cameraPreviewLayout;
+    private ImageView capturedImageHolder;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        cameraPreviewLayout = (FrameLayout)findViewById(R.id.camera_preview);
+        capturedImageHolder = (ImageView)findViewById(R.id.captured_image);
+
+        camera = checkDeviceCamera();
+        mImageSurfaceView = new ImageSurfaceView(MainActivity.this, camera);
+        cameraPreviewLayout.addView(mImageSurfaceView);
+
+        Button captureButton = (Button)findViewById(R.id.button);
+        captureButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                camera.takePicture(null, null, pictureCallback);
+            }
+        });
+    }
+    private Camera checkDeviceCamera(){
+        Camera mCamera = null;
+        try {
+            mCamera = Camera.open();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mCamera;
+    }
+
+    PictureCallback pictureCallback = new PictureCallback() {
+        @Override
+        public void onPictureTaken(byte[] data, Camera camera) {
+            Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+            if(bitmap==null){
+                Toast.makeText(MainActivity.this, "Captured image is empty", Toast.LENGTH_LONG).show();
+                return;
+            }
+            capturedImageHolder.setImageBitmap(scaleDownBitmapImage(bitmap, 300, 200 ));
+        }
+    };
+
+    private Bitmap scaleDownBitmapImage(Bitmap bitmap, int newWidth, int newHeight){
+        Bitmap resizedBitmap = Bitmap.createScaledBitmap(bitmap, newWidth, newHeight, true);
+        return resizedBitmap;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+}

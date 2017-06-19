@@ -1,0 +1,149 @@
+ANDROID CAMERA2 API EXAMPLE TUTORIAL
+In this tutorial, we are going to learn how to implement android camera 2 API. This example tutorial will focus on the new android camera api, if you are looking for the old camera api then I will suggest you read my previous tutorial on android camera api tutorial.
+
+If you have worked with android camera before and then you want to try your hand in android camera2 API introduce in android API level 21 you will understand how difficult it is to understand how to use and implement android camera2 api in your app.
+
+It replaces the deprecated Camera class
+
+The sample code project by Google for the android camera2 API is also intimidating for beginner android developers.
+
+One of the advantages of the android camera2 API is the amount control and addition features you can use to capture and manipulate your captured images.
+
+If you want to read more about android camera2 api, I will suggest you go to the documentation. I also found an interesting article that explain the detail architecture of android camera 2 api.
+
+According to android guide – “This package models a camera device as a pipeline, which takes in input requests for capturing a single frame, captures the single image per the request, and then outputs one capture result metadata packet, plus a set of output image buffers for the request. The requests are processed in-order, and multiple requests can be in flight at once. Since the camera device is a pipeline with multiple stages, having multiple requests in flight is required to maintain full framerate on most Android devices.”
+
+THE FOLLOWING STEPS ARE TAKEN WHEN USING ANDROID CAMERA2 API
+
+1. The android CameraManager class is used to manage all the camera devices in our android device
+
+2. Each camera device has a range of properties and settings that describe the device. It can be obtained through the camera characteristics.
+
+3. To capture or stream images from a camera device, the application must first create a camera capture session
+
+4. The camera capture needs a surface to output what has been captured or being previewed. A target Surface can be obtained from a variety of classes, including SurfaceView, SurfaceTexture via Surface(SurfaceTexture), MediaCodec, MediaRecorder, Allocation, and ImageReader
+
+5. The application then needs to construct a CaptureRequest, which defines all the capture parameters needed by a camera device to capture a single image.
+
+6. Once the request has been set up, it can be handed to the active capture session either for a one-shot capture or for an endlessly repeating use
+
+7. After processing a request, the camera device will produce a TotalCaptureResult object, which contains information about the state of the camera device at time of capture, and the final settings used.
+
+Since we are working with android camera2 API introduced in level 21, our minimum android SDK for this project will be 21.
+
+Before we dive into more details, it is important for us to understand what we are planning to achieve. Below is the screen-shot of the application we will be creating.
+
+android camera2
+
+Lets start to soil our hands in code. Start up your IDE. For this tutorial, I am using the following tools and environment, feel free to use what works for you.
+
+Windows 7
+
+Android Studio
+
+Sony Xperia XA Dual
+
+Min SDK 21
+
+Target SDK 23
+
+To create a new android application project, follow the steps as stipulated below.
+
+Go to File menu
+
+Click on New menu
+
+Click on Android Application
+
+Enter Project name: AndroidCamera2API
+
+Package: com.inducesmile.androidcamera2api
+
+Select Blank Activity
+
+Name your activity : AndroidCamera2API
+
+Keep other default selections
+
+Continue to click on next button until Finish button is active, then click on Finish Button.
+
+ANDROID PERMISSIONS
+
+For us to take a picture and save it in our device external storage, we will add android permission for camera2 and for write access in our project Manifest.xml file.
+
+Open the Manifest.xml file located in Manifest folder. Add the code below to the file.
+
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.inducesmile.androidcameraapi2">
+    <uses-sdk
+        android:minSdkVersion="21"
+        android:targetSdkVersion="21" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-feature android:name="android.hardware.camera2.full" />
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".AndroidCameraApi">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
+These two permissions will be requested when the app is installed for android device running on android versions less that 6 while android version 6 and later versions will require it as a run-time permission.
+
+STRINGS.XML
+
+We are going to update our project strings.xml file located in the values folder inside the res folder. Open the file and add the code below to it.
+
+<resources>
+    <string name="app_name">Android Camera API 2</string>
+    <string name="take_picture">Take picture</string>
+</resources>
+COLORS.XML
+
+Open the colors.xml file in the same location as the strings.xml file and add the code below to the file.
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+</resources>
+ACTIVITY_ANDROID_CAMERA_API.XML
+
+Open the main layout file of our project. Here we are going to use two View controls – a TextureView and Button widgets. The TextureView will be used as the output surface for the camera while the Button widget is used to capture images.
+
+Open the layout file and add the below code inside the file.
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.inducesmile.androidcameraapi2.AndroidCameraApi">
+    <TextureView
+        android:id="@+id/texture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_takepicture"
+        android:layout_alignParentTop="true"/>
+    <Button
+        android:id="@+id/btn_takepicture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/take_picture" />
+</RelativeLayout>
+ANDROIDCAMERAAPI ACTIVITY PAGE
+
