@@ -64,7 +64,7 @@ object experimentSetup extends App {
   def getResult() = {
 
     println("-" * 100)
-    println("#" * 10 + "tutorial" + "#" * 10)
+    println("#" * 10 + " tutorial " + "#" * 10)
 
     val nlMeanResult = nlAggregationMean(nlTutorial)
     val nlMedianResult = nlAggregationMedian(nlTutorial)
@@ -80,7 +80,10 @@ object experimentSetup extends App {
       yield ResultPerFile(nlMeanResult(i)._2.getName, codeMeanResult(i)._1,
         nlMeanResult(i)._1, codeMedianResult(i)._1, nlMedianResult(i)._1, nlReadability(i), codeReadability(i))
 
-    resultList.foreach(println(_))
+    resultList.foreach(x => println(" fileName : " + x.fileName + " code median : " + x.codeMedian +
+      " nl median : " + x.nLMedian + " code readability : " + x.codeReadability + " nl readability : " + x.nLReadability + "  effort : " +
+      ((x.codeMedian + x.nLMedian) * x.codeReadability * x.nLReadability)
+    ))
 
   }
 
@@ -113,7 +116,7 @@ object experimentSetup extends App {
 
     val formattedString = list.map(x => x.replaceAll(pattern1, "$1\n"))
     val codeReadabilityResult = formattedString.map(raykernel.apps.readability.eval.Main.getReadability)
-    val median =  (codeReadabilityResult.sum) / codeReadabilityResult.size
+    val median = (codeReadabilityResult.sum) / codeReadabilityResult.size
     median
   }
 
@@ -140,7 +143,7 @@ object experimentSetup extends App {
     val postString = Source.fromFile(file).getLines().mkString
     val doc: Document = Jsoup.parse(postString, "", Parser.xmlParser())
     //text
-    val text: List[AnyRef] = doc.select(">*").not("pre").not("code").toArray().toList
+    val text: List[AnyRef] = doc.select("p").toArray().toList
     val textStringList: List[String] = text.map(x =>
       x.asInstanceOf[Element].text())
     textStringList.mkString("\n")

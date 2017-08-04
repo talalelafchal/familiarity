@@ -1,5 +1,7 @@
 package inf.usi.ch
 
+import java.io.File
+
 import ch.usi.inf.reveal.parsing.model.{HASTNode, HASTNodeSequence, TextFragmentNode}
 import ch.usi.inf.reveal.parsing.model.java.JavaASTNode
 import com.kennycason.fleschkincaid.FleschKincaid
@@ -11,6 +13,9 @@ import com.aliasi.lm.TokenizedLM
 import com.aliasi.tokenizer.IndoEuropeanTokenizerFactory
 import inf.usi.ch.javascript.JavascriptCodeNGramCounter
 import inf.usi.ch.util.NGramCountXFile
+import org.jsoup.Jsoup
+import org.jsoup.nodes.{Document, Element}
+import org.jsoup.parser.Parser
 
 import scala.io.Source
 import scala.util.Try
@@ -28,10 +33,10 @@ object Test extends App {
   //  println(b)
   //  println(c)
   //
-    val readability = raykernel.apps.readability.eval.Main.getReadability("googleMap.addMarker(new MarkerOptions()\n        .position(latLng)\n        .title(\"My Spot\")\n        .snippet(\"This is my spot!\")\n        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));");
-    val b = "googleMap.addMarker(new MarkerOptions()\n.position(latLng)\n.title(\"My Spot\")\n.snippet(\"This is my spot!\")\n.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));"
-    println("formatted  => "  +raykernel.apps.readability.eval.Main.getReadability(b))
-    println("original  => " + readability)
+//    val readability = raykernel.apps.readability.eval.Main.getReadability("googleMap.addMarker(new MarkerOptions()\n        .position(latLng)\n        .title(\"My Spot\")\n        .snippet(\"This is my spot!\")\n        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));");
+//    val b = "googleMap.addMarker(new MarkerOptions()\n.position(latLng)\n.title(\"My Spot\")\n.snippet(\"This is my spot!\")\n.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));"
+//    println("formatted  => "  +raykernel.apps.readability.eval.Main.getReadability(b))
+//    println("original  => " + readability)
 
 
 //  val stormedDataPath = "/Users/Talal/Tesi/stormed-dataset"
@@ -43,5 +48,17 @@ object Test extends App {
 //    val lm = new JavaLM().train(nGram, "/Users/Talal/Tesi/familiarity/AndroidSets/androidTrainingList.txt", stormedDataPath, fileNumber)
 //    lm
 //  }
+
+
+    val postString = Source.fromFile("ExperimentDiscussions2/Android/6068803-Camera.txt").getLines().mkString
+    val doc: Document = Jsoup.parse(postString, "", Parser.xmlParser())
+    //text
+    val text: List[AnyRef] = doc.select("p").toArray().toList
+    val textStringList: List[String] = text.map(x =>
+      x.asInstanceOf[Element].text())
+    val t = textStringList.mkString("\n")
+    println(t)
+
+
 
 }

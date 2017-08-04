@@ -62,7 +62,7 @@ object StormedService {
     val response = doRestRequest("parse", request)
     hasError(response) match {
       case Some(error) => error
-      case None => read[ParsingResponse](response) 
+      case None => read[ParsingResponse](response)
     }
   }
   
